@@ -1,2 +1,2 @@
-startbootstrap-sb-admin-2
-=========================
+Start Bootstrap - SB Admin 2
+=========
