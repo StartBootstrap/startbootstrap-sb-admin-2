@@ -25,4 +25,4 @@ $(function() {
             $("#page-wrapper").css("min-height", (height) + "px");
         }
     })
-})
+});
