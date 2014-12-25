@@ -224,6 +224,11 @@ body {
     height: 100%;
 }
 
+.dataTables_wrapper {
+    position: relative;
+    clear: both;
+}
+
 table.dataTable thead .sorting,
 table.dataTable thead .sorting_asc,
 table.dataTable thead .sorting_desc,
