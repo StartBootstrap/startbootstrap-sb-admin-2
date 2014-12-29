@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-option group="responsive">
+	<name>responsive.details</name>
+	<summary>Enable and configure the child rows shown by Responsive for collapsed tables</summary>
+	<since>Responsive 1.0.0</since>
+
+	<type type="boolean">
+		<description>
+			As a `-type boolean` value, this option will enable and disable the child row display of Responsive. `false` will disable the child rows completely (columns will simply be removed from the disable and their content not be accessible other than through the DataTables API), while `true` will enable the child rows, using the default values defined by the object `$.fn.dataTables.Responsive.defaults.details`.
+		</description>
+	</type>
+
+	<type type="object">
+		<description>
+			When given as an object, the child row display of Responsive will be enabled, and configuration options can be given to extend or override the defaults.
+		</description>
+	</type>
+
+	<default value="true">
+		Child rows will be disabled using the `inline` method (see `r-init responsive.details.type`).
+	</default>
+
+	<description>
+		Responsive has the ability to use DataTables' child rows feature to show information about any columns which have been removed from the display as a child row, which can be particularly useful for display complex information on small screen devices. Please see the [Responsive manual on the details rows](/extensions/responsive/details-rows) for further information.
+
+		This options provides the ability to configure how the details rows are handled by Responsive. In its simplest form as a boolean value, the details row display can be enabled or disabled, while as an object you have the ability to control how the rows are displayed and the control to show / hide the child rows.
+
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+	</description>
+
+	<example title="Disable the details row display"><![CDATA[
+
+$('#example').DataTable( {
+	responsive: {
+		details: false
+	}
+} );
+
+]]></example>
+
+	<example title="Set the `type` option for the details display"><![CDATA[
+
+$('#example').DataTable( {
+	responsive: {
+		details: {
+			type: 'column'
+		}
+	}
+} );
+
+]]></example>
+
+</dt-option>

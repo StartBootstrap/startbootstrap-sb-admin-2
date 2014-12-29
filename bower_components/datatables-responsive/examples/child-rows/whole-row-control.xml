@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html-details" table-class="display nowrap" order="4">
+
+<css lib="datatables responsive" />
+<js lib="jquery datatables responsive">
+<![CDATA[
+
+$(document).ready(function() {
+	$('#example').DataTable( {
+		responsive: {
+			details: {
+				type: 'column',
+				target: 'tr'
+			}
+		},
+		columnDefs: [ {
+			className: 'control',
+			orderable: false,
+			targets:   0
+		} ],
+		order: [ 1, 'asc' ]
+	} );
+} );
+
+]]>
+</js>
+
+<title lib="Responsive">Whole row child row control</title>
+
+<info><![CDATA[
+
+When using the `column` details type in Responsive the `r-init responsive.details.target` option provides the ability to control what element is used to show / hide the child rows when the table is collapsed.
+
+This example uses the `tr` selector to have the whole row act as the control.
+
+]]></info>
+
+</dt-example>
+

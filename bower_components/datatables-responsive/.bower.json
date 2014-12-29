@@ -1,0 +1,23 @@
+{
+  "name": "datatables-responsive",
+  "version": "1.0.3",
+  "main": [
+    "js/dataTables.responsive.js",
+    "css/dataTables.responsive.css"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0",
+    "datatables": ">=1.10.1"
+  },
+  "homepage": "https://github.com/DataTables/Responsive",
+  "_release": "1.0.3",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.0.3",
+    "commit": "21e780fff0ebf78ca67f714d8ec07ca4f20a104b"
+  },
+  "_source": "git://github.com/DataTables/Responsive.git",
+  "_target": "~1.0.3",
+  "_originalSource": "datatables-responsive",
+  "_direct": true
+}

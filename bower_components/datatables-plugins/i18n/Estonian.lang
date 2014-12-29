@@ -1,0 +1,23 @@
+/**
+ * Estonian translation
+ *  @name Estonian
+ *  @anchor Estonian
+ *  @author <a href="http://www.arts9.com/">Janek Todoruk</a>
+ */
+
+{
+	"sProcessing":   "Palun oodake, koostan kuvamiseks nimekirja!",
+	"sLengthMenu":   "N&auml;ita kirjeid _MENU_ kaupa",
+	"sZeroRecords":  "Otsitavat vastet ei leitud.",
+	"sInfo":         "Kuvatud: _TOTAL_ kirjet (_START_-_END_)",
+	"sInfoEmpty":    "Otsinguvasteid ei leitud",
+	"sInfoFiltered": " - filteeritud _MAX_ kirje seast.",
+	"sInfoPostFix":  "K&otilde;ik kuvatud kirjed p&otilde;hinevad reaalsetel tulemustel.",
+	"sSearch":       "Otsi k&otilde;ikide tulemuste seast:",
+	"oPaginate": {
+		"sFirst":      "Algus",
+		"sPrevious":   "Eelmine",
+		"sNext":       "J&auml;rgmine",
+		"sLast":       "Viimane"
+	}
+}

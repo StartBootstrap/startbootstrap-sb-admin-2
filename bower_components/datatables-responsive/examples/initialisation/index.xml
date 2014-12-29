@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example order="0">
+
+<title lib="Responsive">Initialisation</title>
+
+<info><![CDATA[
+
+Responsive can be run on a DataTable in a number of different ways:
+
+* By adding the class `responsive` or `dt-responsive` to the `-tag table`
+* Using the `r-init responsive` option in the DataTables initialisation
+* Use the `$.fn.dataTable.Responsive` constructor.
+
+This set of examples demonstrates these initialisation options.
+
+]]></info>
+
+</dt-example>

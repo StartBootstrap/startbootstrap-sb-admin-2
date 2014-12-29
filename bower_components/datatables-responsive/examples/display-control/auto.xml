@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html-wide" table-class="display responsive nowrap" order="1">
+
+<css lib="datatables responsive" />
+<js lib="jquery datatables responsive">
+<![CDATA[
+
+$(document).ready(function() {
+	$('#example').DataTable();
+} );
+
+]]>
+</js>
+
+<title lib="Responsive">Automatic column hiding</title>
+
+<info><![CDATA[
+
+Responsive will automatically detect which columns have breakpoint class names assigned to them for visibility control. If no breakpoint class is found for a column, Responsive will determine automatically if the column should be shown or not at any particular viewport width. This is done by removing columns which cause the table to overflow the viewport, with the columns being removed from the right.
+
+This example shows that simple case. On a desktop browser resize the window horizontally to see columns added and removed on-the-fly. On a tablet or mobile browser, change the screen's orientation.
+
+]]></info>
+
+</dt-example>
+
