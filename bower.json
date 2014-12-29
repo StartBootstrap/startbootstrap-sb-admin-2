@@ -17,7 +17,8 @@
     "test",
     "tests",
     "examples",
-    "index.html"
+    "index.html",
+    "js"
   ],
   "main": [
     "dist/css/sb-admin-2.css",
