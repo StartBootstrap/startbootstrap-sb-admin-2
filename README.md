@@ -7,7 +7,7 @@
 To use this template, choose one of the following options to get started:
 * Download the latest release on Start Bootstrap
 * Fork this repository on GitHub
-* Install via bower using `bower startbootstrap-sb-admin-2` and use the files in /dist
+* Install via bower using `bower install startbootstrap-sb-admin-2`
 
 ## Bugs and Issues
 
