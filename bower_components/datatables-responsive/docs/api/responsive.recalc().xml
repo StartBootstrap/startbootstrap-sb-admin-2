@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-api group="responsive">
+	<name>responsive.recalc()</name>
+	<summary>Recalculate the widths used by responsive after a change in the display</summary>
+	<since>1.0.1</since>
+
+	<type type="function">
+		<signature>responsive.recalc()</signature>
+		<description>Recalculate the widths used by responsive after a change in the display</description>
+		<returns type="DataTables.Api">DataTables API instance with the cached data for each selected cell in the result set</returns>
+	</type>
+
+	<description>
+		If a table is initialised while it is hidden (i.e. `display: none`) the browser will not calculate the width of columns (since the non-displayed element has no width!). As such, Responsive's calculations for which columns to show at the various widths will be incorrect in this situation.
+
+		To resolve this problem, this method is made available to trigger a recalculation of the column widths used by Responsive. Call it once the table is made visible to have Responsive display correctly.
+
+		It is worth noting that in many ways this method is similar to `dt-api columns.adjust()` and you will likely wish to use both together (see examples below).
+	</description>
+
+	<example title="Recalculate the responsive actions once the table is made visible"><![CDATA[
+
+var table = $('#example').DataTable();
+
+$('#example').css( 'display', 'table' );
+
+table.responsive.recalc();
+
+]]></example>
+
+	<example title="Use `columns.adjust()` and `responsive.recalc()`"><![CDATA[
+
+$('#example').DataTable()
+	.columns.adjust()
+	.responsive.recalc();
+
+]]></example>
+</dt-api>

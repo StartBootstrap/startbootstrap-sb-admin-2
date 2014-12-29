@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-class="display responsive nowrap" order="3">
+
+<css lib="datatables responsive">
+</css>
+<js lib="jquery datatables responsive">
+<![CDATA[
+
+$(document).ready(function() {
+	$('#example').DataTable( {
+		"ajax": "../../../../examples/ajax/data/objects.txt",
+		"columns": [
+			{ "data": "name",       className: "all" },
+			{ "data": "position",   className: "min-phone-l" },
+			{ "data": "office",     className: "min-tablet" },
+			{ "data": "extn",       className: "min-tablet" },
+			{ "data": "start_date", className: "never" },
+			{ "data": "salary",     className: "desktop" },
+			{ "data": "extn",       className: "none" }
+		]
+	} );
+} );
+
+]]>
+</js>
+
+<title lib="Responsive">Assigned class control</title>
+
+<info><![CDATA[
+
+This example exactly matches the functionality of the [class control example](classes.xml) but in this case the classes are assigned using the `dt-init columns.className` option.
+
+]]></info>
+
+<custom-table>
+	<div id="breakpoint"> </div>
+	<table id="example" class="display responsive" width="100%">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Position</th>
+				<th>Office</th>
+				<th>Age</th>
+				<th>Start date</th>
+				<th>Salary</th>
+				<th>Extn.</th>
+			</tr>
+		</thead>
+
+		<tfoot>
+			<tr>
+				<th>Name</th>
+				<th>Position</th>
+				<th>Office</th>
+				<th>Age</th>
+				<th>Start date</th>
+				<th>Salary</th>
+				<th>Extn.</th>
+			</tr>
+		</tfoot>
+	</table>
+</custom-table>
+
+</dt-example>
+

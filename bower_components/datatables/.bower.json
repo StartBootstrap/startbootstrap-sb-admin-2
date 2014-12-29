@@ -1,0 +1,37 @@
+{
+  "name": "datatables",
+  "version": "1.10.4",
+  "main": [
+    "media/js/jquery.dataTables.js",
+    "media/css/jquery.dataTables.css"
+  ],
+  "dependencies": {
+    "jquery": ">=1.7.0"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jquery",
+    "datatables",
+    "table",
+    "javascript",
+    "library"
+  ],
+  "ignore": [
+    "/.*",
+    "examples",
+    "media/unit_testing",
+    "composer.json",
+    "dataTables.jquery.json",
+    "package.json"
+  ],
+  "homepage": "https://github.com/DataTables/DataTables",
+  "_release": "1.10.4",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.10.4",
+    "commit": "96866489a52266c4b356364d7756dde8b7a0c172"
+  },
+  "_source": "git://github.com/DataTables/DataTables.git",
+  "_target": ">=1.10.1",
+  "_originalSource": "datatables"
+}

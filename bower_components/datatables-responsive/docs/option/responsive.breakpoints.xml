@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-option group="responsive">
+	<name>responsive.breakpoints</name>
+	<summary>Set the breakpoints for a Responsive instance</summary>
+	<since>Responsive 1.0.0</since>
+
+	<type type="array">
+		<description>
+			<![CDATA[
+			An array of objects, where each object contains two properties that describe each breakpoint:
+
+			* `name` - the breakpoint name allowing class targeting. This can be a single word, or append `\-[a-z]` to provide sub-breakpoints as the default does to allow, for example, tablet, tablet landscape or tablet portrait breakpoints.
+			* `width` - the width (pixels) of the page viewport at which this breakpoint will apply. The value given is the maximum size at which this breakpoint will be applied, and it will be used until the next breakpoint is found. For example, if using the default breakpoints (above), the `tablet-l` breakpoint will be applied for `768 < x <= 1024` (where `x` is the viewport width).
+			]]>
+		</description>
+	</type>
+
+	<default value="$.fn.dataTable.Responsive.breakpoints">
+		The default breakpoints used by Responsive are defined by the static array defined in this object. This provides the ability to set common breakpoints that are used by all tables easily, if required.
+	</default>
+
+	<description>
+		The visibility of columns in a DataTable with Responsive enabled can be controlled by breakpoints and class names matching those breakpoints (and other logical operations) . This provides the ability to exactly control which columns in a table will be visible in each device type. [See the Responsive manual](/extensions/responsive/classes) for more information.
+
+		The breakpoints that are used by a Responsive instance are unique to that instance (i.e. each table) allowing different breakpoints to be set for different tables is needed.
+
+		The default breakpoints defined by `$.fn.dataTable.Responsive.breakpoints` is:
+
+		```js
+		[
+			{ name: 'desktop',  width: Infinity },
+			{ name: 'tablet-l', width: 1024 },
+			{ name: 'tablet-p', width: 768 },
+			{ name: 'mobile-l', width: 480 },
+			{ name: 'mobile-p', width: 320 }
+		]
+		```
+
+		Note that if you define your own array of breakpoints, ordering of the breakpoints is not important. Responsive will automatically sort the array into its required internal order before using it.
+
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+	</description>
+
+	<example title="Set custom breakpoints in the DataTables initialisation"><![CDATA[
+
+$('#example').DataTable( {
+	responsive: {
+		breakpoints: [
+			{ name: 'desktop', width: Infinity },
+			{ name: 'tablet',  width: 1024 },
+			{ name: 'fablet',  width: 768 },
+			{ name: 'phone',   width: 480 }
+		]
+	}
+} );
+
+]]></example>
+
+	<example title="Set custom breakpoints using the defaults"><![CDATA[
+
+$.fn.dataTable.Responsive.breakpoints = [
+	{ name: 'desktop', width: Infinity },
+	{ name: 'tablet',  width: 1024 },
+	{ name: 'fablet',  width: 768 },
+	{ name: 'phone',   width: 480 }
+];
+
+$('#example').DataTable( {
+	responsive: true
+} );
+
+]]></example>
+
+</dt-option>

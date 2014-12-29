@@ -1,0 +1,40 @@
+{
+  "name": "startbootstrap-sb-admin-2",
+  "version": "2.0.0",
+  "homepage": "http://startbootstrap.com/template-overviews/sb-admin-2/",
+  "authors": [
+    "David Miller"
+  ],
+  "description": "A free, open source, Bootstrap admin theme created by Start Bootstrap",
+  "keywords": [
+    "bootstrap"
+  ],
+  "license": "Apache",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "examples",
+    "index.html",
+    "/js"
+  ],
+  "main": [
+    "dist/css/sb-admin-2.css",
+    "dist/js/sb-admin-2.css"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1",
+    "DataTables": "~1.10.4",
+    "datatables-plugins": "~1.0.1",
+    "flot": "~0.8.3",
+    "fontawesome": "~4.2.0",
+    "holderjs": "~2.4.1",
+    "metisMenu": "~1.1.3",
+    "morrisjs": "~0.5.1",
+    "datatables-responsive": "~1.0.3",
+    "bootstrap-social": "~4.8.0",
+    "flot.tooltip": "~0.8.4"
+  }
+}

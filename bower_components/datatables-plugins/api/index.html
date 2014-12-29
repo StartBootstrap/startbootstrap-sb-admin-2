@@ -1,0 +1,36 @@
+
+<h2>Custom API functions</h2>
+
+<p>One of the most common interactions with DataTables for a developer (other than initialisation of the table of course!) is to make use of the <a href="/api">API functions</a> provided by DataTables. While allowing for a fairly extensive range of code interactions, the default API set can be greatly enhanced by making use of the functions provided below, as suitable for your application.</p>
+
+<ul>
+	<li><a href="#how_to">How to use DataTables plug-in API functions</a></li>
+	<li><a href="#functions">Plug-in API functions</a></li>
+</ul>
+
+
+<a name="how_to"></a>
+<h3>How to use DataTables plug-in API functions</h3>
+
+<p>To make use of one of the plug-in API functions below, you simply need to include it in the Javascript available for your page, after you load the DataTables library, but before you initialise the DataTable. After that, you will be able to initialise the table, and call the function on the resulting object. As an example the code below makes use of <a href="#fnGetHiddenNodes">fnGetHiddenNodes</a> saved into a file (<a href="/examples/plug-ins/plugin_api.html">live example</a>):</p>
+
+<pre class="brush: html">&lt;script type="text/javascript" src="jquery.dataTables.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="dataTables.fnGetHiddenNodes.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+	$(document).ready(function() {
+		var oTable = $('#example').dataTable();
+		
+		$('#button').click( function () {
+			var nHidden = oTable.fnGetHiddenNodes();
+			alert( nHidden.length +' nodes were returned' );
+		} );
+	} );
+&lt;/script&gt;
+</pre>
+
+<p>Please note that DataTables will automatically pass the settings object as the first parameter. As such, you do not need to pass the settings object, which you will see if you look at the plug-in API's code.</p>
+
+<a name="functions"></a>
+<h3>Plug-in API functions</h3>
+
+include(`build.1.inc')
