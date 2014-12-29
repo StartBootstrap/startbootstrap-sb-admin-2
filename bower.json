@@ -15,7 +15,9 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "examples",
+    "index.html"
   ],
   "main": [
     "dist/css/sb-admin-2.css",
