@@ -23,7 +23,7 @@
   ],
   "main": [
     "dist/css/sb-admin-2.css",
-    "dist/js/sb-admin-2.css"
+    "dist/js/sb-admin-2.js"
   ],
   "dependencies": {
     "bootstrap": "~3.3.1",
