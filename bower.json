@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.1",
-    "DataTables": "~1.10.4",
+    "datatables": "~1.10.4",
     "datatables-plugins": "~1.0.1",
     "flot": "~0.8.3",
     "font-awesome": "~4.2.0",
