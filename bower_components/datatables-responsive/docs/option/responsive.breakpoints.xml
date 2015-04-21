@@ -38,7 +38,7 @@
 
 		Note that if you define your own array of breakpoints, ordering of the breakpoints is not important. Responsive will automatically sort the array into its required internal order before using it.
 
-		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/option). This property should be set in the DataTables initialisation object.
 	</description>
 
 	<example title="Set custom breakpoints in the DataTables initialisation"><![CDATA[

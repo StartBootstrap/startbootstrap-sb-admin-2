@@ -25,7 +25,7 @@
 	<description>
 		This option provides the ability to enable and configure Responsive for DataTables. In its simplest form as the boolean `true` it will enable Responsive with the default configuration options (as defined by `$.fn.dataTable.Responsive.defaults`). It can also be used as an object to provide custom configuration options as described below.
 
-		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/option). This property should be set in the DataTables initialisation object.
 	</description>
 
 	<example title="Enable Responsive for a table"><![CDATA[

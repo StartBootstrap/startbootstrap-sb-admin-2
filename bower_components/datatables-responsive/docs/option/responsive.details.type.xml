@@ -23,7 +23,7 @@
 
 		The `inline` style is useful if you already have a table that you quickly want to add Responsive to without changing its structure, while the `column` type can be useful if you don't want the first column's layout to be modified by the padding required to make space for the inline display.
 
-		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/option). This property should be set in the DataTables initialisation object.
 	</description>
 
 	<example title="Use the `column` control type"><![CDATA[

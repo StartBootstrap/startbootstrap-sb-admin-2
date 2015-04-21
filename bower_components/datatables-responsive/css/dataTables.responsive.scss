@@ -30,9 +30,9 @@
 //
 table.dataTable {
 	// Styling for the `inline` type
-	&.dtr-inline.collapsed tbody {
-		td:first-child,
-		th:first-child {
+	&.dtr-inline.collapsed > tbody {
+		> tr > td:first-child,
+		> tr > th:first-child {
 			position: relative;
 			padding-left: 30px;
 			cursor: pointer;
@@ -51,23 +51,40 @@ table.dataTable {
 			}
 		}
 
-		tr.parent {
-			td:first-child:before,
-			th:first-child:before {
+		> tr.parent {
+			> td:first-child:before,
+			> th:first-child:before {
 				@include control-close;
 			}
 		}
 
-		tr.child td:before {
+		> tr.child td:before {
 			display: none;
+		}
+	}
+
+	// DataTables' `compact` styling
+	&.dtr-inline.collapsed.compact > tbody {
+		> tr > td:first-child,
+		> tr > th:first-child {
+			padding-left: 27px;
+
+			&:before {
+				top: 5px;
+				left: 4px;
+				height: 14px;
+				width: 14px;
+				border-radius: 14px;
+				line-height: 12px;
+			}
 		}
 	}
 
 
 	// Styling for the `column` type
-	&.dtr-column tbody {
-		td.control,
-		th.control {
+	&.dtr-column > tbody {
+		> tr > td.control,
+		> tr > th.control {
 			position: relative;
 			cursor: pointer;
 
@@ -83,7 +100,7 @@ table.dataTable {
 			}
 		}
 
-		tr.parent {
+		> tr.parent {
 			td.control:before,
 			th.control:before {
 				@include control-close;
@@ -93,7 +110,7 @@ table.dataTable {
 
 
 	// Child row styling
-	tr.child {
+	> tbody > tr.child {
 		padding: 0.5em 1em;
 
 		&:hover {
@@ -109,7 +126,6 @@ table.dataTable {
 			li {
 				border-bottom: 1px solid #efefef;
 				padding: 0.5em 0;
-				white-space: nowrap;
 
 				&:first-child {
 					padding-top: 0;

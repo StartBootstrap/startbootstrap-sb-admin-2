@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html-wide" table-class="display nowrap" order="4">
+
+<css lib="datatables responsive fixedheader">
+	div.container { max-width: 1200px }
+</css>
+<js lib="jquery datatables responsive fixedheader">
+<![CDATA[
+
+$(document).ready(function() {
+	var table = $('#example').DataTable( {
+		responsive: true,
+		paging: false
+	} );
+
+	new $.fn.dataTable.FixedHeader( table );
+} );
+
+]]>
+</js>
+
+<title lib="Responsive">With FixedHeader</title>
+
+<info><![CDATA[
+
+This example shows Responsive being used with the DataTables [FixedHeader](http://datatables.net/extensions/fixedheader) extension. FixedHeader will lock a table's header to the top of the table, ensuring that the user always knows what each column relates to.
+
+]]></info>
+
+</dt-example>
+

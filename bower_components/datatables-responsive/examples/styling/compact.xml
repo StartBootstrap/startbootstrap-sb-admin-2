@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html-wide" table-class="display compact nowrap" order="4">
+
+<css lib="datatables responsive">
+	div.container { max-width: 1200px }
+</css>
+<js lib="jquery datatables responsive">
+<![CDATA[
+
+$(document).ready(function() {
+	var table = $('#example').DataTable();
+
+	new $.fn.dataTable.Responsive( table );
+} );
+
+]]>
+</js>
+
+<title lib="Responsive">Compact styling</title>
+
+<info><![CDATA[
+
+DataTables' [default stylesheet](http://datatables.net/manual/styling/classes) has a number number of features available that can be enabled by including a class name on the DataTable. One of those options is `compact` which displays the DataTable with less whitespace padding that might other be used to increase the information density of the table. Responsive's own style has support for this `compact` styling as showing in this example.
+
+
+]]></info>
+
+</dt-example>
+

@@ -29,7 +29,7 @@
 
 		This function is executed for every child row in a table, and is run whenever the column visibility of the table changes.
 
-		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/option). This property should be set in the DataTables initialisation object.
 	</description>
 
 	<example title="Custom renderer which displays the data that has been hidden in an HTML table"><![CDATA[

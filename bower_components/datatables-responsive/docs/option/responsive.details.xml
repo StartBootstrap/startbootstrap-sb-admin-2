@@ -25,7 +25,7 @@
 
 		This options provides the ability to configure how the details rows are handled by Responsive. In its simplest form as a boolean value, the details row display can be enabled or disabled, while as an object you have the ability to control how the rows are displayed and the control to show / hide the child rows.
 
-		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/option). This property should be set in the DataTables initialisation object.
 	</description>
 
 	<example title="Disable the details row display"><![CDATA[

@@ -27,7 +27,7 @@
 
 		If the `inline` option is used for `r-init responsive.details.type` this option has no effect.
 
-		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/init). This property should be set in the DataTables initialisation object.
+		Please note that as with all other configuration options for Responsive, this option is an extension to the [default set of DataTables options](/reference/option). This property should be set in the DataTables initialisation object.
 	</description>
 
 	<example title="Use the `column` control type and target the right most column"><![CDATA[

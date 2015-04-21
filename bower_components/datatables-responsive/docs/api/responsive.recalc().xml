@@ -7,7 +7,7 @@
 	<type type="function">
 		<signature>responsive.recalc()</signature>
 		<description>Recalculate the widths used by responsive after a change in the display</description>
-		<returns type="DataTables.Api">DataTables API instance with the cached data for each selected cell in the result set</returns>
+		<returns type="DataTables.Api">DataTables API instance</returns>
 	</type>
 
 	<description>
