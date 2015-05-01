@@ -36,29 +36,29 @@
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+        <![endif]-->
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <div id="wrapper">
+        <div id="wrapper">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <div class="btn-group" role="group" style="margin-top:10px">
-                  <button type="button" class="btn btn-default">Import Data</button>
-                  <button type="button" class="btn btn-default">Export Data</button>
-                </div>
-            </div>
-            <div class="navbar-header col-md-offset-3 col-md-4">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <div class="btn-group" role="group" style="margin-top:10px">
+                      <button type="button" class="btn btn-default">Import Data</button>
+                      <button type="button" class="btn btn-default">Export Data</button>
+                  </div>
+              </div>
+              <div class="navbar-header col-md-offset-3 col-md-4">
                 <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
             </div>
             <!-- /.navbar-header -->
@@ -177,43 +177,37 @@
                     </ul>
                 </div> -->
                 <!-- /.sidebar-collapse -->
-            <!-- </div> -->
-            <!-- /.navbar-static-side -->
-        </nav>
+                <!-- </div> -->
+                <!-- /.navbar-static-side -->
+            </nav>
 
-        <!-- <div id="page-wrapper"> -->
-        <div class="col-md-offset-2 col-md-8">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Analyst Dashboard</h1>
-                    <br/>
-                </div>
-            </div>
-            
-            <!-- /.row -->
-            <div class="row">
-                <ul class="nav nav-tabs nav-justified">
-                  <li role="presentation" class="active"><a href="#">Processing</a>
-                  <div class="row">
-                    <div class="col-md-3">
-                        <a href="#" class="thumbnail">
-                        <img src="../icons/pie_chart.png">
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#" class="thumbnail">
-                        <img src="../icons/pie_chart.png">
-                        </a>
-                    </div>
-                    <div class="col-md-3">
-                        <a href="#" class="thumbnail">
-                        <img src="../icons/pie_chart.png">
-                        </a>
+            <!-- <div id="page-wrapper"> -->
+            <div class="col-md-offset-2 col-xs-8">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">Analyst Dashboard</h1>
+                        <br/>
                     </div>
                 </div>
-                </li>
-                  <li role="presentation"><a href="#">Visualization</a></li>
-                </ul>
+
+                <!-- /.row -->
+                <div class="row">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li role="presentation" class="active"><a href="#">Processing</a>
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <a href="#" class="thumbnail"><img class="img-responsive" src="../imgs/pie_chart.png" style="width:150px"></a>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="#" class="thumbnail"><img class="img-responsive" src="../imgs/pie_chart.png" style="width:150px"></a>
+                                </div>
+                                <div class="col-xs-4">
+                                    <a href="#" class="thumbnail"><img class="img-responsive" src="../imgs/pie_chart.png" style="width:150px"></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li role="presentation"><a href="#">Visualization</a></li>
+                    </ul>
 
                 <div class="col-lg-8">
                     <div class="panel panel-default">
@@ -245,41 +239,41 @@
                         </div> -->
                         <!-- /.panel-body -->
                     </div>
+                </div>
+                <!-- /.row -->
             </div>
-            <!-- /.row -->
+            <!-- /#page-wrapper -->
+
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- jQuery -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-    <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="../bower_components/raphael/raphael-min.js"></script>
+        <script src="../bower_components/morrisjs/morris.min.js"></script>
+        <script src="../js/morris-data.js"></script>
 
-    <!-- Morris Charts JavaScript -->
-    <script src="../bower_components/raphael/raphael-min.js"></script>
-    <script src="../bower_components/morrisjs/morris.min.js"></script>
-    <script src="../js/morris-data.js"></script>
+        <!-- Custom Theme JavaScript -->
+        <script src="../dist/js/sb-admin-2.js"></script>
 
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
+        <!-- Bootstrap Javascript -->
+        <script src="../js/bootstrap.js"></script>
 
-    <!-- Bootstrap Javascript -->
-    <script src="../js/bootstrap.js"></script>
+    </body>
 
-</body>
-
-</html>
+    </html>
 
 
 
-<!-- /.row -->
+    <!-- /.row -->
             <!-- <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
