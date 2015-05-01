@@ -182,82 +182,85 @@
                 <!-- /.navbar-static-side -->
             </nav>
 
-            <!-- <div id="page-wrapper"> -->
-            <div class="col-md-offset-2 col-xs-8">
-                <div class="col-md-10">
+            <!-- create the two tabs -->
+            <div class="row">
+                <div class="col-xs-9">
                     <!-- /.row -->
                     <div class="row">
                         <ul class="nav nav-tabs nav-justified">
-                            <li role="presentation" class="active"><a href="#">Processing</a>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <a href="#" class="thumbnail">
-                                            <img src="../img/filter.png">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="thumbnail">
-                                            <img src="../img/pie_chart.png">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="thumbnail">
-                                            <img src="../img/sigma.png">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="thumbnail">
-                                            <img src="../img/2d.png">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <a href="#" class="thumbnail">
-                                            <img src="../img/3d.png">
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li role="presentation"><a href="#">Visualization</a></li>
+                            <li class="active"><a href="#processing" data-toggle="tab">Processing</a></li>
+                            <li><a href="#visualization" data-toggle="tab">Visualization</a></li>
                         </ul>
                     </div>
                 </div>
-
-            <div class="col-lg-8">
-                <div class="panel panel-default"></div>
             </div>
-            </nav>
 
-            <!-- <div id="page-wrapper"> -->
+            <!-- add icons inside the tabs -->
+            <div class="tab-content">
+                <div id="processing" class="tab-pane active">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <a href="#"><img src="../img/filter.png"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#"><img src="../img/pie_chart.png"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#"><img src="../img/sigma.png"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#"><img src="../img/2d.png"></a>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#"><img src="../img/3d.png"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="visualization" class="tab-pane">
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <a href="#"><img src="../img/pie_chart.png"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <!-- /#wrapper -->
+<!-- create a line -->
+<div class="col-lg-8">
+    <div class="panel panel-default"></div>
+</div>
 
-            <!-- jQuery -->
-            <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- <div id="page-wrapper"> -->
 
-            <!-- Bootstrap Core JavaScript -->
-            <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- /#wrapper -->
 
-            <!-- Metis Menu Plugin JavaScript -->
-            <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
+<!-- jQuery -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
 
-            <!-- Morris Charts JavaScript -->
-            <script src="../bower_components/raphael/raphael-min.js"></script>
-            <script src="../bower_components/morrisjs/morris.min.js"></script>
-            <script src="../js/morris-data.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-            <!-- Custom Theme JavaScript -->
-            <script src="../dist/js/sb-admin-2.js"></script>
+<!-- Metis Menu Plugin JavaScript -->
+<script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
-            <!-- Bootstrap Javascript -->
-            <script src="../js/bootstrap.js"></script>
+<!-- Morris Charts JavaScript -->
+<script src="../bower_components/raphael/raphael-min.js"></script>
+<script src="../bower_components/morrisjs/morris.min.js"></script>
+<script src="../js/morris-data.js"></script>
 
-        </body>
+<!-- Custom Theme JavaScript -->
+<script src="../dist/js/sb-admin-2.js"></script>
 
-        </html>
+<!-- Bootstrap Javascript -->
+<script src="../js/bootstrap.js"></script>
+
+</body>
+
+</html>
 
 
 
-        <!-- /.row -->
+<!-- /.row -->
             <!-- <div class="row">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
