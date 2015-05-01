@@ -70,9 +70,7 @@
     </head>
 
     <body>
-
         <div id="wrapper">
-
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
@@ -83,124 +81,121 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="btn-group" role="group" style="margin-top:10px">
-                      <button type="button" class="btn btn-default">Import Data</button>
-                      <button type="button" class="btn btn-default">Export Data</button>
-                  </div>
-              </div>
-              <div class="navbar-header col-md-offset-3 col-md-4">
-                <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
-            </div>
+                        <button type="button" class="btn btn-default">Import Data</button>
+                        <button type="button" class="btn btn-default">Export Data</button>
+                    </div>
+                </div>
+                <div class="navbar-header col-md-offset-3 col-md-4">
+                    <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
+                </div>
             <!-- /.navbar-header -->
 
-            <ul class="nav navbar-top-links navbar-right">
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
+                <ul class="nav navbar-top-links navbar-right">
+                    <!-- /.dropdown -->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            </li>
+                        </ul>
+                        <!-- /.dropdown-user -->
+                    </li>
+                    <!-- /.dropdown -->
+                </ul>
             <!-- /.navbar-top-links -->
-        </nav>
+            </nav>
+            <!-- <div id="page-wrapper"> -->
+            <div class="row">
+                <div class="col-xs-9">
+                    <!-- /.row -->
+                    <div class="row">
+                        <ul class="nav nav-tabs nav-justified" style="height:175px;">
+                           <li class="active"><a href="#processing" data-toggle="tab">Processing</a></li>
+                           <li><a href="#visualization" data-toggle="tab">Visualization</a></li>
 
-        <!-- <div id="page-wrapper"> -->
-        <div class="row">
-            <div class="col-xs-9">
-                <!-- /.row -->
-                <div class="row">
-                    <ul class="nav nav-tabs nav-justified" style="height:175px;">
-                       <li class="active"><a href="#processing" data-toggle="tab">Processing</a></li>
-                       <li><a href="#visualization" data-toggle="tab">Visualization</a></li>
-
-                       <div class="tab-content">
-                            <div id="processing" class="tab-pane active">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm"><img src="../img/filter.png" class="icons"></a>
+                           <div class="tab-content">
+                                <div id="processing" class="tab-pane active">
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <a href="#"><img src="../img/filter.png" class="icons"></a>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a href="#"><img src="../img/pie_chart.png" class="icons"></a>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a href="#"><img src="../img/sigma.png" class="icons"></a>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a href="#"><img src="../img/2d.png" class="icons"></a>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a href="#"><img src="../img/3d.png" class="icons"></a>
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm"><img src="../img/pie_chart.png" class="icons"></a>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm"><img src="../img/sigma.png" class="icons"></a>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm"><img src="../img/2d.png" class="icons"></a>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm"><img src="../img/3d.png" class="icons"></a>
+                                </div>
+                                <div id="visualization" class="tab-pane">
+                                    <div class="row">
+                                        <div class="col-xs-2">
+                                            <a href="#" class="thumbnail-sm">
+                                                <img src="../img/pie_chart.png" class="icons">
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a href="#" class="thumbnail-sm">
+                                                <img src="../img/2d.png" class="icons">
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <a href="#" class="thumbnail-sm">
+                                                <img src="../img/3d.png" class="icons">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="visualization" class="tab-pane">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm">
-                                            <img src="../img/pie_chart.png" class="icons">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm">
-                                            <img src="../img/2d.png" class="icons">
-                                        </a>
-                                    </div>
-                                    <div class="col-md-2">
-                                        <a href="#" class="thumbnail-sm">
-                                            <img src="../img/3d.png" class="icons">
-                                        </a>
-                                    </div>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12" style="margin-top:-3%; margin-left:.5%">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    Analyst Dashboard
                                 </div>
-                            </div>
-                        </div>
-                    </ul>
-                </div>
+                                <div class="panel-body">
+                                    <div class="flot-chart">
+                                        <div class="flot-chart-content" id="flot-line-chart"></div>
 
-                <div class="row">
-                    <div class="col-md-12" style="margin-top:-3%; margin-left:.5%">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                Analyst Dashboard
-                            </div>
-                            <div class="panel-body">
-                                <div class="flot-chart">
-                                    <div class="flot-chart-content" id="flot-line-chart"></div>
-
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div> 
-            <div class="col-xs-3">
-                <div class="row">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            History
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body" style="height:565px;">
-                            <div class="flot-chart">
-                                <div class="flot-chart-content" id="flot-line-chart"></div>
-
+                </div> 
+                <div class="col-xs-3">
+                    <div class="row">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                History
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body" style="height:565px;">
+                                <div class="flot-chart">
+                                    <div class="flot-chart-content" id="flot-line-chart"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-</body>
+    </body>
 
 </html>
