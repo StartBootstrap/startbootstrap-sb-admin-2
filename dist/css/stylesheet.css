@@ -1,3 +1,17 @@
+body, html {
+	height: 100%;
+}
+
+
 #project_title{
 	margin-top: 10px;
+}
+.noBorders td {
+    border:0;
+    height:8%;
+}
+
+.icons{
+	height: 50px;
+	margin: 20px;
 }
