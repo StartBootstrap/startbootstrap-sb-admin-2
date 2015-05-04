@@ -2,10 +2,15 @@ body, html {
 	height: 100%;
 }
 
-
 #project_title{
 	margin-top: 10px;
 }
+
+#exp{
+	text-decoration: none;
+	color:black;
+}
+
 .noBorders td {
     border:0;
     height:8%;
@@ -14,4 +19,21 @@ body, html {
 .icons{
 	height: 50px;
 	margin: 20px;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+    top: 0;
+    right: 0;
+    height: 34px;
+    width: 75;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+
 }
