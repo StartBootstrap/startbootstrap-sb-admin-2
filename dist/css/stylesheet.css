@@ -37,3 +37,21 @@ body, html {
     display: block;
 
 }
+
+.groupRadio{
+	margin:25px;
+}
+
+.btn.btn-default.btn-md{
+	height:90px;
+}
+
+.icon_button{
+	border:none; 
+	background:none;
+}
+
+.checkbox{
+	margin: 20px;
+	margin-bottom:30px;
+}
