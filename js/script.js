@@ -1,0 +1,1 @@
+$('#dropdown').dropdown('toggle');
