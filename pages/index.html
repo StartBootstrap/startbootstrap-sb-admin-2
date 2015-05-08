@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,11 +61,11 @@
     <script src="../bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../js/flot-data.js"></script>
 
+    <!-- Slider javascript-->
+    <script src="../bootstrap-slider-master/js/bootstrap-slider.js"></script>
+
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
-
-    <!-- Bootstrap Javascript -->
-    <script src="../js/bootstrap.js"></script>
     
     <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
@@ -81,13 +82,15 @@
 	                <span class="icon-bar"></span>
 	            </button>
 	            <div class="btn-group" role="group" style="margin-top:10px">
-                    <button type="button" class="btn btn-default btn-file">Import Data<input type="file"></button>
-                    <button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Data</a></button>
-                </div>
-            </div>
-            <div class="navbar-header col-md-offset-4 col-md-4">
-                <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
-            </div>
+	              <button type="button" class="btn btn-default btn-file">Import Data Stream<input type="file"></button>
+	              <button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
+	          </div>
+	      </div>
+	      <div class="navbar-header col-md-offset-4 col-md-4">
+	        <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
+	    </div>
+	    <!-- /.navbar-header -->
+
 		    <ul class="nav navbar-top-links navbar-right">
 		        <!-- /.dropdown -->
 		        <li class="dropdown">
@@ -103,8 +106,10 @@
 		                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
 		                </li>
 		            </ul>
+		            <!-- /.dropdown-user -->
 		        </li>
 		    </ul>
+	    <!-- /.navbar-top-links -->
 		</nav>
         <!-- <div id="page-wrapper"> -->
         <div class="row">
@@ -117,27 +122,296 @@
 
                        <div class="tab-content">
                             <div id="processing" class="tab-pane active">
-                                <div class="row">
-                                    <div class="col-xs-2">
-                                        <a href="#" title="Data Filter"><img src="../img/filter.png" class="icons"></a>
+                                <div class="row" style="height:100px;">
+
+                                    <div class="col-xs-2 col-md-offset-1">
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal"><img src="../img/filter.png" class="icons"></a></button>
                                     </div>
+
+                                    <!-- Modal that opens up when the user clicks on the filter button-->
+                                    <div class="modal fade" id="filterModal">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">Data Filter</h4>
+									      </div>
+									      <div class="modal-body col-md-12">
+									        <p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
+									        <div class="dropdown">
+											  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:-2%;">Streams<span class="caret"></span>
+											  </button>
+											  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+											  	<li role="presentation"><a href="#">Data Stream 1</a></li>
+											  	<li role="presentation"><a href="#">Data Stream 2</a></li>
+											  	<li role="presentation"><a href="#">Data Stream 3</a></li>
+											  </ul>
+											</div>
+											
+											<div class="checkbox">
+											    <label>
+											      <input type="checkbox"> Value
+											    </label>
+											    <div class="form-group col-md-offset-1">
+											    	<label>Min<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Min Value"></label>
+											    	<label>Max<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Max Value"></label>
+											  	</div>
+											</div>
+											<div class="checkbox">
+											    <label>
+											      <input type="checkbox"> Normalization Mode
+											    </label>
+											    <div class="form-group col-md-offset-1">
+											    	<label>Min<input type="email" class="form-control" id="exampleInputEmail1" placeholder="0"></label>
+											    	<label>Max<input type="email" class="form-control" id="exampleInputEmail1" placeholder="100"></label>
+											  	</div>
+											</div>
+											<div class="checkbox">
+											    <label>
+											      <input type="checkbox"> Location
+											    </label>
+											    
+											    <div class="form-group col-md-offset-1">
+											    	<label>NorthEast Longitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Longitude"></label>
+											    	<label>NorthEast Latitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Latitude"></label>
+											  	</div>
+
+											  	<div class="form-group col-md-offset-1">
+											  		<label>SouthWest Longitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Longitude"></label>
+											    	<label>SouthWest Latitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Latitude"></label>
+											  	</div>
+											</div>
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Save changes</button>
+									      </div>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+
+
                                     <div class="col-xs-2">
-                                        <a href="#" title="Group Data"><img src="../img/pie_chart.png" class="icons"></a>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#groupModal"><a href="#" title="Group Data"><img src="../img/pie_chart.png" class="icons"></a></button>
                                     </div>
+
+                                    <!-- Modal that opens up when the user clicks on the grouping icon-->
+                                    <div class="modal fade" id="groupModal">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">Group Data</h4>
+									      </div>
+									      <div class="modal-body">
+									        <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
+									        
+									        <div class="dropdown col-md-3" style="margin-left:-10%;">
+											  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
+											  </button>
+											  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+											  	<li role="presentation"><a href="#">Data Stream 1</a></li>
+											  	<li role="presentation"><a href="#">Data Stream 2</a></li>
+											  	<li role="presentation"><a href="#">Data Stream 3</a></li>
+											  </ul>
+											</div>
+
+											<p class="col-md-4">Number of Groups</p>
+
+											<div class="dropdown col-md-2" style="margin-left:-10%;">
+											  
+											  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:-2%;">1<span class="caret"></span>
+											  </button>
+											  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+											  	<li role="presentation"><a href="#">1</a></li>
+											  	<li role="presentation"><a href="#">2</a></li>
+											  	<li role="presentation"><a href="#">3</a></li>
+											  	<li role="presentation"><a href="#">4</a></li>
+											  	<li role="presentation"><a href="#">5</a></li>
+											  	<li role="presentation"><a href="#">6</a></li>
+											  	<li role="presentation"><a href="#">7</a></li>
+											  	<li role="presentation"><a href="#">8</a></li>
+											  	<li role="presentation"><a href="#">9</a></li>
+											  	<li role="presentation"><a href="#">10</a></li>
+											  </ul>
+											</div>
+											
+											<div class="row"></div>
+											<p>Method:</p>
+											<div class="radio col-md-offset-1">
+											  <label style="margin-right:100px;"><input type="radio" name="optradio">Threshold</label>
+											  <label><input type="radio" name="optradio">K-mean</label>
+											</div>
+
+											Filter by price interval: <b>$ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 1000</b>
+
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Save changes</button>
+									      </div>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+
+
+
                                     <div class="col-xs-2">
-                                        <a href="#" title="Aggregate Data"><img src="../img/sigma.png" class="icons"></a>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#aggregateModal"<a href="#" title="Aggregate Data"><img src="../img/sigma.png" class="icons"></a>
                                     </div>
+									<!-- Modal that opens up when the user clicks on the aggregate button-->
+                                    <div class="modal fade" id="aggregateModal">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">Group Data</h4>
+									      </div>
+									      <div class="modal-body col-md-12">
+									        <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
+									        
+									        <div class="dropdown">
+											  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
+											  </button>
+											  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+											  	<li role="presentation"><a href="#">Data Stream 1</a></li>
+											  	<li role="presentation"><a href="#">Data Stream 2</a></li>
+											  	<li role="presentation"><a href="#">Data Stream 3</a></li>
+											  </ul>
+											</div>
+											
+											<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
+									
+											<p>Aggregation Operators</p>
+
+											<div class="radio col-md-offset-1">
+											<TABLE border="0">
+											<tr>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Sum</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Average</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Minimum</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Maximum</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Or</label></td>
+											</tr>
+											<tr>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Convolution</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">And</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Not</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Subtraction</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Multiply</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Division</label></td>
+											</tr>
+											</TABLE>
+											</div>
+
+											<label>
+										      <input type="checkbox"> Normalization Mode
+										    </label>
+
+										    <div class="form-group col-md-offset-1">
+										    	<label>Minimum<input type="email" class="form-control" id="exampleInputEmail1" placeholder="0"></label>
+										    	<label>Maximum<input type="email" class="form-control" id="exampleInputEmail1" placeholder="100"></label>
+										  	</div>
+
+									      </div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Save changes</button>
+									      </div>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+
+
+
+
                                     <div class="col-xs-2">
-                                        <a href="#" title="2 Dimensional Data"><img src="../img/2d.png" class="icons"></a>
+                                        <button type="button" class="icon_button"><a href="#" title="2 Dimensional Data"><img src="../img/2d.png" class="icons"></a></button>
                                     </div>
+									
+									
+									<!-- Ricky -->							
                                     <div class="col-xs-2">
-                                        <a href="#" title="3 Dimensional Data"><img src="../img/3d.png" class="icons"></a>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#3dOccur"><a href="#" title="3 Dimensional Data"><img src="../img/3d.png" class="icons"></a></button>
                                     </div>
+									
+									<!-- Modal that opens up when the user clicks on the 3D Occurence button-->
+                                    <div class="modal fade" id="3dOccur">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">3D Co-occurence</h4>
+									      </div>
+									      <div class="modal-body col-md-12">
+									        <p>Data Streams:</p>
+									        									
+											<div>
+											<select name="Stream 1">
+											<option value="default">Stream 1</option>
+											<option value="choice1">Clownfish</option>
+											<option value="choice2">Shark</option>
+											<option value="choice3">Goldfish</option>
+											</select>
+											
+											<select name="Stream 2">
+											<option value="default">Stream 2</option>
+											<option value="choice1">Salamander</option>
+											<option value="Choice2">Snakes</option>
+											<option value="choice3">Lizards</option>
+											</select>
+											
+											<select name="Stream 3">
+											<option value="default">Stream 3</option>
+											<option value="choice1">Dogs</option>
+											<option value="Choice2">Cats</option>
+											<option value="choice3">Birds</option>
+											</select>
+											</div>
+
+											<p/>
+											
+											<p>Time Lag 1: 
+											Value
+											<input type="text" size="25" value="">
+
+											
+											Unit
+											<select name="unit_value1">
+											<option value="default">Second</option>
+											<option value="choice1">Minute</option>
+											<option value="choice2">Hour</option>
+											<option value="choice3">Day</option>
+											</select>
+											</p>
+											
+											<p>Time Lag 2: 
+											Value
+											<input type="text" size="25" value="">
+											
+											Unit
+											<select name="unit_value2">
+											<option value="default">Second</option>
+											<option value="choice1">Minute</option>
+											<option value="choice2">Hour</option>
+											<option value="choice3">Day</option>
+											</select>
+											</p>
+
+										</div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Save changes</button>
+									      </div>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+									
                                 </div>
                             </div>
                             <div id="visualization" class="tab-pane">
                                 <div class="row">
-                                    <div class="col-xs-2">
+                                    <div class="col-xs-2 col-md-offset-3">
                                         <a href="#" class="thumbnail-sm">
                                             <img src="../img/pie_chart.png" class="icons">
                                         </a>
@@ -154,27 +428,33 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     </ul>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-12" style="margin-top:-4%; margin-left:.5%">
-                        <div class="panel panel-primary fill">
-                            <div class="panel-heading">Analyst Dashboard</div>
+                    <div class="col-md-12" style="margin-top:-4%; width:110%;">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                Analyst Dashboard
+                            </div>
                             <div class="panel-body">
                                 <div class="flot-chart">
                                     <div class="flot-chart-content" id="flot-line-chart"></div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
             <div class="col-xs-3">
                 <div class="row">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             History
                         </div>
+                        <!-- /.panel-heading -->
                         <div class="panel-body" style="height:565px;">
                             <div class="flot-chart">
                                 <div class="flot-chart-content" id="flot-line-chart"></div>
