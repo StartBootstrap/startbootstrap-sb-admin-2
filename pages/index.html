@@ -71,6 +71,8 @@
 
     <script src="../js/script.js"></script>
 
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+
 </head>
 
 <body>
@@ -132,7 +134,7 @@
                                         <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal"><a href="#" title="Filter"><img src="../img/filter.png"  class="icons"></a></button>
                                     </div>
 
-                                    <!-- Modal that opens up when the user clicks on the filter-->
+                                    <!-- Modal that opens up when the user clicks on the filter button-->
                                     <div class="modal fade" id="filterModal">
 									  <div class="modal-dialog">
 									    <div class="modal-content">
@@ -174,7 +176,7 @@
 									      		<div class="form-group">
 												    <div class="checkbox">
 												      <label>
-												        <input type="checkbox" id="terms" data-error="Must Select Value" required>
+												        <input type="checkbox" id="terms" data-error="Must Select Normalization Mode" required>
 												        Normalization Mode
 												      </label>
 												      <div class="help-block with-errors"></div>
@@ -187,7 +189,7 @@
 									      		<div class="form-group">
 												    <div class="checkbox">
 												      <label>
-												        <input type="checkbox" id="terms" data-error="Must Select Value" required>
+												        <input type="checkbox" id="terms" data-error="Must Select Location" required>
 												        Location
 												      </label>
 												      <div class="help-block with-errors"></div>
@@ -270,7 +272,7 @@
 											  <label><input type="radio" name="optradio">K-mean</label>
 											</div>
 
-											Filter by price interval: <b>€ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>€ 1000</b>
+											Filter by price interval: <b>$ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 1000</b>
 
 									      </div>
 									      <div class="modal-footer">
@@ -286,7 +288,7 @@
                                     <div class="col-xs-2">
                                         <button type="button" class="icon_button" data-toggle="modal" data-target="#aggregateModal"<a href="#" title="Aggregate Data"><img src="../img/sigma.png" class="icons"></a>
                                     </div>
-
+									<!-- Modal that opens up when the user clicks on the aggregate button-->
                                     <div class="modal fade" id="aggregateModal">
 									  <div class="modal-dialog">
 									    <div class="modal-content">
@@ -295,7 +297,7 @@
 									        <h4 class="modal-title">Aggregate Data</h4>
 									      </div>
 									      <div class="modal-body col-md-12">
-									        <p>Data Stream</p>
+									        <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
 									        
 									        <div class="dropdown">
 											  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
@@ -312,17 +314,23 @@
 											<p>Aggregation Operators</p>
 
 											<div class="radio col-md-offset-1">
-											  <label class="groupRadio"><input type="radio" name="optradio">Sum</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Average</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Minimum</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Maximum</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Or</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Convolution</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">And</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Not</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Subtraction</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Multiply</label>
-											  <label class="groupRadio"><input type="radio" name="optradio">Division</label>
+											<TABLE border="0">
+											<tr>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Sum</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Average</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Minimum</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Maximum</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Or</label></td>
+											</tr>
+											<tr>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Convolution</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">And</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Not</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Subtraction</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Multiply</label></td>
+											  <td><label class="groupRadio"><input type="radio" name="optradio">Division</label></td>
+											</tr>
+											</TABLE>
 											</div>
 
 											<label>
@@ -362,50 +370,41 @@
 
 									      <div class="modal-body col-md-12">
 									      	<form role="form" data-toggle="validator">
-									      		<div class="form-group">
-											        <p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
-											        <div class="dropdown col-md-3">
-													  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:-2%;">Streams<span class="caret"></span>
-													  </button>
-													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-													  	<li role="presentation"><a href="#">Data Stream 1</a></li>
-													  	<li role="presentation"><a href="#">Data Stream 2</a></li>
-													  	<li role="presentation"><a href="#">Data Stream 3</a></li>
-													  </ul>
-													</div>
-												
-												
-													<p class="col-md-3" style="margin-left:-2%;">Data Stream 2</p>
-											        <div class="dropdown col-md-3">
-													  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
-													  </button>
-													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-													  	<li role="presentation"><a href="#">Data Stream 1</a></li>
-													  	<li role="presentation"><a href="#">Data Stream 2</a></li>
-													  	<li role="presentation"><a href="#">Data Stream 3</a></li>
-													  </ul>
-													</div>
+									      		<p>Data Streams:</p>
+									        									
+												<div>
+													<select name="Stream 1">
+													<option value="default">Stream 1</option>
+													<option value="choice1">Clownfish</option>
+													<option value="choice2">Shark</option>
+													<option value="choice3">Goldfish</option>
+													</select>
+													
+													<select name="Stream 2">
+													<option value="default">Stream 2</option>
+													<option value="choice1">Salamander</option>
+													<option value="Choice2">Snakes</option>
+													<option value="choice3">Lizards</option>
+													</select>
 												</div>
 
 												<div class="form-group">
-													<p class="col-md-12" style="margin: 20px 0px 10px -10px;"><strong>Time Lag</strong></p>
-													<p class="col-md-2">Value</p>
-											    	<label for="inputName" class="control-label"><input type="text" class="form-control" id="inputNumber" placeholder="Enter Min Value" required></label>
+													<p>Time Lag 1: 
+													Value
+													<label for="inputNumber" class="control-label"><input type="text" class="form-control" size="25" id="inputNumber" placeholder="Enter Value" required></label>
+
+													
+													Unit
+													<select name="unit_value1">
+														<option value="default">Second</option>
+														<option value="choice1">Minute</option>
+														<option value="choice2">Hour</option>
+														<option value="choice3">Day</option>
+													</select>
+													</p>
+
 											  	</div>
 
-											  	<div class="form-group">
-													<p class="col-md-1" required>Unit</p>
-													<div class="dropdown col-md-offset-1 col-md-3">
-													  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Second<span class="caret"></span>
-													  </button>
-													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-													  	<li role="presentation"><a href="#">Second</a></li>
-													  	<li role="presentation"><a href="#">Minute</a></li>
-													  	<li role="presentation"><a href="#">Hour</a></li>
-													  	<li role="presentation"><a href="#">Day</a></li>
-													  </ul>
-													</div>
-												</div>
 												<div class="form-group col-md-offset-8" style="margin-bottom:-25px;">
 									      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 									      			<button type="submit" class="btn btn-primary">Process</button>
@@ -417,15 +416,83 @@
 									  </div><!-- /.modal-dialog -->
 									</div><!-- /.modal -->
 
-
-                                    <!-- 3D Icon button and Modal-->
+									
+									<!-- Ricky 3D Occurence Icon-->							
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#3DModal"><a href="#" title="3 Dimensional Data"><img src="../img/3d.png" class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#3dOccur"><a href="#" title="3 Dimensional Data"><img src="../img/3d.png" class="icons"></a></button>
                                     </div>
+									
+									<!-- Modal that opens up when the user clicks on the 3D Occurence button-->
+                                    <div class="modal fade" id="3dOccur">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">3D Co-occurence</h4>
+									      </div>
+									      <div class="modal-body col-md-12">
+									        <p>Data Streams:</p>
+									        									
+											<div>
+											<select name="Stream 1">
+											<option value="default">Stream 1</option>
+											<option value="choice1">Clownfish</option>
+											<option value="choice2">Shark</option>
+											<option value="choice3">Goldfish</option>
+											</select>
+											
+											<select name="Stream 2">
+											<option value="default">Stream 2</option>
+											<option value="choice1">Salamander</option>
+											<option value="Choice2">Snakes</option>
+											<option value="choice3">Lizards</option>
+											</select>
+											
+											<select name="Stream 3">
+											<option value="default">Stream 3</option>
+											<option value="choice1">Dogs</option>
+											<option value="Choice2">Cats</option>
+											<option value="choice3">Birds</option>
+											</select>
+											</div>
 
-                                    
+											<p/>
+											
+											<p>Time Lag 1: 
+											Value
+											<input type="text" size="25" value="">
 
+											
+											Unit
+											<select name="unit_value1">
+											<option value="default">Second</option>
+											<option value="choice1">Minute</option>
+											<option value="choice2">Hour</option>
+											<option value="choice3">Day</option>
+											</select>
+											</p>
+											
+											<p>Time Lag 2: 
+											Value
+											<input type="text" size="25" value="">
+											
+											Unit
+											<select name="unit_value2">
+											<option value="default">Second</option>
+											<option value="choice1">Minute</option>
+											<option value="choice2">Hour</option>
+											<option value="choice3">Day</option>
+											</select>
+											</p>
 
+										</div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary">Process</button>
+									      </div>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
                                 </div>
                             </div>
                             <div id="visualization" class="tab-pane">
