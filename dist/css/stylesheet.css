@@ -2,8 +2,12 @@ body, html {
 	height: 100%;
 }
 
-#project_title{
-	margin-top: 10px;
+#inputTitle{
+	border:none;
+	margin: 15px 0px 5px -80px;
+	background: #f8f8f8;
+	font-size: 25px;
+	width:200px;
 }
 
 #exp{
@@ -19,6 +23,11 @@ body, html {
 .icons{
 	height: 50px;
 	margin: 20px;
+}
+
+.icon_button{
+	border:none;
+	background: none;
 }
 
 .btn-file input[type=file] {

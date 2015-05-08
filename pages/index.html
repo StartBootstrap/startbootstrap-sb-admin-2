@@ -61,11 +61,15 @@
     <script src="../bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
     <script src="../js/flot-data.js"></script>
 
-    <!-- Slider javascript-->
-    <script src="../bootstrap-slider-master/js/bootstrap-slider.js"></script>
+    
+
+	<!-- Form validation javascript -->
+	<script src="../js/validator.js"></script>    
 
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script src="../js/script.js"></script>
 
 </head>
 
@@ -86,7 +90,8 @@
 	          </div>
 	      </div>
 	      <div class="navbar-header col-md-offset-4 col-md-4">
-	        <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
+	      	<input type="text" id="inputTitle" placeholder="Untitled">
+	        <!--<h3 id="projectTitle">Untitled  <i class="fa fa-pencil" onClick="editTitle();"></i></h3>-->
 	    </div>
 	    <!-- /.navbar-header -->
 
@@ -124,7 +129,7 @@
                                 <div class="row" style="height:100px;">
 
                                     <div class="col-xs-2 col-md-offset-1">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal"><img src="../img/filter.png" class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal"><a href="#" title="Filter"><img src="../img/filter.png"  class="icons"></a></button>
                                     </div>
 
                                     <!-- Modal that opens up when the user clicks on the filter-->
@@ -136,55 +141,78 @@
 									        <h4 class="modal-title">Data Filter</h4>
 									      </div>
 									      <div class="modal-body col-md-12">
-									        <p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
-									        <div class="dropdown">
-											  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:-2%;">Streams<span class="caret"></span>
-											  </button>
-											  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-											  	<li role="presentation"><a href="#">Data Stream 1</a></li>
-											  	<li role="presentation"><a href="#">Data Stream 2</a></li>
-											  	<li role="presentation"><a href="#">Data Stream 3</a></li>
-											  </ul>
-											</div>
-											
-											<div class="checkbox">
-											    <label>
-											      <input type="checkbox"> Value
-											    </label>
-											    <div class="form-group col-md-offset-1">
-											    	<label>Min<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Min Value"></label>
-											    	<label>Max<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Max Value"></label>
-											  	</div>
-											</div>
-											<div class="checkbox">
-											    <label>
-											      <input type="checkbox"> Normalization Mode
-											    </label>
-											    <div class="form-group col-md-offset-1">
-											    	<label>Min<input type="email" class="form-control" id="exampleInputEmail1" placeholder="0"></label>
-											    	<label>Max<input type="email" class="form-control" id="exampleInputEmail1" placeholder="100"></label>
-											  	</div>
-											</div>
-											<div class="checkbox">
-											    <label>
-											      <input type="checkbox"> Location
-											    </label>
-											    
-											    <div class="form-group col-md-offset-1">
-											    	<label>NorthEast Longitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Longitude"></label>
-											    	<label>NorthEast Latitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Latitude"></label>
-											  	</div>
 
-											  	<div class="form-group col-md-offset-1">
-											  		<label>SouthWest Longitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Longitude"></label>
-											    	<label>SouthWest Latitude<input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Latitude"></label>
-											  	</div>
-											</div>
+									      <!-- HTML using validator.js -->
+									      	<form role="form" data-toggle="validator">
+									      		<div class="form-group">
+										      		<div class="dropdown">
+										      			<p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
+													  	
+													  	<select>
+													  		<option value="empty"></option>
+														  	<option value="volvo">Stream 1</option>
+														  	<option value="saab">Stream 2</option>
+														  	<option value="opel">Stream 3</option>
+															<option value="audi">Stream 4</option>
+														</select>
+													  	
+													</div>
+												</div>
+									      		<div class="form-group">
+												    <div class="checkbox">
+												      <label>
+												        <input type="checkbox" id="terms" data-error="Must Select Value" required>
+												        Value
+												      </label>
+												      <div class="help-block with-errors"></div>
+												    </div>
+												</div>
+									      		<div class="form-group col-md-offset-1">
+									      			<label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
+									      			<label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
+									      		</div>
+									      		<div class="form-group">
+												    <div class="checkbox">
+												      <label>
+												        <input type="checkbox" id="terms" data-error="Must Select Value" required>
+												        Normalization Mode
+												      </label>
+												      <div class="help-block with-errors"></div>
+												    </div>
+												  </div>
+									      		<div class="form-group col-md-offset-1">
+									      			<label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
+									      			<label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
+									      		</div>
+									      		<div class="form-group">
+												    <div class="checkbox">
+												      <label>
+												        <input type="checkbox" id="terms" data-error="Must Select Value" required>
+												        Location
+												      </label>
+												      <div class="help-block with-errors"></div>
+												    </div>
+												  </div>
+									      		<div class="form-group col-md-offset-1">
+									      			<label for="inputName" class="control-label">NorthEast Longitude<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
+									      			<label for="inputName" class="control-label">NorthEast Latitude<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
+									      			<label for="inputName" class="control-label">SouthWest Longitude<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
+									      			<label for="inputName" class="control-label">SouthWest Latitude<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
+									      		</div>
+
+									      		<div class="form-group col-md-offset-8" style="margin-bottom:-25px;">
+									      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									      			<button type="submit" class="btn btn-primary">Process</button>
+									      		</div>
+									      	</form>
+									      	<!-- end of validator.js  -->
+											
+											
 									      </div>
 									      <div class="modal-footer">
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">Save changes</button>
+									      
 									      </div>
+
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
 									</div><!-- /.modal -->
@@ -247,7 +275,7 @@
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">Save changes</button>
+									        <button type="button" class="btn btn-primary">Process</button>
 									      </div>
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
@@ -264,7 +292,7 @@
 									    <div class="modal-content">
 									      <div class="modal-header">
 									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        <h4 class="modal-title">Group Data</h4>
+									        <h4 class="modal-title">Aggregate Data</h4>
 									      </div>
 									      <div class="modal-body col-md-12">
 									        <p>Data Stream</p>
@@ -309,7 +337,7 @@
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">Save changes</button>
+									        <button type="button" class="btn btn-primary">Process</button>
 									      </div>
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
@@ -319,11 +347,85 @@
 
 
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button"><a href="#" title="2 Dimensional Data"><img src="../img/2d.png" class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#2DModal">
+                                        	<a href="#" title="2 Dimensional Data"><img src="../img/2d.png" class="icons"></a>
+                                        </button>
                                     </div>
+
+                                    <div class="modal fade" id="2DModal">
+									  <div class="modal-dialog">
+									    <div class="modal-content">
+									      <div class="modal-header">
+									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									        <h4 class="modal-title">2D Processor</h4>
+									      </div>
+
+									      <div class="modal-body col-md-12">
+									      	<form role="form" data-toggle="validator">
+									      		<div class="form-group">
+											        <p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
+											        <div class="dropdown col-md-3">
+													  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:-2%;">Streams<span class="caret"></span>
+													  </button>
+													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+													  	<li role="presentation"><a href="#">Data Stream 1</a></li>
+													  	<li role="presentation"><a href="#">Data Stream 2</a></li>
+													  	<li role="presentation"><a href="#">Data Stream 3</a></li>
+													  </ul>
+													</div>
+												
+												
+													<p class="col-md-3" style="margin-left:-2%;">Data Stream 2</p>
+											        <div class="dropdown col-md-3">
+													  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
+													  </button>
+													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+													  	<li role="presentation"><a href="#">Data Stream 1</a></li>
+													  	<li role="presentation"><a href="#">Data Stream 2</a></li>
+													  	<li role="presentation"><a href="#">Data Stream 3</a></li>
+													  </ul>
+													</div>
+												</div>
+
+												<div class="form-group">
+													<p class="col-md-12" style="margin: 20px 0px 10px -10px;"><strong>Time Lag</strong></p>
+													<p class="col-md-2">Value</p>
+											    	<label for="inputName" class="control-label"><input type="text" class="form-control" id="inputNumber" placeholder="Enter Min Value" required></label>
+											  	</div>
+
+											  	<div class="form-group">
+													<p class="col-md-1" required>Unit</p>
+													<div class="dropdown col-md-offset-1 col-md-3">
+													  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Second<span class="caret"></span>
+													  </button>
+													  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+													  	<li role="presentation"><a href="#">Second</a></li>
+													  	<li role="presentation"><a href="#">Minute</a></li>
+													  	<li role="presentation"><a href="#">Hour</a></li>
+													  	<li role="presentation"><a href="#">Day</a></li>
+													  </ul>
+													</div>
+												</div>
+												<div class="form-group col-md-offset-8" style="margin-bottom:-25px;">
+									      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									      			<button type="submit" class="btn btn-primary">Process</button>
+									      		</div>
+											</form>
+									      </div>
+									      <div class="modal-footer"></div>
+									    </div><!-- /.modal-content -->
+									  </div><!-- /.modal-dialog -->
+									</div><!-- /.modal -->
+
+
+                                    <!-- 3D Icon button and Modal-->
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button"><a href="#" title="3 Dimensional Data"><img src="../img/3d.png" class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#3DModal"><a href="#" title="3 Dimensional Data"><img src="../img/3d.png" class="icons"></a></button>
                                     </div>
+
+                                    
+
+
                                 </div>
                             </div>
                             <div id="visualization" class="tab-pane">
