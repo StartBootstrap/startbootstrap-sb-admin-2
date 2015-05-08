@@ -67,6 +67,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="../dist/js/sb-admin-2.js"></script>
     
+    <!-- D3 -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
 </head>
 
@@ -85,12 +86,11 @@
 	              <button type="button" class="btn btn-default btn-file">Import Data Stream<input type="file"></button>
 	              <button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
 	          </div>
-	      </div>
-	      <div class="navbar-header col-md-offset-4 col-md-4">
-	        <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
-	    </div>
-	    <!-- /.navbar-header -->
-
+            </div>
+            <div class="navbar-header col-md-offset-4 col-md-4">
+                <h3 id="project_title">Untitled  <i class="fa fa-pencil" onClick=""></i></h3>
+            </div>
+            <!-- /.navbar-header -->
 		    <ul class="nav navbar-top-links navbar-right">
 		        <!-- /.dropdown -->
 		        <li class="dropdown">
@@ -433,16 +433,12 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12" style="margin-top:-4%; width:110%;">
+                    <div class="col-md-12" style="margin-top:-3%; margin-left:.5%">
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 Analyst Dashboard
                             </div>
                             <div class="panel-body">
-                                <div class="flot-chart">
-                                    <div class="flot-chart-content" id="flot-line-chart"></div>
-
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -455,7 +451,7 @@
                             History
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="height:565px;">
+                        <div class="panel-body" style="height:720px;">
                             <div class="flot-chart">
                                 <div class="flot-chart-content" id="flot-line-chart"></div>
                             </div>
