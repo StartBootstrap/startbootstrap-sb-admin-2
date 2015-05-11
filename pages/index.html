@@ -75,7 +75,7 @@
 
 </head>
 
-<body>
+<body style="width:98.9%; height:50%;">
 	<div id="wrapper">
 	    <!-- Navigation -->
 	    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -118,7 +118,7 @@
 	    <!-- /.navbar-top-links -->
 		</nav>
         <!-- <div id="page-wrapper"> -->
-        <div class="row">
+        <div class="row" style="height:175px;">
             <div class="col-xs-9 col-md-9">
                 <!-- /.row -->
                 <div class="row">
@@ -147,23 +147,21 @@
 									      <!-- HTML using validator.js -->
 									      	<form role="form" data-toggle="validator">
 									      		<div class="form-group">
-										      		<div class="dropdown">
-										      			<p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
-													  	
-													  	<select>
+									      			<p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
+												  	<div class="select">
+													  	<select title="selectStream" data-error="Must select data stream">
 													  		<option value="empty"></option>
 														  	<option value="volvo">Stream 1</option>
 														  	<option value="saab">Stream 2</option>
 														  	<option value="opel">Stream 3</option>
 															<option value="audi">Stream 4</option>
 														</select>
-													  	
 													</div>
 												</div>
 									      		<div class="form-group">
 												    <div class="checkbox">
 												      <label>
-												        <input type="checkbox" id="terms" data-error="Must Select Value" required>
+												        <input type="checkbox" id="terms" data-error="Must Select Value">
 												        Value
 												      </label>
 												      <div class="help-block with-errors"></div>
@@ -182,7 +180,7 @@
 												      <div class="help-block with-errors"></div>
 												    </div>
 												  </div>
-									      		<div class="form-group col-md-offset-1">
+									      		<div class="form-group col-md-offset-1"> 
 									      			<label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
 									      			<label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
 									      		</div>
@@ -498,17 +496,17 @@
                             <div id="visualization" class="tab-pane">
                                 <div class="row">
                                     <div class="col-xs-2 col-md-offset-3">
-                                        <a href="#" class="thumbnail-sm">
+                                        <a href="#" class="thumbnail-sm" title="Group visualization">
                                             <img src="../img/pie_chart.png" class="icons">
                                         </a>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="#" class="thumbnail-sm">
+                                        <a href="#" class="thumbnail-sm" title="2D HeatMap visualization">
                                             <img src="../img/2d.png" class="icons">
                                         </a>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="#" class="thumbnail-sm">
+                                        <a href="#" class="thumbnail-sm" title="3D HeatMap visualization">
                                             <img src="../img/3d.png" class="icons">
                                         </a>
                                     </div>
@@ -520,11 +518,11 @@
 
                 <div class="row">
                     <div class="col-md-12" style="margin-top:-4%; width:110%;">
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" style="margin:0px;">
                             <div class="panel-heading">
                                 Analyst Dashboard
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="height:445px;">
                                 <div class="flot-chart">
                                     <div class="flot-chart-content" id="flot-line-chart"></div>
 
@@ -536,12 +534,12 @@
             </div> 
             <div class="col-xs-3">
                 <div class="row">
-                    <div class="panel panel-default">
+                    <div class="panel panel-default" style="margin:0px;">
                         <div class="panel-heading">
                             History
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="height:565px;">
+                        <div class="panel-body" style="height:580px;">
                             <div class="flot-chart">
                                 <div class="flot-chart-content" id="flot-line-chart"></div>
                             </div>
