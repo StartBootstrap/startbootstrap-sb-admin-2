@@ -71,6 +71,7 @@
 
     <script src="../js/script.js"></script>
 
+    <!-- D3 -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
 
 </head>
@@ -90,33 +91,31 @@
 	              <button type="button" class="btn btn-default btn-file">Import Data Stream<input type="file"></button>
 	              <button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
 	          </div>
-	      </div>
-	      <div class="navbar-header col-md-offset-4 col-md-4">
-	      	<input type="text" id="inputTitle" placeholder="Untitled">
-	        <!--<h3 id="projectTitle">Untitled  <i class="fa fa-pencil" onClick="editTitle();"></i></h3>-->
-	    </div>
-	    <!-- /.navbar-header -->
-
-		    <ul class="nav navbar-top-links navbar-right">
-		        <!-- /.dropdown -->
-		        <li class="dropdown">
-		            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-		                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-		            </a>
-		            <ul class="dropdown-menu dropdown-user">
-		                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-		                </li>
-		                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-		                </li>
-		                <li class="divider"></li>
-		                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-		                </li>
-		            </ul>
-		            <!-- /.dropdown-user -->
-		        </li>
-		    </ul>
-	    <!-- /.navbar-top-links -->
-		</nav>
+            </div>
+            <!-- /.navbar-header -->
+            <div class="navbar-header col-md-offset-3 col-md-4">
+                <input class="text-center" type="text" id="inputTitle" placeholder="Untitled" style="width:500px">
+            </div>
+            <!-- /.dropdown-user settings-->
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+		
         <!-- <div id="page-wrapper"> -->
         <div class="row" style="height:175px;">
             <div class="col-xs-9 col-md-9">
@@ -525,13 +524,12 @@
                             <div class="panel-body" style="height:445px;">
                                 <div class="flot-chart">
                                     <div class="flot-chart-content" id="flot-line-chart"></div>
-
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> 
+                    		</div>
+                    	</div>
+                	</div>
+            	</div> 
+            </div>
             <div class="col-xs-3">
                 <div class="row">
                     <div class="panel panel-default" style="margin:0px;">
@@ -539,6 +537,7 @@
                             History
                         </div>
                         <!-- /.panel-heading -->
+
                         <div class="panel-body" style="height:580px;">
                             <div class="flot-chart">
                                 <div class="flot-chart-content" id="flot-line-chart"></div>
