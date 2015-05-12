@@ -74,6 +74,20 @@
     <!-- D3 -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
 
+    <!-- JQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
+    <script src="../js/jquery-1.11.3.min.js"></script>
+
+    <!--
+    <script>
+	$(document).ready(function(){
+		$('#filterButton').on('click', function () {
+		  alert("filter button clicked");
+		})
+	});
+	</script>
+	-->
+
 </head>
 
 <body style="width:98.9%; height:50%;">
@@ -88,7 +102,7 @@
 	                <span class="icon-bar"></span>
 	            </button>
 	            <div class="btn-group" role="group" style="margin-top:10px">
-	              <button type="button" class="btn btn-default btn-file">Import Data Stream<input type="file"></button>
+	              <button type="button" class="btn btn-default btn-file">Import Data Stream<input type="file" id="importData"></button>
 	              <button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
 	          </div>
             </div>
@@ -130,7 +144,7 @@
                                 <div class="row" style="height:100px;">
 
                                     <div class="col-xs-2 col-md-offset-1">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal"><a href="#" title="Filter"><img src="../img/filter.png"  class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton" onClick="validateFilterModal()"><a href="#" title="Filter"><img src="../img/filter.png"  class="icons"></a></button>
                                     </div>
 
                                     <!-- Modal that opens up when the user clicks on the filter button-->
@@ -139,79 +153,70 @@
 									    <div class="modal-content">
 									      <div class="modal-header">
 									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        <h4 class="modal-title">Data Filter</h4>
+									        <h4 class="modal-title">Filter Data</h4>
 									      </div>
-									      <div class="modal-body col-md-12">
-
-									      <!-- HTML using validator.js -->
-									      	<form role="form" data-toggle="validator">
-									      		<div class="form-group">
-									      			<p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
-												  	<div class="select">
-													  	<select title="selectStream" data-error="Must select data stream">
-													  		<option value="empty"></option>
-														  	<option value="volvo">Stream 1</option>
-														  	<option value="saab">Stream 2</option>
-														  	<option value="opel">Stream 3</option>
-															<option value="audi">Stream 4</option>
-														</select>
-													</div>
+									      <div class="modal-body">
+									        
+									      	<div class="form-group" id="filterDataStreamDiv">
+								      			<p class="col-md-3" style="margin-left:-2%;">Data Stream</p>
+											  	<div class="select">
+												  	<select class="form-control" id="filterDataStream">
+												  		<option></option>
+													  	<option>Stream 1</option>
+													  	<option>Stream 2</option>
+													  	<option>Stream 3</option>	
+														<option>Stream 4</option>
+													</select>
 												</div>
-									      		<div class="form-group">
-												    <div class="checkbox">
-												      <label>
-												        <input type="checkbox" id="terms" data-error="Must Select Value">
-												        Value
-												      </label>
-												      <div class="help-block with-errors"></div>
-												    </div>
-												</div>
-									      		<div class="form-group col-md-offset-1">
-									      			<label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
-									      			<label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
-									      		</div>
-									      		<div class="form-group">
-												    <div class="checkbox">
-												      <label>
-												        <input type="checkbox" id="terms" data-error="Must Select Normalization Mode" required>
-												        Normalization Mode
-												      </label>
-												      <div class="help-block with-errors"></div>
-												    </div>
-												  </div>
-									      		<div class="form-group col-md-offset-1"> 
-									      			<label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
-									      			<label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
-									      		</div>
-									      		<div class="form-group">
-												    <div class="checkbox">
-												      <label>
-												        <input type="checkbox" id="terms" data-error="Must Select Location" required>
-												        Location
-												      </label>
-												      <div class="help-block with-errors"></div>
-												    </div>
-												  </div>
-									      		<div class="form-group col-md-offset-1">
-									      			<label for="inputName" class="control-label">NorthEast Longitude<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
-									      			<label for="inputName" class="control-label">NorthEast Latitude<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
-									      			<label for="inputName" class="control-label">SouthWest Longitude<input type="text" class="form-control" id="inputName" placeholder="0" required></label>
-									      			<label for="inputName" class="control-label">SouthWest Latitude<input type="text" class="form-control" id="inputName" placeholder="100" required></label>
-									      		</div>
-
-									      		<div class="form-group col-md-offset-8" style="margin-bottom:-25px;">
-									      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									      			<button type="submit" class="btn btn-primary">Process</button>
-									      		</div>
-									      	</form>
-									      	<!-- end of validator.js  -->
+											</div>
 											
+											<div class="checkbox">
+										      <label>
+										        <input type="checkbox" id="filterValue" data-error="Must Select Value">
+										        Value
+										      </label>
+										      <div class="help-block with-errors"></div>
+										    </div>
 											
+								      		<div class="col-md-offset-1">
+								      			<label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputFilterValueMin" placeholder="0" required></label>
+								      			<label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputFilterValueMax" placeholder="100" required></label>
+								      		</div>
+											
+											<div class="checkbox">
+										      <label>
+										        <input type="checkbox" id="filterNorm" data-error="Must Select Normalization Mode" required>
+										        Normalization Mode
+										      </label>
+										      <div class="help-block with-errors"></div>
+										    </div>
+											  
+								      		<div class="col-md-offset-1"> 
+								      			<label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputFilterNormMin" placeholder="0" required></label>
+								      			<label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputFilterNormMax" placeholder="100" required></label>
+								      		</div>
+											
+								      		<div class="checkbox">
+										      <label>
+										        <input type="checkbox" id="filterLocation" data-error="Must Select Location" required>
+										        Location
+										      </label>
+										      <div class="help-block with-errors"></div>
+										    </div>
+											
+								      		<div class="col-md-offset-1">
+								      			<label for="inputName" class="control-label">NorthEast Longitude<input type="text" class="form-control" id="inputFilterNELong" placeholder="0" required></label>
+								      			<label for="inputName" class="control-label">NorthEast Latitude<input type="text" class="form-control" id="inputFilterNELat" placeholder="100" required></label>
+								      			<label for="inputName" class="control-label">SouthWest Longitude<input type="text" class="form-control" id="inputFilterSWLong" placeholder="0" required></label>
+								      			<label for="inputName" class="control-label">SouthWest Latitude<input type="text" class="form-control" id="inputFilterSWLat" placeholder="100" required></label>
+								      		</div>
 									      </div>
+
 									      <div class="modal-footer">
-									      
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary" 
+									        	onClick="validateFilterInput()">Process</button>
 									      </div>
-
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
 									</div><!-- /.modal -->
@@ -362,53 +367,52 @@
 									    <div class="modal-content">
 									      <div class="modal-header">
 									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        <h4 class="modal-title">2D Processor</h4>
+									        <h4 class="modal-title">2D Co-occurence</h4>
 									      </div>
-
-									      <div class="modal-body col-md-12">
-									      	<form role="form" data-toggle="validator">
-									      		<p>Data Streams:</p>
+									      <div class="modal-body">
+									      	
+									      	
+									      	<p>Data Streams:</p>
 									        									
-												<div>
-													<select name="Stream 1">
-													<option value="default">Stream 1</option>
-													<option value="choice1">Clownfish</option>
-													<option value="choice2">Shark</option>
-													<option value="choice3">Goldfish</option>
-													</select>
-													
-													<select name="Stream 2">
-													<option value="default">Stream 2</option>
-													<option value="choice1">Salamander</option>
-													<option value="Choice2">Snakes</option>
-													<option value="choice3">Lizards</option>
-													</select>
-												</div>
+											<div>
+												<select name="Stream 1">
+												<option value="default">Stream 1</option>
+												<option value="choice1">Clownfish</option>
+												<option value="choice2">Shark</option>
+												<option value="choice3">Goldfish</option>
+												</select>
+												
+												<select name="Stream 2">
+												<option value="default">Stream 2</option>
+												<option value="choice1">Salamander</option>
+												<option value="Choice2">Snakes</option>
+												<option value="choice3">Lizards</option>
+												</select>
+											</div>
 
-												<div class="form-group">
-													<p>Time Lag 1: 
-													Value
-													<label for="inputNumber" class="control-label"><input type="text" class="form-control" size="25" id="inputNumber" placeholder="Enter Value" required></label>
+											<p></p>
 
-													
-													Unit
-													<select name="unit_value1">
-														<option value="default">Second</option>
-														<option value="choice1">Minute</option>
-														<option value="choice2">Hour</option>
-														<option value="choice3">Day</option>
-													</select>
-													</p>
+											<div class="form-group">
+												<p>Time Lag 1: 
+												Value
+												<label for="inputNumber" class="control-label"><input type="text" class="form-control" size="25" id="inputNumber" placeholder="Enter Value" required></label>
 
-											  	</div>
+												
+												Unit
+												<select name="unit_value1">
+													<option value="default">Second</option>
+													<option value="choice1">Minute</option>
+													<option value="choice2">Hour</option>
+													<option value="choice3">Day</option>
+												</select>
+												</p>
 
-												<div class="form-group col-md-offset-8" style="margin-bottom:-25px;">
-									      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									      			<button type="submit" class="btn btn-primary">Process</button>
-									      		</div>
-											</form>
+										  	</div>
 									      </div>
-									      <div class="modal-footer"></div>
+									      <div class="modal-footer">
+									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+									        <button type="button" class="btn btn-primary" disabled="disabled">Process</button>
+									      </div>
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
 									</div><!-- /.modal -->
@@ -551,3 +555,4 @@
 </body>
 
 </html>
+
