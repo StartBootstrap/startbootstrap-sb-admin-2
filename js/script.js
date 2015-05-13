@@ -38,6 +38,53 @@ function Filter(dataStream, minMaxValue, minMaxNormalization, northEastCoords, s
 	}
 }
 
+//creating a 3D co-occurrence class
+function threeD(dataStream1, dataStream2, dataStream3, timeLagValue1, timeLagValue2, timeLagUnit1, timeLagUnit2){
+	this.dataStream1 = dataStream1;
+	this.dataStream2 = dataStream2;
+	this.dataStream3 = dataStream3;
+	
+	this.timeLagValue1 = timeLag1;
+	this.timeLagValue2 = timeLag2;
+	
+	this.timeLagValue1 = timeLagValue1;
+	this.TimeLagValue2 = timeLagValue2;
+	
+	this.getdataStream1 = function(){
+		return this.dataStream1;
+	}
+	
+	this.getdataStream2 = function(){
+		return this.dataStream2;
+	}
+	
+	this.getdataStream3 = function(){
+		return this.dataStream3;
+	}
+	
+	this.gettimeLagValue1 = function()
+	{
+		return this.timeLagValue1;
+	}
+	
+	this.gettimeLagValue2 = function()
+	{
+		return this.timeLagValue2;
+	}
+	
+	this.gettimeLagUnit1 = function()
+	{
+		return this.timeLagUnit1;
+	}
+	
+	this.gettimeLagUnit2 = function()
+	{
+		return this.timeLagUnit2;
+	}
+	
+}
+
+//Makes sure input is not empty
 function isValidInput(input){
 	return input !== "";
 }
@@ -167,3 +214,36 @@ function validateFilterInput(){
 	}
 }
 
+function validateThreeDInput() {
+	
+	var ddl = document.getElementById("3dStreams1");
+	var selectedValue = ddl.options[ddl.selectedIndex].value;
+	if (selectedValue == "default")
+		{
+			alert("Datastream 1 missing!");
+		}
+	
+	var ddl = document.getElementById("3dStreams2");
+	var selectedValue = ddl.options[ddl.selectedIndex].value;
+	if (selectedValue == "default")
+		{
+			alert("Datastream 2 missing!");
+		}
+		
+	var ddl = document.getElementById("3dStreams3");
+	var selectedValue = ddl.options[ddl.selectedIndex].value;
+	if (selectedValue == "default")
+		{
+			alert("Datastream 3 missing!");
+		}
+	
+	var myInput = document.getElementById("value1").value;
+	if (/^\s*$/.test(myInput)) {
+		alert("Time Lag 1: Value is empty!");
+	}
+
+	var myInput = document.getElementById("value2").value;
+	if (/^\s*$/.test(myInput)) {
+		alert("Time Lag 2: Value is empty!");
+	}
+}
