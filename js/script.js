@@ -42,6 +42,8 @@ function isValidInput(input){
 	return input !== "";
 }
 
+
+
 function validateFilterInput(){
 	//check data stream
 	if (!isValidInput(document.getElementById("filterDataStream").value)){
@@ -50,9 +52,11 @@ function validateFilterInput(){
 		$(dataStream).on("change", function(){
 			if (isValidInput(dataStream.value)){
 				dataStream.parentNode.parentNode.className = "form-group";	
+				
 			}
 		})
 	}
+
 
 	//if the value checkbox is checked, inspect the min and max input boxes
 	var valueCheck = document.getElementById("filterValue");
@@ -166,4 +170,97 @@ function validateFilterInput(){
 		swLat.parentNode.className = "control-label";
 	}
 }
+
+function filterHasErrors(){
+	// function that scans through all of the tags and check if they have the class 'has-errors' attribute
+	var dataStreamDiv = document.getElementById("filterDataStreamDiv"); 
+	//if substring not found, indexOf will return -1
+	if (dataStreamDiv.className.indexOf("has-error") > -1){
+		return true;
+	}
+
+	var myArray = new Array();
+		var minValue = document.getElementById("inputFilterValueMin"); 
+		var maxValue = document.getElementById("inputFilterValueMax"); //.parentNode.className
+		var minNorm = document.getElementById("inputFilterNormMin");
+		var maxNorm = document.getElementById("inputFilterNormMax"); //.parentNode.className
+		var neLong = document.getElementById("inputFilterNELong");
+		var neLat = document.getElementById("inputFilterNELat");
+		var swLong = document.getElementById("inputFilterSWLong");
+		var swLat = document.getElementById("inputFilterSWLat"); //.parentNode.className
+		myArray.push(minValue);
+		myArray.push(maxValue);
+		myArray.push(minNorm);
+		myArray.push(maxNorm);
+		myArray.push(neLong);
+		myArray.push(neLat);
+		myArray.push(swLong);
+		myArray.push(swLat);
+	
+	for (i = 0; i < myArray.length; i++){
+		if (myArray[i].parentNode.className.indexOf("has-error") > -1){
+			return true;
+		}
+	}
+	return false;
+}
+
+function processFilter(){
+	if (!filterHasErrors()){
+		document.getElementById("filterClose").click();
+		$('canvas').drawArc({
+		  strokeStyle: 'black',
+		  strokeWidth: 2,
+		  x: 150, y: 50,
+		  radius: 30
+		});
+	} else{
+		alert("There are still errors");
+	}
+}
+
+
+
+function validate2DInput(){
+	var dataStream1 = document.getElementById("2DdataStream1");
+	var dataStream2 = document.getElementById("2DdataStream2");
+	if (!isValidInput(dataStream1.value)){
+		dataStream1.parentNode.parentNode.className = "form-group has-error";
+		$(dataStream1).on("change", function(){
+			if (isValidInput(dataStream1.value)){
+				dataStream1.parentNode.parentNode.className = "form-group";
+			}
+		})
+	}
+
+	if (!isValidInput(dataStream2.value)){
+		dataStream2.parentNode.parentNode.className = "form-group has-error";
+		$(dataStream2).on("change", function(){
+			if (isValidInput(dataStream2.value)){
+				dataStream2.parentNode.parentNode.className = "form-group";
+			}
+		})
+	}
+
+	var timeLagValue = document.getElementById("timeLagValue");
+	if (!isValidInput(timeLagValue.value)){
+		timeLagValue.parentNode.className = "control-label has-error";
+		$(timeLagValue).on("change", function(){
+			if (isValidInput(timeLagValue.value)){
+				timeLagValue.parentNode.className = "control-label";
+			}
+		})
+	}
+
+	var timeLagUnit = document.getElementById("timeLagUnit");
+	if (!isValidInput(timeLagUnit.value)){
+		timeLagUnit.parentNode.className = "control-label has-error";
+		$(timeLagUnit).on("change", function(){
+			if (isValidInput(timeLagUnit.value)){
+				timeLagUnit.parentNode.className = "control-label";
+			}
+		})
+	}
+}
+
 

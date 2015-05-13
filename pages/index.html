@@ -78,15 +78,8 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
     <script src="../js/jquery-1.11.3.min.js"></script>
 
-    <!--
-    <script>
-	$(document).ready(function(){
-		$('#filterButton').on('click', function () {
-		  alert("filter button clicked");
-		})
-	});
-	</script>
-	-->
+    <!-- JCanvas -->
+    <script src='../js/jcanvas.min.js'></script>
 
 </head>
 
@@ -144,7 +137,7 @@
                                 <div class="row" style="height:100px;">
 
                                     <div class="col-xs-2 col-md-offset-1">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton" onClick="validateFilterModal()"><a href="#" title="Filter"><img src="../img/filter.png"  class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton"><a href="#" title="Filter"><img src="../img/filter.png"  class="icons"></a></button>
                                     </div>
 
                                     <!-- Modal that opens up when the user clicks on the filter button-->
@@ -213,9 +206,12 @@
 									      </div>
 
 									      <div class="modal-footer">
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary" 
-									        	onClick="validateFilterInput()">Process</button>
+									      	<button type="button" class="btn btn-default" id="test">Test</button>
+									        <button type="button" class="btn btn-default" data-dismiss="modal" id="filterClose">Close</button>
+									        <button type="button" class="btn btn-primary"
+									        	onClick="validateFilterInput(); processFilter();">Process</button>
+
+									        	
 									      </div>
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
@@ -371,47 +367,57 @@
 									      </div>
 									      <div class="modal-body">
 									      	
-									      	
-									      	<p>Data Streams:</p>
-									        									
-											<div>
-												<select name="Stream 1">
-												<option value="default">Stream 1</option>
-												<option value="choice1">Clownfish</option>
-												<option value="choice2">Shark</option>
-												<option value="choice3">Goldfish</option>
-												</select>
-												
-												<select name="Stream 2">
-												<option value="default">Stream 2</option>
-												<option value="choice1">Salamander</option>
-												<option value="Choice2">Snakes</option>
-												<option value="choice3">Lizards</option>
-												</select>
+									      	<div class="form-group" id="2DdataStreamDiv1" style="display:inline-block;">
+								      			<p class="col-md-6" style="margin-left:-2%;">Data Stream</p>
+											  	<div class="select col-md-7" style="margin-left:-10%;">
+												  	<select class="form-control" id="2DdataStream1">
+												  		<option></option>
+													  	<option>Stream 1</option>
+													  	<option>Stream 2</option>
+													  	<option>Stream 3</option>	
+														<option>Stream 4</option>
+													</select>
+												</div>
+											</div>
+											<div class="form-group" id="2DdataStreamDiv2" style="display:inline-block;">
+								      			<p class="col-md-6" style="margin-left:-2%;">Data Stream</p>
+											  	<div class="select col-md-7" style="margin-left:-10%;">
+												  	<select class="form-control" id="2DdataStream2">
+												  		<option></option>
+													  	<option>Stream 1</option>
+													  	<option>Stream 2</option>
+													  	<option>Stream 3</option>	
+														<option>Stream 4</option>
+													</select>
+												</div>
 											</div>
 
-											<p></p>
+											<p style="margin:75px;"></p>
+
+											<p>Time Lag 1: 
 
 											<div class="form-group">
-												<p>Time Lag 1: 
-												Value
-												<label for="inputNumber" class="control-label"><input type="text" class="form-control" size="25" id="inputNumber" placeholder="Enter Value" required></label>
-
 												
+												Value
+												<label for="inputNumber" class="control-label"><input type="text" class="form-control" size="25" id="timeLagValue" placeholder="Enter Value" required></label>
+											</div>
+												
+											<div class="form-group">
 												Unit
-												<select name="unit_value1">
-													<option value="default">Second</option>
-													<option value="choice1">Minute</option>
-													<option value="choice2">Hour</option>
-													<option value="choice3">Day</option>
+												<select class="form-control" id="timeLagUnit">
+													<option></option>
+													<option>Second</option>
+													<option>Minute</option>
+													<option>Hour</option>
+													<option>Day</option>
 												</select>
 												</p>
-
 										  	</div>
+
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary" disabled="disabled">Process</button>
+									        <button type="button" class="btn btn-primary" onClick="validate2DInput()">Process</button>
 									      </div>
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
@@ -534,6 +540,8 @@
                 	</div>
             	</div> 
             </div>
+
+
             <div class="col-xs-3">
                 <div class="row">
                     <div class="panel panel-default" style="margin:0px;">
@@ -543,8 +551,9 @@
                         <!-- /.panel-heading -->
 
                         <div class="panel-body" style="height:580px;">
-                            <div class="flot-chart">
-                                <div class="flot-chart-content" id="flot-line-chart"></div>
+                            <div>
+                                
+                                <canvas width='300' height='150'></canvas>
                             </div>
                         </div>
                     </div>
@@ -555,4 +564,5 @@
 </body>
 
 </html>
+
 
