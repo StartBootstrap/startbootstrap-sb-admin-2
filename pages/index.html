@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8">
+        <meta charset="utf-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
         <title>132 Analyst Dashboard</title>
+        <!-- D3 -->
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
         <!-- Bootstrap Core CSS -->
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- MetisMenu CSS -->
@@ -50,8 +52,7 @@
         <!-- JQuery -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
         <script src="../js/jquery-1.11.3.min.js"></script>
-        <!-- D3 -->
-        <script src="http://d3js.org/d3.v3.min.js"></script>
+
         <!-- visual 1 -->
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,600,200italic,600italic&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
         <link href="../styles.css" rel="stylesheet" type="text/css"/>
@@ -471,15 +472,12 @@
                             Analyst Dashboard
                         </div>
                         <div class="panel-body" id="dashboard_panel">
-                            <div class="bubbleChart"/>
                                 <script>
                                     var values = [];
-                                    d3.csv("../dummy_data/data.csv", function(data){
-                                    	data.map(function(d){values.push({
-                                    		'text': d.symbol,
-                                    		'count': +d.price
-                                    	});});
-                                    	console.log(values)
+                                    d3.json("../queries/queries.json", function(data){
+                                        for (k in data) {
+                                            console.log(data[k])
+                                        }
                                     });
                                 </script>
                             </div>
