@@ -378,11 +378,3 @@ function validateThreeDInput() {
 }
 
 
-function myFunction (array) {
-	var out = "";
-	var i;
-	for (var i = 0; i < arr.length; i++) {
-		out += "<a href='" + arr[i].queries[0].operator + "'></a><br>";
-	};
-	document.getElementById("id01").innerHTML = out;
-}
