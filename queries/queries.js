@@ -1,3 +1,4 @@
+var myArray = [
 {"queries":[	
 			{ "qid":"q1",
 			  "input": ["es1", "es2"],
@@ -504,4 +505,4 @@
 	]
 }
 
-
+]

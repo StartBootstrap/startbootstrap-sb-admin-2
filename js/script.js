@@ -1,15 +1,28 @@
+function Tuple(param1, param2){
+	this.param1 = param1;
+	this.param2 = param2;
+	this.getParam1 = function(){
+		return this.param1;
+	}
+	this.getParam2 = function(){
+		return this.param2;
+	}
+}
+
+
 //creating a Filter class
 function Filter(dataStream, minMaxValue, minMaxNormalization, northEastCoords, southWestCoords){
 	this.dataStream = dataStream;
-	this.minValue = minMaxValue[0];
-	this.maxValue = minMaxValue[1];
-	this.minNormalization = minMaxNormalization[0];
-	this.maxNormalization = minMaxNormalization[1];
-	this.northEastLong = northEastCoords[0];
-	this.northEastLat = northEastCoords[1];
-	this.southWestLong = southWestCoords[0];
-	this.southWestLat = southWestCoords[1];
-	this.getdataStream = function(){
+	this.minValue = minMaxValue.getParam1;
+	this.maxValue = minMaxValue.getParam2;
+	this.minNormalization = minMaxNormalization.getParam1;
+	this.maxNormalization = minMaxNormalization.getParam2;
+	this.northEastLong = northEastCoords.getParam1;
+	this.northEastLat = northEastCoords.getParam2;
+	this.southWestLong = southWestCoords.getParam1;
+	this.southWestLat = southWestCoords.getParam2;
+
+	this.getDataStream = function(){
 		return this.dataStream;
 	}
 	this.getMinValue = function(){
@@ -38,6 +51,53 @@ function Filter(dataStream, minMaxValue, minMaxNormalization, northEastCoords, s
 	}
 }
 
+//creating a 3D co-occurrence class
+function threeD(dataStream1, dataStream2, dataStream3, timeLagValue1, timeLagValue2, timeLagUnit1, timeLagUnit2){
+	this.dataStream1 = dataStream1;
+	this.dataStream2 = dataStream2;
+	this.dataStream3 = dataStream3;
+	
+	this.timeLagValue1 = timeLag1;
+	this.timeLagValue2 = timeLag2;
+	
+	this.timeLagValue1 = timeLagValue1;
+	this.TimeLagValue2 = timeLagValue2;
+	
+	this.getdataStream1 = function(){
+		return this.dataStream1;
+	}
+	
+	this.getdataStream2 = function(){
+		return this.dataStream2;
+	}
+	
+	this.getdataStream3 = function(){
+		return this.dataStream3;
+	}
+	
+	this.gettimeLagValue1 = function()
+	{
+		return this.timeLagValue1;
+	}
+	
+	this.gettimeLagValue2 = function()
+	{
+		return this.timeLagValue2;
+	}
+	
+	this.gettimeLagUnit1 = function()
+	{
+		return this.timeLagUnit1;
+	}
+	
+	this.gettimeLagUnit2 = function()
+	{
+		return this.timeLagUnit2;
+	}
+	
+}
+
+//Makes sure input is not empty
 function isValidInput(input){
 	return input !== "";
 }
@@ -63,7 +123,6 @@ function validateFilterInput(){
 	var minValue = document.getElementById("inputFilterValueMin");
 	var maxValue = document.getElementById("inputFilterValueMax");
 	if (valueCheck.checked){
-
 		if (!isValidInput(minValue.value)){
 			minValue.parentNode.className = "control-label has-error";
 			$(minValue).on("change", function(){
@@ -207,16 +266,36 @@ function filterHasErrors(){
 
 function processFilter(){
 	if (!filterHasErrors()){
+		var dataStream = document.getElementById("filterDataStream");
+
+		var minValue = document.getElementById("inputFilterValueMin");
+		var maxValue = document.getElementById("inputFilterValueMax");
+		var minMaxValue = new Tuple(minValue, maxValue);
+
+		var minNorm = document.getElementById("inputFilterNormMin");
+		var maxNorm = document.getElementById("inputFilterNormMax");
+		var minMaxNorm = new Tuple(minNorm, maxNorm);
+
+		var neLong = document.getElementById("inputFilterNELong");
+		var neLat = document.getElementById("inputFilterNELat");
+		var northEastCoords = new Tuple(neLong, neLat);
+
+		var swLong = document.getElementById("inputFilterSWLong");
+		var swLat = document.getElementById("inputFilterSWLat");
+		var southWestCoords = new Tuple(swLong, swLat);
+
+		var filterObject = new Filter(dataStream, minMaxValue, minMaxNorm, northEastCoords, southWestCoords);
+		var myDataStream = filterObject.getMinValue();
+		alert(myDataStream.text);
 		document.getElementById("filterClose").click();
+
 		$('canvas').drawArc({
 		  strokeStyle: 'black',
 		  strokeWidth: 2,
 		  x: 150, y: 50,
 		  radius: 30
 		});
-	} else{
-		alert("There are still errors");
-	}
+	} 
 }
 
 
@@ -264,3 +343,46 @@ function validate2DInput(){
 }
 
 
+function validateThreeDInput() {
+	
+	var ddl = document.getElementById("3dStreams1");
+	var selectedValue = ddl.options[ddl.selectedIndex].value;
+	if (selectedValue == "default")
+		{
+			alert("Datastream 1 missing!");
+		}
+	
+	var ddl = document.getElementById("3dStreams2");
+	var selectedValue = ddl.options[ddl.selectedIndex].value;
+	if (selectedValue == "default")
+		{
+			alert("Datastream 2 missing!");
+		}
+		
+	var ddl = document.getElementById("3dStreams3");
+	var selectedValue = ddl.options[ddl.selectedIndex].value;
+	if (selectedValue == "default")
+		{
+			alert("Datastream 3 missing!");
+		}
+	
+	var myInput = document.getElementById("value1").value;
+	if (/^\s*$/.test(myInput)) {
+		alert("Time Lag 1: Value is empty!");
+	}
+
+	var myInput = document.getElementById("value2").value;
+	if (/^\s*$/.test(myInput)) {
+		alert("Time Lag 2: Value is empty!");
+	}
+}
+
+
+function myFunction (array) {
+	var out = "";
+	var i;
+	for (var i = 0; i < arr.length; i++) {
+		out += "<a href='" + arr[i].queries[0].operator + "'></a><br>";
+	};
+	document.getElementById("id01").innerHTML = out;
+}

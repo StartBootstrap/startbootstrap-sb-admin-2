@@ -25,6 +25,9 @@
 
     <link href="../dist/css/stylesheet.css" rel="stylesheet">
 
+    <!-- D3 Heatmap CSS -->
+    <link href="../dist/css/style.css" rel="stylesheet">
+
     <!-- Morris Charts CSS -->
     <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
 
@@ -74,6 +77,9 @@
     <!-- D3 -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
 
+    <!-- D3 Heatmap -->
+    <!-- <script src="../js/app.js"></script> -->
+
     <!-- JQuery -->
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
     <script src="../js/jquery-1.11.3.min.js"></script>
@@ -95,8 +101,21 @@
 	                <span class="icon-bar"></span>
 	            </button>
 	            <div class="btn-group" role="group" style="margin-top:10px">
-	              <button type="button" class="btn btn-default btn-file">Import Data Stream<input type="file" id="importData"></button>
-	              <button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
+
+	            	<!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#importModal">Import Data Stream</button> -->
+	            	<!-- Trigger the modal with a button -->
+
+
+	            	<!-- Valid data source sections
+					life events/ activities of daily living (choose one)
+					environmental is one of the biggest categories
+					traffic
+					social media
+ -->
+					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#importModal">Import Data Stream</button>
+
+
+	             	<button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
 	          </div>
             </div>
             <!-- /.navbar-header -->
@@ -122,6 +141,32 @@
             </ul>
         </nav>
     </div>
+
+    	<div class="modal fade" id="importModal">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title">Import Data Stream</h4>
+		      </div>
+		      <div class="modal-body">
+	      		Choose a category
+	      		<p>1. life events</p>
+	      		<p>2. environmental</p>
+	      		<p>3. traffic</p>
+	      		<p>4. social media</p>
+		      </div>
+
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal" id="filterClose">Close</button>
+		        <button type="button" class="btn btn-primary">Process</button>		        	
+		      </div>
+		    </div><!-- /.modal-content -->
+		  </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+
+
+
 		
         <!-- <div id="page-wrapper"> -->
         <div class="row" style="height:175px;">
@@ -206,7 +251,6 @@
 									      </div>
 
 									      <div class="modal-footer">
-									      	<button type="button" class="btn btn-default" id="test">Test</button>
 									        <button type="button" class="btn btn-default" data-dismiss="modal" id="filterClose">Close</button>
 									        <button type="button" class="btn btn-primary"
 									        	onClick="validateFilterInput(); processFilter();">Process</button>
@@ -441,33 +485,37 @@
 									        <p>Data Streams:</p>
 									        									
 											<div>
-											<select name="Stream 1">
-											<option value="default">Stream 1</option>
+											<label>Stream 1:</label>
+											<select id="3dStreams1" name="Stream 1">
+											<option value="default"></option>
 											<option value="choice1">Clownfish</option>
 											<option value="choice2">Shark</option>
 											<option value="choice3">Goldfish</option>
 											</select>
 											
-											<select name="Stream 2">
-											<option value="default">Stream 2</option>
+											<label>Stream 2:</label>
+											<select id="3dStreams2" name="Stream 2">
+											<option value="default"></option>
 											<option value="choice1">Salamander</option>
 											<option value="Choice2">Snakes</option>
 											<option value="choice3">Lizards</option>
 											</select>
 											
-											<select name="Stream 3">
-											<option value="default">Stream 3</option>
+											<label>Stream 3:</label>											
+											<select id="3dStreams3" name="Stream 3">
+											<option value="default"></option>
 											<option value="choice1">Dogs</option>
 											<option value="Choice2">Cats</option>
 											<option value="choice3">Birds</option>
 											</select>
+											
 											</div>
 
 											<p/>
 											
 											<p>Time Lag 1: 
 											Value
-											<input type="text" size="25" value="">
+											<input id="value1" type="text" size="25" value="">
 
 											
 											Unit
@@ -481,7 +529,7 @@
 											
 											<p>Time Lag 2: 
 											Value
-											<input type="text" size="25" value="">
+											<input id="value2" type="text" size="25" value="">
 											
 											Unit
 											<select name="unit_value2">
@@ -495,7 +543,8 @@
 										</div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">Process</button>
+											<input type="button" class="btn btn-primary" onclick="validateThreeDInput()" value="Process">
+											
 									      </div>
 									    </div><!-- /.modal-content -->
 									  </div><!-- /.modal-dialog -->
@@ -535,6 +584,8 @@
                                 <div class="flot-chart">
                                     <div class="flot-chart-content" id="flot-line-chart"></div>
                                 </div>
+                                <div id="id01"></div>
+
                     		</div>
                     	</div>
                 	</div>
@@ -551,10 +602,14 @@
                         <!-- /.panel-heading -->
 
                         <div class="panel-body" style="height:580px;">
-                            <div>
-                                
+                           <!--  <div>
                                 <canvas width='300' height='150'></canvas>
-                            </div>
+                                <svg width="720" height="120">
+								  <circle cx="40" cy="60" r="10"></circle>
+								  <circle cx="80" cy="60" r="10"></circle>
+								  <circle cx="120" cy="60" r="10"></circle>
+								</svg>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -566,3 +621,10 @@
 </html>
 
 
+<script>
+	// d3.select("body").style("background-color", "black");
+
+	// d3.select("body").transition()
+ //    .style("background-color", "black");
+
+</script>
