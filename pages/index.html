@@ -475,10 +475,10 @@
                                 <script>
                                     var values = [];
                                     d3.json("../queries/queries.json", function(data){
-                                        for (k in data) {
-                                            console.log(data[k])
+                                        values = data["queries"];
+                                        console.log(values)
                                         }
-                                    });
+                                    );
                                 </script>
                             </div>
                         </div>
