@@ -76,6 +76,36 @@
             });
             </script>
             -->
+        <script language="javascript">
+        function checkAD(){
+            if(document.aggregate_data.Stream.value==""){
+                alert("Please select a Data Stream."); 
+                document.aggregate_data.Stream.focus();
+                return false;
+                }
+            if(document.aggregate_data.optradio.value==""){
+                alert("Please select an operator."); 
+                document.aggregate_data.optradio.focus();
+                return false;
+            }
+            if(document.aggregate_data.mode.checked==true){
+                if(document.aggregate_data.mode_min.value==""){
+                    alert("Please enter a Min."); 
+                    document.aggregate_data.mode_min.focus();
+                    return false;
+                }
+                if(document.aggregate_data.mode_max.value==""){
+                    alert("Please enter a Max."); 
+                    document.aggregate_data.mode_max.focus();
+                    return false;
+                }
+
+            }
+            
+  
+            return true;
+        }
+        </script>
     </head>
     <body style="width:98.9%; height:50%;">
         <div id="wrapper">
@@ -267,49 +297,53 @@
                                                 <h4 class="modal-title">Aggregate Data</h4>
                                             </div>
                                             <div class="modal-body col-md-12">
+                                            <form name="aggregate_data" method="get" onSubmit="return checkAD();">
                                                 <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
-                                                <div class="dropdown">
-                                                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
-                                                    </button>
-                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                                        <li role="presentation"><a href="#">Data Stream 1</a></li>
-                                                        <li role="presentation"><a href="#">Data Stream 2</a></li>
-                                                        <li role="presentation"><a href="#">Data Stream 3</a></li>
-                                                    </ul>
-                                                </div>
-                                                <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
+                                                
+                                                    
+                                                    <select name="Stream">
+                                                        <option value="default">Stream 1</option>
+                                                        <option value="choice1">Stream 2</option>
+                                                        <option value="choice2">Stream 3</option>
+                                                        <option value="choice3">Stream 4</option>
+                                                    </select>
+                                                    <p></p>
+                                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
+                                                
+
                                                 <p>Aggregation Operators</p>
                                                 <div class="radio col-md-offset-1">
                                                     <TABLE border="0">
                                                         <tr>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Sum</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Average</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Minimum</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Maximum</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Or</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="sum">Sum</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="average">Average</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="min">Minimum</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="max">Maximum</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="or">Or</label></td>
                                                         </tr>
                                                         <tr>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Convolution</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">And</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Not</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Subtraction</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Multiply</label></td>
-                                                            <td><label class="groupRadio"><input type="radio" name="optradio">Division</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="con">Convolution</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="and">And</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="not">Not</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="sub">Subtraction</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="mul">Multiply</label></td>
+                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="div">Division</label></td>
                                                         </tr>
                                                     </TABLE>
                                                 </div>
                                                 <label>
-                                                <input type="checkbox"> Normalization Mode
+                                                <input type="checkbox" name="mode"> Normalization Mode
                                                 </label>
                                                 <div class="form-group col-md-offset-1">
-                                                    <label>Minimum<input type="email" class="form-control" id="exampleInputEmail1" placeholder="0"></label>
-                                                    <label>Maximum<input type="email" class="form-control" id="exampleInputEmail1" placeholder="100"></label>
+                                                    <label>Minimum<input type="text" class="form-control" id="exampleInputEmail1" name="mode_min" placeholder="0"></label>
+                                                    <label>Maximum<input type="text" class="form-control" id="exampleInputEmail1" name="mode_max" placeholder="100"></label>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                <button type="button" class="btn btn-primary">Process</button>
+                                                <input type="button" value = "Close" class="btn btn-default" data-dismiss="modal">
+                                                <input type="submit" value="Process" class="btn btn-primary">
                                             </div>
+                                            </form>
                                         </div>
                                         <!-- /.modal-content -->
                                     </div>
