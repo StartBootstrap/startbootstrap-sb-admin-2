@@ -1,3 +1,71 @@
+var importedData = new Array();
+// var dataStream1 = document.getElementById("2DdataStream1");
+
+
+function validateImportData(){
+	var lifeEvents = document.getElementById("lifeEvents");
+	var environmental = document.getElementById("environmental");
+	var traffic = document.getElementById("traffic");
+	var socialMedia = document.getElementById("socialMedia");
+
+	if (isValidInput(lifeEvents.value)){
+		// if not in the array
+		if ($.inArray(lifeEvents.value, importedData) == -1){
+			importedData.push(lifeEvents.value);
+		} else{
+			alert("life event data stream already imported");
+		}
+	}
+	
+	if (isValidInput(environmental.value)){
+		if ($.inArray(environmental.value, importedData) == -1){
+			importedData.push(environmental.value);
+		} else{
+			alert("environmental data stream already imported");
+		}
+	}
+	
+	
+	if (isValidInput(traffic.value)){
+		if ($.inArray(traffic.value, importedData) == -1){
+			importedData.push(traffic.value);
+		} else{
+			alert("traffic data stream already imported");
+		}
+	}
+
+	if (isValidInput(socialMedia.value)){
+		if ($.inArray(socialMedia.value, importedData) == -1){
+			importedData.push(socialMedia.value);
+		} else{
+			alert("social media data stream already imported");
+		}
+	}
+	document.getElementById("importClose").click();
+}
+
+function loadDataStreams(){
+	// alert(dataStream1);
+	for (var i = 0; i < importedData.length; i++) {
+
+		var filterOption = document.createElement("option");
+	   	var filterText = document.createTextNode(importedData[i]);
+	   	filterOption.appendChild(filterText);
+
+	   
+		// var 2Doption = document.createElement("option");
+	   	// var 2DoptionText = document.createTextNode(importedData[i]);
+	   	// 2Doption.appendChild(2DoptionText);
+
+	   	// then append it to the select element
+	   	document.getElementById('filterDataStream').appendChild(filterOption);
+	   	// document.getElementById('2DdataStream1').appendChild(2Doption);
+	   	// document.getElementById('2DdataStream2').appendChild(opt);
+	};
+	// then append the select to an element in the dom
+
+}
+
 function Tuple(param1, param2){
 	this.param1 = param1;
 	this.param2 = param2;
@@ -116,7 +184,6 @@ function validateFilterInput(){
 			}
 		})
 	}
-
 
 	//if the value checkbox is checked, inspect the min and max input boxes
 	var valueCheck = document.getElementById("filterValue");
@@ -286,22 +353,23 @@ function processFilter(){
 
 		var filterObject = new Filter(dataStream, minMaxValue, minMaxNorm, northEastCoords, southWestCoords);
 		var myDataStream = filterObject.getMinValue();
-		alert(myDataStream.text);
+
 		document.getElementById("filterClose").click();
 
-		$('canvas').drawArc({
-		  strokeStyle: 'black',
-		  strokeWidth: 2,
-		  x: 150, y: 50,
-		  radius: 30
-		});
+		// $('canvas').drawArc({
+		//   strokeStyle: 'black',
+		//   strokeWidth: 2,
+		//   x: 150, y: 50,
+		//   radius: 30
+		// });
+		// alert("after canvas");
 	} 
 }
 
 
 
 function validate2DInput(){
-	var dataStream1 = document.getElementById("2DdataStream1");
+	
 	var dataStream2 = document.getElementById("2DdataStream2");
 	if (!isValidInput(dataStream1.value)){
 		dataStream1.parentNode.parentNode.className = "form-group has-error";

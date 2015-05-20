@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
     <title>132 Analyst Dashboard</title>
 
     <!-- Bootstrap Core CSS -->
@@ -75,17 +76,46 @@
     <script src="../js/script.js"></script>
 
     <!-- D3 -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <!-- // <script src="www.d3js.org/d3.v3.min.js"></script> -->
+    <script src="../d3/d3.min.js"></script>
 
     <!-- D3 Heatmap -->
     <!-- <script src="../js/app.js"></script> -->
 
     <!-- JQuery -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>    
     <script src="../js/jquery-1.11.3.min.js"></script>
 
     <!-- JCanvas -->
     <script src='../js/jcanvas.min.js'></script>
+
+    <script language="javascript">
+	    function checkAD(){
+	        if(document.aggregate_data.Stream.value==""){
+	            alert("Please select a Data Stream."); 
+	            document.aggregate_data.Stream.focus();
+	            return false;
+	            }
+	        if(document.aggregate_data.optradio.value==""){
+	            alert("Please select an operator."); 
+	            document.aggregate_data.optradio.focus();
+	            return false;
+	        }
+	        if(document.aggregate_data.mode.checked==true){
+	            if(document.aggregate_data.mode_min.value==""){
+	                alert("Please enter a Min."); 
+	                document.aggregate_data.mode_min.focus();
+	                return false;
+	            }
+	            if(document.aggregate_data.mode_max.value==""){
+	                alert("Please enter a Max."); 
+	                document.aggregate_data.mode_max.focus();
+	                return false;
+	            }
+
+	        }
+	        return true;
+	    }
+    </script>
 
 </head>
 
@@ -101,26 +131,13 @@
 	                <span class="icon-bar"></span>
 	            </button>
 	            <div class="btn-group" role="group" style="margin-top:10px">
-
-	            	<!-- <button type="button" class="btn btn-default" data-toggle="modal" data-target="#importModal">Import Data Stream</button> -->
-	            	<!-- Trigger the modal with a button -->
-
-
-	            	<!-- Valid data source sections
-					life events/ activities of daily living (choose one)
-					environmental is one of the biggest categories
-					traffic
-					social media
- -->
 					<button type="button" class="btn btn-default" data-toggle="modal" data-target="#importModal">Import Data Stream</button>
-
-
 	             	<button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
 	          </div>
             </div>
             <!-- /.navbar-header -->
             <div class="navbar-header col-md-offset-3 col-md-4">
-                <input class="text-center" type="text" id="inputTitle" placeholder="Untitled" style="width:500px">
+                <input class="text-center" type="text" id="inputTitle" placeholder="Untitled" style="width:500px; margin-right:200px;">
             </div>
             <!-- /.dropdown-user settings-->
             <ul class="nav navbar-top-links navbar-right">
@@ -150,16 +167,55 @@
 		        <h4 class="modal-title">Import Data Stream</h4>
 		      </div>
 		      <div class="modal-body">
-	      		Choose a category
-	      		<p>1. life events</p>
-	      		<p>2. environmental</p>
-	      		<p>3. traffic</p>
-	      		<p>4. social media</p>
+	      		<p>Choose a category</p>
+	      		<p class="col-md-3" style="margin-left:-2%;">Life Events</p>
+			  	<div class="select">
+				  	<select class="form-control" id="lifeEvents" style="margin-bottom:20px;">
+				  		<option></option>
+					  	<option>Life Events Stream 1</option>
+					  	<option>Life Events Stream 2</option>
+					  	<option>Life Events Stream 3</option>	
+						<option>Life Events Stream 4</option>
+					</select>
+				</div>
+
+				<p class="col-md-3" style="margin-left:-2%;">Environmental</p>
+			  	<div class="select">
+				  	<select class="form-control" id="environmental" style="margin-bottom:20px;">
+				  		<option></option>
+					  	<option>Environmental Stream 1</option>
+					  	<option>Environmental Stream 2</option>
+					  	<option>Environmental Stream 3</option>	
+						<option>Environmental Stream 4</option>
+					</select>
+				</div>
+
+				<p class="col-md-3" style="margin-left:-2%;">Traffic</p>
+			  	<div class="select">
+				  	<select class="form-control" id="traffic" style="margin-bottom:20px;">
+				  		<option></option>
+					  	<option>Traffic Stream 1</option>
+					  	<option>Traffic Stream 2</option>
+					  	<option>Traffic Stream 3</option>	
+						<option>Traffic Stream 4</option>
+					</select>
+				</div>
+
+				<p class="col-md-3" style="margin-left:-2%;">Social Media</p>
+			  	<div class="select">
+				  	<select class="form-control" id="socialMedia">
+				  		<option></option>
+					  	<option>Social Media Stream 1</option>
+					  	<option>Social Media Stream 2</option>
+					  	<option>Social Media Stream 3</option>	
+						<option>Social Media Stream 4</option>
+					</select>
+				</div>
 		      </div>
 
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal" id="filterClose">Close</button>
-		        <button type="button" class="btn btn-primary">Process</button>		        	
+		        <button type="button" class="btn btn-default" data-dismiss="modal" id="importClose">Close</button>
+		        <button type="button" class="btn btn-primary" onClick="validateImportData();">Process</button>		        	
 		      </div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
@@ -182,7 +238,9 @@
                                 <div class="row" style="height:100px;">
 
                                     <div class="col-xs-2 col-md-offset-1">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton"><a href="#" title="Filter"><img src="../img/filter.png"  class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton">
+                                        	<a href="#" title="Filter" onClick="loadDataStreams();"><img src="../img/filter.png" class="icons"></a>
+                                        </button>
                                     </div>
 
                                     <!-- Modal that opens up when the user clicks on the filter button-->
@@ -200,10 +258,6 @@
 											  	<div class="select">
 												  	<select class="form-control" id="filterDataStream">
 												  		<option></option>
-													  	<option>Stream 1</option>
-													  	<option>Stream 2</option>
-													  	<option>Stream 3</option>	
-														<option>Stream 4</option>
 													</select>
 												</div>
 											</div>
@@ -263,7 +317,9 @@
 
 
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#groupModal"><a href="#" title="Group Data"><img src="../img/pie_chart.png" class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#groupModal">
+                                        	<a href="#" title="Group Data" onClick="loadDataStreams();"><img src="../img/pie_chart.png" class="icons"></a>
+                                        </button>
                                     </div>
 
                                     <!-- Modal that opens up when the user clicks on the grouping icon-->
@@ -328,77 +384,77 @@
 
 
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#aggregateModal"<a href="#" title="Aggregate Data"><img src="../img/sigma.png" class="icons"></a>
-                                    </div>
-									<!-- Modal that opens up when the user clicks on the aggregate button-->
-                                    <div class="modal fade" id="aggregateModal">
-									  <div class="modal-dialog">
-									    <div class="modal-content">
-									      <div class="modal-header">
-									        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									        <h4 class="modal-title">Aggregate Data</h4>
-									      </div>
-									      <div class="modal-body col-md-12">
-									        <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
-									        
-									        <div class="dropdown">
-											  <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
-											  </button>
-											  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-											  	<li role="presentation"><a href="#">Data Stream 1</a></li>
-											  	<li role="presentation"><a href="#">Data Stream 2</a></li>
-											  	<li role="presentation"><a href="#">Data Stream 3</a></li>
-											  </ul>
-											</div>
-											
-											<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
-									
-											<p>Aggregation Operators</p>
+                                    <button type="button" class="icon_button" data-toggle="modal" data-target="#aggregateModal"<a href="#" title="Aggregate Data"><img src="../img/sigma.png" class="icons"></a>
 
-											<div class="radio col-md-offset-1">
-											<TABLE border="0">
-											<tr>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Sum</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Average</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Minimum</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Maximum</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Or</label></td>
-											</tr>
-											<tr>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Convolution</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">And</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Not</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Subtraction</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Multiply</label></td>
-											  <td><label class="groupRadio"><input type="radio" name="optradio">Division</label></td>
-											</tr>
-											</TABLE>
-											</div>
+	                                </div>
+	                                <!-- Modal that opens up when the user clicks on the aggregate button-->
+	                                <div class="modal fade" id="aggregateModal">
+	                                    <div class="modal-dialog">
+	                                        <div class="modal-content">
+	                                            <div class="modal-header">
+	                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                                                <h4 class="modal-title">Aggregate Data</h4>
+	                                            </div>
+	                                            <div class="modal-body col-md-12">
+	                                            <form name="aggregate_data" method="get" onSubmit="return checkAD();">
+	                                                <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
+	                                                
+	                                                    
+	                                                    <select name="Stream">
+	                                                        <option value="default">Stream 1</option>
+	                                                        <option value="choice1">Stream 2</option>
+	                                                        <option value="choice2">Stream 3</option>
+	                                                        <option value="choice3">Stream 4</option>
+	                                                    </select>
+	                                                    <p></p>
+	                                                    <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
+	                                                
 
-											<label>
-										      <input type="checkbox"> Normalization Mode
-										    </label>
-
-										    <div class="form-group col-md-offset-1">
-										    	<label>Minimum<input type="email" class="form-control" id="exampleInputEmail1" placeholder="0"></label>
-										    	<label>Maximum<input type="email" class="form-control" id="exampleInputEmail1" placeholder="100"></label>
-										  	</div>
-
-									      </div>
-									      <div class="modal-footer">
-									        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-									        <button type="button" class="btn btn-primary">Process</button>
-									      </div>
-									    </div><!-- /.modal-content -->
-									  </div><!-- /.modal-dialog -->
-									</div><!-- /.modal -->
+	                                                <p>Aggregation Operators</p>
+	                                                <div class="radio col-md-offset-1">
+	                                                    <TABLE border="0">
+	                                                        <tr>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="sum">Sum</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="average">Average</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="min">Minimum</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="max">Maximum</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="or">Or</label></td>
+	                                                        </tr>
+	                                                        <tr>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="con">Convolution</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="and">And</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="not">Not</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="sub">Subtraction</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="mul">Multiply</label></td>
+	                                                            <td><label class="groupRadio"><input type="radio" name="optradio" value="div">Division</label></td>
+	                                                        </tr>
+	                                                    </TABLE>
+	                                                </div>
+	                                                <label>
+	                                                <input type="checkbox" name="mode"> Normalization Mode
+	                                                </label>
+	                                                <div class="form-group col-md-offset-1">
+	                                                    <label>Minimum<input type="text" class="form-control" id="exampleInputEmail1" name="mode_min" placeholder="0"></label>
+	                                                    <label>Maximum<input type="text" class="form-control" id="exampleInputEmail1" name="mode_max" placeholder="100"></label>
+	                                                </div>
+	                                            </div>
+	                                            <div class="modal-footer">
+	                                                <input type="button" value = "Close" class="btn btn-default" data-dismiss="modal">
+	                                                <input type="submit" value="Process" class="btn btn-primary">
+	                                            </div>
+	                                            </form>
+	                                        </div>
+	                                        <!-- /.modal-content -->
+	                                    </div>
+	                                    <!-- /.modal-dialog -->
+	                                </div>
 
 
 
 
                                     <div class="col-xs-2">
                                         <button type="button" class="icon_button" data-toggle="modal" data-target="#2DModal">
-                                        	<a href="#" title="2 Dimensional Data"><img src="../img/2d.png" class="icons"></a>
+                                        	<a href="#" title="2 Dimensional Data" onClick="loadDataStreams();"><img src="../img/2d.png" class="icons"></a>
                                         </button>
                                     </div>
 
@@ -416,10 +472,6 @@
 											  	<div class="select col-md-7" style="margin-left:-10%;">
 												  	<select class="form-control" id="2DdataStream1">
 												  		<option></option>
-													  	<option>Stream 1</option>
-													  	<option>Stream 2</option>
-													  	<option>Stream 3</option>	
-														<option>Stream 4</option>
 													</select>
 												</div>
 											</div>
@@ -428,26 +480,15 @@
 											  	<div class="select col-md-7" style="margin-left:-10%;">
 												  	<select class="form-control" id="2DdataStream2">
 												  		<option></option>
-													  	<option>Stream 1</option>
-													  	<option>Stream 2</option>
-													  	<option>Stream 3</option>	
-														<option>Stream 4</option>
 													</select>
 												</div>
 											</div>
 
-											<p style="margin:75px;"></p>
-
-											<p>Time Lag 1: 
-
-											<div class="form-group">
+											<p style="margin-top:20px;">Time Lag1:</p>
 												
-												Value
-												<label for="inputNumber" class="control-label"><input type="text" class="form-control" size="25" id="timeLagValue" placeholder="Enter Value" required></label>
-											</div>
+											<div class="form-group" style="display:inline-block;">
 												
-											<div class="form-group">
-												Unit
+												<label class="control-label">Unit</label>
 												<select class="form-control" id="timeLagUnit">
 													<option></option>
 													<option>Second</option>
@@ -455,8 +496,12 @@
 													<option>Hour</option>
 													<option>Day</option>
 												</select>
-												</p>
-										  	</div>
+											</div>
+
+											<div class="form-group" style="display:inline-block">
+												<label for="inputNumber" class="control-label" style="margin-top:5px;">Value<input type="text" class="form-control" size="25" id="timeLagValue" placeholder="Enter Value" required></label>
+											</div>
+
 
 									      </div>
 									      <div class="modal-footer">
@@ -470,7 +515,9 @@
 									
 									<!-- Ricky 3D Occurence Icon-->							
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#3dOccur"><a href="#" title="3 Dimensional Data"><img src="../img/3d.png" class="icons"></a></button>
+                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#3dOccur">
+                                        	<a href="#" title="3 Dimensional Data" onClick="loadDataStreams();"><img src="../img/3d.png" class="icons"></a>
+                                        </button>
                                     </div>
 									
 									<!-- Modal that opens up when the user clicks on the 3D Occurence button-->
@@ -487,26 +534,17 @@
 											<div>
 											<label>Stream 1:</label>
 											<select id="3dStreams1" name="Stream 1">
-											<option value="default"></option>
-											<option value="choice1">Clownfish</option>
-											<option value="choice2">Shark</option>
-											<option value="choice3">Goldfish</option>
+												<option></option>
 											</select>
 											
 											<label>Stream 2:</label>
 											<select id="3dStreams2" name="Stream 2">
-											<option value="default"></option>
-											<option value="choice1">Salamander</option>
-											<option value="Choice2">Snakes</option>
-											<option value="choice3">Lizards</option>
+												<option></option>
 											</select>
 											
 											<label>Stream 3:</label>											
 											<select id="3dStreams3" name="Stream 3">
-											<option value="default"></option>
-											<option value="choice1">Dogs</option>
-											<option value="Choice2">Cats</option>
-											<option value="choice3">Birds</option>
+												<option></option>
 											</select>
 											
 											</div>
@@ -581,11 +619,41 @@
                                 Analyst Dashboard
                             </div>
                             <div class="panel-body" style="height:445px;">
-                                <div class="flot-chart">
+                                <!-- <div class="flot-chart">
                                     <div class="flot-chart-content" id="flot-line-chart"></div>
-                                </div>
-                                <div id="id01"></div>
+                                </div> -->
 
+                                <!-- <svg width="100" height="100">
+								  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+								</svg> -->
+
+                                <!-- <div id="id01"></div> -->
+                                <div class="days-hours-heatmap">
+							      <!-- calibration and render type controller -->
+							      <div class="calibration" role="calibration">
+							        <div class="group" role="example">
+							          <svg width="120" height="17">
+							          </svg>
+							          <div role="description" class="description">
+							            <label>Less</label>
+							            <label>More</label>
+							          </div>        
+							        </div>
+							        <div role="toggleDisplay" class="display-control">
+							          <div>
+							            <input type="radio" name="displayType" checked/>
+							            <label>count</label>
+							          </div>
+							          <div>
+							            <input type="radio" name="displayType"/>
+							            <label>daily</label> 
+							          </div>
+							        </div>
+							      </div>
+							      <!-- heatmap -->
+							      <svg role="heatmap" class="heatmap"></svg>
+							    </div>
+							    <script type="text/javascript" src="../js/app.js"></script>
                     		</div>
                     	</div>
                 	</div>
@@ -610,6 +678,8 @@
 								  <circle cx="120" cy="60" r="10"></circle>
 								</svg>
                             </div> -->
+                                
+                            
                         </div>
                     </div>
                 </div>
@@ -627,4 +697,16 @@
 	// d3.select("body").transition()
  //    .style("background-color", "black");
 
+</script>
+
+
+<script>
+	var data; //global
+
+    d3.json("../queries/queries.json", function(error, json){
+        if (error) return console.warn(error);
+        data = json;
+        console.log(data)
+        }
+    );
 </script>
