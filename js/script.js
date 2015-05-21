@@ -1,15 +1,96 @@
+var importedData = new Array();
+// var dataStream1 = document.getElementById("2DdataStream1");
+
+
+function validateImportData(){
+	var lifeEvents = document.getElementById("lifeEvents");
+	var environmental = document.getElementById("environmental");
+	var traffic = document.getElementById("traffic");
+	var socialMedia = document.getElementById("socialMedia");
+
+	if (isValidInput(lifeEvents.value)){
+		// if not in the array
+		if ($.inArray(lifeEvents.value, importedData) == -1){
+			importedData.push(lifeEvents.value);
+		} else{
+			alert("life event data stream already imported");
+		}
+	}
+	
+	if (isValidInput(environmental.value)){
+		if ($.inArray(environmental.value, importedData) == -1){
+			importedData.push(environmental.value);
+		} else{
+			alert("environmental data stream already imported");
+		}
+	}
+	
+	
+	if (isValidInput(traffic.value)){
+		if ($.inArray(traffic.value, importedData) == -1){
+			importedData.push(traffic.value);
+		} else{
+			alert("traffic data stream already imported");
+		}
+	}
+
+	if (isValidInput(socialMedia.value)){
+		if ($.inArray(socialMedia.value, importedData) == -1){
+			importedData.push(socialMedia.value);
+		} else{
+			alert("social media data stream already imported");
+		}
+	}
+	document.getElementById("importClose").click();
+}
+
+function loadDataStreams(){
+	// alert(dataStream1);
+	for (var i = 0; i < importedData.length; i++) {
+
+		var filterOption = document.createElement("option");
+	   	var filterText = document.createTextNode(importedData[i]);
+	   	filterOption.appendChild(filterText);
+
+	   
+		// var 2Doption = document.createElement("option");
+	   	// var 2DoptionText = document.createTextNode(importedData[i]);
+	   	// 2Doption.appendChild(2DoptionText);
+
+	   	// then append it to the select element
+	   	document.getElementById('filterDataStream').appendChild(filterOption);
+	   	// document.getElementById('2DdataStream1').appendChild(2Doption);
+	   	// document.getElementById('2DdataStream2').appendChild(opt);
+	};
+	// then append the select to an element in the dom
+
+}
+
+function Tuple(param1, param2){
+	this.param1 = param1;
+	this.param2 = param2;
+	this.getParam1 = function(){
+		return this.param1;
+	}
+	this.getParam2 = function(){
+		return this.param2;
+	}
+}
+
+
 //creating a Filter class
 function Filter(dataStream, minMaxValue, minMaxNormalization, northEastCoords, southWestCoords){
 	this.dataStream = dataStream;
-	this.minValue = minMaxValue[0];
-	this.maxValue = minMaxValue[1];
-	this.minNormalization = minMaxNormalization[0];
-	this.maxNormalization = minMaxNormalization[1];
-	this.northEastLong = northEastCoords[0];
-	this.northEastLat = northEastCoords[1];
-	this.southWestLong = southWestCoords[0];
-	this.southWestLat = southWestCoords[1];
-	this.getdataStream = function(){
+	this.minValue = minMaxValue.getParam1;
+	this.maxValue = minMaxValue.getParam2;
+	this.minNormalization = minMaxNormalization.getParam1;
+	this.maxNormalization = minMaxNormalization.getParam2;
+	this.northEastLong = northEastCoords.getParam1;
+	this.northEastLat = northEastCoords.getParam2;
+	this.southWestLong = southWestCoords.getParam1;
+	this.southWestLat = southWestCoords.getParam2;
+
+	this.getDataStream = function(){
 		return this.dataStream;
 	}
 	this.getMinValue = function(){
@@ -89,6 +170,8 @@ function isValidInput(input){
 	return input !== "";
 }
 
+
+
 function validateFilterInput(){
 	//check data stream
 	if (!isValidInput(document.getElementById("filterDataStream").value)){
@@ -97,6 +180,7 @@ function validateFilterInput(){
 		$(dataStream).on("change", function(){
 			if (isValidInput(dataStream.value)){
 				dataStream.parentNode.parentNode.className = "form-group";	
+				
 			}
 		})
 	}
@@ -106,7 +190,6 @@ function validateFilterInput(){
 	var minValue = document.getElementById("inputFilterValueMin");
 	var maxValue = document.getElementById("inputFilterValueMax");
 	if (valueCheck.checked){
-
 		if (!isValidInput(minValue.value)){
 			minValue.parentNode.className = "control-label has-error";
 			$(minValue).on("change", function(){
@@ -214,6 +297,120 @@ function validateFilterInput(){
 	}
 }
 
+function filterHasErrors(){
+	// function that scans through all of the tags and check if they have the class 'has-errors' attribute
+	var dataStreamDiv = document.getElementById("filterDataStreamDiv"); 
+	//if substring not found, indexOf will return -1
+	if (dataStreamDiv.className.indexOf("has-error") > -1){
+		return true;
+	}
+
+	var myArray = new Array();
+		var minValue = document.getElementById("inputFilterValueMin"); 
+		var maxValue = document.getElementById("inputFilterValueMax"); //.parentNode.className
+		var minNorm = document.getElementById("inputFilterNormMin");
+		var maxNorm = document.getElementById("inputFilterNormMax"); //.parentNode.className
+		var neLong = document.getElementById("inputFilterNELong");
+		var neLat = document.getElementById("inputFilterNELat");
+		var swLong = document.getElementById("inputFilterSWLong");
+		var swLat = document.getElementById("inputFilterSWLat"); //.parentNode.className
+		myArray.push(minValue);
+		myArray.push(maxValue);
+		myArray.push(minNorm);
+		myArray.push(maxNorm);
+		myArray.push(neLong);
+		myArray.push(neLat);
+		myArray.push(swLong);
+		myArray.push(swLat);
+	
+	for (i = 0; i < myArray.length; i++){
+		if (myArray[i].parentNode.className.indexOf("has-error") > -1){
+			return true;
+		}
+	}
+	return false;
+}
+
+function processFilter(){
+	if (!filterHasErrors()){
+		var dataStream = document.getElementById("filterDataStream");
+
+		var minValue = document.getElementById("inputFilterValueMin");
+		var maxValue = document.getElementById("inputFilterValueMax");
+		var minMaxValue = new Tuple(minValue, maxValue);
+
+		var minNorm = document.getElementById("inputFilterNormMin");
+		var maxNorm = document.getElementById("inputFilterNormMax");
+		var minMaxNorm = new Tuple(minNorm, maxNorm);
+
+		var neLong = document.getElementById("inputFilterNELong");
+		var neLat = document.getElementById("inputFilterNELat");
+		var northEastCoords = new Tuple(neLong, neLat);
+
+		var swLong = document.getElementById("inputFilterSWLong");
+		var swLat = document.getElementById("inputFilterSWLat");
+		var southWestCoords = new Tuple(swLong, swLat);
+
+		var filterObject = new Filter(dataStream, minMaxValue, minMaxNorm, northEastCoords, southWestCoords);
+		var myDataStream = filterObject.getMinValue();
+
+		document.getElementById("filterClose").click();
+
+		// $('canvas').drawArc({
+		//   strokeStyle: 'black',
+		//   strokeWidth: 2,
+		//   x: 150, y: 50,
+		//   radius: 30
+		// });
+		// alert("after canvas");
+	} 
+}
+
+
+
+function validate2DInput(){
+	
+	var dataStream2 = document.getElementById("2DdataStream2");
+	if (!isValidInput(dataStream1.value)){
+		dataStream1.parentNode.parentNode.className = "form-group has-error";
+		$(dataStream1).on("change", function(){
+			if (isValidInput(dataStream1.value)){
+				dataStream1.parentNode.parentNode.className = "form-group";
+			}
+		})
+	}
+
+	if (!isValidInput(dataStream2.value)){
+		dataStream2.parentNode.parentNode.className = "form-group has-error";
+		$(dataStream2).on("change", function(){
+			if (isValidInput(dataStream2.value)){
+				dataStream2.parentNode.parentNode.className = "form-group";
+			}
+		})
+	}
+
+	var timeLagValue = document.getElementById("timeLagValue");
+	if (!isValidInput(timeLagValue.value)){
+		timeLagValue.parentNode.className = "control-label has-error";
+		$(timeLagValue).on("change", function(){
+			if (isValidInput(timeLagValue.value)){
+				timeLagValue.parentNode.className = "control-label";
+			}
+		})
+	}
+
+	var timeLagUnit = document.getElementById("timeLagUnit");
+	if (!isValidInput(timeLagUnit.value)){
+		timeLagUnit.parentNode.className = "control-label has-error";
+		$(timeLagUnit).on("change", function(){
+			if (isValidInput(timeLagUnit.value)){
+				timeLagUnit.parentNode.className = "control-label";
+			}
+		})
+	}
+}
+
+
 function validateThreeDInput() {
 	
 	var ddl = document.getElementById("3dStreams1");
@@ -247,3 +444,5 @@ function validateThreeDInput() {
 		alert("Time Lag 2: Value is empty!");
 	}
 }
+
+

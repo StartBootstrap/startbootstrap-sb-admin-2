@@ -1,0 +1,13 @@
+body{font-family:arial, 'Hiragino Sans GB',Tahoma, Arial, Helvetica, STHeiti;font-size: 14px;}
+.days-hours-heatmap{padding: 20px 0 20px 0;width: 500px;margin: 0 auto;}
+.days-hours-heatmap .calibration{margin-bottom: 15px;width:400px;}
+.days-hours-heatmap .calibration .group{display: inline-block;}
+.days-hours-heatmap .calibration .description{width:108px;}
+.days-hours-heatmap .calibration .description>label:last-child{float:right;}
+.days-hours-heatmap .calibration>.display-control{float:right;}
+.days-hours-heatmap .calibration>.display-control label{vertical-align: top;}
+.days-hours-heatmap .calibration>.display-control input[type='radio']{cursor: pointer;}
+
+.days-hours-heatmap .heatmap .axis path{display: none;}
+.days-hours-heatmap .heatmap .axis line{fill: none;stroke: #000;shape-rendering: crispEdges;}
+.days-hours-heatmap .heatmap .axis text{font-size: 12px}
