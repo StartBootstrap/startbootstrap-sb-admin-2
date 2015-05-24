@@ -1,3 +1,23 @@
+function load2dVisual(){
+  $('.calibration').html('<div class="group" role="example">'+
+                              '<svg width="120" height="17">'+
+                              '</svg>'+
+                              '<div role="description" class="description">'+
+                                  '<label>Less</label>'+
+                                  '<label>More</label>'+
+                              '</div>'+
+                          '</div>'+
+                          '<div role="toggleDisplay" class="display-control">'+
+                              '<div>'+
+                                  '<input type="radio" name="displayType" checked/>'+
+                                  '<label>count</label>'+
+                              '</div>'+
+                              '<div>'+
+                                  '<input type="radio" name="displayType"/>'+
+                                  '<label>daily</label> '+
+                              '</div>'+
+                          '</div>');
+  //UI configuration
   var itemSize = 18,
     cellSize = itemSize-1,
     width = 800,
@@ -36,7 +56,7 @@
 
   initCalibration();
 
-  var svg = d3.select(".heatmap");
+  var svg = d3.select('[role="heatmap"]');
   var heatmap = svg
     .attr('width',width)
     .attr('height',height)
@@ -46,7 +66,7 @@
     .attr('transform','translate('+margin.left+','+margin.top+')');
   var rect = null;
 
-  d3.json('../js/pm25.json',function(error, data){
+  d3.json('../js/pm25.json',function(err,data){
     data = data.data;
     data.forEach(function(valueObj){
       valueObj['date'] = timeFormat.parse(valueObj['timestamp']);
@@ -107,7 +127,7 @@
   });
 
   function initCalibration(){
-    d3.select(".calibration").select('svg')
+    d3.select('[role="calibration"] [role="example"]').select('svg')
       .selectAll('rect').data(colorCalibration).enter()
     .append('rect')
       .attr('width',cellSize)
@@ -149,3 +169,4 @@
   
   //extend frame height in `http://bl.ocks.org/`
   d3.select(self.frameElement).style("height", "600px");
+}

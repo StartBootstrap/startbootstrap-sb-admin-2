@@ -55,7 +55,7 @@
         <!-- // <script src="www.d3js.org/d3.v3.min.js"></script> -->
         <script src="../d3/d3.min.js"></script>
         <!-- D3 Heatmap -->
-        <!-- <script src="../js/app.js"></script> -->
+        <script src="../js/app.js"></script>
         <!-- JQuery -->
         <script src="../js/jquery-1.11.3.min.js"></script>
         <!-- JCanvas -->
@@ -513,19 +513,19 @@
                             <div id="visualization" class="tab-pane">
                                 <div class="row">
                                     <div class="col-xs-2 col-md-offset-3">
-                                        <a href="#" class="thumbnail-sm" title="Group visualization">
-                                        <img src="../img/pie_chart.png" class="icons">
-                                        </a>
+                                        <button type="button" class="icon_button" data-target="#graph">
+                                        <a href="#" title="Visual Data" onClick="loadDataStreams();"><img src="../img/filter.png" class="icons"></a>
+                                        </button>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="#" class="thumbnail-sm" title="2D HeatMap visualization">
-                                        <img src="../img/2d.png" class="icons">
-                                        </a>
+                                        <button type="button" class="icon_button" data-target="#2dVisual" onClick="load2dVisual();">
+                                        <a href="#" title="2 Dimensional Visual"><img src="../img/2d.png" class="icons"></a>
+                                        </button>
                                     </div>
                                     <div class="col-xs-2">
-                                        <a href="#" class="thumbnail-sm" title="3D HeatMap visualization">
-                                        <img src="../img/3d.png" class="icons">
-                                        </a>
+                                        <button type="button" class="icon_button" data-target="#3dVisual">
+                                        <a href="#" title="3 Dimensional Visual" onClick="loadDataStreams();"><img src="../img/3d.png" class="icons"></a>
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -549,29 +549,11 @@
                                 <div class="days-hours-heatmap">
                                     <!-- calibration and render type controller -->
                                     <div class="calibration" role="calibration">
-                                        <div class="group" role="example">
-                                            <svg width="120" height="17">
-                                            </svg>
-                                            <div role="description" class="description">
-                                                <label>Less</label>
-                                                <label>More</label>
-                                            </div>
-                                        </div>
-                                        <div role="toggleDisplay" class="display-control">
-                                            <div>
-                                                <input type="radio" name="displayType" checked/>
-                                                <label>count</label>
-                                            </div>
-                                            <div>
-                                                <input type="radio" name="displayType"/>
-                                                <label>daily</label> 
-                                            </div>
-                                        </div>
                                     </div>
                                     <!-- heatmap -->
                                     <svg role="heatmap" class="heatmap"></svg>
                                 </div>
-                                <script type="text/javascript" src="../js/app.js"></script>
+                                
                             </div>
                         </div>
                     </div>

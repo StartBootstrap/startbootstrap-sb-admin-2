@@ -63,6 +63,6 @@ function getQueries(){
   }
 
 $(document).ready(function () {
-    getQueries();
+
 
 });
