@@ -1,43 +1,26 @@
-.bar {
-  fill: steelblue;
+/* tab color */
+.nav-tabs>li>a {
+background-color: #666;
+  border: 1px solid #888888;
+  color:#fff;
 }
 
-.bar:hover {
-  fill: brown;
+/* active tab color */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #fff;
+  background-color: #333333; 
+  border-color: #777777;
 }
 
-.axis {
-  font: 10px sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-div.tooltip {   
-  position: absolute;           
-  text-align: center;           
-  width: 60px;                  
-  height: 28px;                 
-  padding: 2px;             
-  font: 12px sans-serif;        
-  background: lightsteelblue;   
-  border: 0px;      
-  border-radius: 8px;           
-  pointer-events: none;         
+/* hover tab color */
+.nav-tabs>li>a:hover {
+  border-color: #000000;
+  background-color: #111111;
 }
 
 body {
   width: 99.2%;
   background-image: url("img/background.png");
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
+  background-size: 101% 150%;
   background-color: #cccccc;
 }
