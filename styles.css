@@ -18,9 +18,19 @@ background-color: #666;
   background-color: #111111;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 body {
-  width: 99.2%;
   background-image: url("img/background.png");
-  background-size: 101% 150%;
-  background-color: #cccccc;
+  background-size: 100% 125%;
+  background-color: #000000;
+}
+
+.panel-danger> .panel-heading {
+  color: #000099;
+  background-color: #CCF2FF;
+  border-color: #000099;
 }

@@ -182,7 +182,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" id="importClose">Close</button>
-                        <button type="button" class="btn btn-primary" onClick="validateImportData();">Process</button>		        	
+                        <button type="button" class="btn btn-primary" onClick="validateImportData();">Process</button>                  
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -202,8 +202,8 @@
                             <div id="processing" class="tab-pane active">
                                 <div class="row" style="background-color:#C8EDFF">
                                     <div class="col-xs-2 col-md-offset-1">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton">
-                                        <a href="#" title="Filter" onClick="loadDataStreams();"><img src="../img/filter.png" class="icons"></a>
+                                        <button type="button" title="Filter" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton">
+                                        <a href="#" onClick="loadDataStreams();"><img src="../img/filter.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <!-- Modal that opens up when the user clicks on the filter button-->
@@ -217,7 +217,7 @@
                                                 <div class="modal-body">
                                                     <div class="row form-group" id="filterDataStreamDiv">
                                                         <p class="col-xs-4">Data Stream</p>
-                                                        <select class="col-xs-2" name="Stream" id="filterDataStream">
+                                                        <select class="col-xs-3" name="Stream" id="filterDataStream">
                                                             <option value="default">Stream 1</option>
                                                             <option value="choice1">Stream 2</option>
                                                             <option value="choice2">Stream 3</option>
@@ -272,8 +272,8 @@
                                     </div>
                                     <!-- /.modal -->
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#groupModal">
-                                        <a href="#" title="Group Data" onClick="loadDataStreams();"><img src="../img/pie_chart.png" class="icons"></a>
+                                        <button type="button" title="Group Data"  class="icon_button" data-toggle="modal" data-target="#groupModal">
+                                        <a href="#" onClick="loadDataStreams();"><img src="../img/pie_chart.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <!-- Modal that opens up when the user clicks on the grouping icon-->
@@ -287,7 +287,7 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <p class="col-xs-4">Data Stream</p>
-                                                        <select class="col-xs-2" name="Stream" id="groupDataStream">
+                                                        <select class="col-xs-3" name="Stream" id="groupDataStream">
                                                             <option value="default">Stream 1</option>
                                                             <option value="choice1">Stream 2</option>
                                                             <option value="choice2">Stream 3</option>
@@ -331,7 +331,9 @@
                                     </div>
                                     <!-- /.modal -->
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#aggregateModal"<a href="#" title="Aggregate Data"><img src="../img/sigma.png" class="icons"></a>
+                                        <button type="button" title="Aggregate Data" class="icon_button" data-toggle="modal" data-target="#aggregateModal">
+                                            <a href="#"><img src="../img/sigma.png" class="icons"></a>
+                                        </button>
                                     </div>
                                     <!-- Modal that opens up when the user clicks on the aggregate button-->
                                     <div class="modal fade" id="aggregateModal">
@@ -343,14 +345,15 @@
                                                 </div>
                                                 <div class="modal-body col-md-12">
                                                     <form name="aggregate_data" method="get" onSubmit="return checkAD();">
-                                                        <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
-                                                        <select name="Stream">
-                                                            <option value="default">Stream 1</option>
-                                                            <option value="choice1">Stream 2</option>
-                                                            <option value="choice2">Stream 3</option>
-                                                            <option value="choice3">Stream 4</option>
-                                                        </select>
-                                                        <p></p>
+                                                        <div class="row">
+                                                            <p class="col-xs-4">Data Stream</p>
+                                                            <select class="col-xs-3" name="Stream">
+                                                                <option value="default">Stream 1</option>
+                                                                <option value="choice1">Stream 2</option>
+                                                                <option value="choice2">Stream 3</option>
+                                                                <option value="choice3">Stream 4</option>
+                                                            </select>
+                                                        </div>
                                                         <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
                                                         <p>Aggregation Operators</p>
                                                         <div class="radio col-md-offset-1">
@@ -391,8 +394,8 @@
                                         <!-- /.modal-dialog -->
                                     </div>
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#2DModal">
-                                        <a href="#" title="2 Dimensional Data" onClick="loadDataStreams();"><img src="../img/2d.png" class="icons"></a>
+                                        <button type="button" title="2 Dimensional Data"  class="icon_button" data-toggle="modal" data-target="#2DModal">
+                                        <a href="#" onClick="loadDataStreams();"><img src="../img/2d.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <div class="modal fade" id="2DModal">
@@ -403,35 +406,39 @@
                                                     <h4 class="modal-title">2D Co-occurence</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="form-group" id="2DdataStreamDiv1" style="display:inline-block;">
-                                                        <p class="col-md-6" style="margin-left:-2%;">Data Stream</p>
-                                                        <div class="select col-md-7" style="margin-left:-10%;">
-                                                            <select class="form-control" id="2DdataStream1">
-                                                                <option></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group" id="2DdataStreamDiv2" style="display:inline-block;">
-                                                        <p class="col-md-6" style="margin-left:-2%;">Data Stream</p>
-                                                        <div class="select col-md-7" style="margin-left:-10%;">
-                                                            <select class="form-control" id="2DdataStream2">
-                                                                <option></option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <p style="margin-top:20px;">Time Lag1:</p>
-                                                    <div class="form-group" style="display:inline-block;">
-                                                        <label class="control-label">Unit</label>
-                                                        <select class="form-control" id="timeLagUnit">
-                                                            <option></option>
-                                                            <option>Second</option>
-                                                            <option>Minute</option>
-                                                            <option>Hour</option>
-                                                            <option>Day</option>
+                                                    <div class="row form-group" id="2DdataStreamDiv1">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-3" name="Stream" id="2dCoDataStream1">
+                                                            <option value="default">Stream 1</option>
+                                                            <option value="choice1">Stream 2</option>
+                                                            <option value="choice2">Stream 3</option>
+                                                            <option value="choice3">Stream 4</option>
                                                         </select>
                                                     </div>
-                                                    <div class="form-group" style="display:inline-block">
-                                                        <label for="inputNumber" class="control-label" style="margin-top:5px;">Value<input type="text" class="form-control" size="25" id="timeLagValue" placeholder="Enter Value" required></label>
+                                                    <div class="row form-group" id="2DdataStreamDiv2">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-3" name="Stream" id="2dCoDataStream2">
+                                                            <option value="default">Stream 1</option>
+                                                            <option value="choice1">Stream 2</option>
+                                                            <option value="choice2">Stream 3</option>
+                                                            <option value="choice3">Stream 4</option>
+                                                        </select>
+                                                    </div>
+                                                    <p>Time Lag:</p>
+                                                    <div class="row">
+                                                        <div class="row form-group">
+                                                            <p class="col-md-offset-1 col-xs-3">Unit</p>
+                                                            <select class="col-xs-3" name="Unit" id="timeLagUnit">
+                                                                <option value="default">Second</option>
+                                                                <option value="choice1">Minute</option>
+                                                                <option value="choice2">Hour</option>
+                                                                <option value="choice3">Day</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-offset-1 form-group" style="display:inline-block">
+                                                            <label for="inputNumber" class="control-label" style="margin-top:5px;">Value<input type="text" class="form-control" size="25" id="timeLagValue" placeholder="Enter Value" required>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -444,10 +451,10 @@
                                         <!-- /.modal-dialog -->
                                     </div>
                                     <!-- /.modal -->
-                                    <!-- Ricky 3D Occurence Icon-->							
+                                    <!-- Ricky 3D Occurence Icon-->                         
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-toggle="modal" data-target="#3dOccur">
-                                        <a href="#" title="3 Dimensional Data" onClick="loadDataStreams();"><img src="../img/3d.png" class="icons"></a>
+                                        <button type="button" title="3 Dimensional Data" class="icon_button" data-toggle="modal" data-target="#3dOccur">
+                                        <a href="#" onClick="loadDataStreams();"><img src="../img/3d.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <!-- Modal that opens up when the user clicks on the 3D Occurence button-->
@@ -469,7 +476,7 @@
                                                         <select id="3dStreams2" name="Stream 2">
                                                             <option></option>
                                                         </select>
-                                                        <label>Stream 3:</label>											
+                                                        <label>Stream 3:</label>                                            
                                                         <select id="3dStreams3" name="Stream 3">
                                                             <option></option>
                                                         </select>
@@ -555,7 +562,6 @@
                                     <!-- heatmap -->
                                     <svg role="heatmap" class="heatmap"></svg>
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
@@ -563,7 +569,7 @@
             </div>
             <div class="col-xs-3">
                 <div class="row">
-                    <div class="panel panel-info" style="margin-left:0px; width: 96%">
+                    <div class="panel panel-info" style="width: 96%">
                         <div class="panel-heading">
                             History
                         </div>
