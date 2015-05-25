@@ -17,7 +17,9 @@
         <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
         <link href="../dist/css/stylesheet.css" rel="stylesheet">
         <!-- D3 Heatmap CSS -->
-        <link href="../dist/css/style.css" rel="stylesheet">
+        <link href="../dist/css/style-heatmap.css" rel="stylesheet">
+        <!-- Background CSS -->
+        <link href="../styles.css" rel="stylesheet">
         <!-- Morris Charts CSS -->
         <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
         <!-- Custom Fonts -->
@@ -89,7 +91,7 @@
             }
         </script>
     </head>
-    <body style="width:98.9%; height:50%;">
+    <body>
         <div id="wrapper">
             <!-- Navigation -->
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -113,7 +115,7 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
                             <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -190,7 +192,7 @@
         <!-- /.modal -->
         <!-- <div id="page-wrapper"> -->
         <div class="row" style="height:175px;">
-            <div class="col-xs-9 col-md-9">
+            <div class="col-xs-9">
                 <!-- /.row -->
                 <div class="row">
                     <ul class="nav nav-tabs nav-justified" style="height:175px;">
@@ -213,9 +215,9 @@
                                                     <h4 class="modal-title">Filter Data</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="form-group" id="filterDataStreamDiv">
-                                                        <p>Data Stream</p>
-                                                        <select name="Stream" id="filterDataStream">
+                                                    <div class="row form-group" id="filterDataStreamDiv">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-2" name="Stream" id="filterDataStream">
                                                             <option value="default">Stream 1</option>
                                                             <option value="choice1">Stream 2</option>
                                                             <option value="choice2">Stream 3</option>
@@ -283,40 +285,40 @@
                                                     <h4 class="modal-title">Group Data</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="col-md-3" style="margin-left:-3%;">Data Stream</p>
-                                                    <div class="dropdown col-md-3" style="margin-left:-10%;">
-                                                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Streams<span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                                            <li role="presentation"><a href="#">Data Stream 1</a></li>
-                                                            <li role="presentation"><a href="#">Data Stream 2</a></li>
-                                                            <li role="presentation"><a href="#">Data Stream 3</a></li>
-                                                        </ul>
+                                                    <div class="row">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-2" name="Stream" id="groupDataStream">
+                                                            <option value="default">Stream 1</option>
+                                                            <option value="choice1">Stream 2</option>
+                                                            <option value="choice2">Stream 3</option>
+                                                            <option value="choice3">Stream 4</option>
+                                                        </select>
                                                     </div>
-                                                    <p class="col-md-4">Number of Groups</p>
-                                                    <div class="dropdown col-md-2" style="margin-left:-10%;">
-                                                        <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-left:-2%;">1<span class="caret"></span>
-                                                        </button>
-                                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                                                            <li role="presentation"><a href="#">1</a></li>
-                                                            <li role="presentation"><a href="#">2</a></li>
-                                                            <li role="presentation"><a href="#">3</a></li>
-                                                            <li role="presentation"><a href="#">4</a></li>
-                                                            <li role="presentation"><a href="#">5</a></li>
-                                                            <li role="presentation"><a href="#">6</a></li>
-                                                            <li role="presentation"><a href="#">7</a></li>
-                                                            <li role="presentation"><a href="#">8</a></li>
-                                                            <li role="presentation"><a href="#">9</a></li>
-                                                            <li role="presentation"><a href="#">10</a></li>
-                                                        </ul>
+                                                    <div class="row">
+                                                        <p class="col-xs-4">Number of Groups</p>
+                                                        <select class="col-xs-2" name="#">
+                                                            <option value="default">1</option>
+                                                            <option value="choice1">2</option>
+                                                            <option value="choice2">3</option>
+                                                            <option value="choice3">4</option>
+                                                            <option value="choice4">5</option>
+                                                            <option value="choice5">6</option>
+                                                            <option value="choice6">7</option>
+                                                            <option value="choice7">8</option>
+                                                            <option value="choice8">9</option>
+                                                            <option value="choice9">10</option>
+                                                        </select>
                                                     </div>
-                                                    <div class="row"></div>
-                                                    <p>Method:</p>
-                                                    <div class="radio col-md-offset-1">
-                                                        <label style="margin-right:100px;"><input type="radio" name="optradio">Threshold</label>
-                                                        <label><input type="radio" name="optradio">K-mean</label>
+                                                    <div class="row">
+                                                        <p class="col-xs-4">Method:</p>
+                                                        <div class="radio col-xs-offset-1">
+                                                            <label style="margin-right:100px;"><input type="radio" name="optradio">Threshold</label>
+                                                            <label><input type="radio" name="optradio">K-mean</label>
+                                                        </div>
                                                     </div>
-                                                    Filter by price interval: <b>$ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 1000</b>
+                                                    <div class="row">
+                                                        <p class="col-md-12">Filter by price interval: <b>$ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 1000</b></p>
+                                                    </div>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -534,7 +536,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12" style="margin-top:-4%; margin-left:.5%">
-                        <div class="panel panel-default">
+                        <div class="panel panel-danger">
                             <div class="panel-heading">
                                 Analyst Dashboard
                             </div>
@@ -561,7 +563,7 @@
             </div>
             <div class="col-xs-3">
                 <div class="row">
-                    <div class="panel panel-default" style="margin:0px;">
+                    <div class="panel panel-info" style="margin-left:0px; width: 96%">
                         <div class="panel-heading">
                             History
                         </div>

@@ -33,3 +33,11 @@ div.tooltip {
   border-radius: 8px;           
   pointer-events: none;         
 }
+
+body {
+  width: 99.2%;
+  background-image: url("img/background.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-color: #cccccc;
+}
