@@ -47,20 +47,14 @@ function validateImportData(){
 function loadDataStreams(){
 	// alert(dataStream1);
 	for (var i = 0; i < importedData.length; i++) {
-
 		var filterOption = document.createElement("option");
 	   	var filterText = document.createTextNode(importedData[i]);
 	   	filterOption.appendChild(filterText);
-
-	   
-		// var 2Doption = document.createElement("option");
-	   	// var 2DoptionText = document.createTextNode(importedData[i]);
-	   	// 2Doption.appendChild(2DoptionText);
-
+		 
 	   	// then append it to the select element
-	   	document.getElementById('filterDataStream').appendChild(filterOption);
-	   	// document.getElementById('2DdataStream1').appendChild(2Doption);
-	   	// document.getElementById('2DdataStream2').appendChild(opt);
+		//appendChild is getting overwritten everytime it's called, that's why data only appears in groupDataStream.
+		document.getElementById('filterDataStream').appendChild(filterOption);
+		
 	};
 	// then append the select to an element in the dom
 
