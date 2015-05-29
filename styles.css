@@ -1,19 +1,19 @@
 /* tab color */
-.nav-tabs>li>a {
+#bookmarks>li>a {
 background-color: #666;
   border: 1px solid #888888;
   color:#fff;
 }
 
 /* active tab color */
-.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+#bookmarks>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
   color: #fff;
   background-color: #333333; 
   border-color: #777777;
 }
 
 /* hover tab color */
-.nav-tabs>li>a:hover {
+#bookmarks>li>a:hover {
   border-color: #000000;
   background-color: #111111;
 }
