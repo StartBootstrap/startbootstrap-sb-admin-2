@@ -60,9 +60,7 @@ function getQueries(){
     return d;
   }
 
-  }
+}
 
 $(document).ready(function () {
-
-
 });

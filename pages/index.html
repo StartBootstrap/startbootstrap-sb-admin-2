@@ -563,7 +563,11 @@
                                     <div class="calibration" role="calibration">
                                     </div>
                                     <!-- heatmap -->
-                                    <svg role="heatmap" class="heatmap"></svg>
+                                    <div id="title"></div>
+                                    <div id="url"></div>
+                                    <div role="heatmap" id="heatmap"></div>
+                                    <div role="slider" id="slider"></div>
+                                    <div role="legend" id="legend"></div>
                                 </div>
                             </div>
                         </div>
@@ -594,13 +598,3 @@
         </div>
     </body>
 </html>
-<script>
-    var data; //global
-    
-    d3.json("../queries/queries.json", function(error, json){
-       if (error) return console.warn(error);
-       data = json;
-       console.log(data)
-       }
-    );
-</script>

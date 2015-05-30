@@ -1,172 +1,99 @@
-function load2dVisual(){
-  $('.calibration').html('<div class="group" role="example">'+
-                              '<svg width="120" height="17">'+
-                              '</svg>'+
-                              '<div role="description" class="description">'+
-                                  '<label>Less</label>'+
-                                  '<label>More</label>'+
-                              '</div>'+
-                          '</div>'+
-                          '<div role="toggleDisplay" class="display-control">'+
-                              '<div>'+
-                                  '<input type="radio" name="displayType" checked/>'+
-                                  '<label>count</label>'+
-                              '</div>'+
-                              '<div>'+
-                                  '<input type="radio" name="displayType"/>'+
-                                  '<label>daily</label> '+
-                              '</div>'+
-                          '</div>');
-  //UI configuration
-  var itemSize = 18,
-    cellSize = itemSize-1,
-    width = 800,
-    height = 800,
-    margin = {top:20,right:20,bottom:20,left:25};
+function load2dVisual() {
+  d3.json('../queries/queries.json', function(error, data) {
+      data = data["queries"][0].output["cooccurrence"];
+      var cells, colorScale, colors, corXscale, corYscale, corZscale, corr, corrplot, drawScatter, h, i, innerPad, j, nGroup, nind, nvar, pad, scatterplot, svg, totalh, totalw, w;
+      h = 550;
+      w = h;
+      pad = {
+          left: 20,
+          top: 5,
+          right: 5,
+          bottom: 70
+      };
+      innerPad = 5;
+      totalh = h + pad.top + pad.bottom;
+      totalw = (w + pad.left + pad.right) * 2;
+      // remove previous content
+      d3.select("svg").remove();
+      //add an svg to the div
+      svg = d3.select("#heatmap").append("svg").attr("height", totalh).attr("width", totalw);
+      //add one group for correlation matrix
+      corrplot = svg.append("g").attr("id", "corrplot").attr("transform", "translate(" + pad.left + "," + pad.top + ")");
+      //add another group for scatter plot
+      scatterplot = svg.append("g").attr("id", "scatterplot").attr("transform", "translate(" + (pad.left * 2 + pad.right + w) + "," + pad.top + ")");
+      nind = data.length;
+      nvar = data[0].length;
 
-  //formats
-  var hourFormat = d3.time.format('%H'),
-    dayFormat = d3.time.format('%j'),
-    timeFormat = d3.time.format('%Y-%m-%dT%X'),
-    monthDayFormat = d3.time.format('%m.%d');
+      corXscale = d3.scale.ordinal().domain(d3.range(nvar)).rangeBands([0, w]);
+      corYscale = d3.scale.ordinal().domain(d3.range(nvar)).rangeBands([h, 0]);
+      corZscale = d3.scale.linear().domain([0, 1]).range([0, 1]);
 
-  //data vars for rendering
-  var dateExtent = null,
-    data = null,
-    dayOffset = 0,
-    colorCalibration = ['#f6faaa','#FEE08B','#FDAE61','#F46D43','#D53E4F','#9E0142'],
-    dailyValueExtent = {};
+      corr = [];
+      var pixelvalues = [];
+      var index = 0;
 
-  //axises and scales
-  var axisWidth = 0 ,
-    axisHeight = itemSize*24,
-    xAxisScale = d3.time.scale(),
-    xAxis = d3.svg.axis()
-      .orient('top')
-      .ticks(d3.time.days,3)
-      .tickFormat(monthDayFormat),
-    yAxisScale = d3.scale.linear()
-      .range([0,axisHeight])
-      .domain([0,24]),
-    yAxis = d3.svg.axis()
-      .orient('left')
-      .ticks(5)
-      .tickFormat(d3.format('02d'))
-      .scale(yAxisScale);
+      for (i in data) {
+          for (j in data[i]) {
+              pixelvalues[index] = data[i][j];
+              index++;
+              corr.push({
+                  row: i,
+                  col: j,
+                  value: data[i][j]
+              });
+          }
+      }
 
-  initCalibration();
+      ///////////Heatmap Colors /////////////////////////////////////////////////////////
+      /*var colours = ["#6363FF", "#6373FF", "#63A3FF", "#63E3FF", "#63FFFB", "#63FFCB",
+                     "#63FF9B", "#63FF6B", "#7BFF63", "#BBFF63", "#DBFF63", "#FBFF63", 
+                     "#FFD363", "#FFB363", "#FF8363", "#FF7363", "#FF6364"]; */
+      var colours = ["#FFFFCC", "#FFFF99", "#FFFF66", "#FFFF33", "#FFFF00", "#FFE066",
+          "#FFCC00", "#FFCC66", "#FF9900", "#FF9933", "#FF9966",
+          "#FF6600", "#FF3300", "#CC3300"
+      ]; 
 
-  var svg = d3.select('[role="heatmap"]');
-  var heatmap = svg
-    .attr('width',width)
-    .attr('height',height)
-  .append('g')
-    .attr('width',width-margin.left-margin.right)
-    .attr('height',height-margin.top-margin.bottom)
-    .attr('transform','translate('+margin.left+','+margin.top+')');
-  var rect = null;
+      var heatmapColour = d3.scale.linear()
+          .domain(d3.range(0, 1, 1.0 / (colours.length -1)))
+          .range(colours);
+      //var c = d3.scale.linear().domain(d3.extent(pixelvalues)).range([0,1]);
+      var c = d3.scale.linear().domain(d3.extent([0, 1])).range([0, 3]);
+      ///////////////////////////////////////////////////////////////////////////////////
 
-  d3.json('../js/pm25.json',function(err,data){
-    data = data.data;
-    data.forEach(function(valueObj){
-      valueObj['date'] = timeFormat.parse(valueObj['timestamp']);
-      var day = valueObj['day'] = monthDayFormat(valueObj['date']);
-
-      var dayData = dailyValueExtent[day] = (dailyValueExtent[day] || [1000,-1]);
-      var pmValue = valueObj['value']['PM2.5'];
-      dayData[0] = d3.min([dayData[0],pmValue]);
-      dayData[1] = d3.max([dayData[1],pmValue]);
-    });
-
-    dateExtent = d3.extent(data,function(d){
-      return d.date;
-    });
-
-    axisWidth = itemSize*(dayFormat(dateExtent[1])-dayFormat(dateExtent[0])+1);
-
-    //render axises
-    xAxis.scale(xAxisScale.range([0,axisWidth]).domain([dateExtent[0],dateExtent[1]]));  
-    svg.append('g')
-      .attr('transform','translate('+margin.left+','+margin.top+')')
-      .attr('class','x axis')
-      .call(xAxis)
-    .append('text')
-      .text('date')
-      .attr('transform','translate('+axisWidth+',-10)');
-
-    svg.append('g')
-      .attr('transform','translate('+margin.left+','+margin.top+')')
-      .attr('class','y axis')
-      .call(yAxis)
-    .append('text')
-      .text('time')
-      .attr('transform','translate(-10,'+axisHeight+') rotate(-90)');
-
-    //render heatmap rects
-    dayOffset = dayFormat(dateExtent[0]);
-    rect = heatmap.selectAll('rect')
-      .data(data)
-    .enter().append('rect')
-      .attr('width',cellSize)
-      .attr('height',cellSize)
-      .attr('x',function(d){
-        return itemSize*(dayFormat(d.date)-dayOffset);
-      })
-      .attr('y',function(d){            
-        return hourFormat(d.date)*itemSize;
-      })
-      .attr('fill','#ffffff');
-
-    rect.filter(function(d){ return d.value['PM2.5']>0;})
-      .append('title')
-      .text(function(d){
-        return monthDayFormat(d.date)+' '+d.value['PM2.5'];
+      cells = corrplot.selectAll("empty").data(corr).enter().append("rect").attr("class", "cell").attr("x", function(d) {
+          return corXscale(d.col);
+      }).attr("y", function(d) {
+          return corYscale(d.row);
+      }).attr("width", corXscale.rangeBand()).attr("height", corYscale.rangeBand()).attr("fill", function(d) {
+          return heatmapColour(c(d.value)); //instead of corZscale(d.value)
+      }).attr("stroke", "none").attr("stroke-width", 1).on("mouseover", function(d) {
+          d3.select(this).attr("stroke", "black");
+          corrplot.append("text").attr("id", "corrtext").text(d3.format(".3f")(d.value)).attr("x", function() {
+              var mult;
+              mult = -1;
+              if (d.col < nvar / 2) {
+                  mult = +1;
+              }
+              return corXscale(d.col) + corXscale.rangeBand();
+              //return corXscale(d.col) + mult * corXscale.rangeBand() * 5;
+          }).attr("y", function() {
+              var mult;
+              mult = +1;
+              if (d.row < nvar / 2) {
+                  mult = -1;
+              }
+              return corYscale(d.row) + 0.5 * corYscale.rangeBand();
+              //return corYscale(d.row) + (mult + 0.5) * corYscale.rangeBand() * 2;
+          }).attr("fill", "black").attr("dominant-baseline", "middle").attr("text-anchor", "middle").style("font-weight", "bold");
+          corrplot.append("text").attr("class", "corrlabel").attr("x", corXscale(d.col)+12).attr("y", h + pad.bottom * 0.2).text(d.col).attr("dominant-baseline", "middle").attr("text-anchor", "middle").attr("font-size", "13px");
+          return corrplot.append("text").attr("class", "corrlabel").attr("y", corYscale(d.row)+12).attr("x", -pad.left * 0.7).text(d.row).attr("dominant-baseline", "middle").attr("text-anchor", "middle").attr("font-size", "13px");
+      }).on("mouseout", function() {
+          d3.selectAll("text.corrlabel").remove();
+          d3.selectAll("text#corrtext").remove();
+          return d3.select(this).attr("stroke", "none");
       });
 
-    renderColor();
+      corrplot.append("rect").attr("height", h).attr("width", w).attr("fill", "none").attr("stroke", "black").attr("stroke-width", 1).attr("pointer-events", "none");
+      return d3.select("#legend").style("opacity", 1);
   });
-
-  function initCalibration(){
-    d3.select('[role="calibration"] [role="example"]').select('svg')
-      .selectAll('rect').data(colorCalibration).enter()
-    .append('rect')
-      .attr('width',cellSize)
-      .attr('height',cellSize)
-      .attr('x',function(d,i){
-        return i*itemSize;
-      })
-      .attr('fill',function(d){
-        return d;
-      });
-
-    //bind click event
-    d3.selectAll('[role="calibration"] [name="displayType"]').on('click',function(){
-      renderColor();
-    });
-  }
-
-  function renderColor(){
-    var renderByCount = document.getElementsByName('displayType')[0].checked;
-
-    rect
-      .filter(function(d){
-        return (d.value['PM2.5']>=0);
-      })
-      .transition()
-      .delay(function(d){      
-        return (dayFormat(d.date)-dayOffset)*15;
-      })
-      .duration(500)
-      .attrTween('fill',function(d,i,a){
-        //choose color dynamicly      
-        var colorIndex = d3.scale.quantize()
-          .range([0,1,2,3,4,5])
-          .domain((renderByCount?[0,500]:dailyValueExtent[d.day]));
-
-        return d3.interpolate(a,colorCalibration[colorIndex(d.value['PM2.5'])]);
-      });
-  }
-  
-  //extend frame height in `http://bl.ocks.org/`
-  d3.select(self.frameElement).style("height", "600px");
 }
