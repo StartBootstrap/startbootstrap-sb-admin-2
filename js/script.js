@@ -1,5 +1,5 @@
 var importedData = new Array();
-// var dataStream1 = document.getElementById("2DdataStream1");
+var dataStream1 = document.getElementById("2DdataStream1");
 
 
 function validateImportData(){
@@ -365,7 +365,7 @@ function processFilter(){
 function validate2DInput(){
 	
 	var dataStream2 = document.getElementById("2DdataStream2");
-	if (!isValidInput(dataStream1.value)){
+	/*if (!isValidInput(dataStream1.value)){
 		dataStream1.parentNode.parentNode.className = "form-group has-error";
 		$(dataStream1).on("change", function(){
 			if (isValidInput(dataStream1.value)){
@@ -401,7 +401,8 @@ function validate2DInput(){
 				timeLagUnit.parentNode.className = "control-label";
 			}
 		})
-	}
+	}*/
+	document.getElementById("2dProcessClose").click();
 }
 
 

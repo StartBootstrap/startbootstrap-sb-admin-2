@@ -409,22 +409,36 @@
                                                     <h4 class="modal-title">2D Co-occurence</h4>
                                                 </div>
                                                 <div class="modal-body">
+                                                    <div class="row form-group" id="2Dqid">
+                                                        <p class="col-xs-4">QID</p>
+                                                        <select class="col-xs-3" name="2dqid" id="2DqidNumber">
+                                                            <option value="default">1</option>
+                                                            <option value="choice1">2</option>
+                                                            <option value="choice2">3</option>
+                                                            <option value="choice3">4</option>
+                                                            <option value="choice4">5</option>
+                                                            <option value="choice5">6</option>
+                                                            <option value="choice6">7</option>
+                                                            <option value="choice7">8</option>
+                                                            <option value="choice8">9</option>
+                                                        </select>
+                                                    </div>
                                                     <div class="row form-group" id="2DdataStreamDiv1">
                                                         <p class="col-xs-4">Data Stream</p>
                                                         <select class="col-xs-3" name="2dStream1" id="2dCoDataStream1">
-                                                            <option value="default">Stream 1</option>
-                                                            <option value="choice1">Stream 2</option>
-                                                            <option value="choice2">Stream 3</option>
-                                                            <option value="choice3">Stream 4</option>
+                                                            <option value="default">es1</option>
+                                                            <option value="choice1">es2</option>
+                                                            <option value="choice2">es3</option>
+                                                            <option value="choice3">es4</option>
                                                         </select>
                                                     </div>
                                                     <div class="row form-group" id="2DdataStreamDiv2">
                                                         <p class="col-xs-4">Data Stream</p>
                                                         <select class="col-xs-3" name="2dStream2" id="2dCoDataStream2">
-                                                            <option value="default">Stream 1</option>
-                                                            <option value="choice1">Stream 2</option>
-                                                            <option value="choice2">Stream 3</option>
-                                                            <option value="choice3">Stream 4</option>
+                                                            <option value="default">es1</option>
+                                                            <option value="choice1">es2</option>
+                                                            <option value="choice2">es3</option>
+                                                            <option value="choice3">es4</option>
                                                         </select>
                                                     </div>
                                                     <p>Time Lag:</p>
@@ -445,7 +459,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="2dProcessClose">Close</button>
                                                     <button type="button" class="btn btn-primary" onClick="validate2DInput()">Process</button>
                                                 </div>
                                             </div>
@@ -563,11 +577,7 @@
                                     <div class="calibration" role="calibration">
                                     </div>
                                     <!-- heatmap -->
-                                    <div id="title"></div>
-                                    <div id="url"></div>
                                     <div role="heatmap" id="heatmap"></div>
-                                    <div role="slider" id="slider"></div>
-                                    <div role="legend" id="legend"></div>
                                 </div>
                             </div>
                         </div>

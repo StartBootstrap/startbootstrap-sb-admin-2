@@ -1,6 +1,7 @@
 function load2dVisual() {
   d3.json('../queries/queries.json', function(error, data) {
-      data = data["queries"][0].output["cooccurrence"];
+    var qid = $('#2DqidNumber>option:selected').text()
+      data = data["queries"][qid].output["cooccurrence"];
       var cells, colorScale, colors, corXscale, corYscale, corZscale, corr, corrplot, drawScatter, h, i, innerPad, j, nGroup, nind, nvar, pad, scatterplot, svg, totalh, totalw, w;
       h = 550;
       w = h;
@@ -57,7 +58,7 @@ function load2dVisual() {
           .domain(d3.range(0, 1, 1.0 / (colours.length -1)))
           .range(colours);
       //var c = d3.scale.linear().domain(d3.extent(pixelvalues)).range([0,1]);
-      var c = d3.scale.linear().domain(d3.extent([0, 1])).range([0, 3]);
+      var c = d3.scale.linear().domain(d3.extent([0, 1])).range([0, 1]);
       ///////////////////////////////////////////////////////////////////////////////////
 
       cells = corrplot.selectAll("empty").data(corr).enter().append("rect").attr("class", "cell").attr("x", function(d) {
