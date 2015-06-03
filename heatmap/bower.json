@@ -1,0 +1,31 @@
+{
+    "name": "heatmap.js-amd",
+    "version": "2.0.0",
+    "description": "Dynamic JavaScript Heatmaps for the Web",
+    "main": "build/heatmap.min.js",
+    "homepage": "http://www.patrick-wied.at/static/heatmapjs/",
+    "authors": [
+        "Patrick Wied <contact@patrick-wied.at>"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pa7/heatmap.js.git"
+    },
+    "keywords": [
+        "heatmap", "heat map", "heatmaps"
+    ],
+    "main": [
+      "build/heatmap.js",
+      "plugins/gmaps-heatmap.js",
+      "plugins/leaflet-heatmap.js",
+      "plugins/svg-area-heatmap.js"
+    ],
+    "license": "MIT",
+    "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "test",
+      "tests"
+    ]
+}

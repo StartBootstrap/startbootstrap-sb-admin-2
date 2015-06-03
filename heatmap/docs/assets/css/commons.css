@@ -1,0 +1,41 @@
+html, body, p, div { margin:0; padding:0; }
+.wrapper { width:840px; position:relative; margin:auto; }
+
+.breadcrumb-trail {
+  list-style:none;
+  list-style-type:none;
+  display:block;
+  font-size:10pt;
+  margin-top:0;
+  margin-bottom:0;
+  padding-left:0;
+}
+.breadcrumb-trail li {
+  display:inline-block;
+  padding:5px;
+  margin-right:15px;
+  position:relative;
+  line-height:normal;
+}
+.breadcrumb-trail a {
+  text-decoration:none;
+  color:blue;
+  font-weight:400;
+  padding-bottom:1px;
+  
+}
+.breadcrumb-trail a:hover {
+  border-bottom:1px solid blue;
+}
+.breadcrumb-trail li:before{
+  content:'\0BB';
+  position:absolute;
+  left:-14px;
+  top:0px;
+  font-weight:normal;
+  font-size:14pt;
+}
+.breadcrumb-trail li:first-child:before {
+  content:'';
+  margin-left:0;
+}

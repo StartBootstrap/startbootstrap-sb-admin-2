@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>SvgAreaHeatmap Plugin Example</title>
+    <style>
+      body, html { margin:0; padding:0; height:100%; font-family:Arial;}
+      #heatmapContainerWrapper { width:100%; height:100%; position:absolute; }
+      #heatmapContainer { width:100%; height:100%;}
+      h1 { position:absolute; background:white; padding:10px;}
+      img { background:black; }
+    </style>
+  </head>
+  <body>
+    <h1>SVG Area Heatmap Plugin Example</h1>
+    <div id="heatmapContainerWrapper">
+      <div id="heatmapContainer">
+
+      </div>
+        
+    </div>
+    <script src="/build/heatmap.js"></script>
+    <script src="/plugins/svg-area-heatmap.js"></script>
+    <script>
+      window.onload = function() {
+        // create heatmap instance
+        var heatmap = h337.create({
+          container: document.getElementById('heatmapContainer'),
+          svgUrl: 'austria.svg',
+          plugin: 'SvgAreaHeatmap'
+        });
+
+        window.heatmap = heatmap;
+
+        window.randomize = function(){
+          var max = (Math.random()*100) >> 0;
+
+          var dataPoints = [];
+          var dataKeys = ['oberoesterreich', 'niederoesterreich', 'wien', 'burgenland', 'kaernten', 'steiermark', 'tirol', 'vorarlberg', 'salzburg'];
+
+          for (var i = 0; i < dataKeys.length; i++) {
+            dataPoints.push({ id: dataKeys[i], value: max - (Math.random() * max/2) >> 0 });
+          }
+
+          heatmap.setData({
+            max: max,
+            min: 0,
+            data: dataPoints
+          });
+
+
+        };
+        randomize();
+      };
+    </script>
+  </body>
+</html>

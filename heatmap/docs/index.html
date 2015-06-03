@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>heatmap.js Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/commons.css" />
+    <link rel="stylesheet" href="assets/css/docs.css" />
+    <link rel="stylesheet" href="assets/css/prism.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>heatmap.js Documentation</h1>
+      <ol class="breadcrumb-trail">
+        <li><a href="//www.patrick-wied.at/static/heatmapjs/" title="heatmap.js dynamic heatmaps for the web">heatmap.js</a></li>
+        <li>Documentation</li>
+      </ol>
+      <div id="message">
+        <h3 id="activate-msg">What is it about the colors in the overview?</h3>
+        <div id="msg-content">
+          <div class="msg">
+            <u style="font-weight:bold;">The colors in the overview is a prioritization of API functions:</u> <br /><strong class="hot-doc highlight"><u>red</u> **hot docs**</strong> :  most commonly used functions  ;-)<br /><strong class="avg-doc highlight"><u>green</u></strong> : used for customized implementations<br /><strong class="cold-doc highlight"><u>blue</u></strong> : rarely used functionality
+          </div>
+          <div id="btn-confirm">got it, thank you</div>
+        </div>
+      </div>
+      <section id="index">
+        <div id="index-h337">
+        <h2>h337</h2>
+        <ul>
+          <li class="hot-doc"><a href="#h337-create">create(configObject)</a></li>
+          <li class="avg-doc"><a href="#h337-register">register(pluginKey, plugin)</a></li>
+        </ul>
+        </div>
+        <div id="index-heatmapInstance">
+        <h2>heatmapInstance</h2>
+        <ul>
+          <li class="hot-doc"><a href="#heatmap-addData">addData(object|array)</a></li>
+          <li class="hot-doc"><a href="#heatmap-setData">setData(object)</a></li>
+          <li class="cold-doc"><a href="#heatmap-setDataMax">setDataMax(number)</a></li>
+          <li class="cold-doc"><a href="#heatmap-setDataMin">setDataMin(number)</a></li>
+          <li class="avg-doc"> <a href="#heatmap-configure">configure(configObject)</a></li>
+          <li class="avg-doc"> <a href="#heatmap-getValueAt">getValueAt(object)</a></li>
+          <li class="hot-doc"> <a href="#heatmap-getData">getData()</a></li>
+          <li class="avg-doc"> <a href="#heatmap-getDataURL">getDataURL()</a></li>
+          <li class="cold-doc"><a href="#heatmap-repaint">repaint()</a></li>
+        </ul>
+        </div>
+
+      </section>
+      <section>
+        <h2>h337</h2>
+        <div class="description">
+          "h337" is the name of the global object registered by heatmap.js. You can use it to create heatmap instances
+        </div>
+        <div class="functions">
+          <div class="fn">
+            <h3 id="h337-create">h337.create(configObject)</h3>
+            <div class="description">
+              Returns a <strong>heatmapInstance</strong>.<br /><br />
+              Use h337.create to create heatmap instances. A Heatmap can be customized with the configObject. <br />The configObject parameter is required. <br /><br/><strong><u>Possible configuration properties:</u></strong><br />
+              <ul>
+                <li><strong>container</strong> (DOMNode) *required* <br /> A DOM node where the heatmap canvas should be appended (heatmap will adapt to the node's size)</li>
+                <li><strong>backgroundColor</strong> (string) *optional*<br />
+                 A background color string in form of hexcode, color name, or rgb(a)</li>
+                <li><strong>gradient</strong> (object) *optional*<br />
+                 An object that represents the gradient (syntax: number string [0,1] : color string), check out the example </li>
+                <li><strong>radius</strong> (number) *optional*<br />The radius each datapoint will have (if not specified on the datapoint itself)</li>
+                <li><strong>opacity</strong> (number) [0,1] *optional* default = .6<br />A global opacity for the whole heatmap. This overrides maxOpacity and minOpacity if set!</li>
+                <li><strong>maxOpacity</strong> (number) [0,1] *optional*<br />The maximal opacity the highest value in the heatmap will have. (will be overridden if opacity set)</li>
+                <li><strong>minOpacity</strong>(number) [0,1] *optional*<br />The minimum opacity the lowest value in the heatmap will have (will be overridden if opacity set)</li>
+                <li><strong>onExtremaChange</strong> function callback<br />Pass a callback to receive extrema change updates. Useful for DOM legends.</li>
+                <li><strong>blur</strong> (number) [0,1] *optional* default = 0.85<br />The blur factor that will be applied to all datapoints. The higher the blur factor is, the smoother the gradients will be</li>
+                <li><strong>xField</strong> (string) *optional* default = "x"<br />The property name of your x coordinate in a datapoint</li>
+                <li><strong>yField</strong> (string) *optional* default = "y"<br />The property name of your y coordinate in a datapoint</li>
+                <li><strong>valueField</strong> (string) *optional* default = "value"<br />The property name of your y coordinate in a datapoint</li>
+              </ul>
+              <h4>Example configurations</h4>
+              Simple configuration with standard gradient
+              <pre><code class="language-javascript">// create configuration object
+var config = {
+  container: document.getElementById('heatmapContainer'),
+  radius: 10,
+  maxOpacity: .5,
+  minOpacity: 0,
+  blur: .75
+};
+// create heatmap with configuration
+var heatmapInstance = h337.create(config);</code></pre>
+Custom gradient configuration
+              <pre><code class="language-javascript">// create configuration object
+var config = {
+  container: document.getElementById('heatmapContainer'),
+  radius: 10,
+  maxOpacity: .5,
+  minOpacity: 0,
+  blur: .75,
+  gradient: {
+    // enter n keys between 0 and 1 here
+    // for gradient color customization
+    '.5': 'blue',
+    '.8': 'red',
+    '.95': 'white'
+  }
+};
+var heatmapInstance = h337.create(config);</code></pre>
+  
+            </div>
+          </div>
+          <!-- <div class="fn">
+            <h3 id="h337-register">h337.register(pluginKey, plugin)</h3>
+            <div class="description">
+              to be written
+            </div>
+          </div> -->
+        </div>
+      </section>
+      <section>
+        <h2>heatmapInstance</h2>
+        <div class="description">
+          Heatmap instances are returned by h337.create. A heatmap instance has its own internal datastore and renderer where you can manipulate data. As a result the heatmap gets updated (either partially or completely, depending on whether it's necessary).
+        </div>
+        <div class="functions">
+          <div class="fn">
+            <h3 id="heatmap-addData">heatmapInstance.addData(object|array)</h3>
+            <div class="description">
+              Returns <strong>heatmapInstance</strong><br /><br />
+              Use this functionality only for adding datapoints on the fly, not for data initialization! heatmapInstance.addData adds a single or multiple datapoints to the heatmaps' datastore. 
+              <pre><code class="language-javascript">// a single datapoint
+var dataPoint = { 
+  x: 5, // x coordinate of the datapoint, a number 
+  y: 5, // y coordinate of the datapoint, a number
+  value: 100 // the value at datapoint(x, y)
+};
+heatmapInstance.addData(dataPoint);
+
+// multiple datapoints (for data initialization use setData!!)
+var dataPoints = [dataPoint, dataPoint, dataPoint, dataPoint];
+heatmapInstance.addData(dataPoints);</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-setData">heatmapInstance.setData(object)</h3>
+            <div class="description">
+              Returns <strong>heatmapInstance</strong><br /><br />
+              Initializes a heatmap instance with a dataset. <strong>"min"</strong>, <strong>"max"</strong>, and <strong>"data"</strong> properties are required.<br />setData removes all previously existing points from the heatmap instance and re-initializes the datastore.
+              <pre><code class="language-javascript">var data = {
+  max: 100,
+  min: 0,
+  data: [
+    dataPoint, dataPoint, dataPoint, dataPoint
+  ]
+};
+heatmapInstance.setData(data);</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-setDataMax">heatmapInstance.setDataMax(number)</h3>
+            <div class="description">
+              Returns <strong>heatmapInstance</strong><br /><br />
+              Changes the upper bound of your dataset and triggers a complete rerendering.
+              <pre><code class="language-javascript">heatmapInstance.setDataMax(200);
+// setting the maximum value triggers a complete rerendering of the heatmap
+heatmapInstance.setDataMax(100);</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-setDataMin">heatmapInstance.setDataMin(number)</h3>
+            <div class="description">
+              Returns <strong>heatmapInstance</strong><br /><br />
+              Changes the lower bound of your dataset and triggers a complete rerendering.
+              <pre><code class="language-javascript">heatmapInstance.setDataMin(10);
+// setting the minimum value triggers a complete rerendering of the heatmap
+heatmapInstance.setDataMin(0);</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-configure">heatmapInstance.configure(configObject)</h3>
+            <div class="description">
+              Returns <strong>heatmapInstance</strong><br /><br />
+              Reconfigures a heatmap instance after it has been initialized. Triggers a complete rerendering.
+              <pre><code class="language-javascript">var nuConfig = {
+  radius: 10,
+  maxOpacity: .5,
+  minOpacity: 0,
+  blur: .75
+};
+heatmapInstance.configure(nuConfig);</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-getValueAt">heatmapInstance.getValueAt(object)</h3>
+            <div class="description">
+              Returns <strong>value at datapoint position</strong><br /><br />
+              Note: The returned value is an interpolated value based on the gradient blending if point is not in store
+              <pre><code class="language-javascript">heatmapInstance.addData({ x: 10, y: 10, value: 100});
+// get the value at x=10, y=10
+heatmapInstance.getValueAt({ x: 10, y: 10 }); // returns 100</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-getData">heatmapInstance.getData()</h3>
+            <div class="description">
+              Returns <strong>a persistable and reimportable (with setData) JSON object</strong><br /><br />
+              <pre><code class="language-javascript">var currentData = heatmapInstance.getData();
+// now let's create a new instance and set the data
+var heatmap2 = h337.create(config);
+heatmap2.setData(currentData); // now both heatmap instances have the same content</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-getDataURL">heatmapInstance.getDataURL()</h3>
+            <div class="description">
+              Returns <strong>dataURL string</strong><br /><br />
+              The returned value is the base64 encoded dataURL of the heatmap instance.
+              <pre><code class="language-javascript">heatmapInstance.getDataURL(); // data:image/png;base64...
+// ready for saving locally or on the server</code></pre>
+            </div>
+          </div>
+          <div class="fn">
+            <h3 id="heatmap-repaint">heatmapInstance.repaint()</h3>
+            <div class="description">
+              Returns <strong>heatmapInstance</strong><br /><br />
+              Repaints the whole heatmap canvas
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script src="assets/js/prism.js"></script>
+    <script>
+      var docs = (function() {
+
+        //delete localStorage['readTheDocs'];
+
+        function $(id) {
+          return document.getElementById(id);
+        };
+
+        function initializeDocs () {
+          var showMessage = false;
+
+          if (!localStorage['readTheDocs']) {
+            showMessage = true;
+          }
+          $('btn-confirm').onclick = function() {
+              localStorage['readTheDocs'] = true;
+              $('msg-content').classList.add('animate');
+              $('msg-content').classList.add('hide');
+          };
+          if (!showMessage) {
+            $('msg-content').classList.add('hide');
+            // dirty hack ;-)
+            setTimeout(function() { $('msg-content').classList.add('animate'); }, 100);
+          }
+
+          $('activate-msg').onclick = function() {
+            $('msg-content').classList.remove('hide');
+          }
+
+
+          // initialize and add feedback buttons
+
+        };
+
+
+        return {
+          init: initializeDocs
+        }
+      }());
+      window.onload = function() {
+        docs.init();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "voxel",
+  "description": "tools to work with voxel generation and chunking in javascript",
+  "version": "0.5.0",
+  "main": "index.js",
+  "dependencies": {
+    "inherits": "1.0.0",
+    "ndarray": "~1.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/maxogden/voxel.git"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": {
+    "name": "Max Ogden",
+    "email": "max@maxogden.com"
+  },
+  "license": "MIT",
+  "engine": {
+    "node": ">=0.6.0"
+  },
+  "devDependencies": {
+    "microtime": "~0.3.3",
+    "tape": "0.2.2"
+  }
+}
