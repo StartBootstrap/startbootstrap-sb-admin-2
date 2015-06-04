@@ -1,63 +1,46 @@
 var importedData = new Array();
-var dataStream1 = document.getElementById("2DdataStream1");
+var importedDataSize = importedData.length;
+var isDataImported = false;
+var HeatMapData = new Array();
+var outputPath3D = null;
 
 
-function validateImportData(){
-	var lifeEvents = document.getElementById("lifeEvents");
-	var environmental = document.getElementById("environmental");
-	var traffic = document.getElementById("traffic");
-	var socialMedia = document.getElementById("socialMedia");
-
-	if (isValidInput(lifeEvents.value)){
-		// if not in the array
-		if ($.inArray(lifeEvents.value, importedData) == -1){
-			importedData.push(lifeEvents.value);
-		} else{
-			alert("life event data stream already imported");
-		}
-	}
-	
-	if (isValidInput(environmental.value)){
-		if ($.inArray(environmental.value, importedData) == -1){
-			importedData.push(environmental.value);
-		} else{
-			alert("environmental data stream already imported");
-		}
-	}
-	
-	
-	if (isValidInput(traffic.value)){
-		if ($.inArray(traffic.value, importedData) == -1){
-			importedData.push(traffic.value);
-		} else{
-			alert("traffic data stream already imported");
-		}
-	}
-
-	if (isValidInput(socialMedia.value)){
-		if ($.inArray(socialMedia.value, importedData) == -1){
-			importedData.push(socialMedia.value);
-		} else{
-			alert("social media data stream already imported");
-		}
-	}
-	document.getElementById("importClose").click();
-}
+// Array recording which operators have been processed
+// index 0 = filter
+// index 1 = group
+// index 2 = aggregate
+// index 3 = 2D
+// index 4 = 3D
+var processedOperators = new Array();
+processedOperators.push(false);
+processedOperators.push(false);
+processedOperators.push(false);
+processedOperators.push(false);
+processedOperators.push(false);
 
 function loadDataStreams(){
-	// alert(dataStream1);
-	for (var i = 0; i < importedData.length; i++) {
-		var filterOption = document.createElement("option");
-	   	var filterText = document.createTextNode(importedData[i]);
-	   	filterOption.appendChild(filterText);
-		 
-	   	// then append it to the select element
-		//appendChild is getting overwritten everytime it's called, that's why data only appears in groupDataStream.
-		document.getElementById('filterDataStream').appendChild(filterOption);
-		
-	};
-	// then append the select to an element in the dom
 
+	for (var i = importedDataSize; i < importedData.length; i++) {
+		text = importedData[i];
+		loadHelper('filterDataStream', text);
+		loadHelper('groupDataStream', text);	
+		loadHelper('aggregateDataStream', text);
+	 	loadHelper('2dCoDataStream1', text);
+	 	loadHelper('2dCoDataStream2', text);
+	 	loadHelper('3dStreams1', text);
+	 	loadHelper('3dStreams2', text);
+	 	loadHelper('3dStreams3', text);
+	};
+	importedDataSize = importedData.length;
+
+	function loadHelper(streamId, text) {
+		var select = document.getElementById(streamId);
+		var option = document.createElement('option');
+		option.text = text;
+		select.add(option);
+	}
+
+	
 }
 
 function Tuple(param1, param2){
@@ -70,6 +53,9 @@ function Tuple(param1, param2){
 		return this.param2;
 	}
 }
+
+
+// -----------------------       Operator Classes      -----------------------------
 
 
 //creating a Filter class
@@ -159,11 +145,57 @@ function threeD(dataStream1, dataStream2, dataStream3, timeLagValue1, timeLagVal
 	
 }
 
+
+// ----------        Validate Functions      -------------------
+
+
 //Makes sure input is not empty
 function isValidInput(input){
 	return input !== "";
 }
 
+
+function validateImportData(){
+	var lifeEvents = document.getElementById("lifeEvents");
+	var environmental = document.getElementById("environmental");
+	var traffic = document.getElementById("traffic");
+	var socialMedia = document.getElementById("socialMedia");
+
+	if (isValidInput(lifeEvents.value)){
+		// if not in the array
+		if ($.inArray(lifeEvents.value, importedData) == -1){
+			importedData.push(lifeEvents.value);
+		} else{
+			alert("life event data stream already imported");
+		}
+	}
+	
+	if (isValidInput(environmental.value)){
+		if ($.inArray(environmental.value, importedData) == -1){
+			importedData.push(environmental.value);
+		} else{
+			alert("environmental data stream already imported");
+		}
+	}
+	
+	
+	if (isValidInput(traffic.value)){
+		if ($.inArray(traffic.value, importedData) == -1){
+			importedData.push(traffic.value);
+		} else{
+			alert("traffic data stream already imported");
+		}
+	}
+
+	if (isValidInput(socialMedia.value)){
+		if ($.inArray(socialMedia.value, importedData) == -1){
+			importedData.push(socialMedia.value);
+		} else{
+			alert("social media data stream already imported");
+		}
+	}
+	document.getElementById("importClose").click();
+}
 
 
 function validateFilterInput(){
@@ -325,54 +357,22 @@ function filterHasErrors(){
 	return false;
 }
 
-function processFilter(){
-	if (!filterHasErrors()){
-		var dataStream = document.getElementById("filterDataStream");
-
-		var minValue = document.getElementById("inputFilterValueMin");
-		var maxValue = document.getElementById("inputFilterValueMax");
-		var minMaxValue = new Tuple(minValue, maxValue);
-
-		var minNorm = document.getElementById("inputFilterNormMin");
-		var maxNorm = document.getElementById("inputFilterNormMax");
-		var minMaxNorm = new Tuple(minNorm, maxNorm);
-
-		var neLong = document.getElementById("inputFilterNELong");
-		var neLat = document.getElementById("inputFilterNELat");
-		var northEastCoords = new Tuple(neLong, neLat);
-
-		var swLong = document.getElementById("inputFilterSWLong");
-		var swLat = document.getElementById("inputFilterSWLat");
-		var southWestCoords = new Tuple(swLong, swLat);
-
-		var filterObject = new Filter(dataStream, minMaxValue, minMaxNorm, northEastCoords, southWestCoords);
-		var myDataStream = filterObject.getMinValue();
-
-		document.getElementById("filterClose").click();
-
-		// $('canvas').drawArc({
-		//   strokeStyle: 'black',
-		//   strokeWidth: 2,
-		//   x: 150, y: 50,
-		//   radius: 30
-		// });
-		// alert("after canvas");
-	} 
-}
-
-
 
 function validate2DInput(){
-	
-	var dataStream2 = document.getElementById("2DdataStream2");
-	/*if (!isValidInput(dataStream1.value)){
+	var dataStream1 = $('#2dCoDataStream1>option:selected').text();
+    var dataStream2 = $('#2dCoDataStream2>option:selected').text();
+	if (!isValidInput(dataStream1.value)){
 		dataStream1.parentNode.parentNode.className = "form-group has-error";
 		$(dataStream1).on("change", function(){
 			if (isValidInput(dataStream1.value)){
 				dataStream1.parentNode.parentNode.className = "form-group";
 			}
+			else {
+				alert("Datastream 1 missing!");
+			}
 		})
 	}
+	
 
 	if (!isValidInput(dataStream2.value)){
 		dataStream2.parentNode.parentNode.className = "form-group has-error";
@@ -380,18 +380,26 @@ function validate2DInput(){
 			if (isValidInput(dataStream2.value)){
 				dataStream2.parentNode.parentNode.className = "form-group";
 			}
+			else {
+				alert("Datastream 2 missing!");
+			}
 		})
 	}
 
 	var timeLagValue = document.getElementById("timeLagValue");
-	if (!isValidInput(timeLagValue.value)){
+	console.log(isValidInput(timeLagValue.value));
+	if (isValidInput(timeLagValue.value) && !isNaN(timeLagValue.value)){
 		timeLagValue.parentNode.className = "control-label has-error";
 		$(timeLagValue).on("change", function(){
 			if (isValidInput(timeLagValue.value)){
 				timeLagValue.parentNode.className = "control-label";
 			}
+			
 		})
 	}
+	else {
+				alert("Time lag missing!");
+			}
 
 	var timeLagUnit = document.getElementById("timeLagUnit");
 	if (!isValidInput(timeLagUnit.value)){
@@ -400,9 +408,12 @@ function validate2DInput(){
 			if (isValidInput(timeLagUnit.value)){
 				timeLagUnit.parentNode.className = "control-label";
 			}
+			else {
+				alert("Time lag unit missing!");
+			}
 		})
-	}*/
-	document.getElementById("2dProcessClose").click();
+	}
+	document.getElementById("2DClose").click();
 }
 
 
@@ -440,4 +451,276 @@ function validateThreeDInput() {
 	}
 }
 
+
+//  -------------------------    Process Functions   ---------------------
+
+
+function processFilter(){
+	if (!filterHasErrors()){
+		var dataStream = document.getElementById("filterDataStream");
+
+		var minValue = document.getElementById("inputFilterValueMin");
+		var maxValue = document.getElementById("inputFilterValueMax");
+		var minMaxValue = new Tuple(minValue, maxValue);
+
+		var minNorm = document.getElementById("inputFilterNormMin");
+		var maxNorm = document.getElementById("inputFilterNormMax");
+		var minMaxNorm = new Tuple(minNorm, maxNorm);
+
+		var neLong = document.getElementById("inputFilterNELong");
+		var neLat = document.getElementById("inputFilterNELat");
+		var northEastCoords = new Tuple(neLong, neLat);
+
+		var swLong = document.getElementById("inputFilterSWLong");
+		var swLat = document.getElementById("inputFilterSWLat");
+		var southWestCoords = new Tuple(swLong, swLat);
+
+		var filterObject = new Filter(dataStream, minMaxValue, minMaxNorm, northEastCoords, southWestCoords);
+		var myDataStream = filterObject.getMinValue();
+
+		document.getElementById("filterClose").click();
+
+	} 
+}
+
+
+function process3D () {
+	var data; //global
+	var output_data;
+	var output_path = "../queries";
+	
+    d3.json("../queries/queries.json", function(error, json){
+        if (error) return console.warn(error);
+        data = json;
+        for (var i = 0; i < data.queries.length; i++) {
+        	var inputs = data.queries[i].input;
+        	if (data.queries[i].operator.name === "3Dco_occurrence" && inputs[0] == "es1" && inputs[1] == "es2" && inputs[2] == "es3"){
+        		output_path += data.queries[i].output['3dmatrix'];
+        	}
+        } 
+        processedOperators[4] = true;
+        outputPath3D = output_path;
+		document.getElementById("3DClose").click(); 
+    })
+}
+
+
+
+
+// Visualize Functions
+
+
+
+function visualize3D () {
+	if (processedOperators[4]){
+
+		setup3DBackground();
+
+		render3DBackground(outputPath3D);
+
+	} else{
+		alert("Fill out the 3D Processor first");
+	}
+}
+
+function setup3DBackground(){
+	var html = "<div id='container' style='margin-left: 200px; display:inline-block;'></div>";
+	var visualizationPanel = document.getElementById("visualizationPanel");	
+	visualizationPanel.innerHTML = html;
+}
+
+
+function render3DBackground (path) {
+	var scene, renderer, composer;
+    var camera, cameraControl;
+    var geometry, surfacemesh, wiremesh;
+    var meshers = { 'Stupid': StupidMesh };
+    var testdata = {};
+    
+    
+    function updateMesh() {
+    
+      scene.remove( surfacemesh );
+      scene.remove( wiremesh );
+      
+      geometry  = new THREE.Geometry();   
+      var mesher = meshers['Stupid']
+        , data   = testdata['22x22x22']
+        , result = mesher( data.voxels, data.dims );
+
+      geometry.vertices.length = 0;
+      geometry.faces.length = 0;
+
+      
+
+	  // populate cube with vertices
+      for(var i=0; i<result.vertices.length; ++i) {
+        var q = result.vertices[i];
+        geometry.vertices.push(new THREE.Vector3(q[0], q[1], q[2]));
+      }
+
+      var yellow = 0xffff00;
+      var orange = 0xff8000;
+      var red = 0xFF0000;
+
+      var jsonData;
+      d3.json(path, function(error, json){
+        if (error) return console.warn(error);
+        jsonData = json;
+        console.log(jsonData[0]);
+        // for (var i = 0; i < jsonData[0].length; i++) {
+        // 	console.log(jsonData[i]);
+        // };
+      });
+
+      // populates colors of faces
+      for(var i=0; i<result.faces.length; ++i) {
+        var q = result.faces[i];
+        var f = new THREE.Face4(q[0], q[1], q[2], q[3]);
+        // f.color = new THREE.Color(q[4]);
+
+        f.color = new THREE.Color(yellow);
+
+        f.vertexColors = [f.color,f.color,f.color,f.color];
+        geometry.faces.push(f);
+        
+      }
+      
+      geometry.computeFaceNormals();
+      
+      geometry.verticesNeedUpdate = true;
+      geometry.elementsNeedUpdate = true;
+      geometry.normalsNeedUpdate = true;
+      
+      geometry.computeBoundingBox();
+      geometry.computeBoundingSphere();
+      
+      var bb = geometry.boundingBox;
+
+      
+       //Create surface mesh
+      var material  = new THREE.MeshBasicMaterial({
+        vertexColors: true
+      });
+      surfacemesh = new THREE.Mesh( geometry, material );
+      surfacemesh.doubleSided = false;
+      var wirematerial = new THREE.MeshBasicMaterial({
+          color : 0xffffff
+        , wireframe : true
+      });
+      wiremesh = new THREE.Mesh(geometry, wirematerial);
+      wiremesh.doubleSided = true;
+      
+      wiremesh.position.x = surfacemesh.position.x = -(bb.max.x + bb.min.x) / 2.0;
+      wiremesh.position.y = surfacemesh.position.y = -(bb.max.y + bb.min.y) / 2.0;
+      wiremesh.position.z = surfacemesh.position.z = -(bb.max.z + bb.min.z) / 2.0;
+      
+      scene.add( surfacemesh );
+      scene.add( wiremesh );
+    }
+
+    if( !init() ) animate();
+
+    // init the scene
+    function init(){
+        
+      if( Detector.webgl ){
+        renderer = new THREE.WebGLRenderer({
+          antialias   : true, // to get smoother output
+          preserveDrawingBuffer : true  // to allow screenshot
+        });
+      }else{
+        renderer = new THREE.CanvasRenderer();
+      }
+      renderer.setClearColorHex( 0xffffff, 1 );
+      
+      renderer.setSize( 600, 380 );
+      document.getElementById('container').appendChild(renderer.domElement);
+
+      // create a scene
+      scene = new THREE.Scene();
+
+      // put a camera in the scene
+      camera  = new THREE.PerspectiveCamera(55, window.innerWidth / window.innerHeight, 1, 10000 );
+      camera.position.set(0, 0, 40);
+      scene.add(camera);
+
+      // create a camera contol
+      cameraControls  = new THREE.TrackballControls( camera, document.getElementById('container') )
+
+      
+
+      
+      // //Initialize dom elements
+      testdata = createCustomTestData();
+      // var ds = document.getElementById("datasource");
+      // for(var id in testdata) {
+      //   ds.add(new Option(id, id), null);
+      // }
+      // ds.onchange = updateMesh;
+
+      // var ms = document.getElementById("mesher");
+      // for(var alg in meshers) {
+      //   ms.add(new Option(alg, alg), null);
+      // }
+      // ms.onchange = updateMesh;
+      
+      
+      
+      //Update mesh
+      updateMesh();
+      
+      return false;
+    }
+
+    function createCustomTestData() {
+	  var result = {};
+	  
+	  function makeVoxels(l, h, f) {
+	    var d = [ h[0]-l[0], h[1]-l[1], h[2]-l[2] ]
+	      , v = new Int32Array(d[0]*d[1]*d[2])
+	      , n = 0;
+	    for(var k=l[2]; k<h[2]; ++k)
+	    for(var j=l[1]; j<h[1]; ++j)
+	    for(var i=l[0]; i<h[0]; ++i, ++n) {
+	      v[n] = f(i,j,k);
+	    }
+	    return {voxels:v, dims:d};
+	  }
+
+	  result['22x22x22'] = makeVoxels([0,0,0], [22,22,22], function() { return 0xffff00; });
+
+	  return result;
+	}
+
+
+    // animation loop
+    function animate() {
+
+      // loop on request animation loop
+      // - it has to be at the begining of the function
+      // - see details at http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+      requestAnimationFrame(animate);
+
+      // do the render
+      render();
+    }
+
+    // render the scene
+    function render() {
+      // variable which is increase by Math.PI every seconds - usefull for animation
+      var PIseconds = Date.now() * Math.PI;
+
+      // update camera controls
+      cameraControls.update();
+
+      // surfacemesh.visible = document.getElementById("showfacets").checked;
+      // wiremesh.visible = document.getElementById("showedges").checked;
+      surfacemesh.visible = true;
+      wiremesh.visible = true;
+
+      // actually render the scene
+      renderer.render( scene, camera );
+    }
+}
 

@@ -117,7 +117,7 @@ function load2dVisual() {
         return d3.select("#legend").style("opacity", 1);
     }
     else {
-        $('#heatmap').html("<svg width='100%' height='100%'><text x='0' y='100' font-size='30' fill='red'>Sorry, invalid parameters were chosen.</text></svg>");
+        $('#heatmap').html("<svg width='100%' height='400px'><text y='100' font-size='30' fill='red'>Sorry, invalid parameters were chosen.</text></svg>");
     }
     });
 }

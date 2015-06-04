@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Raindrops example (custom gradient) | heatmap.js</title>
+    <style>
+      body, html { margin:0; padding:0; height:100%;}
+      #heatmapContainerWrapper { width:100%; height:100%; position:absolute; }
+      #heatmapContainer { width:100%; height:100%;}
+      h1 { position:absolute; background:white; padding:10px;}
+    </style>
+  </head>
+  <body>
+    <div id="heatmapContainerWrapper">
+      <div id="heatmapContainer">
+
+      </div>
+    </div>
+    <script src="/build/heatmap.js"></script>
+    <script>
+      window.onload = function() {
+        // create heatmap instance
+        var heatmap = h337.create({
+          container: document.getElementById('heatmapContainer'),
+          // a waterdrop gradient ;-)
+          gradient: { .1: 'rgba(0,0,0,0)', 0.25: "rgba(0,0,90, .6)", .6: "blue", .9: "cyan", .95: 'rgba(255,255,255,.4)'},
+          maxOpacity: .6,
+          radius: 10,
+          blur: .90
+        });
+
+        // boundaries for data generation
+        var width = (+window.getComputedStyle(document.body).width.replace(/px/,''));
+        var height = (+window.getComputedStyle(document.body).height.replace(/px/,''));
+
+        var generate = function() {
+          var max = 100;
+          var min = 0;
+          var t = [];
+
+          var x = (Math.random()* width) >> 0;
+          var y = (Math.random()* height) >> 0;
+          var c = 100;
+          var r = (Math.random()* 100) >> 0;
+
+          // add the datapoint to heatmap instance
+          heatmap.addData({ x: x, y:y, value: c, radius: r});
+        };
+
+        // this generates new datapoints in a kind of random timing
+        setTimeout(function test() {
+          var rand = (Math.random() * 500) >> 0;
+          generate();
+          setTimeout(test, rand);
+        }, 100);
+      };
+    </script>
+  </body>
+</html>

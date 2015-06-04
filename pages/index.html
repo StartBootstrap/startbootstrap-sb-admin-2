@@ -9,8 +9,7 @@
         <title>132 Analyst Dashboard</title>
         <!-- Bootstrap Core CSS -->
         <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <!-- MetisMenu CSS -->
-        <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+        
         <!-- Timeline CSS -->
         <link href="../dist/css/timeline.css" rel="stylesheet">
         <!-- Custom CSS -->
@@ -20,34 +19,16 @@
         <link href="../dist/css/style-heatmap.css" rel="stylesheet">
         <!-- Background CSS -->
         <link href="../styles.css" rel="stylesheet">
-        <!-- Morris Charts CSS -->
-        <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
+        
         <!-- Custom Fonts -->
         <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        
         <!-- jQuery -->
         <script src="../bower_components/jquery/dist/jquery.min.js"></script>
         <!-- Bootstrap Core JavaScript -->
         <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-        <!-- Morris Charts JavaScript -->
-        <script src="../bower_components/raphael/raphael-min.js"></script>
-        <script src="../bower_components/morrisjs/morris.min.js"></script>
-        <script src="../js/morris-data.js"></script>
-        <!-- Flot Charts JavaScript -->
-        <script src="../bower_components/flot/excanvas.min.js"></script>
-        <script src="../bower_components/flot/jquery.flot.js"></script>
-        <script src="../bower_components/flot/jquery.flot.pie.js"></script>
-        <script src="../bower_components/flot/jquery.flot.resize.js"></script>
-        <script src="../bower_components/flot/jquery.flot.time.js"></script>
-        <script src="../bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
-        <script src="../js/flot-data.js"></script>
+        
+        
         <!-- Form validation javascript -->
         <script src="../js/validator.js"></script>    
         <!-- Custom Theme JavaScript -->
@@ -185,7 +166,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal" id="importClose">Close</button>
-                        <button type="button" class="btn btn-primary" onClick="validateImportData();">Process</button>                  
+                        <button type="button" class="btn btn-primary" onClick="validateImportData(); loadDataStreams();">Process</button>                  
                     </div>
                 </div>
                 <!-- /.modal-content -->
@@ -206,7 +187,7 @@
                                 <div class="row" style="background-color:#C8EDFF">
                                     <div class="col-xs-2 col-md-offset-1">
                                         <button type="button" title="Filter" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton">
-                                        <a href="#" onClick="loadDataStreams();"><img src="../img/filter.png" class="icons"></a>
+                                        <a href="#"><img src="../img/filter.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <!-- Modal that opens up when the user clicks on the filter button-->
@@ -220,11 +201,8 @@
                                                 <div class="modal-body">
                                                     <div class="row form-group" id="filterDataStreamDiv">
                                                         <p class="col-xs-4">Data Stream</p>
-                                                        <select class="col-xs-3" name="fStream1" id="filterDataStream">
-                                                            <option value="default">Stream 1</option>
-                                                            <option value="choice1">Stream 2</option>
-                                                            <option value="choice2">Stream 3</option>
-                                                            <option value="choice3">Stream 4</option>
+                                                        <select class="col-xs-3" id="filterDataStream">
+                                                            <option></option>
                                                         </select>
                                                     </div>
                                                     <div class="checkbox">
@@ -276,7 +254,7 @@
                                     <!-- /.modal -->
                                     <div class="col-xs-2">
                                         <button type="button" title="Group Data"  class="icon_button" data-toggle="modal" data-target="#groupModal">
-                                        <a href="#" onClick="loadDataStreams();"><img src="../img/pie_chart.png" class="icons"></a>
+                                        <a href="#"><img src="../img/pie_chart.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <!-- Modal that opens up when the user clicks on the grouping icon-->
@@ -290,11 +268,8 @@
                                                 <div class="modal-body">
                                                     <div class="row">
                                                         <p class="col-xs-4">Data Stream</p>
-                                                        <select class="col-xs-3" name="gStream1" id="groupDataStream">
-                                                            <option value="default">Stream 1</option>
-                                                            <option value="choice1">Stream 2</option>
-                                                            <option value="choice2">Stream 3</option>
-                                                            <option value="choice3">Stream 4</option>
+                                                        <select class="col-xs-3" id="groupDataStream">
+                                                            <option></option>
                                                         </select>
                                                     </div>
                                                     <div class="row">
@@ -348,13 +323,10 @@
                                                 </div>
                                                 <div class="modal-body col-md-12">
                                                     <form name="aggregate_data" method="get" onSubmit="return checkAD();">
-                                                        <div class="row">
+                                                        <div class="row form-group">
                                                             <p class="col-xs-4">Data Stream</p>
-                                                            <select class="col-xs-3" name="aStream1">
-                                                                <option value="default">Stream 1</option>
-                                                                <option value="choice1">Stream 2</option>
-                                                                <option value="choice2">Stream 3</option>
-                                                                <option value="choice3">Stream 4</option>
+                                                            <select class="col-xs-3" id="aggregateDataStream">
+                                                                <option></option>
                                                             </select>
                                                         </div>
                                                         <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
@@ -398,7 +370,7 @@
                                     </div>
                                     <div class="col-xs-2">
                                         <button type="button" title="2 Dimensional Data"  class="icon_button" data-toggle="modal" data-target="#2DModal">
-                                        <a href="#" onClick="loadDataStreams();"><img src="../img/2d.png" class="icons"></a>
+                                        <a href="#"><img src="../img/2d.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <div class="modal fade" id="2DModal">
@@ -426,10 +398,10 @@
                                                         <div class="row form-group">
                                                             <p class="col-md-offset-1 col-xs-3">Unit</p>
                                                             <select class="col-xs-3" name="Unit" id="timeLagUnit">
-                                                                <option value="second">second</option>
-                                                                <option value="minute">minute</option>
-                                                                <option value="hour">hour</option>
-                                                                <option value="day">day</option>
+                                                                <option value="default">second</option>
+                                                                <option value="choice1">minute</option>
+                                                                <option value="choice2">hour</option>
+                                                                <option value="choice3">day</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-offset-1 form-group" style="display:inline-block">
@@ -439,7 +411,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="2dProcessClose">Close</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="2DClose">Close</button>
                                                     <button type="button" class="btn btn-primary" onClick="validate2DInput()">Process</button>
                                                 </div>
                                             </div>
@@ -448,10 +420,11 @@
                                         <!-- /.modal-dialog -->
                                     </div>
                                     <!-- /.modal -->
+
                                     <!-- Ricky 3D Occurence Icon-->                         
                                     <div class="col-xs-2">
                                         <button type="button" title="3 Dimensional Data" class="icon_button" data-toggle="modal" data-target="#3dOccur">
-                                        <a href="#" onClick="loadDataStreams();"><img src="../img/3d.png" class="icons"></a>
+                                        <a href="#"><img src="../img/3d.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <!-- Modal that opens up when the user clicks on the 3D Occurence button-->
@@ -466,15 +439,15 @@
                                                     <p>Data Streams:</p>
                                                     <div>
                                                         <label>Stream 1:</label>
-                                                        <select id="3dStreams1" name="Stream 1">
+                                                        <select id="3dStreams1" name="Stream 1" style="margin-right: 25px; width: 100px;">
                                                             <option></option>
                                                         </select>
                                                         <label>Stream 2:</label>
-                                                        <select id="3dStreams2" name="Stream 2">
+                                                        <select id="3dStreams2" name="Stream 2" style="margin-right: 25px; width: 100px;">
                                                             <option></option>
                                                         </select>
                                                         <label>Stream 3:</label>                                            
-                                                        <select id="3dStreams3" name="Stream 3">
+                                                        <select id="3dStreams3" name="Stream 3" style="width: 100px;">
                                                             <option></option>
                                                         </select>
                                                     </div>
@@ -485,10 +458,10 @@
                                                         <input id="value1" type="text" size="25" value="">
                                                         Unit
                                                         <select name="unit_value1">
-                                                            <option value="default">Second</option>
-                                                            <option value="choice1">Minute</option>
-                                                            <option value="choice2">Hour</option>
-                                                            <option value="choice3">Day</option>
+                                                            <option value="default">second</option>
+                                                            <option value="choice1">minute</option>
+                                                            <option value="choice2">hour</option>
+                                                            <option value="choice3">day</option>
                                                         </select>
                                                     </p>
                                                     <p>
@@ -497,16 +470,16 @@
                                                         <input id="value2" type="text" size="25" value="">
                                                         Unit
                                                         <select name="unit_value2">
-                                                            <option value="default">Second</option>
-                                                            <option value="choice1">Minute</option>
-                                                            <option value="choice2">Hour</option>
-                                                            <option value="choice3">Day</option>
+                                                            <option value="default">second</option>
+                                                            <option value="choice1">minute</option>
+                                                            <option value="choice2">hour</option>
+                                                            <option value="choice3">day</option>
                                                         </select>
                                                     </p>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                                    <input type="button" class="btn btn-primary" onclick="validateThreeDInput()" value="Process">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="3DClose">Close</button>
+                                                    <button type="button" class="btn btn-primary" onclick="validateThreeDInput(); process3D()">Process</button>
                                                 </div>
                                             </div>
                                             <!-- /.modal-content -->
@@ -520,7 +493,7 @@
                                 <div class="row" style="background-color:#C8EDFF">
                                     <div class="col-xs-2 col-md-offset-3">
                                         <button type="button" class="icon_button" data-target="#graph">
-                                        <a href="#" title="Visual Data" onClick="loadDataStreams();"><img src="../img/filter.png" class="icons"></a>
+                                        <a href="#" title="Visual Data"><img src="../img/filter.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <div class="col-xs-2">
@@ -530,7 +503,7 @@
                                     </div>
                                     <div class="col-xs-2">
                                         <button type="button" class="icon_button" data-target="#3dVisual">
-                                        <a href="#" title="3 Dimensional Visual" onClick="loadDataStreams();"><img src="../img/3d.png" class="icons"></a>
+                                        <a href="#" title="3 Dimensional Visual" onClick="visualize3D();"><img src="../img/3d.png" class="icons"></a>
                                         </button>
                                     </div>
                                 </div>
@@ -539,15 +512,17 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12" style="margin-top: .5%; margin-left:.5%">
+                    <div class="col-md-12" style="margin-top: .5%; margin-left:.5%">
                         <div class="panel panel-danger">
-                            <div class="panel-heading">
-                                Analyst Dashboard
+                            <div class="panel-heading" style="background-color: #666">
+                                <p style="color: white">Analyst Dashboard</p>
                             </div>
-                            <div class="panel-body" >
-                                    <!-- heatmap -->
-                                    <div role="heatmap" id="heatmap" style="text-align:center;"></div>
-                                
+                            <div class="panel-body" id="visualizationPanel">
+                                <!-- heatmap -->
+                                <div role="heatmap" id="heatmap" style="text-align:center;">
+                                    <svg width='100%' height='400px'></svg>
+                                </div>
+                                <div id="container"></div>
                             </div>
                         </div>
                     </div>
@@ -560,15 +535,8 @@
                             History
                         </div>
                         <!-- /.panel-heading -->
-                        <div class="panel-body" style="height:580px;">
-                            <!--  <div>
-                                <canvas width='300' height='150'></canvas>
-                                <svg width="720" height="120">
-                                <circle cx="40" cy="60" r="10"></circle>
-                                <circle cx="80" cy="60" r="10"></circle>
-                                <circle cx="120" cy="60" r="10"></circle>
-                                </svg>
-                                </div> -->
+                        <div class="panel-body" style="height:590px;">
+                            
                         </div>
                     </div>
                 </div>
@@ -577,3 +545,20 @@
         </div>
     </body>
 </html>
+
+
+<!-- Cube controller algorithms -->
+<script src="../voxel/vendor/detector.js"></script>
+<script src="../voxel/vendor/dragPanControls.js"></script>
+<script src="../voxel/vendor/fullScreen.js"></script>
+<script src="../voxel/vendor/screenshot.js"></script>
+<script src="../voxel/vendor/stats.js"></script>
+<script src="../voxel/vendor/testData.js"></script>
+<script src="../voxel/vendor/three.js"></script>
+<script src="../voxel/vendor/windowResize.js"></script>
+
+<!-- Mesh algorithms -->
+<script src="../voxel/meshers/culled.js"></script>
+<script src="../voxel/meshers/greedy.js"></script>
+<script src="../voxel/meshers/monotone.js"></script>
+<script src="../voxel/meshers/stupid.js"></script>

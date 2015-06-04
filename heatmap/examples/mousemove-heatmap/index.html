@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Mousemove example (with backgroundColor) | heatmap.js</title>
+    <style>
+      body, html { margin:0; padding:0; height:100%;}
+      body { font-family:sans-serif; }
+      body * { font-weight:200;}
+      #heatmapContainerWrapper { width:100%; height:100%; position:absolute; }
+      #heatmapContainer { width:100%; height:100%;}
+      h1 { position:absolute; left:0; top:0; background:white; padding:10px;}
+    </style>
+  </head>
+  <body>
+    <div id="heatmapContainerWrapper">
+      <div id="heatmapContainer">
+
+      </div>
+      <h1>heatmap.js Mousemove Example</h1>
+    </div>
+    <script src="/build/heatmap.js"></script>
+    <script>
+      window.onload = function() {
+        // create a heatmap instance
+        var heatmap = h337.create({
+          container: document.getElementById('heatmapContainer'),
+          maxOpacity: .6,
+          radius: 50,
+          blur: .90,
+          // backgroundColor with alpha so you can see through it
+          backgroundColor: 'rgba(0, 0, 58, 0.96)'
+        });
+        var heatmapContainer = document.getElementById('heatmapContainerWrapper');
+
+        heatmapContainer.onmousemove = heatmapContainer.ontouchmove = function(e) {
+          // we need preventDefault for the touchmove
+          e.preventDefault();
+          var x = e.layerX;
+          var y = e.layerY;
+          if (e.touches) {
+            x = e.touches[0].pageX;
+            y = e.touches[0].pageY;
+          }
+          
+          heatmap.addData({ x: x, y: y, value: 1 });
+
+        };
+
+        heatmapContainer.onclick = function(e) {
+          var x = e.layerX;
+          var y = e.layerY;
+          heatmap.addData({ x: x, y: y, value: 1 });
+        };
+
+      };
+    </script>
+  </body>
+</html>
