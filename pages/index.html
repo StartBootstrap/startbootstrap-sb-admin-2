@@ -409,36 +409,16 @@
                                                     <h4 class="modal-title">2D Co-occurence</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <div class="row form-group" id="2Dqid">
-                                                        <p class="col-xs-4">QID</p>
-                                                        <select class="col-xs-3" name="2dqid" id="2DqidNumber">
-                                                            <option value="default">1</option>
-                                                            <option value="choice1">2</option>
-                                                            <option value="choice2">3</option>
-                                                            <option value="choice3">4</option>
-                                                            <option value="choice4">5</option>
-                                                            <option value="choice5">6</option>
-                                                            <option value="choice6">7</option>
-                                                            <option value="choice7">8</option>
-                                                            <option value="choice8">9</option>
-                                                        </select>
-                                                    </div>
                                                     <div class="row form-group" id="2DdataStreamDiv1">
                                                         <p class="col-xs-4">Data Stream</p>
                                                         <select class="col-xs-3" name="2dStream1" id="2dCoDataStream1">
                                                             <option value="default">es1</option>
-                                                            <option value="choice1">es2</option>
-                                                            <option value="choice2">es3</option>
-                                                            <option value="choice3">es4</option>
                                                         </select>
                                                     </div>
                                                     <div class="row form-group" id="2DdataStreamDiv2">
                                                         <p class="col-xs-4">Data Stream</p>
                                                         <select class="col-xs-3" name="2dStream2" id="2dCoDataStream2">
-                                                            <option value="default">es1</option>
-                                                            <option value="choice1">es2</option>
-                                                            <option value="choice2">es3</option>
-                                                            <option value="choice3">es4</option>
+                                                            <option value="default">es2</option>
                                                         </select>
                                                     </div>
                                                     <p>Time Lag:</p>
@@ -446,10 +426,10 @@
                                                         <div class="row form-group">
                                                             <p class="col-md-offset-1 col-xs-3">Unit</p>
                                                             <select class="col-xs-3" name="Unit" id="timeLagUnit">
-                                                                <option value="default">Second</option>
-                                                                <option value="choice1">Minute</option>
-                                                                <option value="choice2">Hour</option>
-                                                                <option value="choice3">Day</option>
+                                                                <option value="second">second</option>
+                                                                <option value="minute">minute</option>
+                                                                <option value="hour">hour</option>
+                                                                <option value="day">day</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-offset-1 form-group" style="display:inline-block">
@@ -559,26 +539,15 @@
                     </ul>
                 </div>
                 <div class="row">
-                    <div class="col-md-12" style="margin-top: .5%; margin-left:.5%">
+                    <div class="col-xs-12" style="margin-top: .5%; margin-left:.5%">
                         <div class="panel panel-danger">
                             <div class="panel-heading">
                                 Analyst Dashboard
                             </div>
                             <div class="panel-body" >
-                                <!-- <div class="flot-chart">
-                                    <div class="flot-chart-content" id="flot-line-chart"></div>
-                                    </div> -->
-                                <!-- <svg width="100" height="100">
-                                    <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
-                                    </svg> -->
-                                <!-- <div id="id01"></div> -->
-                                <div class="days-hours-heatmap">
-                                    <!-- calibration and render type controller -->
-                                    <div class="calibration" role="calibration">
-                                    </div>
                                     <!-- heatmap -->
-                                    <div role="heatmap" id="heatmap"></div>
-                                </div>
+                                    <div role="heatmap" id="heatmap" style="text-align:center;"></div>
+                                
                             </div>
                         </div>
                     </div>
