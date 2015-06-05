@@ -37,8 +37,6 @@
         <!-- D3 -->
         <!-- // <script src="www.d3js.org/d3.v3.min.js"></script> -->
         <script src="../d3/d3.min.js"></script>
-        <!-- D3 Heatmap -->
-        <script src="../js/app.js"></script>
         <!-- JQuery -->
         <script src="../js/jquery-1.11.3.min.js"></script>
         <!-- JCanvas -->
@@ -223,9 +221,11 @@
                                                         </label>
                                                         <div class="help-block with-errors"></div>
                                                     </div>
-                                                    <div class="col-md-offset-1"> 
-                                                        <label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputFilterNormMin" placeholder="0" required></label>
-                                                        <label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputFilterNormMax" placeholder="100" required></label>
+                                                    <div class="row">
+                                                        <div class="radio col-xs-offset-1">
+                                                            <label style="margin-right:100px;"><input type="radio" name="optradio">True</label>
+                                                            <label><input type="radio" name="optradio">False</label>
+                                                        </div>
                                                     </div>
                                                     <div class="checkbox">
                                                         <label>
@@ -492,17 +492,17 @@
                             <div id="visualization" class="tab-pane">
                                 <div class="row" style="background-color:#C8EDFF">
                                     <div class="col-xs-2 col-md-offset-3">
-                                        <button type="button" class="icon_button" data-target="#graph">
+                                        <button type="button" title="Grid Map Overlay" class="icon_button" data-target="#graph">
                                         <a href="#" title="Visual Data"><img src="../img/filter.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-target="#2dVisual" onClick="load2dVisual();">
+                                        <button type="button" title="2D Heatmap" class="icon_button" data-target="#2dVisual" onClick="load2dVisual();">
                                         <a href="#" title="2 Dimensional Visual"><img src="../img/2d.png" class="icons"></a>
                                         </button>
                                     </div>
                                     <div class="col-xs-2">
-                                        <button type="button" class="icon_button" data-target="#3dVisual">
+                                        <button type="button" title="3D Heatmap" class="icon_button" data-target="#3dVisual">
                                         <a href="#" title="3 Dimensional Visual" onClick="visualize3D();"><img src="../img/3d.png" class="icons"></a>
                                         </button>
                                     </div>
@@ -519,8 +519,8 @@
                             </div>
                             <div class="panel-body" id="visualizationPanel">
                                 <!-- heatmap -->
-                                <div role="heatmap" id="heatmap" style="text-align:center;">
-                                    <svg width='100%' height='400px'></svg>
+                                <div role="heatmap" id="heatmap">
+                                    <svg id="svgHeatmap" width='100%' height='400px'></svg>
                                 </div>
                                 <div id="container"></div>
                             </div>
@@ -530,13 +530,17 @@
             </div>
             <div class="col-xs-3">
                 <div class="row">
-                    <div class="panel panel-info" style="width: 96%">
-                        <div class="panel-heading">
-                            History
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body" style="height:590px;">
-                            
+                    <div class="col-xs-12" style="margin-left: -15px; width: 103%">
+                        <div class="panel panel-info" style="">
+                            <div class="panel-heading">
+                                History
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body" id="historyPanel">
+                                <div role="history" id="history">
+                                    <svg id="svgHistory" width='100%' height='550px'></svg>
+                                <div>
+                            </div>
                         </div>
                     </div>
                 </div>

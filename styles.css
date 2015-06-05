@@ -34,3 +34,31 @@ body {
   background-color: #CCF2FF;
   border-color: #000099;
 }
+
+svg {
+    width: 100%;
+    position: relative;
+}
+
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    

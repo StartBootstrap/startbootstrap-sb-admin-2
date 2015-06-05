@@ -3,6 +3,7 @@ var importedDataSize = importedData.length;
 var isDataImported = false;
 var HeatMapData = new Array();
 var outputPath3D = null;
+var TreeData = [];
 
 
 // Array recording which operators have been processed
@@ -63,8 +64,6 @@ function Filter(dataStream, minMaxValue, minMaxNormalization, northEastCoords, s
 	this.dataStream = dataStream;
 	this.minValue = minMaxValue.getParam1;
 	this.maxValue = minMaxValue.getParam2;
-	this.minNormalization = minMaxNormalization.getParam1;
-	this.maxNormalization = minMaxNormalization.getParam2;
 	this.northEastLong = northEastCoords.getParam1;
 	this.northEastLat = northEastCoords.getParam2;
 	this.southWestLong = southWestCoords.getParam1;
@@ -78,12 +77,6 @@ function Filter(dataStream, minMaxValue, minMaxNormalization, northEastCoords, s
 	}
 	this.getMaxValue = function(){
 		return this.maxValue;
-	}
-	this.getMinNormalization = function(){
-		return this.minNormalization;
-	}
-	this.getMaxNormalization = function(){
-		return this.maxNormalization;
 	}
 	this.getNorthEastLong = function(){
 		return this.northEastLong;
@@ -237,38 +230,6 @@ function validateFilterInput(){
 		minValue.parentNode.className = "control-label";
 		maxValue.parentNode.className = "control-label";
 	}
-
-	
-	
-	//if the norm checkbox is checked, inspect the norm min and max
-	var normCheck = document.getElementById("filterNorm");
-	var minNorm = document.getElementById("inputFilterNormMin");
-	var maxNorm = document.getElementById("inputFilterNormMax");
-	if (normCheck.checked){
-		if (!isValidInput(minNorm).value){
-			minNorm.parentNode.className = "control-label has-error";
-			$(minNorm).on("change", function(){
-				if (isValidInput(minNorm.value)){
-					minNorm.parentNode.className = "control-label";
-				}
-			})
-		}	
-		if (!isValidInput(maxNorm).value){
-			maxNorm.parentNode.className = "control-label has-error";
-			$(maxNorm).on("change", function(){
-				if (isValidInput(maxNorm.value)){
-					maxNorm.parentNode.className = "control-label";
-				}
-			})
-		}
-	} else{
-		minNorm.parentNode.className = "control-label";
-		maxNorm.parentNode.className = "control-label";
-	}
-
-	
-	
-
 	
 
 	//validate Location checkbox
@@ -321,6 +282,8 @@ function validateFilterInput(){
 		swLong.parentNode.className = "control-label";
 		swLat.parentNode.className = "control-label";
 	}
+	historyTree("Filter");
+	document.getElementById("filterClose").click();
 }
 
 function filterHasErrors(){
@@ -334,16 +297,12 @@ function filterHasErrors(){
 	var myArray = new Array();
 		var minValue = document.getElementById("inputFilterValueMin"); 
 		var maxValue = document.getElementById("inputFilterValueMax"); //.parentNode.className
-		var minNorm = document.getElementById("inputFilterNormMin");
-		var maxNorm = document.getElementById("inputFilterNormMax"); //.parentNode.className
 		var neLong = document.getElementById("inputFilterNELong");
 		var neLat = document.getElementById("inputFilterNELat");
 		var swLong = document.getElementById("inputFilterSWLong");
 		var swLat = document.getElementById("inputFilterSWLat"); //.parentNode.className
 		myArray.push(minValue);
 		myArray.push(maxValue);
-		myArray.push(minNorm);
-		myArray.push(maxNorm);
 		myArray.push(neLong);
 		myArray.push(neLat);
 		myArray.push(swLong);
@@ -387,7 +346,6 @@ function validate2DInput(){
 	}
 
 	var timeLagValue = document.getElementById("timeLagValue");
-	console.log(isValidInput(timeLagValue.value));
 	if (isValidInput(timeLagValue.value) && !isNaN(timeLagValue.value)){
 		timeLagValue.parentNode.className = "control-label has-error";
 		$(timeLagValue).on("change", function(){
@@ -413,6 +371,7 @@ function validate2DInput(){
 			}
 		})
 	}
+	historyTree("2 Dimensional Data");
 	document.getElementById("2DClose").click();
 }
 
@@ -449,6 +408,7 @@ function validateThreeDInput() {
 	if (/^\s*$/.test(myInput)) {
 		alert("Time Lag 2: Value is empty!");
 	}
+	historyTree("3 Dimensional Data");
 }
 
 
@@ -462,10 +422,6 @@ function processFilter(){
 		var minValue = document.getElementById("inputFilterValueMin");
 		var maxValue = document.getElementById("inputFilterValueMax");
 		var minMaxValue = new Tuple(minValue, maxValue);
-
-		var minNorm = document.getElementById("inputFilterNormMin");
-		var maxNorm = document.getElementById("inputFilterNormMax");
-		var minMaxNorm = new Tuple(minNorm, maxNorm);
 
 		var neLong = document.getElementById("inputFilterNELong");
 		var neLat = document.getElementById("inputFilterNELat");
@@ -518,6 +474,7 @@ function visualize3D () {
 
 		render3DBackground(outputPath3D);
 
+		historyTree("3D Heatmap");
 	} else{
 		alert("Fill out the 3D Processor first");
 	}
@@ -724,3 +681,311 @@ function render3DBackground (path) {
     }
 }
 
+function load2dVisual() {
+    d3.json('../queries/queries.json', function(error, data) {
+        var dataStream1 = $('#2dCoDataStream1>option:selected').text();
+        var dataStream2 = $('#2dCoDataStream2>option:selected').text();
+        var unit = $('#timeLagUnit>option:selected').text();
+        var lag = parseInt(document.getElementById('timeLagValue').value);
+        var pass = false;
+
+        for (i = 0; i < data["queries"].length; i++) {
+            if (data["queries"][i].input[0] == dataStream1 &&
+                data["queries"][i].input[1] == dataStream2 &&
+                data["queries"][i].operator["parameters"]["time_lag"] == lag &&
+                data["queries"][i].validvo == "2d-heatmap" &&
+                data["queries"][i].operator["parameters"]["time_resolution"] == unit) {
+                data = data["queries"][i].output["cooccurrence"];
+                pass = true;
+                break;
+            }
+        }
+
+        var cells, colorScale, colors, corXscale, corYscale, corZscale, corr, corrplot, drawScatter, h, i, innerPad, j, nGroup, nind, nvar, pad, scatterplot, svg, totalh, totalw, w;
+        h = 550;
+        w = h;
+        pad = {
+            left: 25,
+            top: 5,
+            right: 25,
+            bottom: 60
+        };
+        innerPad = 5;
+        totalh = h + pad.top + pad.bottom;
+        totalw = (w + pad.left + pad.right);
+        // remove previous content
+        d3.select("#svgHeatmap").remove();
+
+        if (pass) {
+
+        //add an svg to the div
+        svg = d3.select("#heatmap").append("svg")
+        	.attr("id","svgHeatmap")
+        	.attr("height", totalh)
+        	.attr("width", totalw)
+        	.attr("preserveAspectRatio", "xMinYMin meet")
+    		.attr("viewBox", "0 0 650 600");
+        //add one group for correlation matrix
+        corrplot = svg.append("g").attr("id", "corrplot").attr("transform", "translate(" + pad.left + "," + pad.top + ")");
+        //add another group for scatter plot
+        scatterplot = svg.append("g").attr("id", "scatterplot").attr("transform", "translate(" + (pad.left * 2 + pad.right + w) + "," + pad.top + ")");
+        nind = data.length;
+        nvar = data[0].length;
+
+        corXscale = d3.scale.ordinal().domain(d3.range(nvar)).rangeBands([0, w]);
+        corYscale = d3.scale.ordinal().domain(d3.range(nvar)).rangeBands([h, 0]);
+        corZscale = d3.scale.linear().domain([0, 1]).range([0, 1]);
+
+        corr = [];
+        var pixelvalues = [];
+        var index = 0;
+
+        for (i in data) {
+            for (j in data[i]) {
+                pixelvalues[index] = data[i][j];
+                index++;
+                corr.push({
+                    row: i,
+                    col: j,
+                    value: data[i][j]
+                });
+            }
+        }
+
+        ///////////Heatmap Colors /////////////////////////////////////////////////////////
+        /*var colours = ["#6363FF", "#6373FF", "#63A3FF", "#63E3FF", "#63FFFB", "#63FFCB",
+                       "#63FF9B", "#63FF6B", "#7BFF63", "#BBFF63", "#DBFF63", "#FBFF63", 
+                       "#FFD363", "#FFB363", "#FF8363", "#FF7363", "#FF6364"]; */
+        var colours = ["#FFFFCC", "#FFFF99", "#FFFF66", "#FFFF33", "#FFFF00", "#FFE066",
+            "#FFCC00", "#FFCC66", "#FF9900", "#FF9933", "#FF9966",
+            "#FF6600", "#FF3300", "#CC3300"
+        ];
+
+        var heatmapColour = d3.scale.linear()
+            .domain(d3.range(0, 1, 1.0 / (colours.length - 1)))
+            .range(colours);
+        //var c = d3.scale.linear().domain(d3.extent(pixelvalues)).range([0,1]);
+        var c = d3.scale.linear().domain(d3.extent([0, 1])).range([0, 1]);
+        ///////////////////////////////////////////////////////////////////////////////////
+
+        cells = corrplot.selectAll("empty").data(corr).enter().append("rect").attr("class", "cell").attr("x", function(d) {
+            return corXscale(d.col);
+        }).attr("y", function(d) {
+            return corYscale(d.row);
+        }).attr("width", corXscale.rangeBand()).attr("height", corYscale.rangeBand()).attr("fill", function(d) {
+            return heatmapColour(c(d.value)); //instead of corZscale(d.value)
+        }).attr("stroke", "none").attr("stroke-width", 1).on("mouseover", function(d) {
+            d3.select(this).attr("stroke", "black");
+            corrplot.append("text").attr("id", "corrtext").text(d3.format(".3f")(d.value)).attr("x", function() {
+                var mult;
+                mult = -1;
+                if (d.col < nvar / 2) {
+                    mult = +1;
+                }
+                return corXscale(d.col) + corXscale.rangeBand();
+                //return corXscale(d.col) + mult * corXscale.rangeBand() * 5;
+            }).attr("y", function() {
+                var mult;
+                mult = +1;
+                if (d.row < nvar / 2) {
+                    mult = -1;
+                }
+                return corYscale(d.row) + 0.5 * corYscale.rangeBand();
+                //return corYscale(d.row) + (mult + 0.5) * corYscale.rangeBand() * 2;
+            }).attr("fill", "black").attr("dominant-baseline", "middle").attr("text-anchor", "middle").style("font-weight", "bold");
+            corrplot.append("text").attr("class", "corrlabel").attr("x", corXscale(d.col) + 12).attr("y", h + pad.bottom * 0.2).text(d.col).attr("dominant-baseline", "middle").attr("text-anchor", "middle").attr("font-size", "13px");
+            return corrplot.append("text").attr("class", "corrlabel").attr("y", corYscale(d.row) + 12).attr("x", -pad.left * 0.7).text(d.row).attr("dominant-baseline", "middle").attr("text-anchor", "middle").attr("font-size", "13px");
+        }).on("mouseout", function() {
+            d3.selectAll("text.corrlabel").remove();
+            d3.selectAll("text#corrtext").remove();
+            return d3.select(this).attr("stroke", "none");
+        });
+
+        corrplot.append("rect").attr("height", h).attr("width", w).attr("fill", "none").attr("stroke", "black").attr("stroke-width", 1).attr("pointer-events", "none");
+        return d3.select("#legend").style("opacity", 1);
+    }
+    else {
+        $('#heatmap').html("<svg id='svgHeatmap' width='100%' height='400px'><text y='100' font-size='30' fill='red'>Sorry, no data for the specified parameters.</text></svg>");
+    }
+    });
+	historyTree("2D Heatmap");
+}
+
+function historyTree(stream) {
+	if (TreeData.length == 0) {
+		TreeData = [{
+    		"name": stream,
+    		"parent": "null"
+   		}];
+	}
+	else {
+		TreeData = [{
+			"name": TreeData[0].name,
+			"parent": "null",
+			"children": [{
+				"name": stream,
+				"parent": TreeData[0].name
+			}]
+		}];
+	}
+	
+  /*treeData = [
+
+  {
+    "name": "Top Level",
+    "parent": "null",
+    "children": [
+      {
+        "name": "Level 2: A",
+        "parent": "Top Level",
+        "children": [
+          {
+            "name": "Son of A",
+            "parent": "Level 2: A"
+          },
+          {
+            "name": "Daughter of A",
+            "parent": "Level 2: A"
+          }
+        ]
+      },
+      {
+        "name": "Level 2: B",
+        "parent": "Top Level"
+      }
+    ]
+  }
+];*/
+
+// ************** Generate the tree diagram  *****************
+var margin = {top: 40, right: 10, bottom: 20, left: 10},
+    width = 450 - margin.right - margin.left,
+    height = 550 - margin.top - margin.bottom;
+    
+var i = 0,
+    duration = 750,
+    root;
+
+var tree = d3.layout.tree()
+    .size([height, width]);
+
+var diagonal = d3.svg.diagonal()
+    .projection(function(d) { return [d.x, d.y]; });
+
+// remove previous content
+d3.select("#svgHistory").remove();
+
+var svg = d3.select("#history").append("svg")
+	.attr("id","svgHistory")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 560 800")
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+root = TreeData[0];
+root.x0 = height / 2;
+root.y0 = 0;
+  
+update(root);
+
+function update(source) {
+
+  // Compute the new tree layout.
+  var nodes = tree.nodes(root).reverse(),
+      links = tree.links(nodes);
+
+  // Normalize for fixed-depth.
+  nodes.forEach(function(d) { d.y = d.depth * 160; });
+
+  // Update the nodes…
+  var node = svg.selectAll("g.node")
+      .data(nodes, function(d) { return d.id || (d.id = ++i); });
+
+  // Enter any new nodes at the parent's previous position.
+  var nodeEnter = node.enter().append("g")
+      .attr("class", "node")
+      .attr("transform", function(d) { return "translate(" + source.x0 + "," + source.y0 + ")"; })
+      .on("click", click);
+
+  nodeEnter.append("circle")
+      .attr("r", 1e-6)
+      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+   nodeEnter.append("text")
+   .attr("y", function(d) { 
+    return d.children || d._children ? -18 : 18; })
+   .attr("dy", ".2em")
+   .attr("text-anchor", "middle")
+   .text(function(d) { return d.name; })
+   .style("fill-opacity", 1)
+   .style("font-size", "20px");
+
+  // Transition nodes to their new position.
+  var nodeUpdate = node.transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+
+  nodeUpdate.select("circle")
+      .attr("r", 10)
+      .style("fill", function(d) { return d._children ? "lightsteelblue" : "#fff"; });
+
+  nodeUpdate.select("text")
+      .style("fill-opacity", 1);
+
+  // Transition exiting nodes to the parent's new position.
+  var nodeExit = node.exit().transition()
+      .duration(duration)
+      .attr("transform", function(d) { return "translate(" + source.x + "," + source.y + ")"; })
+      .remove();
+
+  nodeExit.select("circle")
+      .attr("r", 1e-6);
+
+  nodeExit.select("text")
+      .style("fill-opacity", 1e-6);
+
+  // Update the links…
+  var link = svg.selectAll("path.link")
+      .data(links, function(d) { return d.target.id; });
+
+  // Enter any new links at the parent's previous position.
+  link.enter().insert("path", "g")
+      .attr("class", "link")
+      .attr("d", function(d) {
+        var o = {x: source.x0, y: source.y0};
+        return diagonal({source: o, target: o});
+      });
+
+  // Transition links to their new position.
+  link.transition()
+      .duration(duration)
+      .attr("d", diagonal);
+
+  // Transition exiting nodes to the parent's new position.
+  link.exit().transition()
+      .duration(duration)
+      .attr("d", function(d) {
+        var o = {x: source.x, y: source.y};
+        return diagonal({source: o, target: o});
+      })
+      .remove();
+
+  // Stash the old positions for transition.
+  nodes.forEach(function(d) {
+    d.x0 = d.x;
+    d.y0 = d.y;
+  });
+}
+
+// Toggle children on click.
+function click(d) {
+  if (d.children) {
+    d._children = d.children;
+    d.children = null;
+  } else {
+    d.children = d._children;
+    d._children = null;
+  }
+  update(d);
+}
+}
