@@ -715,12 +715,14 @@ function load2dVisual() {
         totalw = (w + pad.left + pad.right);
         // remove previous content
         d3.select("#svgHeatmap").remove();
+        d3.select("#legend").remove();
 
         if (pass) {
 
         //add an svg to the div
         svg = d3.select("#heatmap").append("svg")
         	.attr("id","svgHeatmap")
+        	.attr("class", "col-md-6")
         	.attr("height", totalh)
         	.attr("width", totalw)
         	.attr("preserveAspectRatio", "xMinYMin meet")
@@ -761,11 +763,38 @@ function load2dVisual() {
             "#FF6600", "#FF3300", "#CC3300"
         ];
 
+        var colorScale = d3.scale.quantile()
+              .domain([0, 14, d3.max(data, function (d) { return d.value; })])
+              .range(colours);
+
         var heatmapColour = d3.scale.linear()
             .domain(d3.range(0, 1, 1.0 / (colours.length - 1)))
             .range(colours);
         //var c = d3.scale.linear().domain(d3.extent(pixelvalues)).range([0,1]);
         var c = d3.scale.linear().domain(d3.extent([0, 1])).range([0, 1]);
+
+        var legend = d3.select("#heatmap").append("svg")
+        	.attr("id","legend")
+        	.attr("class", "col-md-6")
+        	.attr("preserveAspectRatio", "xMinYMin meet")
+    		.attr("viewBox", "0 0 650 200")
+        	.selectAll(".legend")
+              .data([0].concat(colorScale.quantiles()), function(d) { return d; })
+              .enter().append("g")
+              .attr("class", "legend");
+
+          legend.append("rect")
+            .attr("x", function(d, i) { return totalw/12 * i; })
+            .attr("y", 0)
+            .attr("width", totalw/10)
+            .attr("height", totalh / 5)
+            .style("fill", function(d, i) { return colours[i]; });
+
+          legend.append("text")
+            .attr("class", "mono")
+            .text(function(d, i) {console.log(); return "≥ " + d3.format(".2f")(d/14); })
+            .attr("x", function(d, i) { return totalw/12 * i; })
+            .attr("y", totalh/5);
         ///////////////////////////////////////////////////////////////////////////////////
 
         cells = corrplot.selectAll("empty").data(corr).enter().append("rect").attr("class", "cell").attr("x", function(d) {
@@ -829,34 +858,6 @@ function historyTree(stream) {
 		}];
 	}
 	
-  /*treeData = [
-
-  {
-    "name": "Top Level",
-    "parent": "null",
-    "children": [
-      {
-        "name": "Level 2: A",
-        "parent": "Top Level",
-        "children": [
-          {
-            "name": "Son of A",
-            "parent": "Level 2: A"
-          },
-          {
-            "name": "Daughter of A",
-            "parent": "Level 2: A"
-          }
-        ]
-      },
-      {
-        "name": "Level 2: B",
-        "parent": "Top Level"
-      }
-    ]
-  }
-];*/
-
 // ************** Generate the tree diagram  *****************
 var margin = {top: 40, right: 10, bottom: 20, left: 10},
     width = 450 - margin.right - margin.left,
