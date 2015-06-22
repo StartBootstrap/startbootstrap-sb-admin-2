@@ -1,4 +1,9 @@
-# Contributing
+# Support requests
+
+Please direct support requests to the [DataTables forums](https://datatables.net/forums), ensuring that you provide a link to a test page that shows the problem and a full description of the issue. If you require urgent help, [priority support](https://datatables.net/support) is available.
+
+
+# Contributing code
 
 If you are thinking of contributing code to DataTables, first of all, thank you! All fixes, patches and enhancements to DataTables are very warmly welcomed. In order to keep thing manageable, there are a number of guidelines that should be followed in order to ensure that your modification is included in DataTables as quickly as possible:
 
