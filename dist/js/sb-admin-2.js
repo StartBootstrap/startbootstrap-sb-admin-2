@@ -1,6 +1,8 @@
 $(function() {
 
-    $('#side-menu').metisMenu();
+    if ($('#side-menu').length) {
+        $('#side-menu').metisMenu();
+    }
 
 });
 
