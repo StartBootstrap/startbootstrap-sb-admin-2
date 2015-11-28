@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-api group="responsive">
+<dt-api library="Responsive">
 	<name>responsive.rebuild()</name>
 	<summary>Recalculate the column breakpoints based on the class information of the column header cells</summary>
 	<since>1.0.4</since>
