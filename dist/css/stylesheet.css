@@ -1,0 +1,53 @@
+body, html {
+	height: 100%;
+}
+
+#inputTitle{
+	border:none;
+	margin: 15px 0px 5px -80px;
+	background: #f8f8f8;
+	font-size: 25px;
+	width:200px;
+}
+
+#exp{
+	text-decoration: none;
+	color:black;
+}
+
+.noBorders td {
+    border:0;
+    height:8%;
+}
+
+.icons{
+	height: 50px;
+	margin: 20px;
+}
+
+.icon_button{
+	border:none;
+	background: none;
+}
+
+.btn-file input[type=file] {
+	position: absolute;
+    top: 0;
+    right: 0;
+    height: 34px;
+    width: 75;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+
+}
+
+.icon_button {
+border: none;
+background: nonel
+}

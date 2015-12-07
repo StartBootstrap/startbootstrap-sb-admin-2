@@ -1,0 +1,275 @@
+<!DOCTYPE>
+<html>
+
+  <head>
+    <title>Voxer Test</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+    <script src="../voxel/vendor/detector.js"></script>
+    <script src="../voxel/vendor/dragPanControls.js"></script>
+    <script src="../voxel/vendor/fullScreen.js"></script>
+    <script src="../voxel/vendor/screenshot.js"></script>
+    <script src="../voxel/vendor/stats.js"></script>
+    <script src="../voxel/vendor/testData.js"></script>
+    <script src="../voxel/vendor/three.js"></script>
+    <script src="../voxel/vendor/windowResize.js"></script>
+
+    <!-- Mesh algorithms -->
+    <script src="../voxel/meshers/culled.js"></script>
+    <script src="../voxel/meshers/greedy.js"></script>
+    <script src="../voxel/meshers/monotone.js"></script>
+    <script src="../voxel/meshers/stupid.js"></script>
+
+    <link href="../voxel/css/main.css" rel="stylesheet">
+
+
+  </head>
+
+
+  <body>
+    <div id="container"></div>
+
+    <div id="info">
+      <div class="top">
+        Minecraft Mesh Algorithm Tester (version 2)
+      </div>
+      <div class="bottom" id="inlineDoc">
+      <div class="controls">
+        <p>Data source:</p>
+        <p>
+          <select id="datasource">
+            <option value="1x1x1">1x1x1</option>
+            <option value="2x2x2">2x2x2</option>
+            <option value="4x4x4">4x4x4</option>
+            <option value="8x8x8">8x8x8</option>
+            <option value="16x16x16">16x16x16</option>
+            <option value="Sphere">Sphere</option>
+            <option value="I-Shape">I-Shape</option>
+            <option value="Tiny Button">Tiny Button</option>
+            <option value="Noise">Noise</option>
+            <option value="Dense Noise">Dense Noise</option>
+            <option value="16 Color Noise">16 Color Noise</option>
+            <option value="Hole">Hole</option>
+            <option value="Boss">Boss</option>
+            <option value="T-Shape">T-Shape</option>
+            <option value="HollowCube">HollowCube</option>
+            <option value="Clover">Clover</option>
+            <option value="Triangle">Triangle</option>
+            <option value="Saw">Saw</option>
+            <option value="4Dots">4Dots</option>
+            <option value="Checker">Checker</option>
+            <option value="Matt's Example">Matt's Example</option>
+            <option value="Benchmark (SLOW!)">Benchmark (SLOW!)</option>
+            <option value="Hill">Hill</option>
+            <option value="Valley">Valley</option>
+            <option value="Hilly Terrain">Hilly Terrain</option>
+            <option value="Empty">Empty</option>
+          </select>
+        </p>
+        <p>Mesher:</p>
+        <p>
+          <select id="mesher">
+            <option value="Stupid">Stupid</option>
+            <option value="Culled">Culled</option>
+            <option value="Greedy">Greedy</option>
+            <option value="Monotone">Monotone</option>
+          </select>
+        </p>
+        <p>Show faces: <input type="checkbox" id="showfacets" value="checked"></p>
+        <p>Show edges: <input type="checkbox" id="showedges" value="checked"></p>
+        <p>Vertex count: <input type="text" id="vertcount" value="0"> </p>        
+        <p>Face count: <input type="text" id="facecount" value="0"> </p>        
+      </div> 
+    </div>
+
+
+    <script type="text/javascript">
+    var stats, scene, renderer, composer;
+    var camera, cameraControl;
+    var geometry, surfacemesh, wiremesh;
+    var meshers = {
+        'Stupid': StupidMesh
+      , 'Culled': CulledMesh
+      , 'Greedy': GreedyMesh
+      , 'Monotone': MonotoneMesh
+    };
+    var testdata = {};
+    
+    
+    function updateMesh() {
+    
+      scene.remove( surfacemesh );
+      scene.remove( wiremesh );
+      
+      geometry  = new THREE.Geometry();   
+      var mesher = meshers[ document.getElementById("mesher").value ]
+        , data   = testdata[ document.getElementById("datasource").value ]
+        , result = mesher( data.voxels, data.dims );
+      document.getElementById("vertcount").value = result.vertices.length;
+      document.getElementById("facecount").value = result.faces.length;
+      geometry.vertices.length = 0;
+      geometry.faces.length = 0;
+      for(var i=0; i<result.vertices.length; ++i) {
+        var q = result.vertices[i];
+        geometry.vertices.push(new THREE.Vector3(q[0], q[1], q[2]));
+      }
+      console.log("result faces: " + result.faces.length);
+      for(var i=0; i<result.faces.length; ++i) {
+        var q = result.faces[i];
+        if(q.length === 5) {
+          var f = new THREE.Face4(q[0], q[1], q[2], q[3]);
+          f.color = new THREE.Color(q[4]);
+          f.vertexColors = [f.color,f.color,f.color,f.color];
+          geometry.faces.push(f);
+        } else if(q.length == 4) {
+          var f = new THREE.Face3(q[0], q[1], q[2]);
+          f.color = new THREE.Color(q[3]);
+          f.vertexColors = [f.color,f.color,f.color];
+          geometry.faces.push(f);
+        }
+      }
+      
+      geometry.computeFaceNormals();
+      
+      geometry.verticesNeedUpdate = true;
+      geometry.elementsNeedUpdate = true;
+      geometry.normalsNeedUpdate = true;
+      
+      geometry.computeBoundingBox();
+      geometry.computeBoundingSphere();
+      
+      var bb = geometry.boundingBox;
+
+      
+       //Create surface mesh
+      var material  = new THREE.MeshBasicMaterial({
+        vertexColors: true
+      });
+      surfacemesh = new THREE.Mesh( geometry, material );
+      surfacemesh.doubleSided = false;
+      var wirematerial = new THREE.MeshBasicMaterial({
+          color : 0xffffff
+        , wireframe : true
+      });
+      wiremesh = new THREE.Mesh(geometry, wirematerial);
+      wiremesh.doubleSided = true;
+      
+      wiremesh.position.x = surfacemesh.position.x = -(bb.max.x + bb.min.x) / 2.0;
+      wiremesh.position.y = surfacemesh.position.y = -(bb.max.y + bb.min.y) / 2.0;
+      wiremesh.position.z = surfacemesh.position.z = -(bb.max.z + bb.min.z) / 2.0;
+      
+      scene.add( surfacemesh );
+      scene.add( wiremesh );
+    }
+
+    if( !init() ) animate();
+
+    // init the scene
+    function init(){
+        
+      if( Detector.webgl ){
+        renderer = new THREE.WebGLRenderer({
+          antialias   : true, // to get smoother output
+          preserveDrawingBuffer : true  // to allow screenshot
+        });
+      }else{
+        renderer = new THREE.CanvasRenderer();
+      }
+      renderer.setClearColorHex( 0xBBBBBB, 1 );
+      
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.getElementById('container').appendChild(renderer.domElement);
+
+      // add Stats.js - https://github.com/mrdoob/stats.js
+      stats = new Stats();
+      stats.domElement.style.position = 'absolute';
+      stats.domElement.style.bottom = '0px';
+      document.body.appendChild( stats.domElement );
+
+      // create a scene
+      scene = new THREE.Scene();
+
+      // put a camera in the scene
+      camera  = new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 1, 10000 );
+      camera.position.set(0, 0, 40);
+      scene.add(camera);
+
+      // create a camera contol
+      cameraControls  = new THREE.TrackballControls( camera, document.getElementById('container') )
+
+      // transparently support window resize
+      THREEx.WindowResize.bind(renderer, camera);
+      // allow 'p' to make screenshot
+      THREEx.Screenshot.bindKey(renderer);
+      // allow 'f' to go fullscreen where this feature is supported
+      if( THREEx.FullScreen.available() ){
+        THREEx.FullScreen.bindKey();    
+        document.getElementById('inlineDoc').innerHTML  += "- <i>f</i> for fullscreen";
+      }
+
+      
+      //Initialize dom elements
+      testdata = createTestData();
+      var ds = document.getElementById("datasource");
+      for(var id in testdata) {
+        ds.add(new Option(id, id), null);
+      }
+      ds.onchange = updateMesh;
+      var ms = document.getElementById("mesher");
+      for(var alg in meshers) {
+        ms.add(new Option(alg, alg), null);
+      }
+      ms.onchange = updateMesh;
+      
+      document.getElementById("showfacets").checked = true;
+      document.getElementById("showedges").checked  = true;
+      
+      //Update mesh
+      updateMesh();
+      
+      return false;
+    }
+
+    // animation loop
+    function animate() {
+
+      // loop on request animation loop
+      // - it has to be at the begining of the function
+      // - see details at http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+      requestAnimationFrame( animate );
+
+      // do the render
+      render();
+
+      // update stats
+      stats.update();
+    }
+
+    // render the scene
+    function render() {
+      // variable which is increase by Math.PI every seconds - usefull for animation
+      var PIseconds = Date.now() * Math.PI;
+
+      // update camera controls
+      cameraControls.update();
+
+      surfacemesh.visible = document.getElementById("showfacets").checked;
+      wiremesh.visible = document.getElementById("showedges").checked;
+
+      // actually render the scene
+      renderer.render( scene, camera );
+    }
+  </script>
+
+  </body>
+
+</html>
+
+
+
+
+
+
+
+

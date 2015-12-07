@@ -1,0 +1,64 @@
+/* tab color */
+#bookmarks>li>a {
+background-color: #666;
+  border: 1px solid #888888;
+  color:#fff;
+}
+
+/* active tab color */
+#bookmarks>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus {
+  color: #fff;
+  background-color: #333333; 
+  border-color: #777777;
+}
+
+/* hover tab color */
+#bookmarks>li>a:hover {
+  border-color: #000000;
+  background-color: #111111;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body {
+  background-image: url("img/background.png");
+  background-size: 100% 125%;
+  background-color: #000000;
+}
+
+.panel-danger> .panel-heading {
+  color: #000099;
+  background-color: #CCF2FF;
+  border-color: #000099;
+}
+
+svg {
+    width: 100%;
+    position: relative;
+}
+
+	
+	.node {
+		cursor: pointer;
+	}
+
+	.node circle {
+	  fill: #fff;
+	  stroke: steelblue;
+	  stroke-width: 3px;
+	}
+
+	.node text {
+	  font: 12px sans-serif;
+	}
+
+	.link {
+	  fill: none;
+	  stroke: #ccc;
+	  stroke-width: 2px;
+	}
+	
+    

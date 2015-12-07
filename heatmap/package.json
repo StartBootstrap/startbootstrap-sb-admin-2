@@ -1,0 +1,22 @@
+{
+  "name": "heatmap.js",
+  "version": "2.0.0",
+  "description": "Dynamic JavaScript Heatmaps for the Web",
+  "homepage": "http://www.patrick-wied.at/static/heatmapjs/",
+  "devDependencies": {
+    "grunt": ">= 0.4.1",
+    "coffee-script": ">= 1.6.3",
+    "grunt-contrib-uglify": ">= 0.2.0",
+    "grunt-contrib-concat": ">= 0.1.3",
+    "grunt-contrib-watch": "0.2.0rc7",
+    "grunt-contrib-jshint": ">= 0.3.0"
+  },
+  "buildFiles": [
+    "src/config.js", 
+    "src/data.js", 
+    "src/renderer/canvas2d.js", 
+    "src/renderer.js", 
+    "src/util.js", 
+    "src/core.js"
+  ]
+}

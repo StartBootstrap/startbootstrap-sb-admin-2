@@ -1,941 +1,568 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Timeline CSS -->
-    <link href="../dist/css/timeline.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../bower_components/morrisjs/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-</head>
-
-<body>
-
-    <div id="wrapper">
-
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <title>132 Analyst Dashboard</title>
+        <!-- Bootstrap Core CSS -->
+        <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Timeline CSS -->
+        <link href="../dist/css/timeline.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+        <link href="../dist/css/stylesheet.css" rel="stylesheet">
+        <!-- D3 Heatmap CSS -->
+        <link href="../dist/css/style-heatmap.css" rel="stylesheet">
+        <!-- Background CSS -->
+        <link href="../styles.css" rel="stylesheet">
+        
+        <!-- Custom Fonts -->
+        <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        
+        <!-- jQuery -->
+        <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+        
+        <!-- Form validation javascript -->
+        <script src="../js/validator.js"></script>    
+        <!-- Custom Theme JavaScript -->
+        <script src="../dist/js/sb-admin-2.js"></script>
+        <script src="../js/script.js"></script>
+        <!-- D3 -->
+        <!-- // <script src="www.d3js.org/d3.v3.min.js"></script> -->
+        <script src="../d3/d3.min.js"></script>
+        <!-- JQuery -->
+        <script src="../js/jquery-1.11.3.min.js"></script>
+        <!-- JCanvas -->
+        <script src='../js/jcanvas.min.js'></script>
+        <script language="javascript">
+            function checkAD(){
+                if(document.aggregate_data.Stream.value==""){
+                    alert("Please select a Data Stream."); 
+                    document.aggregate_data.Stream.focus();
+                    return false;
+                    }
+                if(document.aggregate_data.optradio.value==""){
+                    alert("Please select an operator."); 
+                    document.aggregate_data.optradio.focus();
+                    return false;
+                }
+                if(document.aggregate_data.mode.checked==true){
+                    if(document.aggregate_data.mode_min.value==""){
+                        alert("Please enter a Min."); 
+                        document.aggregate_data.mode_min.focus();
+                        return false;
+                    }
+                    if(document.aggregate_data.mode_max.value==""){
+                        alert("Please enter a Max."); 
+                        document.aggregate_data.mode_max.focus();
+                        return false;
+                    }
+            
+                }
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!-- Navigation -->
+            <nav class="navbar navbar-default" role="navigation" style="margin: 0 auto">
+                <div class="navbar-header col-md-5">
+                    <!-- Unnecessary?
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
-            </div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-top-links navbar-right">
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-messages">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                    </button> -->
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-default" data-toggle="modal" data-target="#importModal">Import Data Stream</button>
+                        <button type="button" class="btn btn-default"><a href="#" download="Untitled.pdf" id="exp">Export Module</a></button>
+                    </div>
+                </div>
+                <div class="navbar-header col-md-6">
+                    <input class="nav" type="text" id="inputTitle" placeholder="Untitled" style="width:40%; text-align: center">
+                </div>
+                <div class="navbar-header col-md-1" style="left:0px">
+                    <ul class="nav navbar-top-links">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                             </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <strong>John Smith</strong>
-                                    <span class="pull-right text-muted">
-                                        <em>Yesterday</em>
-                                    </span>
-                                </div>
-                                <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>Read All Messages</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-messages -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-tasks">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 1</strong>
-                                        <span class="pull-right text-muted">40% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 2</strong>
-                                        <span class="pull-right text-muted">20% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                            <span class="sr-only">20% Complete</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 3</strong>
-                                        <span class="pull-right text-muted">60% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <p>
-                                        <strong>Task 4</strong>
-                                        <span class="pull-right text-muted">80% Complete</span>
-                                    </p>
-                                    <div class="progress progress-striped active">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
-                                            <span class="sr-only">80% Complete (danger)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Tasks</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-tasks -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-alerts -->
-                </li>
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
-                        </li>
-                        <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
-                        </li>
-                    </ul>
-                    <!-- /.dropdown-user -->
-                </li>
-                <!-- /.dropdown -->
-            </ul>
-            <!-- /.navbar-top-links -->
-
-            <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="flot.html">Flot Charts</a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
                                 </li>
-                                <li>
-                                    <a href="morris.html">Morris.js Charts</a>
+                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                                 </li>
                             </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="buttons.html">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
                         </li>
                     </ul>
                 </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
-
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Support Tickets!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>3326</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:29 PM</td>
-                                                    <td>$321.33</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3325</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:20 PM</td>
-                                                    <td>$234.34</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3324</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:03 PM</td>
-                                                    <td>$724.17</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3323</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:00 PM</td>
-                                                    <td>$23.71</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3322</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:49 PM</td>
-                                                    <td>$8345.23</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3321</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:23 PM</td>
-                                                    <td>$245.12</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3320</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:15 PM</td>
-                                                    <td>$5663.54</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3319</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:13 PM</td>
-                                                    <td>$943.45</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.table-responsive -->
-                                </div>
-                                <!-- /.col-lg-4 (nested) -->
-                                <div class="col-lg-8">
-                                    <div id="morris-bar-chart"></div>
-                                </div>
-                                <!-- /.col-lg-8 (nested) -->
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="timeline">
-                                <li>
-                                    <div class="timeline-badge"><i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
-                                            </p>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-badge danger"><i class="fa fa-bomb"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-badge info"><i class="fa fa-save"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque.</p>
-                                            <hr>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="fa fa-gear"></i>  <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Action</a>
-                                                    </li>
-                                                    <li><a href="#">Another action</a>
-                                                    </li>
-                                                    <li><a href="#">Something else here</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Separated link</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam. Officia quam qui adipisci quas consequuntur nostrum sequi. Consequuntur, commodi.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge success"><i class="fa fa-graduation-cap"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Payment Received
-                                    <span class="pull-right text-muted small"><em>Yesterday</em>
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                            <a href="#" class="btn btn-default btn-block">View Details</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="chat-panel panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i>
-                            Chat
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="chat">
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                                            </small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-                        <div class="panel-footer">
-                            <div class="input-group">
-                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
+                <!-- /.dropdown-user settings-->
+                
+            </nav>
         </div>
-        <!-- /#page-wrapper -->
+        <div class="modal fade" id="importModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Import Data Stream</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Choose a category</p>
+                        <p>Life Events</p>
+                        <div class="select">
+                            <select class="form-control" id="lifeEvents" style="margin-bottom:20px">
+                                <option></option>
+                                <option>Life Events Stream 1</option>
+                                <option>Life Events Stream 2</option>
+                                <option>Life Events Stream 3</option>
+                                <option>Life Events Stream 4</option>
+                            </select>
+                        </div>
+                        <p>Environmental</p>
+                        <div class="select">
+                            <select class="form-control" id="environmental" style="margin-bottom:20px">
+                                <option></option>
+                                <option>Environmental Stream 1</option>
+                                <option>Environmental Stream 2</option>
+                                <option>Environmental Stream 3</option>
+                                <option>Environmental Stream 4</option>
+                            </select>
+                        </div>
+                        <p>Traffic</p>
+                        <div class="select">
+                            <select class="form-control" id="traffic" style="margin-bottom:20px">
+                                <option></option>
+                                <option>Traffic Stream 1</option>
+                                <option>Traffic Stream 2</option>
+                                <option>Traffic Stream 3</option>
+                                <option>Traffic Stream 4</option>
+                            </select>
+                        </div>
+                        <p>Social Media</p>
+                        <div class="select">
+                            <select class="form-control" id="socialMedia">
+                                <option></option>
+                                <option>Social Media Stream 1</option>
+                                <option>Social Media Stream 2</option>
+                                <option>Social Media Stream 3</option>
+                                <option>Social Media Stream 4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" id="importClose">Close</button>
+                        <button type="button" class="btn btn-primary" onClick="validateImportData(); loadDataStreams();">Process</button>                  
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <!-- <div id="page-wrapper"> -->
+        <div class="row" style="height:175px;">
+            <div class="col-xs-9">
+                <!-- /.row -->
+                <div class="row">
+                    <ul class="nav nav-tabs nav-justified" id="bookmarks" style="height:100%;">
+                        <li class="active"><a href="#processing" data-toggle="tab">Processors</a></li>
+                        <li><a href="#visualization" data-toggle="tab">Visualizers</a></li>
+                        <div class="tab-content">
+                            <div id="processing" class="tab-pane active">
+                                <div class="row" style="background-color:#C8EDFF">
+                                    <div class="col-xs-2 col-md-offset-1">
+                                        <button type="button" title="Filter" class="icon_button" data-toggle="modal" data-target="#filterModal" id="filterButton">
+                                        <a href="#"><img src="../img/filter.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                    <!-- Modal that opens up when the user clicks on the filter button-->
+                                    <div class="modal fade" id="filterModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">Filter Data</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row form-group" id="filterDataStreamDiv">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-3" id="filterDataStream">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                        <input type="checkbox" id="filterValue" data-error="Must Select Value">
+                                                        Value
+                                                        </label>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                    <div class="col-md-offset-1">
+                                                        <label for="inputName" class="control-label">Min<input type="text" class="form-control" id="inputFilterValueMin" placeholder="0" required></label>
+                                                        <label for="inputName" class="control-label">Max<input type="text" class="form-control" id="inputFilterValueMax" placeholder="100" required></label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                        <input type="checkbox" id="filterNorm" data-error="Must Select Normalization Mode" required>
+                                                        Normalization Mode
+                                                        </label>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="radio col-xs-offset-1">
+                                                            <label style="margin-right:100px;"><input type="radio" name="optradio">True</label>
+                                                            <label><input type="radio" name="optradio">False</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label>
+                                                        <input type="checkbox" id="filterLocation" data-error="Must Select Location" required>
+                                                        Location
+                                                        </label>
+                                                        <div class="help-block with-errors"></div>
+                                                    </div>
+                                                    <div class="col-md-offset-1">
+                                                        <label for="inputName" class="control-label">NorthEast Longitude<input type="text" class="form-control" id="inputFilterNELong" placeholder="0" required></label>
+                                                        <label for="inputName" class="control-label">NorthEast Latitude<input type="text" class="form-control" id="inputFilterNELat" placeholder="100" required></label>
+                                                        <label for="inputName" class="control-label">SouthWest Longitude<input type="text" class="form-control" id="inputFilterSWLong" placeholder="0" required></label>
+                                                        <label for="inputName" class="control-label">SouthWest Latitude<input type="text" class="form-control" id="inputFilterSWLat" placeholder="100" required></label>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="filterClose">Close</button>
+                                                    <button type="button" class="btn btn-primary"
+                                                        onClick="validateFilterInput(); processFilter();">Process</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                                    <div class="col-xs-2">
+                                        <button type="button" title="Group Data"  class="icon_button" data-toggle="modal" data-target="#groupModal">
+                                        <a href="#"><img src="../img/pie_chart.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                    <!-- Modal that opens up when the user clicks on the grouping icon-->
+                                    <div class="modal fade" id="groupModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">Group Data</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-3" id="groupDataStream">
+                                                            <option></option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-xs-4">Number of Groups</p>
+                                                        <select class="col-xs-2" name="#">
+                                                            <option value="default">1</option>
+                                                            <option value="choice1">2</option>
+                                                            <option value="choice2">3</option>
+                                                            <option value="choice3">4</option>
+                                                            <option value="choice4">5</option>
+                                                            <option value="choice5">6</option>
+                                                            <option value="choice6">7</option>
+                                                            <option value="choice7">8</option>
+                                                            <option value="choice8">9</option>
+                                                            <option value="choice9">10</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-xs-4">Method:</p>
+                                                        <div class="radio col-xs-offset-1">
+                                                            <label style="margin-right:100px;"><input type="radio" name="optradio">Threshold</label>
+                                                            <label><input type="radio" name="optradio">K-mean</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <p class="col-md-12">Filter by price interval: <b>$ 10</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="10" data-slider-max="1000" data-slider-step="5" data-slider-value="[250,450]"/> <b>$ 1000</b></p>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                    <button type="button" class="btn btn-primary">Process</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                                    <div class="col-xs-2">
+                                        <button type="button" title="Aggregate Data" class="icon_button" data-toggle="modal" data-target="#aggregateModal">
+                                            <a href="#"><img src="../img/sigma.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                    <!-- Modal that opens up when the user clicks on the aggregate button-->
+                                    <div class="modal fade" id="aggregateModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">Aggregate Data</h4>
+                                                </div>
+                                                <div class="modal-body col-md-12">
+                                                    <form name="aggregate_data" method="get" onSubmit="return checkAD();">
+                                                        <div class="row form-group">
+                                                            <p class="col-xs-4">Data Stream</p>
+                                                            <select class="col-xs-3" id="aggregateDataStream">
+                                                                <option></option>
+                                                            </select>
+                                                        </div>
+                                                        <button type="button" class="btn btn-default"><i class="glyphicon glyphicon-plus">DataStream</i></button>
+                                                        <p>Aggregation Operators</p>
+                                                        <div class="radio col-md-offset-1">
+                                                            <TABLE border="0">
+                                                                <tr>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="sum">Sum</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="average">Average</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="min">Minimum</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="max">Maximum</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="or">Or</label></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="con">Convolution</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="and">And</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="not">Not</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="sub">Subtraction</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="mul">Multiply</label></td>
+                                                                    <td><label class="groupRadio"><input type="radio" name="optradio" value="div">Division</label></td>
+                                                                </tr>
+                                                            </TABLE>
+                                                        </div>
+                                                        <label>
+                                                        <input type="checkbox" name="mode"> Normalization Mode
+                                                        </label>
+                                                        <div class="form-group col-md-offset-1">
+                                                            <label>Minimum<input type="text" class="form-control" id="exampleInputEmail1" name="mode_min" placeholder="0"></label>
+                                                            <label>Maximum<input type="text" class="form-control" id="exampleInputEmail1" name="mode_max" placeholder="100"></label>
+                                                        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                <input type="button" value = "Close" class="btn btn-default" data-dismiss="modal">
+                                                <input type="submit" value="Process" class="btn btn-primary">
+                                                </div>
+                                                </form>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button type="button" title="2 Dimensional Data"  class="icon_button" data-toggle="modal" data-target="#2DModal">
+                                        <a href="#"><img src="../img/2d.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                    <div class="modal fade" id="2DModal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">2D Co-occurence</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row form-group" id="2DdataStreamDiv1">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-3" name="2dStream1" id="2dCoDataStream1">
+                                                            <option value="default">es1</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="row form-group" id="2DdataStreamDiv2">
+                                                        <p class="col-xs-4">Data Stream</p>
+                                                        <select class="col-xs-3" name="2dStream2" id="2dCoDataStream2">
+                                                            <option value="default">es2</option>
+                                                        </select>
+                                                    </div>
+                                                    <p>Time Lag:</p>
+                                                    <div class="row">
+                                                        <div class="row form-group">
+                                                            <p class="col-md-offset-1 col-xs-3">Unit</p>
+                                                            <select class="col-xs-3" name="Unit" id="timeLagUnit">
+                                                                <option value="default">second</option>
+                                                                <option value="choice1">minute</option>
+                                                                <option value="choice2">hour</option>
+                                                                <option value="choice3">day</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-offset-1 form-group" style="display:inline-block">
+                                                            <label for="inputNumber" class="control-label" style="margin-top:5px;">Value<input type="text" class="form-control" size="25" id="timeLagValue" placeholder="Enter Value" required>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="2DClose">Close</button>
+                                                    <button type="button" class="btn btn-primary" onClick="validate2DInput()">Process</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
 
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../bower_components/metisMenu/dist/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="../bower_components/raphael/raphael-min.js"></script>
-    <script src="../bower_components/morrisjs/morris.min.js"></script>
-    <script src="../js/morris-data.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-
-</body>
-
+                                    <!-- Ricky 3D Occurence Icon-->                         
+                                    <div class="col-xs-2">
+                                        <button type="button" title="3 Dimensional Data" class="icon_button" data-toggle="modal" data-target="#3dOccur">
+                                        <a href="#"><img src="../img/3d.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                    <!-- Modal that opens up when the user clicks on the 3D Occurence button-->
+                                    <div class="modal fade" id="3dOccur">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title">3D Co-occurence</h4>
+                                                </div>
+                                                <div class="modal-body col-md-12">
+                                                    <p>Data Streams:</p>
+                                                    <div>
+                                                        <label>Stream 1:</label>
+                                                        <select id="3dStreams1" name="Stream 1" style="margin-right: 25px; width: 100px;">
+                                                            <option>es1</option>
+                                                        </select>
+                                                        <label>Stream 2:</label>
+                                                        <select id="3dStreams2" name="Stream 2" style="margin-right: 25px; width: 100px;">
+                                                            <option>es2</option>
+                                                        </select>
+                                                        <label>Stream 3:</label>                                            
+                                                        <select id="3dStreams3" name="Stream 3" style="width: 100px;">
+                                                            <option>es3</option>
+                                                        </select>
+                                                    </div>
+                                                    <p/>
+                                                    <p>
+                                                        Time Lag 1: 
+                                                        Value
+                                                        <input id="value1" type="text" size="25" value="">
+                                                        Unit
+                                                        <select name="unit_value1">
+                                                            <option value="default">second</option>
+                                                            <option value="choice1">minute</option>
+                                                            <option value="choice2">hour</option>
+                                                            <option value="choice3">day</option>
+                                                        </select>
+                                                    </p>
+                                                    <p>
+                                                        Time Lag 2: 
+                                                        Value
+                                                        <input id="value2" type="text" size="25" value="">
+                                                        Unit
+                                                        <select name="unit_value2">
+                                                            <option value="default">second</option>
+                                                            <option value="choice1">minute</option>
+                                                            <option value="choice2">hour</option>
+                                                            <option value="choice3">day</option>
+                                                        </select>
+                                                    </p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal" id="3DClose">Close</button>
+                                                    <button type="button" class="btn btn-primary" onclick="validateThreeDInput(); process3D()">Process</button>
+                                                </div>
+                                            </div>
+                                            <!-- /.modal-content -->
+                                        </div>
+                                        <!-- /.modal-dialog -->
+                                    </div>
+                                    <!-- /.modal -->
+                                </div>
+                            </div>
+                            <div id="visualization" class="tab-pane">
+                                <div class="row" style="background-color:#C8EDFF">
+                                    <div class="col-xs-2 col-md-offset-3">
+                                        <button type="button" title="Grid Map Overlay" class="icon_button" data-target="#graph">
+                                        <a href="#" title="Visual Data"><img src="../img/filter.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button type="button" title="2D Heatmap" class="icon_button" data-target="#2dVisual" onClick="load2dVisual();">
+                                        <a href="#" title="2 Dimensional Visual"><img src="../img/2d.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <button type="button" title="3D Heatmap" class="icon_button" data-target="#3dVisual">
+                                        <a href="#" title="3 Dimensional Visual" onClick="visualize3D();"><img src="../img/3d.png" class="icons"></a>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="col-md-12" style="margin-top: .5%; margin-left:.5%">
+                        <div class="panel panel-danger">
+                            <div class="panel-heading" style="background-color: #666">
+                                <p style="color: white">Analyst Dashboard</p>
+                            </div>
+                            <div class="panel-body" id="visualizationPanel">
+                                <!-- heatmap -->
+                                <div class="row" role="heatmap" id="heatmap">
+                                    <svg class="col-md-6" id="svgHeatmap" width='100%' height='400px'></svg>
+                                </div>
+                                <div id="container"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="row">
+                    <div class="col-xs-12" style="margin-left: -15px; width: 103%">
+                        <div class="panel panel-info" style="">
+                            <div class="panel-heading">
+                                History
+                            </div>
+                            <!-- /.panel-heading -->
+                            <div class="panel-body" id="historyPanel">
+                                <div role="history" id="history">
+                                    <svg id="svgHistory" width='100%' height='550px'></svg>
+                                <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </body>
 </html>
+
+
+<!-- Cube controller algorithms -->
+<script src="../voxel/vendor/detector.js"></script>
+<script src="../voxel/vendor/dragPanControls.js"></script>
+<script src="../voxel/vendor/fullScreen.js"></script>
+<script src="../voxel/vendor/screenshot.js"></script>
+<script src="../voxel/vendor/stats.js"></script>
+<script src="../voxel/vendor/testData.js"></script>
+<script src="../voxel/vendor/three.js"></script>
+<script src="../voxel/vendor/windowResize.js"></script>
+
+<!-- Mesh algorithms -->
+<script src="../voxel/meshers/culled.js"></script>
+<script src="../voxel/meshers/greedy.js"></script>
+<script src="../voxel/meshers/monotone.js"></script>
+<script src="../voxel/meshers/stupid.js"></script>
