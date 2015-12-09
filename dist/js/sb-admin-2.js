@@ -18,6 +18,10 @@ $(function() {
             $('div.navbar-collapse').removeClass('collapse');
         }
 
+        var sb_a2_extraoffset = $("#page-wrapper").data('sb-a2-extraoffset');
+        if(sb_a2_extraoffset) {
+            topOffset +=Number(sb_a2_extraoffset);
+        }
         height = ((this.window.innerHeight > 0) ? this.window.innerHeight : this.screen.height) - 1;
         height = height - topOffset;
         if (height < 1) height = 1;
