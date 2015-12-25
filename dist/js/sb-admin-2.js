@@ -33,4 +33,8 @@ $(function() {
     if (element.is('li')) {
         element.addClass('active');
     }
+    if (element.parent().is('ul')) {
+        element.parent().addClass('in').parent().addClass('active');
+    }
+
 });
