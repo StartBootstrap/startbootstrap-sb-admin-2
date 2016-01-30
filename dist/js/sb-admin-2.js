@@ -26,11 +26,11 @@ $(function() {
         }
     });
 
-    var url = window.location;
-    var element = $('ul.nav a').filter(function() {
-        return this.href == url;
-    }).addClass('active').parent().parent().addClass('in').parent();
-    if (element.is('li')) {
-        element.addClass('active');
-    }
+	// current item is set "active"
+	var currentItem = $('ul.nav a').filter(function () {
+		return this.href == window.location;
+	}).addClass('active');
+	// all ul containing active item are set "collapse in" and
+	// all parent li are set "active"
+	$('#side-menu ul.nav').has(currentItem).addClass('in').parent().addClass('active');
 });
