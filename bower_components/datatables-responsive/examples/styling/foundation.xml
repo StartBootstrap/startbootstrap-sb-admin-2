@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-example table-type="html-wide" table-class="display responsive nowrap" order="2" framework="foundation">
+<dt-example table-type="html-wide" table-class="tdisplay responsive" order="2">
 
-<css lib="datatables responsive"/>
-<js lib="jquery datatables responsive">
+<css lib="foundation datatables-foundation responsive">
+	table.dataTable th,
+	table.dataTable td {
+		white-space: nowrap;
+	}
+</css>
+<js lib="jquery datatables responsive datatables-foundation">
 <![CDATA[
 
 $(document).ready(function() {
@@ -16,7 +21,7 @@ $(document).ready(function() {
 
 <info><![CDATA[
 
-This example shows DataTables and the Responsive extension being used with the [Foundation](http://foundation.zurb.com) framework providing the styling. The [DataTables / Foundation integration](//datatables.net/manual/styling/foundation) prove seamless integration for DataTables to be used in a Foundation page.
+This example shows DataTables and the Responsive extension being used with the [Foundation](http://foundation.zurb.com) framework providing the styling. The [DataTables / Foundation integration files](//datatables.net/manual/styling/foundation) prove seamless integration for DataTables to be used in a Foundation page.
 
 ]]></info>
 

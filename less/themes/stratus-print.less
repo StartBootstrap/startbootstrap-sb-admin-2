@@ -1,0 +1,276 @@
+@import "variables.less";
+@import "mixins.less";
+
+@font-face { font-family: GearusBold; src: url('../fonts/GearusBold.otf'); } 
+
+body {
+	background-color: @teal-darker;
+}
+
+button {
+    &:active,
+    &:focus {
+        outline: none !important;
+        outline: 0 !important;
+    }
+}
+// Wrappers
+#page-wrapper {
+    background-color: @ceramic;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        border-left: 1px solid darken(@charcoal, 6.5%);
+    }
+}
+
+// -- Buttons
+.btn-primary {
+    background: @carnation;
+    border-color: darken(@carnation, 20%);
+    &:hover {
+        background: darken(@carnation, 2%);
+        border-color: darken(@carnation, 20%);
+    }
+    &:focus,
+    &:active {
+        background: darken(@carnation, 4%) !important;
+        border-color: darken(@carnation, 25%) !important;
+    }
+}
+
+// --Topbar
+
+.navbar {
+    background-color: @charcoal;
+    .gradient(@teal, @teal-dark);
+    border-color: @swamp;
+    border-bottom-width: 2px;
+}
+
+.navbar-default .navbar-brand {
+    background-image: url('../images/sp-logo.svg');
+    background-size: 45px 45px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding-left: 58px;
+    background-position: 10px 3px;
+    font-family: GearusBold, Arial, Helvetica, sans-serif;
+    color: @mint;
+    text-shadow: 0 1px 0 @teal-darker;
+    span {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: white;
+        font-size: 12pt;
+        display: inline-block;
+        border-left: 2px solid @teal-darker;
+        padding-left: 15px;
+    }
+    &:hover,
+    &:focus,
+    &:visited,
+    &:active {
+        color: @mint;
+    }
+}
+
+.sp-logo {
+    background-image: url('../images/sp-logo.svg');
+    background-size: 45px 45px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding-left: 55px;
+    min-height: 45px;
+    line-height: 45px;
+    font-family: GearusBold, Arial, Helvetica, sans-serif;
+    color: @mint;
+    text-shadow: 0 1px 0 @teal-darker;
+    &.no-image {
+        background: none;
+        padding: 0;
+        min-height: auto;
+        line-height: auto;
+    }
+}
+
+.navbar-default .navbar-toggle {
+    background-color: @teal-darker;
+    border-color: @swamp;
+    color: white;
+    &:hover,
+    &:focus {
+      background-color: @teal-darkest;
+      .icon-bar {
+        background: @mint;
+      }
+    }
+    .icon-bar {
+        background: white;
+    }
+}
+
+.navbar-default .navbar-collapse {
+	border-color: black;
+}
+
+.navbar-top-links li.open a {
+    &.dropdown-toggle {
+        background: black;
+        color: white;        
+    }
+}
+
+.navbar-top-links li a {
+    color: white;
+
+    &.dropdown-toggle:hover,
+    &.dropdown-toggle:active,
+    &.dropdown-toggle:focus {
+        background: @teal-darker;
+        color: @mint;
+    }
+}
+
+.navbar-top-links .dropdown-menu li a {
+    color: black;
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    a.active {
+    	background-color: @charcoal;
+
+    	&:hover,
+    	&:active,
+    	&:focus {
+    		background: black;
+    	}
+    }
+}
+
+// --Sidebar
+
+.sidebar {
+	background-color: @teal-darker;
+}
+
+.sidebar ul li {
+    border-bottom: 2px solid @swamp;
+    a {
+        color: white;
+        &.active,
+        &:hover,
+        &:active,
+        &:focus {
+            color: @mint;
+            background-color: @teal;
+        }
+    }
+}
+
+.sidebar-search {
+    input,
+    button {
+        border-color: @teal-darker;  
+        &:focus {
+            outline: 0 !important;
+            outline: none !important;
+        }
+    }
+
+    button {
+        background: @teal;
+        color: white;
+        &:hover {
+            background: @teal-dark;
+            border-color: @teal-darker;
+            color: @mint;
+        }
+        &:focus,
+        &:active {
+            background: @teal-dark !important;
+            border-color: @teal-dark !important;
+            color: @mint !important;
+        }
+    }
+}
+
+// --Custom Panels
+.panel-kashmir {
+    border-color: fade(@kashmir, 30%);
+    .panel-heading {
+        border-color: @kashmir;
+        color: @mint;
+        background-color: @kashmir;
+
+        button {
+            background: @teal;
+            color: white;
+            border-color: fade(@teal-darker, 50%);
+            &:hover {
+                background: @teal-dark;
+                border-color: @teal-darker;
+                color: @mint;
+            }
+            &:focus,
+            &:active {
+                background: @teal-dark !important;
+                border-color: @teal-dark !important;
+                color: @mint !important;
+            }
+        }
+    }
+}
+
+.login-panel {
+    border-color: @teal-dark;
+    box-shadow: 0 5px 30px @teal-darker;
+    text-align: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .panel {
+        text-align: left;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        border-color: @teal-darkest;
+    }
+
+    .sp-logo {
+        background-size: 120px 120px;
+        height: 120px;
+        width: 120px;
+        font-size: 18pt;
+        &.no-image {
+            display: block;
+            min-height: auto;
+            line-height: 18pt;
+            padding: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    a {
+        color: @mint;
+        font-size: 10pt;
+        &:hover { color: white; }
+    }
+}
+
+// --Mobile
+@media(max-width:769px) {
+    .hide-on-mobile { display: none !important; }
+    .navbar-header {
+        border-bottom: 1px solid @swamp;
+    }
+    .navbar {
+        border-bottom: 0;
+    }
+    .login-panel {
+       max-width: 300px; 
+    }
+}

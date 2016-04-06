@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-api library="Responsive">
+<dt-api group="responsive">
 	<name>responsive.index()</name>
 	<summary>Obtain the cell index from a `-tag li` details element</summary>
 	<since>1.0.3</since>

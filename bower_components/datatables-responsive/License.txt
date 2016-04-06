@@ -1,5 +1,3 @@
-MIT license
-
 Copyright (c) 2014-2015 SpryMedia Limited
 http://datatables.net
 
