@@ -14,7 +14,7 @@ body {
 }
 
 #page-wrapper {
-    padding: 0 15px;
+    padding: 0 15px 20px 15px;
     min-height: 568px;
     background-color: white;
 }
@@ -22,7 +22,7 @@ body {
 @media(min-width:768px) {
     #page-wrapper {
         position: inherit;
-        margin: 0 0 0 250px;
+        margin: 51px 0 0 250px;
         padding: 0 30px;
         border-left: 1px solid darken(@gray-lightest, 6.5%);
     }
@@ -49,16 +49,35 @@ body {
     min-height: 50px;
 }
 
+.navbar-top-links .dropdown-menu {
+    margin: 0;
+    padding: 0;
+}
+
 .navbar-top-links .dropdown-menu li {
     display: block;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-top-links .dropdown-menu li:first-child {
+    a {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+    }   
 }
 
 .navbar-top-links .dropdown-menu li:last-child {
     margin-right: 0;
+
+    a {
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+    }
 }
 
 .navbar-top-links .dropdown-menu li a {
-    padding: 3px 20px;
+    padding: 10px 20px;
     min-height: 0;
 }
 
@@ -139,16 +158,24 @@ body {
 
 @media(min-width:768px) {
     .sidebar {
+        position: fixed;
+        top: 51px;
+        bottom: 0;
+        overflow-y: scroll;
         z-index: 1;
-        position: absolute;
         width: 250px;
-        margin-top: 51px;
     }
 
     .navbar-top-links .dropdown-messages,
     .navbar-top-links .dropdown-tasks,
     .navbar-top-links .dropdown-alerts {
         margin-left: auto;
+    }
+}
+
+@media(max-width:767px) {
+    .navbar {
+        position: static;
     }
 }
 
