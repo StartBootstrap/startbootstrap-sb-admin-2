@@ -27,12 +27,12 @@ module.exports = function(grunt) {
     less: {
       base: {
         options: {
-          paths: ["app/assets/less"]
+          paths: ["less"]
         },
         files: {
           "dist/css/sb-admin-2.css": "less/sb-admin-2.less",
-          "dist/css/themes/stratus-print.css": "less/themes/stratus-print.less",
-          "dist/css/themes/dark.css": "less/dark.less"
+          "dist/css/stratus-print.css": "less/themes/stratus-print.less",
+          "dist/css/dark.css": "less/dark.less"
         }
       }
     },
