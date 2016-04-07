@@ -274,6 +274,9 @@ button:focus {
 .panel.metric > a {
   color: white;
 }
+.panel.metric > a:hover {
+  color: white;
+}
 .panel.metric .panel-footer {
   background-color: rgba(0, 74, 94, 0.98);
   box-shadow: inset 0px 1px 5px #003645;
@@ -281,6 +284,9 @@ button:focus {
 }
 .panel .dropdown-menu {
   text-shadow: none;
+}
+.panel .dropdown-menu i {
+  color: black;
 }
 .panel-default {
   border-color: #003645;
@@ -295,24 +301,32 @@ button:focus {
 .panel-default > .panel-heading i {
   color: #dbfce1;
 }
-.panel-default > .panel-heading button {
+.panel-default > .panel-heading button,
+.panel-default > .panel-heading .open button {
   background: #003645;
   border-color: #00222b;
   color: white;
 }
-.panel-default > .panel-heading button i {
+.panel-default > .panel-heading button i,
+.panel-default > .panel-heading .open button i {
   color: white;
 }
 .panel-default > .panel-heading button:hover,
+.panel-default > .panel-heading .open button:hover,
 .panel-default > .panel-heading button:focus,
-.panel-default > .panel-heading button:active {
+.panel-default > .panel-heading .open button:focus,
+.panel-default > .panel-heading button:active,
+.panel-default > .panel-heading .open button:active {
   background: #003e4f !important;
   color: #dbfce1 !important;
   border-color: #002a35 !important;
 }
 .panel-default > .panel-heading button:hover i,
+.panel-default > .panel-heading .open button:hover i,
 .panel-default > .panel-heading button:focus i,
-.panel-default > .panel-heading button:active i {
+.panel-default > .panel-heading .open button:focus i,
+.panel-default > .panel-heading button:active i,
+.panel-default > .panel-heading .open button:active i {
   color: #dbfce1 !important;
 }
 .panel-kashmir,
@@ -332,31 +346,47 @@ button:focus {
   color: #d1dde9;
 }
 .panel-kashmir .panel-heading button,
-.panel-primary .panel-heading button {
+.panel-primary .panel-heading button,
+.panel-kashmir .panel-heading .open button,
+.panel-primary .panel-heading .open button {
   background: #2c435c;
   color: white;
   border-color: #1c2a3a;
 }
 .panel-kashmir .panel-heading button i,
-.panel-primary .panel-heading button i {
+.panel-primary .panel-heading button i,
+.panel-kashmir .panel-heading .open button i,
+.panel-primary .panel-heading .open button i {
   color: white;
 }
 .panel-kashmir .panel-heading button:hover,
 .panel-primary .panel-heading button:hover,
+.panel-kashmir .panel-heading .open button:hover,
+.panel-primary .panel-heading .open button:hover,
 .panel-kashmir .panel-heading button:focus,
 .panel-primary .panel-heading button:focus,
+.panel-kashmir .panel-heading .open button:focus,
+.panel-primary .panel-heading .open button:focus,
 .panel-kashmir .panel-heading button:active,
-.panel-primary .panel-heading button:active {
+.panel-primary .panel-heading button:active,
+.panel-kashmir .panel-heading .open button:active,
+.panel-primary .panel-heading .open button:active {
   background: #314b67 !important;
   border-color: #1c2a3a !important;
   color: #dbfce1 !important;
 }
 .panel-kashmir .panel-heading button:hover i,
 .panel-primary .panel-heading button:hover i,
+.panel-kashmir .panel-heading .open button:hover i,
+.panel-primary .panel-heading .open button:hover i,
 .panel-kashmir .panel-heading button:focus i,
 .panel-primary .panel-heading button:focus i,
+.panel-kashmir .panel-heading .open button:focus i,
+.panel-primary .panel-heading .open button:focus i,
 .panel-kashmir .panel-heading button:active i,
-.panel-primary .panel-heading button:active i {
+.panel-primary .panel-heading button:active i,
+.panel-kashmir .panel-heading .open button:active i,
+.panel-primary .panel-heading .open button:active i {
   color: #dbfce1 !important;
 }
 .panel-success {
@@ -372,24 +402,32 @@ button:focus {
 .panel-success .panel-heading i {
   color: #ffffff;
 }
-.panel-success .panel-heading button {
+.panel-success .panel-heading button,
+.panel-success .panel-heading .open button {
   background: #2c435c;
   color: #528A52;
   border-color: #1c2a3a;
 }
-.panel-success .panel-heading button i {
+.panel-success .panel-heading button i,
+.panel-success .panel-heading .open button i {
   color: white;
 }
 .panel-success .panel-heading button:hover,
+.panel-success .panel-heading .open button:hover,
 .panel-success .panel-heading button:focus,
-.panel-success .panel-heading button:active {
+.panel-success .panel-heading .open button:focus,
+.panel-success .panel-heading button:active,
+.panel-success .panel-heading .open button:active {
   background: #314b67 !important;
   border-color: #1c2a3a !important;
   color: #dbfce1 !important;
 }
 .panel-success .panel-heading button:hover i,
+.panel-success .panel-heading .open button:hover i,
 .panel-success .panel-heading button:focus i,
-.panel-success .panel-heading button:active i {
+.panel-success .panel-heading .open button:focus i,
+.panel-success .panel-heading button:active i,
+.panel-success .panel-heading .open button:active i {
   color: #dbfce1 !important;
 }
 .panel-info {
@@ -404,23 +442,31 @@ button:focus {
 .panel-info .panel-heading i {
   color: #ffffff;
 }
-.panel-info .panel-heading button {
+.panel-info .panel-heading button,
+.panel-info .panel-heading .open button {
   background: #9acfea;
   border-color: #70bbe1;
 }
-.panel-info .panel-heading button i {
+.panel-info .panel-heading button i,
+.panel-info .panel-heading .open button i {
   color: white;
 }
 .panel-info .panel-heading button:hover,
+.panel-info .panel-heading .open button:hover,
 .panel-info .panel-heading button:focus,
-.panel-info .panel-heading button:active {
+.panel-info .panel-heading .open button:focus,
+.panel-info .panel-heading button:active,
+.panel-info .panel-heading .open button:active {
   background: #a6d5ec !important;
   border-color: #70bbe1 !important;
   color: white !important;
 }
 .panel-info .panel-heading button:hover i,
+.panel-info .panel-heading .open button:hover i,
 .panel-info .panel-heading button:focus i,
-.panel-info .panel-heading button:active i {
+.panel-info .panel-heading .open button:focus i,
+.panel-info .panel-heading button:active i,
+.panel-info .panel-heading .open button:active i {
   color: white !important;
 }
 .panel-warning {
@@ -435,23 +481,31 @@ button:focus {
 .panel-warning .panel-heading i {
   color: #ffffff;
 }
-.panel-warning .panel-heading button {
+.panel-warning .panel-heading button,
+.panel-warning .panel-heading .open button {
   background: #f5e79e;
   border-color: #f0db70;
 }
-.panel-warning .panel-heading button i {
+.panel-warning .panel-heading button i,
+.panel-warning .panel-heading .open button i {
   color: white;
 }
 .panel-warning .panel-heading button:hover,
+.panel-warning .panel-heading .open button:hover,
 .panel-warning .panel-heading button:focus,
-.panel-warning .panel-heading button:active {
+.panel-warning .panel-heading .open button:focus,
+.panel-warning .panel-heading button:active,
+.panel-warning .panel-heading .open button:active {
   background: #f6eaac !important;
   border-color: #f0db70 !important;
   color: white !important;
 }
 .panel-warning .panel-heading button:hover i,
+.panel-warning .panel-heading .open button:hover i,
 .panel-warning .panel-heading button:focus i,
-.panel-warning .panel-heading button:active i {
+.panel-warning .panel-heading .open button:focus i,
+.panel-warning .panel-heading button:active i,
+.panel-warning .panel-heading .open button:active i {
   color: white !important;
 }
 .panel-danger {
@@ -466,23 +520,31 @@ button:focus {
 .panel-danger .panel-heading i {
   color: #ffffff;
 }
-.panel-danger .panel-heading button {
+.panel-danger .panel-heading button,
+.panel-danger .panel-heading .open button {
   background: #dca7a7;
   border-color: #ce8383;
 }
-.panel-danger .panel-heading button i {
+.panel-danger .panel-heading button i,
+.panel-danger .panel-heading .open button i {
   color: white;
 }
 .panel-danger .panel-heading button:hover,
+.panel-danger .panel-heading .open button:hover,
 .panel-danger .panel-heading button:focus,
-.panel-danger .panel-heading button:active {
+.panel-danger .panel-heading .open button:focus,
+.panel-danger .panel-heading button:active,
+.panel-danger .panel-heading .open button:active {
   background: #e1b2b2 !important;
   border-color: #ce8383 !important;
   color: white !important;
 }
 .panel-danger .panel-heading button:hover i,
+.panel-danger .panel-heading .open button:hover i,
 .panel-danger .panel-heading button:focus i,
-.panel-danger .panel-heading button:active i {
+.panel-danger .panel-heading .open button:focus i,
+.panel-danger .panel-heading button:active i,
+.panel-danger .panel-heading .open button:active i {
   color: white !important;
 }
 .panel-blue {
