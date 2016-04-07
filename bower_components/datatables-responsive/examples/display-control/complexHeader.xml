@@ -6,7 +6,7 @@
 		position: relative;
 		min-height: 41px;
 	} 
-	th span {
+	span {
 		display: block;
 		position: absolute;
 		left: 0;
@@ -46,7 +46,7 @@ This example shows how Responsive can be used with _complex headers_ (i.e. heade
 
 We use jQuery to find the header cells which have a `colspan` attribute and wrap their contents in a `-tag span` tag. That `-tag span` is then set to `position: absolute;` using `text-overflow: ellipsis`. The result is that the text of the `colspan` cell will reduce automatically to fit the available area based on the contents of the column cells below it.
 
-This functionality is not currently built into Responsive. It might be included in future.
+This functionality is not currently built into Responsive. It likely will be for v1.1.
 
 ]]></info>
 

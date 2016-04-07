@@ -1,0 +1,669 @@
+@import "variables.less";
+@import "mixins.less";
+
+@font-face { font-family: GearusBold; src: url('../fonts/GearusBold.otf'); } 
+
+body {
+    background-color: @teal-darker;
+}
+
+button {
+    &:active,
+    &:focus {
+        outline: none !important;
+        outline: 0 !important;
+    }
+}
+// Wrappers
+#page-wrapper {
+    background-color: @ceramic;
+}
+
+@media(min-width:768px) {
+    #page-wrapper {
+        border-left: 1px solid darken(@charcoal, 6.5%);
+    }
+}
+
+// -- Buttons
+.btn-primary {
+    background: @carnation;
+    border-color: darken(@carnation, 20%);
+    &.btn-outline {
+        color: white;
+    }
+    &:hover {
+        background: darken(@carnation, 2%);
+        border-color: darken(@carnation, 20%);
+    }
+    &:focus,
+    &:active {
+        background: darken(@carnation, 4%) !important;
+        border-color: darken(@carnation, 25%) !important;
+    }
+}
+
+.btn-danger {
+    background: #EA0700;
+    &.btn-outline {
+        color: white;
+    }
+    &:hover {
+        background: darken(#EA0700, 2%);
+        border-color: darken(#EA0700, 10%);
+    }
+    &:focus,
+    &:active {
+        background: darken(#EA0700, 4%) !important;
+        border-color: darken(#EA0700, 20%) !important;
+    }
+}
+
+// --Topbar
+
+.navbar {
+    background-color: @charcoal;
+    .gradient(@teal, @teal-dark);
+    border-color: @swamp;
+    border-bottom-width: 2px;
+}
+
+.navbar-default .navbar-brand {
+    background-image: url('../images/sp-logo.svg');
+    background-size: 45px 45px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding-left: 58px;
+    background-position: 10px 3px;
+    font-family: GearusBold, Arial, Helvetica, sans-serif;
+    color: @mint;
+    text-shadow: 0 1px 0 @teal-darker;
+    span {
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        color: white;
+        font-size: 12pt;
+        display: inline-block;
+        border-left: 2px solid @teal-darker;
+        padding-left: 15px;
+    }
+    &:hover,
+    &:focus,
+    &:visited,
+    &:active {
+        color: @mint;
+    }
+}
+
+.sp-logo {
+    background-image: url('../images/sp-logo.svg');
+    background-size: 45px 45px;
+    background-repeat: no-repeat;
+    display: inline-block;
+    padding-left: 55px;
+    min-height: 45px;
+    line-height: 45px;
+    font-family: GearusBold, Arial, Helvetica, sans-serif;
+    color: @mint;
+    text-shadow: 0 1px 0 @teal-darker;
+    &.no-image {
+        background: none;
+        padding: 0;
+        min-height: auto;
+        line-height: auto;
+    }
+}
+
+.navbar-default .navbar-toggle {
+    background-color: @teal-darker;
+    border-color: @swamp;
+    color: white;
+    &:hover,
+    &:focus {
+      background-color: @teal-darkest;
+      .icon-bar {
+        background: @mint;
+      }
+    }
+    .icon-bar {
+        background: white;
+    }
+}
+
+.navbar-default .navbar-collapse {
+    border-color: black;
+}
+
+.navbar-top-links li.open a {
+    &.dropdown-toggle {
+        background: black;
+        color: white;        
+    }
+}
+
+.navbar-top-links li a {
+    color: white;
+
+    &.dropdown-toggle:hover,
+    &.dropdown-toggle:active,
+    &.dropdown-toggle:focus {
+        background: @teal-darker;
+        color: @mint;
+    }
+}
+
+.navbar-top-links .dropdown-menu li a {
+    color: black;
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    a.active {
+        background-color: @teal-dark;
+    }
+}
+
+// --Sidebar
+
+.sidebar {
+    background-color: @teal-darker;
+}
+
+.sidebar ul li {
+    border-bottom: 2px solid @swamp;
+    a {
+        color: white;
+        &.active,
+        &:hover,
+        &:active,
+        &:focus {
+            color: @mint;
+            background-color: @teal;
+        }
+    }
+}
+
+.sidebar-search {
+    input,
+    button {
+        border-color: @teal-darker;  
+        &:focus {
+            outline: 0 !important;
+            outline: none !important;
+        }
+    }
+
+    button {
+        background: @teal;
+        color: white;
+        &:hover {
+            background: @teal-dark;
+            border-color: @teal-darker;
+            color: @mint;
+        }
+        &:focus,
+        &:active {
+            background: @teal-dark !important;
+            border-color: @teal-dark !important;
+            color: @mint !important;
+        }
+    }
+}
+
+.login-panel {
+    border-color: @teal-dark;
+    box-shadow: 0 5px 30px @teal-darker;
+    text-align: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .panel {
+        text-align: left;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        border-color: @teal-darkest;
+    }
+
+    .sp-logo {
+        background-size: 120px 120px;
+        height: 120px;
+        width: 120px;
+        font-size: 18pt;
+        &.no-image {
+            display: block;
+            min-height: auto;
+            line-height: 18pt;
+            padding: 0;
+            width: auto;
+            height: auto;
+        }
+    }
+
+    a {
+        color: @mint;
+        font-size: 10pt;
+        &:hover { color: white; }
+    }
+}
+
+// --Mobile
+@media(max-width:769px) {
+    .hide-on-mobile { display: none !important; }
+    .navbar-header {
+        border-bottom: 1px solid @swamp;
+    }
+    .navbar {
+        border-bottom: 0;
+    }
+    .login-panel {
+       max-width: 300px; 
+    }
+}
+
+// --Panels
+.panel {
+    border-radius: 6px;
+    border: 0;
+    > .panel-footer {
+        background-color: fade(@graynurse, 80%);
+        border: 1px solid darken(@graynurse, 5%);
+    }
+
+    > .panel-heading {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        line-height: 25px;
+        font-size: 16px;
+        border: 1px solid;
+
+        button {
+            font-size: 14px;
+            padding: 3px 8px;
+            margin-top: -3px;
+        }
+    }
+
+    > .panel-body {
+        border: 1px solid darken(@graynurse, 5%);
+        border-top: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    &.with-footer {
+        > .panel-body {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        > .panel-body {
+            border-bottom: 0;
+        }
+    }
+    &.metric {
+        > .panel-heading {
+            line-height: inherit;
+            padding-top: 4px;
+            border: 0;
+            i { margin-top: 8px; }
+        }
+        > a {
+            color: white;
+            &:hover { color: white; }
+        }
+        .panel-footer {
+            border: 0;
+        }
+    }
+
+    .dropdown-menu {
+        text-shadow: none;
+        i { color: black !important; }
+    }
+}
+.panel-default {
+    border-color: darken(@teal, 5%);
+
+    > .panel-heading {
+        box-shadow: inset 0px 2px 3px lighten(@teal, 5%);
+        background-color: @teal;
+        border-color: darken(@teal, 5%);
+        color: white;
+        text-shadow: 1px 1px 0px darken(@teal, 10%);
+
+        i {
+            color: @mint;
+        }
+
+        button,
+        .open button {
+            background: @teal-dark;
+            border-color: @teal-darker;
+            color: white;
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: lighten(@teal-dark, 2%) !important;
+                color: @mint !important;
+                border-color: lighten(@teal-darker, 2%) !important;
+                i { color: @mint !important; }
+            }
+        }     
+    }
+}
+
+.panel-kashmir,
+.panel-primary {
+    border-color: darken(@kashmir, 5%);
+    .panel-heading {
+        border-color: darken(@kashmir, 10%);
+        color: white;
+        background-color: @kashmir;
+        box-shadow: inset 0px 2px 3px lighten(@kashmir, 10%);
+        text-shadow: 1px 1px 0px darken(@kashmir, 10%);
+    
+        i {
+            color: lighten(@kashmir, 45%);
+        }
+
+        button,
+        .open button {
+            background: darken(@kashmir, 15%);
+            color: white;
+            border-color: darken(@kashmir, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(@kashmir, 12%) !important;
+                border-color: darken(@kashmir, 25%) !important;
+                color: @mint !important;
+                i { color: @mint !important; }
+            }
+        }
+    }
+}
+
+.panel-success {
+    border-color: darken(#dff0d8, 5%);
+    .panel-heading {
+        border-color: darken(#dff0d8, 10%);
+        color: #528A52;
+        background-color: #dff0d8;
+        box-shadow: inset 0px 2px 3px lighten(#dff0d8, 3%);
+        text-shadow: 1px 1px 0px darken(#dff0d8, 8%);
+    
+        i {
+            color: lighten(#dff0d8, 45%);
+        }
+
+        button,
+        .open button {
+            background: darken(@kashmir, 15%);
+            color: #528A52;
+            border-color: darken(@kashmir, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(@kashmir, 12%) !important;
+                border-color: darken(@kashmir, 25%) !important;
+                color: @mint !important;
+                i { color: @mint !important; }
+            }
+        }
+    }
+}
+
+.panel-info {
+    border-color: darken(#d9edf7, 5%);
+    .panel-heading {
+        border-color: darken(#d9edf7, 10%);
+        background-color: #d9edf7;
+        box-shadow: inset 0px 2px 3px lighten(#d9edf7, 3%);
+        text-shadow: 1px 1px 0px darken(#d9edf7, 8%);
+    
+        i {
+            color: lighten(#d9edf7, 45%);
+        }
+
+        button,
+        .open button {
+            background: darken(#d9edf7, 15%);
+            border-color: darken(#d9edf7, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(#d9edf7, 12%) !important;
+                border-color: darken(#d9edf7, 25%) !important;
+                color: white !important;
+                i { color: white !important; }
+            }
+        }
+    }
+}
+
+.panel-warning {
+    border-color: darken(#fcf8e3, 5%);
+    .panel-heading {
+        border-color: darken(#fcf8e3, 10%);
+        background-color: #fcf8e3;
+        box-shadow: inset 0px 2px 3px lighten(#fcf8e3, 3%);
+        text-shadow: 1px 1px 0px darken(#fcf8e3, 8%);
+    
+        i {
+            color: lighten(#fcf8e3, 45%);
+        }
+
+        button,
+        .open button {
+            background: darken(#fcf8e3, 15%);
+            border-color: darken(#fcf8e3, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(#fcf8e3, 12%) !important;
+                border-color: darken(#fcf8e3, 25%) !important;
+                color: white !important;
+                i { color: white !important; }
+            }
+        }
+    }
+}
+
+.panel-danger {
+    border-color: darken(#f2dede, 5%);
+    .panel-heading {
+        border-color: darken(#f2dede, 10%);
+        background-color: #f2dede;
+        box-shadow: inset 0px 2px 3px lighten(#f2dede, 3%);
+        text-shadow: 1px 1px 0px darken(#f2dede, 5%);
+    
+        i {
+            color: lighten(#f2dede, 45%);
+        }
+
+        button,
+        .open button {
+            background: darken(#f2dede, 15%);
+            border-color: darken(#f2dede, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(#f2dede, 12%) !important;
+                border-color: darken(#f2dede, 25%) !important;
+                color: white !important;
+                i { color: white !important; }
+            }
+        }
+    }
+}
+
+.panel-blue {
+    border-color: @ballblue;
+    .panel-heading {
+        border-color: @ballblue;
+        color: white;
+        background-color: @ballblue;
+    }
+    a {
+        color: @ballblue;
+        &:hover {
+            color: darken(@ballblue, 15%);
+        }
+    }
+    &.metric {
+        text-shadow: 1px 1px 0px darken(@ballblue, 8%);
+        .panel-footer {
+            background-color: fade(@teal, 98%);
+            box-shadow: inset 0px 1px 5px darken(@teal, 5%);
+            text-shadow: 1px 1px 0px darken(@teal, 8%);
+            border-top: 0;
+            &:hover {
+                background-color: fade(@teal, 96%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@teal, 1%);
+            }
+        }
+    }
+}
+
+.panel-green {
+    &.metric {
+        text-shadow: 1px 1px 0px darken(@brand-success, 8%);
+        .panel-footer {
+            background-color: darken(@brand-success, 20%);
+            box-shadow: inset 0px 1px 5px darken(@brand-success, 25%);
+            text-shadow: 1px 1px 0px darken(@brand-success, 28%);
+            &:hover {
+                background-color: darken(@brand-success, 18%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@brand-success, 22%);
+            }
+        }
+    }
+}
+
+.panel-yellow {
+    &.metric {
+        text-shadow: 1px 1px 0px darken(@brand-warning, 8%);
+        .panel-footer {
+            background-color: darken(@brand-warning, 20%);
+            box-shadow: inset 0px 1px 5px darken(@brand-warning, 25%);
+            text-shadow: 1px 1px 0px darken(@brand-warning, 28%);
+            &:hover {
+                background-color: darken(@brand-warning, 19%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@brand-warning, 22%);
+            }
+        }
+    }
+}
+
+.panel-red {
+    &.metric {
+        text-shadow: 1px 1px 0px darken(@brand-danger, 8%);
+        .panel-footer {
+            background-color: darken(@brand-danger, 20%);
+            box-shadow: inset 0px 1px 5px darken(@brand-danger, 25%);
+            text-shadow: 1px 1px 0px darken(@brand-danger, 28%);
+            &:hover {
+                background-color: darken(@brand-danger, 18%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@brand-danger, 22%);
+            }
+        }
+    }
+}
+
+// --Navigational
+.nav-pills > li.active {
+    a,
+    a:active,
+    a:focus {
+        background-color: @carnation;
+    }
+}
+
+.well,
+.jumbotron {
+    background-color: @graynurse;
+}
+
+// --Alerts
+.alert {
+    &.alert-success {
+        background-color: fade(@mint, 80%);
+        border-color: fade(@chinook, 85%);
+    }
+    &.alert-info {
+        background-color: @pattens;
+        border-color: fade(@lightblue, 85%);
+    }
+    &.alert-warning {
+        border-color: fade(@raffia, 85%);
+    }
+    &.alert-danger {
+        border-color: fade(@blossom, 85%);
+    }
+}
+
+// --Tables
+.table {
+    th, 
+    thead {
+        background-color: @bluelagoon;
+        color: white;
+        text-shadow: 1px 1px 0px darken(@bluelagoon, 10%);
+    }
+}
+
+.table-bordered {
+    > tbody > tr > td,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > th,
+    > thead > tr > td {
+        border-color: rgba(0, 0, 0, 0.18);
+    }
+    border-color: @bluelagoon;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
+}
+
+.table-striped {
+    > tbody > tr:nth-of-type(odd) {
+        background-color: fade(@graynurse, 36%);
+    }
+
+    > tbody > tr:hover {
+        background-color: fade(@lightblue, 15%);
+    }
+}
+
+// --Pagination
+.pagination {
+    .active > a, 
+    .active > a:focus, 
+    .active > a:hover, 
+    .active > span, 
+    .active > span:focus,
+    .active > span:hover {
+        background-color: @carnation;
+        border-color: darken(@carnation, 20%);
+    }   
+}

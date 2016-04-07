@@ -1,0 +1,101 @@
+@import "variables.less";
+@import "mixins.less";
+
+body {
+	background-color: @charcoal;
+}
+
+// Wrappers
+
+@media(min-width:768px) {
+    #page-wrapper {
+        border-left: 1px solid darken(@charcoal, 6.5%);
+    }
+}
+
+// --Topbar
+
+.navbar {
+    background-color: @charcoal;
+    border-color: black;
+}
+
+.navbar-default .navbar-toggle {
+    background-color: @charcoal;
+    border-color: @gray-dark;
+    color: white;
+    &:hover,
+    &:focus {
+      background-color: @gray-dark;  
+    }
+    .icon-bar {
+        background: white;
+    }
+}
+
+.navbar-default .navbar-collapse {
+	border-color: black;
+}
+
+.navbar-top-links li.open a {
+    &.dropdown-toggle {
+        background: black;
+        color: white;        
+    }
+}
+
+.navbar-top-links li a {
+    color: @gray-light;
+
+    &.dropdown-toggle:hover,
+    &.dropdown-toggle:active,
+    &.dropdown-toggle:focus {
+        background: black;
+        color: white;
+    }
+}
+
+.navbar-default .navbar-brand {
+    color: @gray-light;
+    &:hover {
+        color: @gray-lighter;
+    }
+}
+
+
+.navbar-top-links .dropdown-menu li a {
+    color: black;
+}
+
+.sidebar .nav-second-level li,
+.sidebar .nav-third-level li {
+    a.active {
+    	background-color: @charcoal;
+
+    	&:hover,
+    	&:active,
+    	&:focus {
+    		background: black;
+    	}
+    }
+}
+
+// --Sidebar
+
+.sidebar {
+	background-color: @charcoal;
+}
+
+.sidebar ul li {
+    border-bottom: 1px solid darken(@charcoal, 6.5%);
+    a {
+        color: @gray-light;
+        &.active,
+        &:hover,
+        &:active,
+        &:focus {
+            color: white;
+            background-color: black;
+        }
+    }
+}

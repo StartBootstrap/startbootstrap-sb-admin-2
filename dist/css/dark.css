@@ -1,0 +1,77 @@
+body {
+  background-color: #222;
+}
+@media (min-width: 768px) {
+  #page-wrapper {
+    border-left: 1px solid #111111;
+  }
+}
+.navbar {
+  background-color: #222;
+  border-color: black;
+}
+.navbar-default .navbar-toggle {
+  background-color: #222;
+  border-color: #333333;
+  color: white;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #333333;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background: white;
+}
+.navbar-default .navbar-collapse {
+  border-color: black;
+}
+.navbar-top-links li.open a.dropdown-toggle {
+  background: black;
+  color: white;
+}
+.navbar-top-links li a {
+  color: #999999;
+}
+.navbar-top-links li a.dropdown-toggle:hover,
+.navbar-top-links li a.dropdown-toggle:active,
+.navbar-top-links li a.dropdown-toggle:focus {
+  background: black;
+  color: white;
+}
+.navbar-default .navbar-brand {
+  color: #999999;
+}
+.navbar-default .navbar-brand:hover {
+  color: #eeeeee;
+}
+.navbar-top-links .dropdown-menu li a {
+  color: black;
+}
+.sidebar .nav-second-level li a.active,
+.sidebar .nav-third-level li a.active {
+  background-color: #222;
+}
+.sidebar .nav-second-level li a.active:hover,
+.sidebar .nav-third-level li a.active:hover,
+.sidebar .nav-second-level li a.active:active,
+.sidebar .nav-third-level li a.active:active,
+.sidebar .nav-second-level li a.active:focus,
+.sidebar .nav-third-level li a.active:focus {
+  background: black;
+}
+.sidebar {
+  background-color: #222;
+}
+.sidebar ul li {
+  border-bottom: 1px solid #111111;
+}
+.sidebar ul li a {
+  color: #999999;
+}
+.sidebar ul li a.active,
+.sidebar ul li a:hover,
+.sidebar ul li a:active,
+.sidebar ul li a:focus {
+  color: white;
+  background-color: black;
+}

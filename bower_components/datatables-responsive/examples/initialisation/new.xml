@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 <info><![CDATA[
 
-Responsive will automatically detect new DataTable instances being created on a page and initialise itself if it finds the `r-init responsive` option or `responsive` class name on the table, as shown in the other examples.
+Responsive will automatically detect new DataTable instances being created on a page and initialise itself if it find the `r-init responsive` option or `responsive` class name on the table, as shown in the other examples.
 
 The third way of initialising Responsive is manually creating a new instance using the `$.fn.dataTable.Responsive` class, as shown in this example (the other two methods are provided using this constructor in a `dt-event init` event handler!).
 
