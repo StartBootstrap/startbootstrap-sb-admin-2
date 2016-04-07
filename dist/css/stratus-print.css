@@ -271,6 +271,9 @@ button:focus {
   padding-top: 4px;
   border: 0;
 }
+.panel.metric > .panel-heading i {
+  margin-top: 8px;
+}
 .panel.metric > a {
   color: white;
 }
@@ -278,15 +281,13 @@ button:focus {
   color: white;
 }
 .panel.metric .panel-footer {
-  background-color: rgba(0, 74, 94, 0.98);
-  box-shadow: inset 0px 1px 5px #003645;
-  border-top: 0;
+  border: 0;
 }
 .panel .dropdown-menu {
   text-shadow: none;
 }
 .panel .dropdown-menu i {
-  color: black;
+  color: black !important;
 }
 .panel-default {
   border-color: #003645;
@@ -548,30 +549,79 @@ button:focus {
   color: white !important;
 }
 .panel-blue {
-  border-color: #1AA5CC;
+  border-color: #1aa5cc;
 }
 .panel-blue .panel-heading {
-  border-color: #1AA5CC;
+  border-color: #1aa5cc;
   color: white;
-  background-color: #1AA5CC;
+  background-color: #1aa5cc;
 }
 .panel-blue a {
-  color: #1AA5CC;
+  color: #1aa5cc;
 }
 .panel-blue a:hover {
   color: #116e88;
 }
+.panel-blue.metric {
+  text-shadow: 1px 1px 0px #1588a8;
+}
+.panel-blue.metric .panel-footer {
+  background-color: rgba(0, 74, 94, 0.98);
+  box-shadow: inset 0px 1px 5px #003645;
+  text-shadow: 1px 1px 0px #002a35;
+  border-top: 0;
+}
+.panel-blue.metric .panel-footer:hover {
+  background-color: rgba(0, 74, 94, 0.96);
+}
+.panel-blue.metric .panel-footer:focus,
+.panel-blue.metric .panel-footer:active {
+  background-color: #004659;
+}
+.panel-green.metric {
+  text-shadow: 1px 1px 0px #47a447;
+}
 .panel-green.metric .panel-footer {
   background-color: #357935;
   box-shadow: inset 0px 1px 5px #2d672d;
+  text-shadow: 1px 1px 0px #285d28;
+}
+.panel-green.metric .panel-footer:hover {
+  background-color: #388038;
+}
+.panel-green.metric .panel-footer:focus,
+.panel-green.metric .panel-footer:active {
+  background-color: #327232;
+}
+.panel-yellow.metric {
+  text-shadow: 1px 1px 0px #ed9c28;
 }
 .panel-yellow.metric .panel-footer {
   background-color: #c77c11;
   box-shadow: inset 0px 1px 5px #b06d0f;
+  text-shadow: 1px 1px 0px #a2640e;
+}
+.panel-yellow.metric .panel-footer:hover {
+  background-color: #cc7f11;
+}
+.panel-yellow.metric .panel-footer:focus,
+.panel-yellow.metric .panel-footer:active {
+  background-color: #be7610;
+}
+.panel-red.metric {
+  text-shadow: 1px 1px 0px #d2322d;
 }
 .panel-red.metric .panel-footer {
   background-color: #a02622;
   box-shadow: inset 0px 1px 5px #8b211e;
+  text-shadow: 1px 1px 0px #7e1e1b;
+}
+.panel-red.metric .panel-footer:hover {
+  background-color: #a82824;
+}
+.panel-red.metric .panel-footer:focus,
+.panel-red.metric .panel-footer:active {
+  background-color: #972421;
 }
 .nav-pills > li.active a,
 .nav-pills > li.active a:active,
@@ -600,6 +650,7 @@ button:focus {
 .table thead {
   background-color: #028090;
   color: white;
+  text-shadow: 1px 1px 0px #01535e;
 }
 .table-bordered {
   border-color: #028090;

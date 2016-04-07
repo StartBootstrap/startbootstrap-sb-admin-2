@@ -312,9 +312,7 @@ button {
             &:hover { color: white; }
         }
         .panel-footer {
-            background-color: fade(@teal, 98%);
-            box-shadow: inset 0px 1px 5px darken(@teal, 5%);
-            border-top: 0;
+            border: 0;
         }
     }
 
@@ -506,43 +504,86 @@ button {
 }
 
 .panel-blue {
-    border-color: #1AA5CC;
+    border-color: @ballblue;
     .panel-heading {
-        border-color: #1AA5CC;
+        border-color: @ballblue;
         color: white;
-        background-color: #1AA5CC;
+        background-color: @ballblue;
     }
     a {
-        color: #1AA5CC;
+        color: @ballblue;
         &:hover {
-            color: darken(#1AA5CC, 15%);
+            color: darken(@ballblue, 15%);
+        }
+    }
+    &.metric {
+        text-shadow: 1px 1px 0px darken(@ballblue, 8%);
+        .panel-footer {
+            background-color: fade(@teal, 98%);
+            box-shadow: inset 0px 1px 5px darken(@teal, 5%);
+            text-shadow: 1px 1px 0px darken(@teal, 8%);
+            border-top: 0;
+            &:hover {
+                background-color: fade(@teal, 96%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@teal, 1%);
+            }
         }
     }
 }
 
 .panel-green {
     &.metric {
+        text-shadow: 1px 1px 0px darken(@brand-success, 8%);
         .panel-footer {
             background-color: darken(@brand-success, 20%);
             box-shadow: inset 0px 1px 5px darken(@brand-success, 25%);
+            text-shadow: 1px 1px 0px darken(@brand-success, 28%);
+            &:hover {
+                background-color: darken(@brand-success, 18%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@brand-success, 22%);
+            }
         }
     }
 }
 
 .panel-yellow {
     &.metric {
+        text-shadow: 1px 1px 0px darken(@brand-warning, 8%);
         .panel-footer {
             background-color: darken(@brand-warning, 20%);
             box-shadow: inset 0px 1px 5px darken(@brand-warning, 25%);
+            text-shadow: 1px 1px 0px darken(@brand-warning, 28%);
+            &:hover {
+                background-color: darken(@brand-warning, 19%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@brand-warning, 22%);
+            }
         }
     }
 }
 
 .panel-red {
     &.metric {
+        text-shadow: 1px 1px 0px darken(@brand-danger, 8%);
         .panel-footer {
             background-color: darken(@brand-danger, 20%);
             box-shadow: inset 0px 1px 5px darken(@brand-danger, 25%);
+            text-shadow: 1px 1px 0px darken(@brand-danger, 28%);
+            &:hover {
+                background-color: darken(@brand-danger, 18%);
+            }
+            &:focus,
+            &:active {
+                background-color: darken(@brand-danger, 22%);
+            }
         }
     }
 }
