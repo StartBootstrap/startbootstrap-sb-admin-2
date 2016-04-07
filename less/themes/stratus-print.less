@@ -29,6 +29,9 @@ button {
 .btn-primary {
     background: @carnation;
     border-color: darken(@carnation, 20%);
+    &.btn-outline {
+        color: white;
+    }
     &:hover {
         background: darken(@carnation, 2%);
         border-color: darken(@carnation, 20%);
@@ -197,33 +200,6 @@ button {
     }
 }
 
-// --Custom Panels
-.panel-kashmir {
-    border-color: fade(@kashmir, 30%);
-    .panel-heading {
-        border-color: @kashmir;
-        color: @mint;
-        background-color: @kashmir;
-
-        button {
-            background: @teal;
-            color: white;
-            border-color: fade(@teal-darker, 50%);
-            &:hover {
-                background: @teal-dark;
-                border-color: @teal-darker;
-                color: @mint;
-            }
-            &:focus,
-            &:active {
-                background: @teal-dark !important;
-                border-color: @teal-dark !important;
-                color: @mint !important;
-            }
-        }
-    }
-}
-
 .login-panel {
     border-color: @teal-dark;
     box-shadow: 0 5px 30px @teal-darker;
@@ -273,4 +249,134 @@ button {
     .login-panel {
        max-width: 300px; 
     }
+}
+
+// --Panels
+.panel {
+    > .panel-footer {
+        background-color: fade(@graynurse, 80%);
+    }
+}
+.panel-default {
+    border-color: fade(@teal, 40%);
+
+    > .panel-heading {
+        background-color: @teal;
+        border-color: @teal-darker;
+        color: @mint; 
+
+        button {
+            background: @teal-dark;
+            border-color: @teal-darker;
+            color: @mint;
+            &:hover,
+            &:focus,
+            &:active {
+                background: lighten(@teal-dark, 2%) !important;
+                color: white !important;
+                border-color: lighten(@teal-darker, 2%) !important;
+            }
+        }       
+    }
+}
+
+.panel-kashmir {
+    border-color: fade(@kashmir, 30%);
+    .panel-heading {
+        border-color: @kashmir;
+        color: @mint;
+        background-color: @kashmir;
+
+        button {
+            background: @teal;
+            color: white;
+            border-color: fade(@teal-darker, 50%);
+            &:hover {
+                background: @teal-dark;
+                border-color: @teal-darker;
+                color: @mint;
+            }
+            &:focus,
+            &:active {
+                background: @teal-dark !important;
+                border-color: @teal-dark !important;
+                color: @mint !important;
+            }
+        }
+    }
+}
+
+// --Navigational
+.nav-pills > li.active {
+    a,
+    a:active,
+    a:focus {
+        background-color: @carnation;
+    }
+}
+
+.well,
+.jumbotron {
+    background-color: @graynurse;
+}
+
+// --Alerts
+.alert {
+    &.alert-success {
+        background-color: fade(@mint, 80%);
+        border-color: fade(@chinook, 85%);
+    }
+    &.alert-info {
+        background-color: @pattens;
+        border-color: fade(@lightblue, 85%);
+    }
+    &.alert-warning {
+        border-color: fade(@raffia, 85%);
+    }
+    &.alert-danger {
+        border-color: fade(@blossom, 85%);
+    }
+}
+
+// --Tables
+.table {
+    th, 
+    thead {
+        background-color: @bluelagoon;
+        color: white;
+    }
+}
+
+.table-bordered {
+    > tbody > tr > td,
+    > tbody > tr > th,
+    > tfoot > tr > th,
+    > tfoot > tr > th,
+    > thead > tr > th,
+    > thead > tr > td {
+        border-color: rgba(17,66,72,.34);
+    }
+}
+
+.table-striped {
+    > tbody > tr:nth-of-type(odd) {
+        background-color: fade(@graynurse, 36%);
+    }
+
+    > tbody > tr:hover {
+        background-color: fade(@lightblue, 15%);
+    }
+}
+
+// --Pagination
+.pagination {
+    .active > a, 
+    .active > a:focus, 
+    .active > a:hover, 
+    .active > span, 
+    .active > span:focus,
+    .active > span:hover {
+        background-color: @carnation;
+        border-color: darken(@carnation, 20%);
+    }   
 }
