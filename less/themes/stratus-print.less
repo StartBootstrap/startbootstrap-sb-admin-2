@@ -43,6 +43,22 @@ button {
     }
 }
 
+.btn-danger {
+    background: #EA0700;
+    &.btn-outline {
+        color: white;
+    }
+    &:hover {
+        background: darken(#EA0700, 2%);
+        border-color: darken(#EA0700, 10%);
+    }
+    &:focus,
+    &:active {
+        background: darken(#EA0700, 4%) !important;
+        border-color: darken(#EA0700, 20%) !important;
+    }
+}
+
 // --Topbar
 
 .navbar {
@@ -143,13 +159,7 @@ button {
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {
     a.active {
-        background-color: @charcoal;
-
-        &:hover,
-        &:active,
-        &:focus {
-            background: black;
-        }
+        background-color: @teal-dark;
     }
 }
 
@@ -253,55 +263,277 @@ button {
 
 // --Panels
 .panel {
+    border-radius: 6px;
+    border: 0;
     > .panel-footer {
         background-color: fade(@graynurse, 80%);
+        border: 1px solid darken(@graynurse, 5%);
+    }
+
+    > .panel-heading {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        line-height: 25px;
+        font-size: 16px;
+        border: 1px solid;
+
+        button {
+            font-size: 14px;
+            padding: 3px 8px;
+            margin-top: -3px;
+        }
+    }
+
+    > .panel-body {
+        border: 1px solid darken(@graynurse, 5%);
+        border-top: 0;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+
+    &.with-footer {
+        > .panel-body {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        > .panel-body {
+            border-bottom: 0;
+        }
+    }
+    &.metric {
+        > .panel-heading {
+            line-height: inherit;
+            padding-top: 4px;
+            border: 0;
+        }
+        > a {
+            color: white;
+        }
+        .panel-footer {
+            background-color: fade(@teal, 98%);
+            box-shadow: inset 0px 1px 5px darken(@teal, 5%);
+            border-top: 0;
+        }
+    }
+
+    .dropdown-menu {
+        text-shadow: none;
     }
 }
 .panel-default {
-    border-color: fade(@teal, 40%);
+    border-color: darken(@teal, 5%);
 
     > .panel-heading {
+        box-shadow: inset 0px 2px 3px lighten(@teal, 5%);
         background-color: @teal;
-        border-color: @teal-darker;
-        color: @mint; 
+        border-color: darken(@teal, 5%);
+        color: white;
+        text-shadow: 1px 1px 0px darken(@teal, 10%);
+
+        i {
+            color: @mint;
+        }
 
         button {
             background: @teal-dark;
             border-color: @teal-darker;
-            color: @mint;
+            color: white;
+            i { color: white; }
             &:hover,
             &:focus,
             &:active {
                 background: lighten(@teal-dark, 2%) !important;
-                color: white !important;
+                color: @mint !important;
                 border-color: lighten(@teal-darker, 2%) !important;
+                i { color: @mint !important; }
             }
-        }       
+        }     
     }
 }
 
-.panel-kashmir {
-    border-color: fade(@kashmir, 30%);
+.panel-kashmir,
+.panel-primary {
+    border-color: darken(@kashmir, 5%);
     .panel-heading {
-        border-color: @kashmir;
-        color: @mint;
+        border-color: darken(@kashmir, 10%);
+        color: white;
         background-color: @kashmir;
+        box-shadow: inset 0px 2px 3px lighten(@kashmir, 10%);
+        text-shadow: 1px 1px 0px darken(@kashmir, 10%);
+    
+        i {
+            color: lighten(@kashmir, 45%);
+        }
 
         button {
-            background: @teal;
+            background: darken(@kashmir, 15%);
             color: white;
-            border-color: fade(@teal-darker, 50%);
-            &:hover {
-                background: @teal-dark;
-                border-color: @teal-darker;
-                color: @mint;
-            }
+            border-color: darken(@kashmir, 25%);
+            i { color: white; }
+            &:hover,
             &:focus,
             &:active {
-                background: @teal-dark !important;
-                border-color: @teal-dark !important;
+                background: darken(@kashmir, 12%) !important;
+                border-color: darken(@kashmir, 25%) !important;
                 color: @mint !important;
+                i { color: @mint !important; }
             }
+        }
+    }
+}
+
+.panel-success {
+    border-color: darken(#dff0d8, 5%);
+    .panel-heading {
+        border-color: darken(#dff0d8, 10%);
+        color: #528A52;
+        background-color: #dff0d8;
+        box-shadow: inset 0px 2px 3px lighten(#dff0d8, 3%);
+        text-shadow: 1px 1px 0px darken(#dff0d8, 8%);
+    
+        i {
+            color: lighten(#dff0d8, 45%);
+        }
+
+        button {
+            background: darken(@kashmir, 15%);
+            color: #528A52;
+            border-color: darken(@kashmir, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(@kashmir, 12%) !important;
+                border-color: darken(@kashmir, 25%) !important;
+                color: @mint !important;
+                i { color: @mint !important; }
+            }
+        }
+    }
+}
+
+.panel-info {
+    border-color: darken(#d9edf7, 5%);
+    .panel-heading {
+        border-color: darken(#d9edf7, 10%);
+        background-color: #d9edf7;
+        box-shadow: inset 0px 2px 3px lighten(#d9edf7, 3%);
+        text-shadow: 1px 1px 0px darken(#d9edf7, 8%);
+    
+        i {
+            color: lighten(#d9edf7, 45%);
+        }
+
+        button {
+            background: darken(#d9edf7, 15%);
+            border-color: darken(#d9edf7, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(#d9edf7, 12%) !important;
+                border-color: darken(#d9edf7, 25%) !important;
+                color: white !important;
+                i { color: white !important; }
+            }
+        }
+    }
+}
+
+.panel-warning {
+    border-color: darken(#fcf8e3, 5%);
+    .panel-heading {
+        border-color: darken(#fcf8e3, 10%);
+        background-color: #fcf8e3;
+        box-shadow: inset 0px 2px 3px lighten(#fcf8e3, 3%);
+        text-shadow: 1px 1px 0px darken(#fcf8e3, 8%);
+    
+        i {
+            color: lighten(#fcf8e3, 45%);
+        }
+
+        button {
+            background: darken(#fcf8e3, 15%);
+            border-color: darken(#fcf8e3, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(#fcf8e3, 12%) !important;
+                border-color: darken(#fcf8e3, 25%) !important;
+                color: white !important;
+                i { color: white !important; }
+            }
+        }
+    }
+}
+
+.panel-danger {
+    border-color: darken(#f2dede, 5%);
+    .panel-heading {
+        border-color: darken(#f2dede, 10%);
+        background-color: #f2dede;
+        box-shadow: inset 0px 2px 3px lighten(#f2dede, 3%);
+        text-shadow: 1px 1px 0px darken(#f2dede, 5%);
+    
+        i {
+            color: lighten(#f2dede, 45%);
+        }
+
+        button {
+            background: darken(#f2dede, 15%);
+            border-color: darken(#f2dede, 25%);
+            i { color: white; }
+            &:hover,
+            &:focus,
+            &:active {
+                background: darken(#f2dede, 12%) !important;
+                border-color: darken(#f2dede, 25%) !important;
+                color: white !important;
+                i { color: white !important; }
+            }
+        }
+    }
+}
+
+.panel-blue {
+    border-color: #1AA5CC;
+    .panel-heading {
+        border-color: #1AA5CC;
+        color: white;
+        background-color: #1AA5CC;
+    }
+    a {
+        color: #1AA5CC;
+        &:hover {
+            color: darken(#1AA5CC, 15%);
+        }
+    }
+}
+
+.panel-green {
+    &.metric {
+        .panel-footer {
+            background-color: darken(@brand-success, 20%);
+            box-shadow: inset 0px 1px 5px darken(@brand-success, 25%);
+        }
+    }
+}
+
+.panel-yellow {
+    &.metric {
+        .panel-footer {
+            background-color: darken(@brand-warning, 20%);
+            box-shadow: inset 0px 1px 5px darken(@brand-warning, 25%);
+        }
+    }
+}
+
+.panel-red {
+    &.metric {
+        .panel-footer {
+            background-color: darken(@brand-danger, 20%);
+            box-shadow: inset 0px 1px 5px darken(@brand-danger, 25%);
         }
     }
 }
@@ -354,8 +586,12 @@ button {
     > tfoot > tr > th,
     > thead > tr > th,
     > thead > tr > td {
-        border-color: rgba(17,66,72,.34);
+        border-color: rgba(0, 0, 0, 0.18);
     }
+    border-color: @bluelagoon;
+    border-left-width: 5px;
+    border-right-width: 5px;
+    border-bottom-width: 5px;
 }
 
 .table-striped {
