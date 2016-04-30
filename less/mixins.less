@@ -1,1 +1,15 @@
 // Mixins
+.panel-color-variant (@panel-color){
+    border-color: @panel-color;
+    .panel-heading {
+        border-color: @panel-color;
+        color: white;
+        background-color: @panel-color;
+    }
+    a {
+        color: @panel-color;
+        &:hover {
+            color: darken(@panel-color, 15%);
+        }
+    }
+}
