@@ -14,14 +14,14 @@ body {
 }
 
 #page-wrapper {
-    padding: 0 15px;
-    min-height: 568px;
-    background-color: white;
     position: absolute;
-    top: 21px;
+    top: 51px;
+    bottom: 0px;
     left: 0px;
     right: 0px;
-    bottom: 0px;
+    padding: 0 15px;
+    min-height: 568px;
+    background-color: @background-color;
 }
 
 @media(min-width:768px) {
@@ -29,7 +29,7 @@ body {
         margin: 0 0 0 250px;
         padding: 0 30px;
         border-left: 1px solid darken(@gray-lightest, 6.5%);
-        top: 41px;
+        top: 101px;
         left: 0px;
         right: 0px;
         bottom: 0px;
@@ -46,6 +46,9 @@ nav.navbar {
 
 .nav > li > a {
     color: @link-color;
+    &.active {
+        color: darken(@link-color, 15%);
+    }
 }
 
 .navbar-top-links {
