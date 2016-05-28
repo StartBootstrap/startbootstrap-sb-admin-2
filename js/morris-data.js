@@ -113,5 +113,5 @@ $(function() {
         hideHover: 'auto',
         resize: true
     });
-
+    
 });

@@ -13,7 +13,6 @@ $(document).ready(function() {
 			{ "data": "name",       className: "all" },
 			{ "data": "position",   className: "min-phone-l" },
 			{ "data": "office",     className: "min-tablet" },
-			{ "data": "extn",       className: "min-tablet" },
 			{ "data": "start_date", className: "never" },
 			{ "data": "salary",     className: "desktop" },
 			{ "data": "extn",       className: "none" }
@@ -40,7 +39,6 @@ This example exactly matches the functionality of the [class control example](cl
 				<th>Name</th>
 				<th>Position</th>
 				<th>Office</th>
-				<th>Age</th>
 				<th>Start date</th>
 				<th>Salary</th>
 				<th>Extn.</th>
@@ -52,7 +50,6 @@ This example exactly matches the functionality of the [class control example](cl
 				<th>Name</th>
 				<th>Position</th>
 				<th>Office</th>
-				<th>Age</th>
 				<th>Start date</th>
 				<th>Salary</th>
 				<th>Extn.</th>

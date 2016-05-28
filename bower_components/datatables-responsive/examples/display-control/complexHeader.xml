@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<dt-example table-type="html-complex-header" table-class="display nowrap" order="5">
+
+<css lib="datatables responsive">
+	th {
+		position: relative;
+		min-height: 41px;
+	} 
+	th span {
+		display: block;
+		position: absolute;
+		left: 0;
+		right: 0;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+	}
+</css>
+<js lib="jquery datatables responsive">
+<![CDATA[
+
+$(document).ready(function() {
+	// jQuery update a column title from the demo table to contain a long description
+	// You would not need to do this in your own code.
+	$('#example thead tr:eq(0) th:eq(2)').html("This is a really long column title!");
+	
+	// Wrap the colspan'ing header cells with a span so they can be positioned
+	// absolutely - filling the available space, and no more.
+	$('#example thead th[colspan]').wrapInner( '<span/>' ).append( '&nbsp;' );
+
+	// Standard initialisation
+	$('#example').DataTable( {
+		responsive: true,
+		paging: false
+	} );
+} );
+
+]]>
+</js>
+
+<title lib="Responsive">Complex headers (rowspan / colspan)</title>
+
+<info><![CDATA[
+
+This example shows how Responsive can be used with _complex headers_ (i.e. headers that contain `colspan` attributes for one or more cells). As Responsive will removed columns one at a time the cell with the `colspan` attribute can end up forcing the width of a column, disrupting the flow. Rather than removing all columns under the `colspan` cell, we want to reduce the amount of text that is visible in that cell. This example shows how that can be achieved thought a little bit of jQuery and CSS.
+
+We use jQuery to find the header cells which have a `colspan` attribute and wrap their contents in a `-tag span` tag. That `-tag span` is then set to `position: absolute;` using `text-overflow: ellipsis`. The result is that the text of the `colspan` cell will reduce automatically to fit the available area based on the contents of the column cells below it.
+
+This functionality is not currently built into Responsive. It might be included in future.
+
+]]></info>
+
+</dt-example>

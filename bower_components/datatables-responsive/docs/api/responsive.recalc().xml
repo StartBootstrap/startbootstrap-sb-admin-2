@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-api group="responsive">
+<dt-api library="Responsive">
 	<name>responsive.recalc()</name>
 	<summary>Recalculate the widths used by responsive after a change in the display</summary>
 	<since>1.0.1</since>
@@ -7,7 +7,7 @@
 	<type type="function">
 		<signature>responsive.recalc()</signature>
 		<description>Recalculate the widths used by responsive after a change in the display</description>
-		<returns type="DataTables.Api">DataTables API instance with the cached data for each selected cell in the result set</returns>
+		<returns type="DataTables.Api">DataTables API instance</returns>
 	</type>
 
 	<description>

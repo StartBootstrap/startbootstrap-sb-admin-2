@@ -1,0 +1,29 @@
+{
+    "name": "iron-summit-media/startbootstrap-sb-admin-2",
+    "description": "SB Admin 2 is an open source, admin dashboard template for Bootstrap created by Start Bootstrap.",
+    "type": "component",
+    "homepage": "https://github.com/davidtmiller",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Miller",
+            "email": "david@ironsummitmedia.com"
+        }
+    ],
+    "require": {
+        "components/bootstrap": ">=3.0",
+        "datatables/datatables": ">=1.10",
+        "components/font-awesome": ">=4.0",
+        "onokumus/metismenu": ">=2.0"
+    },
+    "extra": {
+        "component": {
+            "scripts": [
+                "dist/js/sb-admin-2.js"
+            ],
+            "files": [
+                "dist/css/sb-admin-2.css"
+            ]
+        }
+    }
+}
