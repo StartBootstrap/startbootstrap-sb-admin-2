@@ -13,6 +13,7 @@ $(document).ready(function() {
 			{ "data": "name" },
 			{ "data": "position" },
 			{ "data": "office" },
+			{ "data": "age" },
 			{ "data": "start_date" },
 			{ "data": "salary" },
 			{ "data": "extn" }
@@ -46,7 +47,7 @@ Additionally, there are three special class names:
 
 Please [refer to the Responsive manual](//datatables.net/extensions/responsive/) for further details of these options.
 
-This example shows the `salary` column visible on a desktop only - `office` requires a tablet, while the `position` column requires a phone in landscape or larger. The `name` column is always visible and the `start date` is never visible.
+This example shows the `salary` column visible on a desktop only - `office` and `age` require a tablet, while the `position` column requires a phone in landscape or larger. The `name` column is always visible and the `start date` is never visible.
 
 This can be useful if you wish to change the format of the data shown on different devices, for example using a combination of `mobile` and `not-mobile` on two different columns would allow information to be formatted suitable for each device type.
 
@@ -60,6 +61,7 @@ This can be useful if you wish to change the format of the data shown on differe
 				<th class="all">Name</th>
 				<th class="min-phone-l">Position</th>
 				<th class="min-tablet">Office</th>
+				<th class="min-tablet">Age</th>
 				<th class="never">Start date</th>
 				<th class="desktop">Salary</th>
 				<th class="none">Extn.</th>
@@ -71,6 +73,7 @@ This can be useful if you wish to change the format of the data shown on differe
 				<th>Name</th>
 				<th>Position</th>
 				<th>Office</th>
+				<th>Age</th>
 				<th>Start date</th>
 				<th>Salary</th>
 				<th>Extn.</th>

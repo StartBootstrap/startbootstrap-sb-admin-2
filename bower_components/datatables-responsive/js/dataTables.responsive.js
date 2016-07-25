@@ -1,11 +1,11 @@
-/*! Responsive 1.0.7
+/*! Responsive 1.0.6
  * 2014-2015 SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     Responsive
  * @description Responsive tables plug-in for DataTables
- * @version     1.0.7
+ * @version     1.0.6
  * @file        dataTables.responsive.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
@@ -826,7 +826,7 @@ Api.register( 'responsive.recalc()', function () {
  * @name Responsive.version
  * @static
  */
-Responsive.version = '1.0.7';
+Responsive.version = '1.0.6';
 
 
 $.fn.dataTable.Responsive = Responsive;

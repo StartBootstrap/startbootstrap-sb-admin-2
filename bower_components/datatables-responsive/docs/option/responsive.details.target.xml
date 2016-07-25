@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-option library="Responsive">
+<dt-option group="responsive">
 	<name>responsive.details.target</name>
 	<summary>Column / selector for child row display control when using `column` details type</summary>
 	<since>Responsive 1.0.0</since>

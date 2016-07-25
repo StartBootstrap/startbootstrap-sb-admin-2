@@ -1,13 +1,5 @@
 
 //
-// Variables
-//
-
-$open-button-background: #31b131 !default;
-$close-button-background: #d33333 !default;
-
-
-//
 // Mixins
 //
 @mixin control() {
@@ -24,12 +16,12 @@ $close-button-background: #d33333 !default;
 
 @mixin control-open() {
 	content: '+';
-	background-color: $open-button-background;
+	background-color: #31b131;
 }
 
 @mixin control-close() {
 	content: '-';
-	background-color: $close-button-background;
+	background-color: #d33333;
 }
 
 

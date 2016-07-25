@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-option library="Responsive">
+<dt-option group="responsive">
 	<name>responsive</name>
 	<summary>Enable and configure the Responsive extension for DataTables</summary>
 	<since>Responsive 1.0.0</since>
 
 	<type type="boolean">
 		<description>
-			As a boolean value this property will enable Responsive on the DataTable that is being created. `true` will enable Responsive, while `false` will not (even if the table has a class of `-string responsive` or `-string dt-responsive`).
+			As a boolean value this property will enable Responsive on the DataTable that is being created. `true` will enable Responsive, while `false` will not (even if the table has a class of `-string responsive` or `-string dt-responsive`.
 
 			This is a short-cut option to enable Responsive with the default configuration options. Customisations can be made by giving this parameter as an object, see below.
 		</description>

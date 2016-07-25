@@ -1,9 +1,9 @@
 {
 	"name": "datatables-responsive",
-	"version": "1.0.7",
+	"version": "1.0.6",
 	"main": [
 		"js/dataTables.responsive.js",
-		"css/responsive.dataTables.scss"
+		"css/dataTables.responsive.css"
 	],
 	"dependencies": {
 		"jquery": ">=1.7.0",
