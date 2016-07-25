@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-option library="Responsive">
+<dt-option group="responsive">
 	<name>responsive.details.type</name>
 	<summary>Set the child row display control type</summary>
 	<since>Responsive 1.0.0</since>

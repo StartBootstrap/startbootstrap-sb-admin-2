@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-example table-type="html-wide" table-class="display responsive nowrap" order="5">
+<dt-example table-type="html-wide" table-class="display nowrap" order="3">
 
 <css lib="datatables responsive">
 	div.container { max-width: 1200px }
@@ -12,6 +12,8 @@ $(document).ready(function() {
 		scrollY: 300,
 		paging: false
 	} );
+
+	new $.fn.dataTable.Responsive( table );
 } );
 
 ]]>

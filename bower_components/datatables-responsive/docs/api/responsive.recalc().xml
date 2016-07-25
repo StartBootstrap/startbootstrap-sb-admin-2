@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<dt-api library="Responsive">
+<dt-api group="responsive">
 	<name>responsive.recalc()</name>
 	<summary>Recalculate the widths used by responsive after a change in the display</summary>
 	<since>1.0.1</since>

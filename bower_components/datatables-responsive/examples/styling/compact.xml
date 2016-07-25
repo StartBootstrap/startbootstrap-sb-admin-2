@@ -8,9 +8,9 @@
 <![CDATA[
 
 $(document).ready(function() {
-	var table = $('#example').DataTable( {
-		responsive: true
-	} );
+	var table = $('#example').DataTable();
+
+	new $.fn.dataTable.Responsive( table );
 } );
 
 ]]>
