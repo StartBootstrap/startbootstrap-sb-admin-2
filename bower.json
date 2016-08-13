@@ -1,6 +1,7 @@
 {
   "name": "startbootstrap-sb-admin-2",
   "homepage": "http://startbootstrap.com/template-overviews/sb-admin-2/",
+  "version": "3.3.7",
   "authors": [
     "David Miller"
   ],
@@ -9,7 +10,7 @@
     "bootstrap",
     "theme"
   ],
-  "license": "Apache-2.0",
+  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
