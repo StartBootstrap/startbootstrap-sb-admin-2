@@ -11,9 +11,15 @@ To meet this goal, DataTables is developed with two distinct groups of users in 
 * End users. For those using the interface DataTables presents, actions to get the most from the information contained in tables, such as sorting and filtering, along with paging and scrolling of the data in table, are easy to use, intuitive and fast.
 
 
-## Installation
+## Installing DataTables
 
-In most cases, to use DataTables all you need to do is include jQuery, the DataTables Javascript and DataTables CSS files in your HTML page. See the [DataTables manual](http://datatables.net/manual/installation#Including-Javascript-/-CSS) for details on how to do this using the latest version of DataTables.
+To use DataTables, the primary way to obtain the software is to use the [DataTables downloader](//datatables.net/download). You can also include the individual files from the [DataTables CDN](//cdn.datatables.net). See the [documentation](//datatables.net/manual/installation) for full details.
+
+### NPM and Bower
+
+If you prefer to use a package manager such as NPM or Bower, distribution repositories are available with software built from this repository under the name `datatables.net`. Styling packages for Bootstrap, Foundation and other styling libraries are also available by adding a suffix to the package name.
+
+Please see the DataTables [NPM](//datatables.net/download/npm) and [Bower](//datatables.net/download/bower) installation pages for further information. The [DataTables installation manual](//datatables.net/manual/installation) also has details on how to use package managers with DataTables.
 
 
 ## Usage
@@ -40,7 +46,7 @@ A full list of the options available for DataTables are available in the [docume
 
 ## Documentation
 
-Full documentation of the DataTables options, API and pug-in interface are available on the [DataTables web-site](//datatables.net). The site also contains information on the wide variety of plug-ins that are available for DataTables, which can be used to enhance and customise your table even further.
+Full documentation of the DataTables options, API and plug-in interface are available on the [DataTables web-site](//datatables.net). The site also contains information on the wide variety of plug-ins that are available for DataTables, which can be used to enhance and customise your table even further.
 
 
 ## Support

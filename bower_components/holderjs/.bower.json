@@ -9,8 +9,7 @@
     "tag": "v2.4.1",
     "commit": "bd2e0be3c5c86afbdef1da092eb72c8ce7d52dce"
   },
-  "_source": "git://github.com/imsky/holder.git",
+  "_source": "https://github.com/imsky/holder.git",
   "_target": "~2.4.1",
-  "_originalSource": "holderjs",
-  "_direct": true
+  "_originalSource": "holderjs"
 }

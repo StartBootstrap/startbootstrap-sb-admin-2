@@ -1,9 +1,24 @@
 {
   "name": "raphael",
-  "version": "2.1.4",
-  "main": "raphael.js",
+  "main": "raphael.min.js",
+  "description": "JavaScript Vector Library",
+  "dependencies": {
+    "eve": "https://github.com/adobe-webplatform/eve.git#eef80ed"
+  },
+  "devDependencies": {
+    "requirejs": "~2.1.17"
+  },
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": ["svg", "vml", "javascript"],
+  "authors": [
+    "Dmitry Baranovskiy"
+  ],
+  "license": "MIT",
   "ignore": [
-    "eve",
     "**/.*",
     "*.html",
     "*.json",
@@ -11,9 +26,6 @@
     "*.md",
     "copy.js",
     "Gruntfile.js",
-    "raphael.core.js",
-    "raphael.svg.js",
-    "raphael.vml.js",
     "reference.js"
   ]
 }

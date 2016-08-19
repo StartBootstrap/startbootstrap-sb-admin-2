@@ -24,8 +24,7 @@
     "tag": "0.5.1",
     "commit": "d5cf1410eda7055eaf2c7d218d4cb24ec5ed55c8"
   },
-  "_source": "git://github.com/morrisjs/morris.js.git",
+  "_source": "https://github.com/morrisjs/morris.js.git",
   "_target": "~0.5.1",
-  "_originalSource": "morrisjs",
-  "_direct": true
+  "_originalSource": "morrisjs"
 }
