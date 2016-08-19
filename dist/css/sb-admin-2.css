@@ -240,43 +240,43 @@ table.dataTable thead .sorting:after {
 .panel-green {
   border-color: #5cb85c;
 }
-.panel-green .panel-heading {
+.panel-green > .panel-heading {
   border-color: #5cb85c;
   color: white;
   background-color: #5cb85c;
 }
-.panel-green a {
+.panel-green > a {
   color: #5cb85c;
 }
-.panel-green a:hover {
+.panel-green > a:hover {
   color: #3d8b3d;
 }
 .panel-red {
   border-color: #d9534f;
 }
-.panel-red .panel-heading {
+.panel-red > .panel-heading {
   border-color: #d9534f;
   color: white;
   background-color: #d9534f;
 }
-.panel-red a {
+.panel-red > a {
   color: #d9534f;
 }
-.panel-red a:hover {
+.panel-red > a:hover {
   color: #b52b27;
 }
 .panel-yellow {
   border-color: #f0ad4e;
 }
-.panel-yellow .panel-heading {
+.panel-yellow > .panel-heading {
   border-color: #f0ad4e;
   color: white;
   background-color: #f0ad4e;
 }
-.panel-yellow a {
+.panel-yellow > a {
   color: #f0ad4e;
 }
-.panel-yellow a:hover {
+.panel-yellow > a:hover {
   color: #df8a13;
 }
 .timeline {
