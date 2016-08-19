@@ -1,7 +1,7 @@
 {
   "name": "startbootstrap-sb-admin-2",
   "homepage": "http://startbootstrap.com/template-overviews/sb-admin-2/",
-  "version": "3.3.7",
+  "version": "3.3.7+1",
   "authors": [
     "David Miller"
   ],
@@ -23,7 +23,9 @@
   ],
   "main": [
     "dist/css/sb-admin-2.css",
-    "dist/js/sb-admin-2.js"
+    "dist/css/sb-admin-2.min.css",
+    "dist/js/sb-admin-2.js",
+    "dist/js/sb-admin-2.min.js"
   ],
   "dependencies": {
     "bootstrap": "~3.3.7",
