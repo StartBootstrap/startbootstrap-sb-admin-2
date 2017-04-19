@@ -44,4 +44,8 @@ $(function() {
             break;
         }
     }
+    if (element.parent().is('ul')) {
+        element.parent().addClass('in').parent().addClass('active');
+    }
+
 });
