@@ -39,4 +39,6 @@ $(function() {
             break;
         }
     }
+    
+    $(window).trigger('resize');
 });
