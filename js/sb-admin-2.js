@@ -24,7 +24,7 @@ $(function() {
         }
     });
 
-    var url = window.location;
+    var url = window.location.href.replace(/\?(.)*/,"");
     // var element = $('ul.nav a').filter(function() {
     //     return this.href == url;
     // }).addClass('active').parent().parent().addClass('in').parent();
