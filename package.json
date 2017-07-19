@@ -4,6 +4,12 @@
   "version": "3.3.7+1",
   "homepage": "http://startbootstrap.com/template-overviews/sb-admin-2",
   "author": "Start Bootstrap",
+  "scripts": {
+    "start": "live-server --no-browser",
+    "build": "gulp",
+    "gulp": "node_modules/.bin/gulp",
+    "live-server": "node_modules/.bin/live-server"
+  },
   "license": {
     "type": "MIT",
     "url": "https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE"
@@ -15,7 +21,8 @@
     "gulp-header": "^1.8.7",
     "gulp-less": "^3.1.0",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.4"
+    "gulp-uglify": "^1.5.4",
+    "live-server": "^1.2.0"
   },
   "repository": {
     "type": "git",
