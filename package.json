@@ -4,11 +4,12 @@
   "version": "3.3.7+1",
   "homepage": "http://startbootstrap.com/template-overviews/sb-admin-2",
   "author": "Start Bootstrap",
+  "main": "./js/sb-admin-2.js",
   "scripts": {
-    "start": "live-server --no-browser",
+    "start": "http-server",
     "build": "gulp",
     "gulp": "node_modules/.bin/gulp",
-    "live-server": "node_modules/.bin/live-server"
+    "http-server": "node_modules/.bin/http-server"
   },
   "license": {
     "type": "MIT",
@@ -22,7 +23,7 @@
     "gulp-less": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.4",
-    "live-server": "^1.2.0"
+    "http-server": "^0.10.0"
   },
   "repository": {
     "type": "git",
