@@ -166,9 +166,12 @@ body {
   height: 350px;
   overflow-y: scroll;
 }
-.login-panel {
-  margin-top: 25%;
+@media (min-width: 992px) {
+  .login-panel {
+    margin-top: 25%;
+  }
 }
+
 .flot-chart {
   display: block;
   height: 400px;
@@ -430,5 +433,15 @@ table.dataTable thead .sorting:after {
     left: -14px;
     border-right-width: 14px;
     border-left-width: 0;
+  }
+
+  /*cs3382 Custom elements*/
+  .social-btn {
+    text-align:center;
+  }
+
+  h2.register-now {
+    font-size: 32px ;
+    font-weight: bold !important;
   }
 }
