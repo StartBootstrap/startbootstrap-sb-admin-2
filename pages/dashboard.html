@@ -151,9 +151,9 @@
               <div class="panel panel-default">
 
                 <div class="panel-heading">
-                  <h3>Add Spendings</h3>
-
+                  <h3>Add Spendings and View Records</h3>
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inputByParse"><i class="fa fa-plus-circle"> Input by Parsing</i></button>
+                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inputManually"><i class="fa fa-plus-circle"> Input Manually</i></button>
                   <div id="inputByParse" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                       <!-- Modal content-->
@@ -162,27 +162,36 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Input by Parsing Receipt</h4>
                         </div>
-                          <div class="modal-body">
-                            <div class="form-group form-element">
-                                <label>Upload image of receipt</label>
-                                <input type="file" accept="image/*">
-                            </div>
-                            <div class="form-group form-element">
-                                <label>Selects category of expense</label>
-                                <select multiple class="form-control">
-                                    <option></option>
-                                    <option>Transportation</option>
-                                    <option>Food</option>
-                                    <option>Leisure</option>
-                                    <option>Transfer</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>or add a new category</label>
-                                <input class="form-control" type="text" placeholder="new category">
-                            </div>
-                            <p>Please select the image of your receipt. Select or add a new cateogry of the spending afterwards.</p>
+                        <div class="modal-body">
+                          <div class="form-group form-element">
+                            <label>Upload image of receipt</label>
+                            <input type="file" accept="image/*">
                           </div>
+                          <div class="form-group form-element">
+                            <label>Select Date</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                              <input type='text' class="form-control" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="form-group form-element">
+                            <label>Selects category of expense</label>
+                            <select multiple class="form-control">
+                              <option></option>
+                              <option>Transportation</option>
+                              <option>Food</option>
+                              <option>Leisure</option>
+                              <option>Transfer</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>or add a new category</label>
+                            <input class="form-control" type="text" placeholder="new category">
+                          </div>
+                          <p>Please select the image of your receipt. Select or add a new cateogry of the spending afterwards.</p>
+                        </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -190,8 +199,6 @@
                       </div>
                     </div>
                   </div>
-
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#inputManually"><i class="fa fa-plus-circle"> Input Manually</i></button>
                   <div id="inputManually" class="modal fade" role="dialog">
                     <div class="modal-dialog">
                       <!-- Modal content-->
@@ -200,35 +207,44 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Input manually</h4>
                         </div>
-                          <div class="modal-body">
-                            <div class="form-group">
-                                <label>Location of spending</label>
-                                <input class="form-control" type="text" placeholder="Shop name">
+                        <div class="modal-body">
+                          <div class="form-group form-element">
+                            <label>Select Date</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                              <input type='text' class="form-control" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
                             </div>
-                            <div class="form-group">
-                                <label>Goods purchased</label>
-                                <input class="form-control" type="text" placeholder="product/service name">
-                            </div>
-                            <div class="form-group">
-                                <label>Amount of money spent</label>
-                                <input class="form-control" type="number" placeholder="in $HKD">
-                            </div>
-                            <div class="form-group ">
-                                <label>Selects category of expense</label>
-                                <select class="form-control">
-                                    <option></option>
-                                    <option>Transportation</option>
-                                    <option>Food</option>
-                                    <option>Leisure</option>
-                                    <option>Transfer</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>or add a new category</label>
-                                <input class="form-control" type="text" placeholder="new category">
-                            </div>
-                            <p>Please write down the item or service you purchased, the shop name and the amount you spent.  Select or add a new cateogry of the spending afterwards.</p>
                           </div>
+                          <div class="form-group">
+                            <label>Location of spending</label>
+                            <input class="form-control" type="text" placeholder="Shop name">
+                          </div>
+                          <div class="form-group">
+                            <label>Spending description</label>
+                            <input class="form-control" type="text" placeholder="product/service name">
+                          </div>
+                          <div class="form-group">
+                            <label>Amount of money spent</label>
+                            <input class="form-control" type="number" placeholder="in $HKD">
+                          </div>
+                          <div class="form-group ">
+                            <label>Selects category of expense</label>
+                            <select class="form-control">
+                              <option></option>
+                              <option>Transportation</option>
+                              <option>Food</option>
+                              <option>Leisure</option>
+                              <option>Transfer</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>or add a new category</label>
+                            <input class="form-control" type="text" placeholder="new category">
+                          </div>
+                          <p>Please write down the item or service you purchased, the shop name and the amount you spent.  Select or add a new cateogry of the spending afterwards.</p>
+                        </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -245,35 +261,44 @@
                           <button type="button" class="close" data-dismiss="modal">&times;</button>
                           <h4 class="modal-title">Edit your record</h4>
                         </div>
-                          <div class="modal-body">
-                            <div class="form-group">
-                                <label>Location of spending</label>
-                                <input class="form-control" type="text" placeholder="Shop name" value="Shop A">
+                        <div class="modal-body">
+                          <div class="form-group form-element">
+                            <label>Update Date</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                              <input type='text' class="form-control" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
                             </div>
-                            <div class="form-group">
-                                <label>Goods purchased</label>
-                                <input class="form-control" type="text" placeholder="product/service name" value="Product A">
-                            </div>
-                            <div class="form-group">
-                                <label>Amount of money spent</label>
-                                <input class="form-control" type="number" placeholder="in $HKD" value="35">
-                            </div>
-                            <div class="form-group ">
-                                <label>Selects category of expense</label>
-                                <select class="form-control">
-                                    <option></option>
-                                    <option>Transportation</option>
-                                    <option>Food</option>
-                                    <option>Leisure</option>
-                                    <option>Transfer</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>or add a new category</label>
-                                <input class="form-control" type="text" placeholder="new category">
-                            </div>
-                            <p>Please write down the item or service you purchased, the shop name and the amount you spent.  Select or add a new cateogry of the spending afterwards.</p>
                           </div>
+                          <div class="form-group">
+                            <label>Location of spending</label>
+                            <input class="form-control" type="text" placeholder="Shop name" value="Shop A">
+                          </div>
+                          <div class="form-group">
+                            <label>Spending description</label>
+                            <input class="form-control" type="text" placeholder="product/service name" value="Product A">
+                          </div>
+                          <div class="form-group">
+                            <label>Amount of money spent</label>
+                            <input class="form-control" type="number" placeholder="in $HKD" value="35">
+                          </div>
+                          <div class="form-group ">
+                            <label>Update category of expense</label>
+                            <select class="form-control">
+                              <option></option>
+                              <option>Transportation</option>
+                              <option>Food</option>
+                              <option>Leisure</option>
+                              <option>Transfer</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label>or add a new category</label>
+                            <input class="form-control" type="text" placeholder="new category">
+                          </div>
+                          <p>Please write down the item or service you purchased, the shop name and the amount you spent.  Select or add a new cateogry of the spending afterwards.</p>
+                        </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-success" data-dismiss="modal">Edit</button>
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -349,11 +374,12 @@
   <div class="table-responsive">
     <table class="table table-hover">
       <thead>
-        <tr>
-          <th>Date</th>
-          <th>Category</th>
+        <tr aria-hidden="true">
+          <th>Date <i class="fa fa-unsorted"></i></th>
+          <th>Category <i class="fa fa-unsorted"></i></th>
           <th>Description</th>
-          <th>Amount</th>
+          <th>Location</th>
+          <th>Amount <i class="fa fa-unsorted"></i></th>
           <th>Modify</th>
         </tr>
       </thead>
@@ -362,22 +388,25 @@
           <td>2017/11/20</td>
           <td>Food</td>
           <td>Lunch</td>
+          <td>McDonalds</td>
           <td>50 HKD</td>
-          <td><button type="button" class="btn" data-toggle="modal" data-target="#editRecord"><i class="fa fa-edit"></i></button></td>
+          <td><button type="button" class="btn" data-toggle="modal" data-target="#editRecord" aria-label="Edit"><i class="fa fa-edit" aria-hidden="true"></i></button></td>
         </tr>
         <tr>
           <td>2017/11/19</td>
           <td>Entertainment</td>
-          <td>Groceries at Taste</td>
+          <td>Groceries</td>
+          <td>Taste</td>
           <td>200 HKD</td>
-          <td><button type="button" class="btn" data-toggle="modal" data-target="#editRecord"><i class="fa fa-edit"></i></button></td>
+          <td><button type="button" class="btn" data-toggle="modal" data-target="#editRecord" aria-label="Edit"><i class="fa fa-edit" aria-hidden="true"></i></button></td>
         </tr>
         <tr>
           <td>2017/11/19</td>
           <td>Travel</td>
           <td>Round trip to Japan</td>
+          <td>Cathway Pacific Airline</td>
           <td>1200 HKD</td>
-          <td><button type="button" class="btn" data-toggle="modal" data-target="#editRecord"><i class="fa fa-edit"></i></button></td>
+          <td><button type="button" class="btn" data-toggle="modal" data-target="#editRecord" aria-label="Edit"><i class="fa fa-edit" aria-hidden="true"></i></button></td>
         </tr>
       </tbody>
     </table>
