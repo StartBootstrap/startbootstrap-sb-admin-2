@@ -104,7 +104,7 @@ body {
     z-index: 1;
     position: absolute;
     width: 250px;
-    margin-top: 51px;
+    margin-top: 81px;
   }
   .navbar-top-links .dropdown-messages,
   .navbar-top-links .dropdown-tasks,
@@ -434,14 +434,42 @@ table.dataTable thead .sorting:after {
     border-right-width: 14px;
     border-left-width: 0;
   }
+}
 
-  /*cs3382 Custom elements*/
-  .social-btn {
-    text-align:center;
-  }
-
-  h2.register-now {
-    font-size: 32px ;
-    font-weight: bold !important;
-  }
+/*cs3382 Custom elements*/
+.btn-addgoal {
+  font-weight:bold;
+  color: #FFF;
+  background-color: #5cb85c;
+  border-color: #ccc;
+}
+.btn-addReceipt {
+  width: 100%;
+  display: inline-block;
+  padding: 6px 12px;
+  margin: 5px 0px;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.center {
+    margin: auto;
+    width: 50%;
+}
+h2.register-now {
+  font-size: 32px ;
+  font-weight: bold !important;
 }

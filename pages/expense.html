@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Potato FinTech - My Expense</title>
+
+  <!-- Bootstrap Core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- MetisMenu CSS -->
+  <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+  <!-- Custom CSS -->
+  <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+
+  <!-- Custom Fonts -->
+  <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+</head>
+
+<body>
+
+  <div id="wrapper">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="index.html" ><img src="../images/logo.png" alt="Potato FinTech Logo"></a>
+      </div>
+      <!-- /.navbar-header -->
+
+      <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse">
+          <ul class="nav" id="side-menu">
+            <li>
+              <a href="home.html"><i class="fa fa-home fa-fw"></i> Home</a>
+            </li>
+            <li>
+              <a href="graph.html"><i class="fa fa-bar-chart-o fa-fw"></i> Visualize Spendings</a>
+            </li>
+            <li>
+              <a href="expense.html"><i class="fa fa-barcode fa-fw"></i> My Expense</a>
+            </li>
+            <li>
+              <a href="goals.html"><i class="fa fa-trophy fa-fw"></i> My Goals</a>
+            </li>
+            <li>
+              <a href="settings.html"><i class="fa fa-wrench fa-fw"></i> Settings</a>
+            </li>
+            <li>
+              <a href="about.html"><i class="fa fa-info-circle fa-fw"></i> About Us</a>
+            </li>
+            <li>
+              <a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Off</a>
+            </li>
+          </ul>
+        </div>
+        <!-- /.sidebar-collapse -->
+      </div>
+      <!-- /.navbar-static-side -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="page-wrapper">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="page-header">My Expense</h1>
+          </div>
+          <!-- /.col-lg-12 -->
+          <div class="col-lg-6">
+            <button type="button" class="btn-addReceipt" data-toggle="modal" data-target="#inputByParse">
+              <div class="col-lg-4 col-xs-4">
+                <i class="fa fa-upload fa-3x"></i>
+              </div>
+              <div class="col-lg-8 col-xs-8" style="margin-top:14px;">
+                Upload Receipt
+              </div>
+            </button>
+          </div>
+          <div class="col-lg-6">
+            <button type="button" class="btn-addReceipt" data-toggle="modal" data-target="#inputManually">
+              <div class="col-lg-4 col-xs-4">
+                <i class="fa fa-plus fa-3x"></i>
+              </div>
+              <div class="col-lg-8 col-xs-8" style="margin-top:14px;">
+                Input Manually
+              </div>
+            </button>
+          </div>
+          <div class="row">
+            <div class="col-lg-12" style="margin-top:20px;">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <div class="row">
+                    <div class="col-lg-10 col-xs-7">
+                      Add record or view receipts
+                    </div>
+                    <div class="col-lg-2 col-xs-5">
+                      <div class="page-select-bottom">
+                        Page:
+                        <select class="selectpicker">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                  <div class="table-responsive">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr aria-hidden="true">
+                          <th>Date <i class="fa fa-unsorted"></i></th>
+                          <th>Amount <i class="fa fa-unsorted"></i></th>
+                          <th>Category <i class="fa fa-unsorted"></i></th>
+                          <th>Description</th>
+                          <th>Location</th>
+                          <th>Modify</th>
+                          <th>View</th>
+                          <th><input type="checkbox" value=""></th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>2017/11/20</td>
+                          <td>50 HKD</td>
+                          <td>Food</td>
+                          <td>Lunch</td>
+                          <td>McDonalds</td>
+                          <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#editRecord" aria-label="Edit"><i class="fa fa-edit" aria-hidden="true"></i></button></td>
+                          <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#viewImage" aria-label="Edit"><i class="fa fa-image" aria-hidden="true"></i></button></td>
+                          <td><input type="checkbox" value=""></td>
+                        </tr>
+                        <tr>
+                          <td>2017/11/19</td>
+                          <td>200 HKD</td>
+                          <td>Groceries</td>
+                          <td>Groceries</td>
+                          <td>Taste</td>
+                          <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#editRecord" aria-label="Edit"><i class="fa fa-edit" aria-hidden="true"></i></button></td>
+                          <td></td>
+                          <td><input type="checkbox" value=""></td>
+                        </tr>
+                        <tr>
+                          <td>2017/11/19</td>
+                          <td>1200 HKD</td>
+                          <td>Transportation</td>
+                          <td>Round trip to Japan</td>
+                          <td>Cathway Pacific Airline</td>
+                          <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#editRecord" aria-label="Edit"><i class="fa fa-edit" aria-hidden="true"></i></button></td>
+                          <td><button type="button" class="btn btn-default" data-toggle="modal" data-target="#viewImage" aria-label="Edit"><i class="fa fa-image" aria-hidden="true"></i></button></td>
+                          <td><input type="checkbox" value=""></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- /.table-responsive -->
+                  <button type="button" class="btn btn-default" data-toggle="modal" data-target="#delete" aria-label="Delete"><i class="fa fa-trash-o fa-fw" aria-hidden="true"></i>Delete selected</button>
+                </div>
+                <!-- /.panel-body -->
+                <div class="panel-footer">
+                  <div class="row">
+                    <div class="col-lg-2 col-xs-5 col-lg-offset-10 col-xs-offset-7">
+                      <div class="page-select-bottom">
+                        Page:
+                        <select class="selectpicker">
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- /.panel-footer -->
+              </div>
+              <!-- /.panel -->
+              <!--Modal contents-->
+              <div id="inputByParse" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Upload image of your receipt</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group form-element">
+                        <label>Upload image of receipt</label>
+                        <input type="file" accept="image/*">
+                      </div>
+                      <div class="form-group form-element">
+                        <label>Select Date</label>
+                        <div class='input-group date' id='datetimepicker1'>
+                          <input type='text' class="form-control" />
+                          <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                          </span>
+                        </div>
+                      </div>
+                      <div class="form-group form-element">
+                        <label>Selects category of expense</label>
+                        <select multiple class="form-control">
+                          <option>Transportation</option>
+                          <option>Food</option>
+                          <option>Leisure</option>
+                          <option>Gift</option>
+                          <option>Insurance</option>
+                          <option>Groceries</option>
+                          <option>Others<option>
+                          </select>
+                        </div>
+                        <p>Please select the image of your receipt. Select a cateogry of the spending afterwards.</p>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="inputManually" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Input manually</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="form-group form-element">
+                          <label>Select Date</label>
+                          <div class='input-group date' id='datetimepicker1'>
+                            <input type='text' class="form-control" />
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label>Location of spending</label>
+                          <input class="form-control" type="text" placeholder="Shop name">
+                        </div>
+                        <div class="form-group">
+                          <label>Spending description</label>
+                          <textarea class="form-control" placeholder="About the product/service" rows="3"></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label>Amount of money spent</label>
+                          <input class="form-control" type="number" placeholder="in $HKD">
+                        </div>
+                        <div class="form-group ">
+                          <label>Selects category of expense</label>
+                          <select multiple class="form-control">
+                            <option>Transportation</option>
+                            <option>Food</option>
+                            <option>Leisure</option>
+                            <option>Gift</option>
+                            <option>Insurance</option>
+                            <option>Groceries</option>
+                            <option>Others<option>
+                            </select>
+                          </div>
+                          <p>Please write down the item or service you purchased, the shop name and the amount you spent.  Select a cateogry of the spending afterwards.</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div id="editRecord" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Edit your spending record</h4>
+                        </div>
+                        <div class="modal-body">
+                          <div class="form-group form-element">
+                            <label>Update Date</label>
+                            <div class='input-group date' id='datetimepicker1'>
+                              <input type='text' class="form-control" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label>Location of spending</label>
+                            <input class="form-control" type="text" placeholder="Shop name" value="Shop A">
+                          </div>
+                          <div class="form-group has-success">
+                            <label>Spending description</label>
+                            <textarea class="form-control" placeholder="About the product/service" id="inputSuccess" rows="3">Me at the Zoo</textarea>
+                          </div>
+                          <div class="form-group has-error">
+                            <label>Amount of money spent</label><br>
+                            <label class="control-label" for="inputError">Error: Input must be number!</label>
+                            <input class="form-control" type="text" placeholder="in $HKD" value="ABC" id="inputError">
+                          </div>
+                          <div class="form-group ">
+                            <label>Update category of expense</label>
+                            <select multiple class="form-control">
+                              <option>Transportation</option>
+                              <option>Food</option>
+                              <option>Leisure</option>
+                              <option>Gift</option>
+                              <option>Insurance</option>
+                              <option>Groceries</option>
+                              <option>Others<option>
+                              </select>
+                            </div>
+                            <div class="form-group">
+                              <p>Please write down the item or service you purchased, the shop name and the amount you spent.  Select a cateogry of the spending afterwards.</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-success" data-dismiss="modal">Edit</button>
+                              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div id="viewImage" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">View your uploaded receipt</h4>
+                          </div>
+                          <div class="modal-body">
+                            <img style="max-width:100%;height:auto;" src="../images/receipt.jpg" alt="some receipt">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="delete" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add new goal</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>You are about to delete <b>5</b> itme(s). Are you sure you want to delete the selected item(s)?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-success" data-dismiss="modal">Yes</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /.row -->
+                </div>
+                <!-- /.row -->
+              </div>
+              <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->
+
+          </div>
+          <!-- /#wrapper -->
+
+          <!-- jQuery -->
+          <script src="../vendor/jquery/jquery.min.js"></script>
+
+          <!-- Bootstrap Core JavaScript -->
+          <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
+          <!-- Metis Menu Plugin JavaScript -->
+          <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+
+          <!-- Custom Theme JavaScript -->
+          <script src="../dist/js/sb-admin-2.js"></script>
+
+        </body>
+
+        </html>
