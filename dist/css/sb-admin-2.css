@@ -443,8 +443,9 @@ table.dataTable thead .sorting:after {
   background-color: #5cb85c;
   border-color: #ccc;
 }
-.btn-addReceipt {
+.btn-withIcon {
   width: 100%;
+  background-color:buttonface;
   display: inline-block;
   padding: 6px 12px;
   margin: 5px 0px;
@@ -464,6 +465,13 @@ table.dataTable thead .sorting:after {
   background-image: none;
   border: 1px solid transparent;
   border-radius: 4px;
+}
+.skip {
+  height: 1px;
+width: 1px;
+position: absolute;
+overflow: hidden;
+top: -10px;
 }
 .center {
     margin: auto;

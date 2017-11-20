@@ -6,8 +6,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Potato FinTech makes your everyday wealth management easier with its expense tracking tool. Try it for free!">
+  <meta name="author" content="Potato FinTech">
 
   <title>Potato FinTech - My Goals</title>
 
@@ -33,7 +33,9 @@
 </head>
 
 <body>
-
+  <div class="skip">
+    <a href="#side-menu">skip to menu</a>
+  </div>
   <div id="wrapper">
 
     <!-- Navigation -->
@@ -56,13 +58,13 @@
               <a href="home.html"><i class="fa fa-home fa-fw"></i> Home</a>
             </li>
             <li>
-              <a href="graph.html"><i class="fa fa-bar-chart-o fa-fw"></i> Visualize Spendings</a>
-            </li>
-            <li>
               <a href="expense.html"><i class="fa fa-barcode fa-fw"></i> My Expense</a>
             </li>
             <li>
               <a href="goals.html"><i class="fa fa-trophy fa-fw"></i> My Goals</a>
+            </li>
+            <li>
+              <a href="graph.html"><i class="fa fa-bar-chart-o fa-fw"></i> Visualize Spendings</a>
             </li>
             <li>
               <a href="settings.html"><i class="fa fa-wrench fa-fw"></i> Settings</a>
@@ -72,6 +74,9 @@
             </li>
             <li>
               <a href="index.html"><i class="fa fa-power-off fa-fw"></i> Log Off</a>
+            </li>
+            <li>
+              <a href="#">This is not a real website. This was designed as part of a school project on web design and usability.</a>
             </li>
           </ul>
         </div>
@@ -88,25 +93,28 @@
             <h1 class="page-header">My Goals</h1>
           </div>
           <!-- /.col-lg-12 -->
-          <div class="col-lg-6 col-lg-offset-6">
-            <button type="button" class="btn-addReceipt" data-toggle="modal" data-target="#addRecord">
+          <div class="col-lg-6 col-lg-offset-6" data-toggle="modal" data-target="#addRecord">
+            <div role="button" class="btn-withIcon">
               <div class="col-lg-4 col-xs-4">
-              <i class="fa fa-edit fa-3x"></i>
+                <i class="fa fa-edit fa-3x"></i>
               </div>
               <div class="col-lg-8 col-xs-8" style="margin-top:14px;">
-                  Add new goal
-                </div>
-            </button>
+                Add new goal
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-lg-12" style="margin-top:20px;">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <div class="row">
-                    <div class="col-lg-10 col-xs-7">
-                      Your goals
+                    <div class="col-lg-8 col-xs-7">
+                      Add record or view receipts
                     </div>
                     <div class="col-lg-2 col-xs-5">
+                      <input class="form-control" type="text" placeholder="search">
+                    </div>
+                    <div class="col-lg-2 col-xs-5 col-xs-offset-7 col-lg-offset-0">
                       <div class="page-select-bottom">
                         Page:
                         <select class="selectpicker">
@@ -217,7 +225,7 @@
       <!-- /.container-fluid -->
     </div>
     <!-- /#page-wrapper -->
-
+    </div>
   </div>
   <!-- /#wrapper -->
 <!-- #modal -->
