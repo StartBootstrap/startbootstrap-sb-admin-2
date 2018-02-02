@@ -28,7 +28,7 @@ gulp.task('less', function() {
 });
 
 // Minify compiled CSS
-gulp.task('minify-css', ['less'], function() {
+gulp.task('minify-css', gulp.series('less', function() {
     return gulp.src('dist/css/sb-admin-2.css')
         .pipe(cleanCSS({ compatibility: 'ie8' }))
         .pipe(rename({ suffix: '.min' }))
@@ -36,7 +36,7 @@ gulp.task('minify-css', ['less'], function() {
         .pipe(browserSync.reload({
             stream: true
         }))
-});
+}));
 
 // Copy JS to dist
 gulp.task('js', function() {
@@ -49,7 +49,7 @@ gulp.task('js', function() {
 })
 
 // Minify JS
-gulp.task('minify-js', ['js'], function() {
+gulp.task('minify-js', gulp.series('js', function() {
     return gulp.src('js/sb-admin-2.js')
         .pipe(uglify())
         .pipe(header(banner, { pkg: pkg }))
@@ -58,10 +58,10 @@ gulp.task('minify-js', ['js'], function() {
         .pipe(browserSync.reload({
             stream: true
         }))
-});
+}));
 
 // Copy vendor libraries from /bower_components into /vendor
-gulp.task('copy', function() {
+gulp.task('copy', function(done) {
     gulp.src(['bower_components/bootstrap/dist/**/*', '!**/npm.js', '!**/bootstrap-theme.*', '!**/*.map'])
         .pipe(gulp.dest('vendor/bootstrap'))
 
@@ -98,10 +98,13 @@ gulp.task('copy', function() {
     gulp.src(['bower_components/raphael/raphael.js', 'bower_components/raphael/raphael.min.js'])
         .pipe(gulp.dest('vendor/raphael'))
 
+    done();
 })
 
 // Run everything
-gulp.task('default', ['minify-css', 'minify-js', 'copy']);
+gulp.task('default', gulp.series(['minify-css', 'minify-js', 'copy']), function(done) {
+    done();
+});
 
 // Configure the browserSync task
 gulp.task('browserSync', function() {
@@ -113,11 +116,11 @@ gulp.task('browserSync', function() {
 })
 
 // Dev task with browserSync
-gulp.task('dev', ['browserSync', 'less', 'minify-css', 'js', 'minify-js'], function() {
+gulp.task('dev', gulp.series(['browserSync', 'less', 'minify-css', 'js', 'minify-js'], function() {
     gulp.watch('less/*.less', ['less']);
     gulp.watch('dist/css/*.css', ['minify-css']);
     gulp.watch('js/*.js', ['minify-js']);
     // Reloads the browser whenever HTML or JS files change
     gulp.watch('pages/*.html', browserSync.reload);
     gulp.watch('dist/js/*.js', browserSync.reload);
-});
+}));
