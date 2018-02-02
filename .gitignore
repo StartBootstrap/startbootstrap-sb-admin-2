@@ -1,2 +1,5 @@
 node_modules
 bower_components
+vendor
+.idea
+package-lock.json
