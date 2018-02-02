@@ -3,4 +3,5 @@ bower_components
 vendor
 .idea
 package-lock.json
-dist
+dist/*
+!dist/.gitkeep
