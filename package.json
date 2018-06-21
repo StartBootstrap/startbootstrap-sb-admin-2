@@ -6,22 +6,26 @@
   "author": "Jawad Tahir",
   "license": "MIT",
   "devDependencies": {
+    "bigchaindb-driver": "^4.0.2",
     "browser-sync": "^2.13.0",
+    "composer-cli": "^0.19.9",
+    "composer-playground": "^0.19.9",
+    "composer-rest-server": "^0.19.9",
+    "express": "^4.16.3",
+    "generator-hyperledger-composer": "0.19.9",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.10",
     "gulp-header": "^1.8.7",
     "gulp-less": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-uglify": "^1.5.4",
-    "composer-cli": "^0.19.9",
-    "composer-rest-server": "^0.19.9",
-    "generator-hyperledger-composer": "0.19.9",
-    "yo": "^2.0.2",
-    "composer-playground": "^0.19.9",
-    "express": "^4.16.3",
-    "path": "0.12.7"
+    "path": "0.12.7",
+    "yo": "^2.0.2"
   },
   "scripts": {
     "start": "node ./src/index.js"
+  },
+  "dependencies": {
+    "pug": "^2.0.3"
   }
 }
