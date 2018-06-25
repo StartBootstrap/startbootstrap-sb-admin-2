@@ -48,7 +48,7 @@ async function sampleTransaction(tx) {
  * @param {de.tum.allianz.ics.Pay} pay - the pay to be processed
  * @transaction
  */
-function pay(pay) {
+async function pay(pay) {
     var outstanding = pay.bill.totalOutstanding;
     outstanding -= pay.amount;
     pay.bill.totalOutstanding = outstanding;
