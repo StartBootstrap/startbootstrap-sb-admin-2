@@ -41,6 +41,52 @@ async function sampleTransaction(tx) {
     event.newValue = tx.newValue;
     emit(event);
 }
+/**
+ * create bill
+ * @param {de.tum.allianz.ics.CreateBill} createBill - creation of Bills (Give OE ID to use this transaction)
+ * @transaction
+ */
+async function CreateBill(make) {
+    var handlingFee = calculateHandlingFee(make.claims);
+    var totalAmount = [];
+    //var hoe= getCurrentParticipant();
+    var factory = getFactory();
+    make.claims.forEach(element => {
+        totalAmount.push(element.totalAmount);
+    });
+    let asset = await getAssetRegistry('de.tum.allianz.ics.Bill');
+    var bill  = factory.newResource('de.tum.allianz.ics', 'Bill', make.billId);
+    bill.hoe= make.hoe;
+    bill.ooe = make.ooe;
+    bill.claims = make.claims;
+    bill.handlingFee=handlingFee.reduce((a,b) => a+b,0);
+    bill.totalOutstanding = totalAmount.reduce((a,b) => a+b,0) + handlingFee.reduce((a,b) => a+b,0);
+    bill.status = 'PENDING';
+    bill.dueDate = make.dueDate;
+
+    await asset.add(bill);
+}
+
+
+
+/**
+ * Add two numbers.
+ * @param {array} claims Gets the claims.
+ * @returns {array} The calculated Handling fee for each claim.
+ */
+function calculateHandlingFee(claims){
+    var handlingFee = [];
+    claims.forEach(element => {
+        handlingFee.push(element.totalAmount * 15/100);
+    });
+    return handlingFee;
+}
+
+// function calculatePenalty(bill){}
+
+// function calculateDueDate(bill){}
+
+
 
 
 /**
@@ -52,8 +98,8 @@ async function pay(pay) {
     var outstanding = pay.bill.totalOutstanding;
     outstanding -= pay.amount;
     pay.bill.totalOutstanding = outstanding;
-  	if (outstanding <= 0){
-      pay.bill.status = "SETTELED";
+    if (outstanding <= 0){
+        pay.bill.status = 'SETTELED';
     }
     // Get the asset registry for the asset.
     const assetRegistry = await getAssetRegistry('de.tum.allianz.ics.Bill');
@@ -62,40 +108,21 @@ async function pay(pay) {
 
     // Emit an event for the modified asset.
     let event = getFactory().newEvent('de.tum.allianz.ics', 'OnPay');
-    event.bill = bill;
+    event.bill = pay.bill;
     emit(event);
 }
 
-  /**
- * Calculate handling fee
- * @param {de.tum.allianz.ics.CalcHFee} calcHFee
- * @transaction
- */
-function onCalcHFee(calcHFee){
-  var bill = calcHFee.bill;
-  var handlingFee = bill.totalAmount;
-  handlingFee = (0.1 * handlingFee) ;
-  bill.handlingFee = handlingFee;
-  bill.totalOutstanding = bill.totalAmount + bill.handlingFee;
-  return getAssetRegistry('de.tum.allianz.ics.Bill')
-  		.then(function(assetRegistry){
-    		return assetRegistry.update(bill);
-  });
-}
-
-
 /**
  * Authoriize bill
- * @param {de.tum.allianz.ics.Authorize} tx 
+ * @param {de.tum.allianz.ics.Authorize} tx
  * @transaction
  */
 async function onAuthorize(tx){
     var bill = tx.bill;
     var user = tx.user;
-    
-    bill.authorizor = user;
-    bill.authDate = new Date().toISOString("YYYY-MM-DD");
 
+    bill.authorizor = user;
+    bill.authDate = tx.authDate;
     // Get the asset registry for the asset.
     const assetRegistry = await getAssetRegistry('de.tum.allianz.ics.Bill');
     // Update the asset in the asset registry.

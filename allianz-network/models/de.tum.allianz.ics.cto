@@ -29,7 +29,12 @@ asset SampleAsset identified by assetId {
   --> SampleParticipant owner
   o String value
 }
-
+concept Claim  {
+  o String ClaimId
+  --> OE owner
+  --> OE handler
+  o Double totalAmount default = 0.0
+}
 transaction SampleTransaction {
   --> SampleAsset asset
   o String newValue
@@ -45,8 +50,8 @@ asset Bill identified by billId {
   o String billId
   --> OE ooe
   --> OE hoe
+  o Claim [] claims
   o BillStatus status
-  o Integer[] claimList
   o Double totalAmount default = 0.0
   o Double handlingFee default = 0.0
   o Double latePenality default = 0.0
@@ -67,7 +72,13 @@ participant User identified by userId {
   --> OE oe
   o UserRole role
 }
-
+transaction CreateBill {
+  --> OE ooe
+  --> OE hoe
+  o String billId
+  o Claim[] claims
+  o DateTime dueDate
+}
 transaction Pay {
   --> Bill bill
   o Double amount
@@ -76,14 +87,8 @@ transaction Pay {
 transaction Authorize {
   --> Bill bill
   --> User user
-}
-  
-transaction CalcHFee {
-  --> Bill bill
-}
-
-transaction CalcLateFee {
-  --> Bill bill
+  o DateTime authDate
+  o BillStatus status
 }
 
 transaction UpdateHFee {
@@ -111,7 +116,7 @@ event OnPay {
 
 enum BillStatus{
   o PENDING
-  o AUTHORIZED
+  o SHOULDAUTH
   o SETTELED
 }
 
