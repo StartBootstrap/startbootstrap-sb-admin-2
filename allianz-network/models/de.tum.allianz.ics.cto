@@ -1,0 +1,126 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace de.tum.allianz.ics
+
+participant SampleParticipant identified by participantId {
+  o String participantId
+  o String firstName
+  o String lastName
+}
+
+asset SampleAsset identified by assetId {
+  o String assetId
+  --> SampleParticipant owner
+  o String value
+}
+concept Claim  {
+  o String ClaimId
+  --> OE owner
+  --> OE handler
+  o Double totalAmount default = 0.0
+}
+transaction SampleTransaction {
+  --> SampleAsset asset
+  o String newValue
+}
+
+event SampleEvent {
+  --> SampleAsset asset
+  o String oldValue
+  o String newValue
+}
+
+asset Bill identified by billId {
+  o String billId
+  --> OE ooe
+  --> OE hoe
+  o Claim [] claims
+  o BillStatus status
+  o Double totalAmount default = 0.0
+  o Double handlingFee default = 0.0
+  o Double latePenality default = 0.0
+  o Double totalOutstanding default = 0.0
+  o DateTime dueDate optional
+  --> User authorizor optional
+  o DateTime authDate optional
+}
+
+participant OE identified by oeId {
+  o String oeId
+  o String name
+}
+
+participant User identified by userId {
+  o String userId
+  o String name
+  --> OE oe
+  o UserRole role
+}
+transaction CreateBill {
+  --> OE ooe
+  --> OE hoe
+  o String billId
+  o Claim[] claims
+  o DateTime dueDate
+}
+transaction Pay {
+  --> Bill bill
+  o Double amount
+}
+
+transaction Authorize {
+  --> Bill bill
+  --> User user
+  o DateTime authDate
+  o BillStatus status
+}
+
+transaction UpdateHFee {
+  --> Bill bill
+  o Double newValue
+}
+
+transaction UpdateOutstanding {
+  --> Bill bill
+  o Double newValue
+}
+
+transaction UpdateAmount {
+  --> Bill bill
+  o Double newValue
+}
+
+event OnAuthorize {
+  --> Bill bill
+}
+
+event OnPay {
+  --> Bill bill
+}
+
+enum BillStatus{
+  o PENDING
+  o SHOULDAUTH
+  o SETTELED
+}
+
+enum UserRole {
+  o USER
+  o AUTHORIZER
+}

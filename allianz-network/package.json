@@ -1,0 +1,36 @@
+{
+  "engines": {
+    "composer": "^0.19.9"
+  },
+  "name": "allianz-network",
+  "version": "0.0.1",
+  "description": "Allianz network",
+  "scripts": {
+    "prepublish": "mkdirp ./dist && composer archive create --sourceType dir --sourceName . -a ./dist/allianz-network.bna",
+    "pretest": "npm run lint",
+    "lint": "eslint .",
+    "test": "nyc mocha -t 0 test/*.js && cucumber-js"
+  },
+  "keywords": [
+    "composer",
+    "composer-network"
+  ],
+  "author": "Jawad Tahir",
+  "email": "jawad.tahir@tum.de",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "composer-admin": "^0.19.9",
+    "composer-cli": "^0.19.9",
+    "composer-client": "^0.19.9",
+    "composer-common": "^0.19.9",
+    "composer-connector-embedded": "^0.19.9",
+    "composer-cucumber-steps": "^0.19.9",
+    "chai": "latest",
+    "chai-as-promised": "latest",
+    "cucumber": "^2.2.0",
+    "eslint": "latest",
+    "nyc": "latest",
+    "mkdirp": "latest",
+    "mocha": "latest"
+  }
+}

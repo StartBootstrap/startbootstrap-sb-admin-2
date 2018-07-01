@@ -1,36 +1,40 @@
-# [Start Bootstrap](http://startbootstrap.com/) - [SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/)
-[![CDNJS](https://img.shields.io/cdnjs/v/startbootstrap-sb-admin-2.svg)](https://cdnjs.com/libraries/startbootstrap-sb-admin-2)
-
-[SB Admin 2](http://startbootstrap.com/template-overviews/sb-admin-2/) is an open source, admin dashboard template for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).
+# [Allianz ICS]
 
 ## Getting Started
 
-To begin using this template, choose one of the following options to get started:
-* [Download the latest release on Start Bootstrap](http://startbootstrap.com/template-overviews/sb-admin-2/)
-* Clone the repo: `git clone https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git`
-* Fork the repo
+Clone the repo.  
+Go to ```/src/config.js```  
+Put your own ```APP_ID``` and ```APP_KEY```  
+npm install  
+npm start  
+ 
+go port 30001
 
-## Using the Source Files
 
-After cloning the repo take a look at the `gulpfile.js` and check out the tasks available:
-* `gulp` The default task will compile the LESS and JS into the `dist` directory and minify the output, and it will copy all vendor libraries from `bower_components` into the `vendor` directory
-* `gulp dev` The dev task will serve up a local version of the template and will watch the LESS, JS, and HTML files for changes and reload the browser windo automatically
+## Populate And Test Big Chain Database ##
+If you cannot see any claims in ```/claims``` page then please follow these instructions:  
+In this repo, there are two python scripts for bigchain.db 	
+To use them first install bigchaindb-driver for python3  
+```
+pip3 install -U bigchaindb-driver
+```
+or if you want to use python2.x
+```
+pip install -U bigchaindb-driver
+```
+After that please go to [BCDB-Test](https://testnet.bigchaindb.com), and create an account for yourself.[1]  
+Then navigate to Applications -> Your app's name, and find your Application ID and Application Keys.  
+Copy and paste them into ```populate_bcdp.py``` and ```test_bcdp.py```  
+Then first run ```populate_bcdp.py``` and populate your bigchaindb, and then run ```test_bcdp.py``` to retrieve results  
 
-To update dependencies, run `bower update` and then run `gulp copy` to copy the updated dependencies into the `vendor` directory
+[1] -> You can use my ApplicationId and Application key, that I shared via slack-channel.
 
-## Bugs and Issues
 
-Have a bug or an issue with this template? [Open a new issue](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/issues) here on GitHub or leave a comment on the [template overview page at Start Bootstrap](http://startbootstrap.com/template-overviews/sb-admin-2/).
+## Documentations ##
 
-## Creator
+[BCDB Python Driver](https://github.com/bigchaindb/bigchaindb-driver)  
+[BCDB JS Driver](https://github.com/bigchaindb/js-bigchaindb-driver)  
+[PUG-JS](https://pugjs.org/api/getting-started.html)  
+[HTML-to-PUG*](http://html2jade.org/)  
 
-Start Bootstrap was created by and is maintained by **[David Miller](http://davidmiller.io/)**, Owner of [Blackrock Digital](http://blackrockdigital.io/).
-
-* https://twitter.com/davidmillerskt
-* https://github.com/davidtmiller
-
-Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework created by [Mark Otto](https://twitter.com/mdo) and [Jacob Thorton](https://twitter.com/fat).
-
-## Copyright and License
-
-Copyright 2013-2018 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/blob/gh-pages/LICENSE) license.
+* Developers changed Jade's name to PUG recently, so thats why that link directs to html2jade.org. It is not a mistake.
