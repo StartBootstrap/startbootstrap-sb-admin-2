@@ -1,0 +1,46 @@
+// Topbar
+.topbar {
+  height: $topbar-base-height;
+  .nav-item {
+    .nav-link {
+      height: $topbar-base-height;
+      display: flex;
+      align-items: center;
+      padding: 0 0.75rem;
+    }
+  }
+  .dropdown {
+    position: static;
+    .dropdown-menu {
+      width: calc(100% - #{$grid-gutter-width});
+      right: $grid-gutter-width / 2;
+    }
+  }
+  @include media-breakpoint-up(md) {
+    .dropdown {
+      position: relative;
+      .dropdown-menu {
+        width: auto;
+        right: 0;
+      }
+    }
+  }
+}
+
+.topbar.navbar-dark {}
+
+.topbar.navbar-light {
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        color: $gray-400;
+        &:hover {
+          color: $gray-500;
+        }
+        &:active {
+          color: $gray-600;
+        }
+      }
+    }
+  }
+}
