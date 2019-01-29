@@ -1,0 +1,69 @@
+// Background Gradient Utilities
+
+.bg-gradient-primary {
+  background-color: $primary;
+  background-image: linear-gradient(180deg, $primary 10%, darken($primary, 15%) 100%);
+  background-size: cover;
+}
+
+.bg-gradient-success {
+  background-color: $success;
+  background-image: linear-gradient(180deg, $success 10%, darken($success, 15%) 100%);
+  background-size: cover;
+}
+
+.bg-gradient-info {
+  background-color: $info;
+  background-image: linear-gradient(180deg, $info 10%, darken($info, 15%) 100%);
+  background-size: cover;
+}
+
+.bg-gradient-warning {
+  background-color: $warning;
+  background-image: linear-gradient(180deg, $warning 10%, darken($warning, 15%) 100%);
+  background-size: cover;
+}
+
+.bg-gradient-danger {
+  background-color: $danger;
+  background-image: linear-gradient(180deg, $danger 10%, darken($danger, 15%) 100%);
+  background-size: cover;
+}
+
+// Grayscale Background Utilities
+
+.bg-gray-100 {
+  background-color: $gray-100 !important;
+}
+
+.bg-gray-200 {
+  background-color: $gray-200 !important;
+}
+
+.bg-gray-300 {
+  background-color: $gray-300 !important;
+}
+
+.bg-gray-400 {
+  background-color: $gray-400 !important;
+}
+
+.bg-gray-500 {
+  background-color: $gray-500 !important;
+}
+
+.bg-gray-600 {
+  background-color: $gray-600 !important;
+}
+
+.bg-gray-700 {
+  background-color: $gray-700 !important;
+}
+
+.bg-gray-800 {
+  background-color: $gray-800 !important;
+}
+
+.bg-gray-900 {
+  background-color: $gray-900 !important;
+}
