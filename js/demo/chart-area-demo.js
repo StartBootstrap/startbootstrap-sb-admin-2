@@ -53,10 +53,10 @@ var myLineChart = new Chart(ctx, {
     maintainAspectRatio: false,
     layout: {
       padding: {
-        left: 0,
+        left: 10,
         right: 25,
         top: 25,
-        bottom: 25
+        bottom: 0
       }
     },
     scales: {

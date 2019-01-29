@@ -9,6 +9,12 @@ body {
   height: 100%;
 }
 
+a {
+  &:focus {
+    outline: none;
+  }
+}
+
 // Main page wrapper
 #wrapper {
   display: flex;
@@ -27,29 +33,6 @@ body {
 .container-fluid {
   padding-left: $grid-gutter-width;
   padding-right: $grid-gutter-width;
-}
-
-// Fixed Nav Option
-body.fixed-nav {
-  #content-wrapper {
-    margin-top: $navbar-base-height;
-    padding-left: $sidebar-collapsed-width;
-  }
-  &.sidebar-toggled {
-    #content-wrapper {
-      padding-left: 0;
-    }
-  }
-  @include media-breakpoint-up(md) {
-    #content-wrapper {
-      padding-left: $sidebar-base-width;
-    }
-    &.sidebar-toggled {
-      #content-wrapper {
-        padding-left: $sidebar-collapsed-width;
-      }
-    }
-  }
 }
 
 // Scroll to top button

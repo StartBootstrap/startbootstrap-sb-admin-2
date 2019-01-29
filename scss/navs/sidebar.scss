@@ -68,6 +68,10 @@
           &:active {
             background-color: $gray-300;
           }
+          &.active {
+            color: $primary;
+            font-weight: 700;
+          }
         }
       }
     }
@@ -113,7 +117,6 @@
 
     .sidebar-brand-icon i {
       font-size: 2rem;
-      @include rotate;
     }
     .sidebar-brand-text {
       display: none;
