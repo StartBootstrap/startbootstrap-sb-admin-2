@@ -1,7 +1,7 @@
 {
     "title": "SB Admin 2",
     "name": "startbootstrap-sb-admin-2",
-    "version": "4.0.0",
+    "version": "4.0.1",
     "description": "An open source Bootstrap 4 admin theme.",
     "keywords": [
         "css",
@@ -28,8 +28,8 @@
         "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "5.7.0",
-        "bootstrap": "4.2.1",
+        "@fortawesome/fontawesome-free": "5.7.2",
+        "bootstrap": "4.3.1",
         "chart.js": "2.7.3",
         "datatables.net-bs4": "1.10.19",
         "jquery": "3.3.1",
