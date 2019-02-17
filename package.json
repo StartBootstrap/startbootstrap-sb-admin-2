@@ -1,7 +1,10 @@
 {
     "title": "SB Admin 2",
     "name": "startbootstrap-sb-admin-2",
-    "version": "4.0.1",
+    "version": "4.0.2",
+    "scripts": {
+        "start": "gulp watch"
+    },
     "description": "An open source Bootstrap 4 admin theme.",
     "keywords": [
         "css",
@@ -37,13 +40,15 @@
     },
     "devDependencies": {
         "browser-sync": "2.26.3",
-        "gulp": "^4.0.0",
+        "del": "^3.0.0",
+        "gulp": "4.0.0",
         "gulp-autoprefixer": "6.0.0",
         "gulp-clean-css": "4.0.0",
         "gulp-header": "2.0.7",
         "gulp-plumber": "^1.2.1",
         "gulp-rename": "1.4.0",
         "gulp-sass": "4.0.2",
-        "gulp-uglify": "3.0.1"
+        "gulp-uglify": "3.0.1",
+        "merge-stream": "^1.0.1"
     }
 }
