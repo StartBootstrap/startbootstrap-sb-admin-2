@@ -50,7 +50,7 @@ function clean() {
 // Bring third party dependencies from node_modules into vendor directory
 function modules() {
   // Bootstrap JS
-  var bootstrapJS = gulp.src('./node_modules/bootstrap/dist/js/*')
+  var bootstrapJS = gulp.src('./node_modules/bootstrap/dist/js/*.js')
     .pipe(gulp.dest('./vendor/bootstrap/js'));
   // Bootstrap SCSS
   var bootstrapSCSS = gulp.src('./node_modules/bootstrap/scss/**/*')
@@ -66,14 +66,18 @@ function modules() {
     ])
     .pipe(gulp.dest('./vendor/datatables'));
   // Font Awesome
-  var fontAwesome = gulp.src('./node_modules/@fortawesome/**/*')
+  var fontAwesome = gulp.src([
+      './node_modules/@fortawesome/**/*',
+      '!./node_modules/@fortawesome/**/*.txt',
+      '!./node_modules/@fortawesome/**/*.json',
+    ])
     .pipe(gulp.dest('./vendor'));
   // jQuery Easing
   var jqueryEasing = gulp.src('./node_modules/jquery.easing/*.js')
     .pipe(gulp.dest('./vendor/jquery-easing'));
   // jQuery
   var jquery = gulp.src([
-      './node_modules/jquery/dist/*',
+      './node_modules/jquery/dist/*.js',
       '!./node_modules/jquery/dist/core.js'
     ])
     .pipe(gulp.dest('./vendor/jquery'));

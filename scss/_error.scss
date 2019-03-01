@@ -9,14 +9,16 @@
   line-height: 1;
   width: 12.5rem;
 }
+
 @keyframes noise-anim {
   $steps: 20;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px,9999px,random(100)+px,0);
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
     }
   }
 }
+
 .error:after {
   content: attr(data-text);
   position: absolute;
@@ -26,7 +28,7 @@
   color: $gray-800;
   background: $gray-100;
   overflow: hidden;
-  clip: rect(0,900px,0,0);
+  clip: rect(0, 900px, 0, 0);
   animation: noise-anim 2s infinite linear alternate-reverse;
 }
 
@@ -34,10 +36,11 @@
   $steps: 20;
   @for $i from 0 through $steps {
     #{percentage($i*(1/$steps))} {
-      clip: rect(random(100)+px,9999px,random(100)+px,0);
+      clip: rect(random(100)+px, 9999px, random(100)+px, 0);
     }
   }
 }
+
 .error:before {
   content: attr(data-text);
   position: absolute;
@@ -47,6 +50,6 @@
   color: $gray-800;
   background: $gray-100;
   overflow: hidden;
-  clip: rect(0,900px,0,0);
+  clip: rect(0, 900px, 0, 0);
   animation: noise-anim-2 3s infinite linear alternate-reverse;
 }

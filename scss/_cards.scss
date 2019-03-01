@@ -5,16 +5,19 @@
     // Format Dropdowns in Card Headings
     .dropdown {
       line-height: 1;
+
       .dropdown-menu {
         line-height: 1.5;
       }
     }
   }
+
   // Collapsable Card Styling
   .card-header[data-toggle="collapse"] {
     text-decoration: none;
     position: relative;
     padding: 0.75rem 3.25rem 0.75rem 1.25rem;
+
     &::after {
       position: absolute;
       right: 0;
@@ -26,8 +29,10 @@
       font-family: 'Font Awesome 5 Free';
       color: $gray-400;
     }
+
     &.collapsed {
       border-radius: $card-border-radius;
+
       &::after {
         content: '\f105';
       }

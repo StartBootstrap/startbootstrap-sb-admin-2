@@ -18,10 +18,12 @@ a {
 // Main page wrapper
 #wrapper {
   display: flex;
+
   #content-wrapper {
     background-color: $gray-100;
     width: 100%;
     overflow-x: hidden;
+
     #content {
       flex: 1 0 auto;
     }
@@ -47,13 +49,16 @@ a {
   color: $white;
   background: fade-out($gray-800, .5);
   line-height: 46px;
+
   &:focus,
   &:hover {
     color: white;
   }
+
   &:hover {
     background: $gray-800;
   }
+
   i {
     font-weight: 800;
   }

@@ -40,11 +40,3 @@ form.user {
   }
 
 }
-
-.btn-google {
-  @include button-variant($brand-google, $white);
-}
-
-.btn-facebook {
-  @include button-variant($brand-facebook, $white);
-}

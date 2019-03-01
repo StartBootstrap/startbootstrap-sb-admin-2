@@ -17,15 +17,18 @@
           font-family: 'Font Awesome 5 Free';
         }
       }
+
       &.show {
         .dropdown-toggle::after {
           content: '\f107';
         }
       }
     }
+
     // Counter for nav links and nav link image sizing
     .nav-link {
       position: relative;
+
       .badge-counter {
         position: absolute;
         transform: scale(0.7);
@@ -33,6 +36,7 @@
         right: .25rem;
         margin-top: -.25rem;
       }
+
       .img-profile {
         height: 2rem;
         width: 2rem;
