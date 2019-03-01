@@ -77,7 +77,16 @@ function modules() {
       '!./node_modules/jquery/dist/core.js'
     ])
     .pipe(gulp.dest('./vendor/jquery'));
-  return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing);
+  //  trumbowyg JS
+  var trumbowygJS = gulp.src([
+    './node_modules/trumbowyg/dist/trumbowyg.js',
+  ]).pipe(gulp.dest('./vendor/trumbowyg'));
+  //  trumbowyg SCSS
+  var trumbowygSCSS = gulp.src([
+    './node_modules/trumbowyg/dist/ui/sass/trumbowyg.scss',
+    './node_modules/trumbowyg/dist/ui/icons.svg'
+  ]).pipe(gulp.dest('./vendor/trumbowyg/ui'));
+  return merge(bootstrapJS, bootstrapSCSS, chartJS, dataTables, fontAwesome, jquery, jqueryEasing, trumbowygJS, trumbowygSCSS);
 }
 
 // CSS task
