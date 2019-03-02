@@ -1,0 +1,89 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add Trumbowyg
+
+PATH: 
+  C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\EasyPHP-DevServer-13.1VC9\binaries\php\php_runningversion;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\AMD APP\bin\x86_64;C:\Program Files (x86)\AMD APP\bin\x86;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\Git\bin;C:\Program Files\Git\cmd;C:\Windows\system32\config\systemprofile\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\wamp\bin\php\php5.5.12;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\Skype\Phone\;C:\Python27;C:\dev\cocos2d-x\tools;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Yarn\bin\;C:\Program Files (x86)\Brackets\command;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Program Files\nodejs\;C:\Users\new\AppData\Local\Android\sdk\platform-tools;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\dev\cocos2d-x\cocos2d-x-3.15\templates;C:\dev\cocos2d-x\cocos2d-x-3.15\tools\cocos2d-console\bin;C:\Ruby23-x64\bin;C:\Users\new\AppData\Local\Pandoc\C:\Python27;C:\Python27\Scripts;C:\Program Files\Heroku\bin;C:\Users\new\AppData\Roaming\Composer\vendor\bin;C:\Users\new\AppData\Roaming\Composer\vendor\friendsofphp\php-cs-fixer\php-cs-fixer;C:\Python27\ ;C:\Program Files (x86)\Microsoft VS Code\bin;C:\Users\new\AppData\Local\Yarn\bin;C:\Users\new\AppData\Roaming\npm
+
+Yarn version: 
+  1.7.0
+
+Node version: 
+  8.9.4
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.npmjs.org/Trumbowyg: Not found
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:65656:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:134675:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:135658:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:135578:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
+
+npm manifest: 
+  {
+      "title": "SB Admin 2",
+      "name": "startbootstrap-sb-admin-2",
+      "version": "4.0.2",
+      "scripts": {
+          "start": "gulp watch"
+      },
+      "description": "An open source Bootstrap 4 admin theme.",
+      "keywords": [
+          "css",
+          "sass",
+          "html",
+          "responsive",
+          "theme",
+          "template",
+          "admin",
+          "app"
+      ],
+      "homepage": "https://startbootstrap.com/template-overviews/sb-admin-2",
+      "bugs": {
+          "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2/issues",
+          "email": "feedback@startbootstrap.com"
+      },
+      "license": "MIT",
+      "author": "Start Bootstrap",
+      "contributors": [
+          "David Miller (http://davidmiller.io/)"
+      ],
+      "repository": {
+          "type": "git",
+          "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git"
+      },
+      "dependencies": {
+          "@fortawesome/fontawesome-free": "5.7.2",
+          "bootstrap": "4.3.1",
+          "chart.js": "2.7.3",
+          "datatables.net-bs4": "1.10.19",
+          "jquery": "3.3.1",
+          "jquery.easing": "^1.4.1"
+      },
+      "devDependencies": {
+          "browser-sync": "2.26.3",
+          "del": "^3.0.0",
+          "gulp": "4.0.0",
+          "gulp-autoprefixer": "6.0.0",
+          "gulp-clean-css": "4.0.0",
+          "gulp-header": "2.0.7",
+          "gulp-plumber": "^1.2.1",
+          "gulp-rename": "1.4.0",
+          "gulp-sass": "4.0.2",
+          "gulp-uglify": "3.0.1",
+          "merge-stream": "^1.0.1"
+      }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
