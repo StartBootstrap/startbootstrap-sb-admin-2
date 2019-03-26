@@ -1,7 +1,7 @@
 {
     "title": "SB Admin 2",
     "name": "startbootstrap-sb-admin-2",
-    "version": "4.0.2",
+    "version": "4.0.3",
     "scripts": {
         "start": "gulp watch"
     },
@@ -31,16 +31,16 @@
         "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "5.7.2",
+        "@fortawesome/fontawesome-free": "5.8.1",
         "bootstrap": "4.3.1",
-        "chart.js": "2.7.3",
+        "chart.js": "2.8.0",
         "datatables.net-bs4": "1.10.19",
         "jquery": "3.3.1",
         "jquery.easing": "^1.4.1"
     },
     "devDependencies": {
         "browser-sync": "2.26.3",
-        "del": "^3.0.0",
+        "del": "4.0.0",
         "gulp": "4.0.0",
         "gulp-autoprefixer": "6.0.0",
         "gulp-clean-css": "4.0.0",
@@ -48,7 +48,7 @@
         "gulp-plumber": "^1.2.1",
         "gulp-rename": "1.4.0",
         "gulp-sass": "4.0.2",
-        "gulp-uglify": "3.0.1",
+        "gulp-uglify": "3.0.2",
         "merge-stream": "^1.0.1"
     }
 }
