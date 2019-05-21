@@ -6915,13 +6915,13 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #4e73df !important;
+  background-color: #4edf7e !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
 button.bg-primary:hover,
 button.bg-primary:focus {
-  background-color: #2653d4 !important;
+  background-color: #237e3a !important;
 }
 
 .bg-secondary {
@@ -10685,9 +10685,9 @@ a:focus {
 }
 
 .bg-gradient-primary {
-  background-color: #4e73df;
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe));
-  background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+  background-color: #4edf7a;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #527a5e), to(#228f1a));
+  background-image: linear-gradient(180deg, #527a5e 10%, #228f1a 100%);
   background-size: cover;
 }
 
