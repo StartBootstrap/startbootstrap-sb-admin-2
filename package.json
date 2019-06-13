@@ -1,9 +1,9 @@
 {
     "title": "SB Admin 2",
     "name": "startbootstrap-sb-admin-2",
-    "version": "4.0.5",
+    "version": "4.0.6",
     "scripts": {
-        "start": "gulp watch"
+        "start": "node_modules/.bin/gulp watch"
     },
     "description": "An open source Bootstrap 4 admin theme.",
     "keywords": [
@@ -31,7 +31,7 @@
         "url": "https://github.com/BlackrockDigital/startbootstrap-sb-admin-2.git"
     },
     "dependencies": {
-        "@fortawesome/fontawesome-free": "5.8.2",
+        "@fortawesome/fontawesome-free": "5.9.0",
         "bootstrap": "4.3.1",
         "chart.js": "2.8.0",
         "datatables.net-bs4": "1.10.19",
@@ -39,7 +39,7 @@
         "jquery.easing": "^1.4.1"
     },
     "devDependencies": {
-        "browser-sync": "2.26.5",
+        "browser-sync": "2.26.7",
         "del": "4.1.1",
         "gulp": "4.0.2",
         "gulp-autoprefixer": "6.1.0",
