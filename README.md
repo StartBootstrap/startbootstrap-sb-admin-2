@@ -39,7 +39,7 @@ After installation, run `npm install` and then run `npm start` which will open u
 -   `gulp js` minifies the themes JS file
 -   `gulp vendor` copies dependencies from node_modules to the vendor directory
 
-You must have npm and Gulp installed globally on your machine in order to use these features. This theme was built using node v11.6.0 and the Gulp CLI v2.0.1. If Gulp is not running properly after running `npm install`, you may need to update node and/or the Gulp CLI locally.
+You must have npm installed globally in order to use this build environment. This theme was built using node v11.6.0 and the Gulp CLI v2.0.1. If Gulp is not running properly after running `npm install`, you may need to update node and/or the Gulp CLI locally.
 
 ## Bugs and Issues
 
