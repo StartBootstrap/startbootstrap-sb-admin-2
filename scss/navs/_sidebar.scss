@@ -8,6 +8,7 @@
       margin-bottom: 1rem;
     }
     .nav-link {
+      color: #FFFFFF;
       text-align: center;
       padding: 0.75rem 1rem;
       width: $sidebar-collapsed-width;
@@ -17,8 +18,11 @@
       }
     }
     &.active {
+      background-color: $blue2;
+      border-left: 3px solid $orange;
       .nav-link {
         font-weight: 700;
+        color: #FFFFFF;
       }
     }
     // Accordion

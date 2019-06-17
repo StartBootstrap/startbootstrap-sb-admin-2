@@ -5,7 +5,7 @@
 // Bootstrap Color Overrides
 
 $white: #fff !default;
-$gray-100: #f8f9fc !default;
+$gray-100: #F4F6FA !default;
 $gray-200: #eaecf4 !default;
 $gray-300: #dddfeb !default;
 $gray-400: #d1d3e2 !default;
@@ -16,12 +16,13 @@ $gray-800: #5a5c69 !default;
 $gray-900: #3a3b45 !default;
 $black: #000 !default;
 
-$blue: #4e73df !default;
+$blue: #272A76 !default;
+$blue2: #202269 !default;
 $indigo: #6610f2 !default;
 $purple: #6f42c1 !default;
 $pink: #e83e8c !default;
 $red: #e74a3b !default;
-$orange: #fd7e14 !default;
+$orange: #F26722 !default;
 $yellow: #f6c23e !default;
 $green: #1cc88a !default;
 $teal: #20c9a6 !default;
@@ -37,7 +38,7 @@ $yiq-contrasted-threshold: 195 !default;
 // Typography
 $body-color: $gray-600 !default;
 
-$font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
+$font-family-sans-serif: "Montserrat", "`Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", 'Noto Color Emoji' !default;
 
 $font-weight-light: 300 !default;
 // $font-weight-base: 400;
