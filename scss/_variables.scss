@@ -54,7 +54,7 @@ $border-color: darken($gray-200, 2%);
 
 // Spacing Variables
 // Change below variable if the height of the navbar changes
-$topbar-base-height: 4.375rem;
+$topbar-base-height: 4.375rem !default;
 // Change below variable to change the width of the sidenav
 $sidebar-base-width: 14rem;
 // Change below variable to change the width of the sidenav when collapsed
