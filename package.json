@@ -33,6 +33,7 @@
     "dependencies": {
         "@fortawesome/fontawesome-free": "5.10.2",
         "bootstrap": "4.3.1",
+        "canvas-gauges": "^2.1.5",
         "chart.js": "2.8.0",
         "datatables.net-bs4": "1.10.19",
         "jquery": "3.4.1",
