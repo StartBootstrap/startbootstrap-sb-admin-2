@@ -1,0 +1,95 @@
+// Thanks to Spectre.css
+.avatar {
+  background: $blue;
+  border-radius: 50%;
+  color: $white;
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 0;
+  position: relative;
+  vertical-align: middle;
+  line-height: 1.28;
+  height: 45px;
+  width: 45px;
+
+  &.avatar-xs {
+    font-size: 6px;
+    height: 15px;
+    width: 15px;
+  }
+
+  &.avatar-sm {
+    font-size: 12px;
+    height: 30px;
+    width: 30px;
+  }
+
+  &.avatar-lg {
+    font-size: 23px;
+    height: 60px;
+    width: 60px;
+  }
+
+  &.avatar-xl {
+    font-size: 30px;
+    height: 75px;
+    width: 75px;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 100%;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  .avatar-icon {
+    background: #fff;
+    bottom: 14.64%;
+    height: 50%;
+    padding: .1rem;
+    position: absolute;
+    right: 14.64%;
+    transform: translate(50%, 50%);
+    width: 50%;
+    z-index: 2;
+  }
+
+  .avatar-presence {
+    bottom: 14.64%;
+    padding: .1rem;
+    position: absolute;
+    right: 14.64%;
+    transform: translate(50%, 50%);
+    z-index: 2;
+    background: #bcc3ce;
+    border-radius: 50%;
+    box-shadow: 0 0 0 .1rem #fff;
+    height: .5em;
+    width: .5em;
+
+    &.online {
+      background: $green;
+    }
+
+    &.busy {
+      background: $red;
+    }
+
+    &.away {
+      background: $warning;
+    }
+  }
+
+  &[data-initial]::before {
+    color: currentColor;
+    content: attr(data-initial);
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+}
