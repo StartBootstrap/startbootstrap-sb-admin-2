@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Efficient Intelligence</title>
+  <title>SB Admin 2 - Blank</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -17,7 +17,6 @@
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/f2144afefa.js" crossorigin="anonymous"></script>
 
 </head>
 
@@ -34,14 +33,14 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">EI Managment <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
       </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
@@ -96,12 +95,12 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+      <li class="nav-item active">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
         </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="login.html">Login</a>
@@ -110,7 +109,7 @@
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
+            <a class="collapse-item active" href="blank.html">Blank Page</a>
           </div>
         </div>
       </li>
@@ -238,14 +237,69 @@
               </div>
             </li>
 
-            
+            <!-- Nav Item - Messages -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-envelope fa-fw"></i>
+                <!-- Counter - Messages -->
+                <span class="badge badge-danger badge-counter">7</span>
+              </a>
+              <!-- Dropdown - Messages -->
+              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                <h6 class="dropdown-header">
+                  Message Center
+                </h6>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div class="font-weight-bold">
+                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
+                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
+                    <div class="status-indicator"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
+                    <div class="small text-gray-500">Jae Chun · 1d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
+                    <div class="status-indicator bg-warning"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
+                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                  </div>
+                </a>
+                <a class="dropdown-item d-flex align-items-center" href="#">
+                  <div class="dropdown-list-image mr-3">
+                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
+                    <div class="status-indicator bg-success"></div>
+                  </div>
+                  <div>
+                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
+                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                  </div>
+                </a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+              </div>
+            </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Ente Pubblico</span>
-                <img class="img-profile rounded-circle" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Guardia_Costiera.svg/2000px-Guardia_Costiera.svg.png">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -277,225 +331,58 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block  "><i class="fas fa-download fa-sm text-white-50"></i>Informazioni preferite</a>
-          </div>
+            3.       Le attività in materia di tutela dell'ambiente marino e costiero.
 
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Pulizia</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Nord Lazio</div>    
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-broom fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Divieti di balneazioni</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18 possibili località</div>    
-                      
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-water fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Earnings (Monthly) Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Percentuale salinità</div>
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto">
-                          <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
-                        </div>
-                        <div class="col">
-                          <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-auto">
-                      <p style="font-style: Fantasy;">NaCl</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pending Requests Card Example -->
-            <div class="col-xl-3 col-md-6 mb-4">
-              <div class="card border-left-warning shadow h-100 py-2">
-                <div class="card-body">
-                  <div class="row no-gutters align-items-center">
-                    <div class="col mr-2">
-                      <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Divieto di navigazione</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">18 possibili località</div>
-                    </div>
-                    <div class="col-auto">
-                      <i class="fas fa-ship fa-2x text-gray-300"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Content Row -->
-
-          <div class="row">
-
-            <!-- Area Chart -->
-            <div class="col-xl-8 col-lg-7">
-              <div class="card shadow mb-4 ">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
-                  <h6 class="m-0 font-weight-bold text-primary">Themperature</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Pie Chart -->
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Pollution</h6>
-                  <div class="dropdown no-arrow">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                      <div class="dropdown-header">Dropdown Header:</div>
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4 pb-2">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <div class="mt-4 text-center small">
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-black"></i>Petrolio
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i>Micro-Plastica
-                    </span>
-                    <span class="mr-2">
-                      <i class="fas fa-circle text-warning"></i> Materiali radioattivi
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-         
-
-              <!-- Color System -->
-              <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                      Primary
-                      <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                      Success
-                      <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                      Info
-                      <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                      Warning
-                      <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                      Danger
-                      <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                      Secondary
-                      <div class="text-white-50 small">#858796</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
+            Il Corpo delle Capitanerie di Porto, nell'ambito delle attribuzioni funzionali stabilite dal quadro legislativo vigente, svolge anche le seguenti specifiche attività a tutela dell'ambiente marino e costiero:
             
-          </div>
+            1.Potenziamento, anche stagionale, della sorveglianza nelle aree marine protette, nelle aree marine di reperimento e in aree specifiche;
+            
+            2.Vigilanza sul mare territoriale e su altre zone di mare poste sotto la giurisdizione dello Stato soggiacenti a particolari vincoli di tutela ambientale (Zone di Protezione Ecologiche, aree nella rete Natura 2000 di cui alla direttiva 92/43/CEE, ecc.);
+            
+            3.Controllo e monitoraggio della filiera di traffici dei rifiuti, con specifico riferimento agli ambiti, marittimi, costieri e portuali;
+            
+            4.Controllo e monitoraggio dei traffici marittimi e vigilanza ispettiva del naviglio per la verifica della corretta osservanza degli adempimenti derivanti dall'applicazione delle principali convenzioni internazionali e della pertinente normativa comunitaria in materia di mantenimento degli standard minimi di sicurezza ai fini ambientali marittimi;
+            
+            5.Controllo e verifiche ispettive sulle immissioni di sostanze inquinanti in atmosfera da parte di navi;
+            
+            6Salvaguardia delle specie di flora e fauna marine, degli ecosistemi e dei cetacei;
+            
+            7Attività di controllo, monitoraggio e protezione dell'ambiente marino derivante dall'applicazione della Convenzione internazionale Marpol 73/78, dalle altre convenzioni IMO e dalla normativa comunitaria di settore in materia di tutala dell'ambiente marino in genere, nonché dalla Convenzione di Barcellona e da ogni altro accordo internazionale per la tutela, la conservazione e la salvaguardia del Mare Mediterraneo, nonché la discendente attività istruttoria della normativa tecnica da applicarsi al naviglio nazionale;
+            
+            8Lotta e prevenzione all'inquinamento da idrocarburi e da altre sostanze tossiche e nocive e promozione della sicurezza ambientale in mare, anche in cooperazione con strutture dipendenti del Ministero, con riferimento al rischio di incidenti marini, anche causati da atti di terrorismo;
+            
+            9Monitoraggio e verifica sugli scarichi in mare sia provenienti da terra, che da navi, aeromobili e piattaforme site nel mare territoriale e/o sulla piattaforma continentale;
+            
+            10Monitoraggio della fascia costiera marina al fine di prevenire e reprimere qualsivoglia forma di abusivismo, alterazione, compromissione ed illecito sfruttamento delle componenti ambientali anche in vista dell'attivazione delle prescritte azioni reintegrative e risarcitorie da parte dello Stato;
+            
+            11Attività di telerilevamento aereo attraverso la raccolta di dati in situ e relativa validazione;
+        
+            12Monitoraggio e controllo sulle attività di dragaggio e di immersione in mare di materiali provenienti da escavo di fondali nonché da ogni altra movimentazione di sedimenti in ambiente marino;
+            
+            13Monitoraggio e controllo delle attività di bonifica di siti di bonifica di interesse nazionale;
+            
+            14Verifiche delle prescrizioni stabilite dal Ministero nei provvedimenti che concludono le procedure V.I.A.;
+            
+            15Adozione ed attuazione dei piani locali antiinquinamento, nei quali sono indicate le risorse pubbliche e private da impiegarsi;
+            
+            16Concorso nel monitoraggio della tendenza evolutiva della fascia costiera, sia essa naturale che indotta da opere (frangiflutti, difese radenti, pannelli) e controllo dei fenomeni che determinano l'arretramento della linea di costa o ne favoriscono l'avanzamento;
+            
+            17Concorso nel monitoraggio di fenomeni di subsidenza di piane costiere;
+            
+            18Tutela e salvaguardia del mare e della fascia costiera dagli impatti derivanti dall'esercizio di impianti energetici ivi localizzati;
+            
+            19Concorso nella rilevazione batimetrica della fascia costiera, di alvei fluviali in prossimità di foci ed estuari, di lagune e spazi marini delimitati da manufatti in aree costiere, porti e sorgitori;
+            
+            20Attuazione di programmi di comunicazione ed educazione ambientale;
+            
+            21Attuazione di iniziative volte allo sviluppo sostenibile, conservazione e corretta gestione delle risorse ecosistemiche marino/costiere;
+            
+            22Attività di ispezione e polizia in materia di raccolta dei residui prodotti dalle navi e dei residui del carico, nonché delle piattaforme marine, allo scopo di prevenirne l'immissione in mare.
+             
+            
+            Il Corpo delle Capitanerie di Porto esercita, tramite la Centrale Operativa del proprio Comando Generale, i Comandi territoriali e le componenti specialistiche - Mezzi aeronavali, Nuclei subacquei e Laboratori Ambientali Mobili (L.A.M.), i servizi di istituto relativi all'azione di contrasto agli inquinamenti marini ed alla vigilanza sulle AA.MM.PP. e sulle aree di reperimento.
+            
+            Tale sistema, è integrato da un servizio di sorveglianza satellitare realizzato nell'ambito di una specifica collaborazione con l'European Maritime Safety Agency (EMSA).
 
         </div>
         <!-- /.container-fluid -->
@@ -507,7 +394,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Efficent Intelligence</span>
+            <span>Copyright &copy; Your Website 2019</span>
           </div>
         </div>
       </footer>
@@ -552,13 +439,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
 
 </body>
 
