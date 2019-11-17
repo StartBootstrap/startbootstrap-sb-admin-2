@@ -10,8 +10,8 @@ var myPieChart = new Chart(ctx, {
     labels: ["Petrolio", "Micro-Plastica", "Materiali radioattivi"],
     datasets: [{
       data: [55, 30, 15],
-      backgroundColor: ['#000000','#116600','#FFBF00'],
-      hoverBackgroundColor: ['#000000','#116600','#FFBF00'],
+      backgroundColor: ['#858796','#1cc88a','#f6c23e'],
+      hoverBackgroundColor: ['#858796','#1cc88a','#f6c23e'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },
