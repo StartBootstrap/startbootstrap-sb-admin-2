@@ -346,7 +346,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Messages</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-comments fa-sm text-white-50"></i> Send Message</a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-comments fa-sm text-white-50"></i> Send Message</a>
           </div>
 
           <!-- Content Row -->
@@ -512,69 +512,175 @@
             </div>
           </div>
 
+          <!-- table details -->
+          <div class="row">
+
+            <!-- Begin Page Content -->
+            <div class="container-fluid">
+
+              <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+              <h1 class="h3 mb-2 text-gray-800">Messages</h1>
+              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm"><i class="fas fa-comments fa-sm text-white-50"></i> Send Message</a>
+            </div>
+            <p class="mb-4">Below you will find the most recent messages sent and received from your account and the status of each message. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+              <!-- DataTales Example -->
+              <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Messages</h6>
+                  <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
+                      <div class="dropdown-header">Message Options:</div>
+                      <a class="dropdown-item" href="#">Add</a>
+                      <a class="dropdown-item" href="#">Edit</a>
+                      <a class="dropdown-item" href="#">Delete</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="#">Import/Export</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Direction</th>
+                          <th>Company</th>
+                          <th>Status</th>
+                          <th>Mobile</th>
+                          <th>Message</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <tr>
+                          <th>Name</th>
+                          <th>Direction</th>
+                          <th>Company</th>
+                          <th>Status</th>
+                          <th>Mobile</th>
+                          <th>Message</th>
+                        </tr>
+                      </tfoot>
+                      <tbody>
+                        <tr>
+                          <td>Jon Jenkins</td>
+                          <td>Incoming</td>
+                          <td>Just Add Tech</td>
+                          <td>Sent</td>
+                          <td><a href="tel:07703 184400">07703 184400</a></td>
+                          <td>Hello JAT how are you?</td>
+                        </tr>
+                        <tr>
+                          <td>Mike Da Silva</td>
+                          <td>Outgoing</td>
+                          <td>Just Add Tech</td>
+                          <td>In Progress</td>
+                          <td>07777 123456</td>
+                          <td>Have you tried our new range of services download our brochure today</td>
+                        </tr>
+                        <tr>
+                          <td>Ashton Cox</td>
+                          <td>Outgoing</td>
+                          <td>San Francisco</td>
+                          <td>Failed</td>
+                          <td>07777 123456</td>
+                          <td>What were you thinking?</td>
+                        </tr>
+                        <tr>
+                          <td>Mike Da Silva</td>
+                          <td>Outgoing</td>
+                          <td>Just Add Tech</td>
+                          <td>In Progress</td>
+                          <td>07777 123456</td>
+                          <td>Have you tried our new range of services download our brochure today</td>
+                        </tr>
+                        <tr>
+                          <td>Mike Da Silva</td>
+                          <td>Outgoing</td>
+                          <td>Just Add Tech</td>
+                          <td>In Progress</td>
+                          <td>07777 123456</td>
+                          <td>Have you tried our new range of services download our brochure today</td>
+                        </tr>
+                        <tr>
+                          <td>Mike Da Silva</td>
+                          <td>Outgoing</td>
+                          <td>Just Add Tech</td>
+                          <td>In Progress</td>
+                          <td>07777 123456</td>
+                          <td>Have you tried our new range of services download our brochure today</td>
+                        </tr>
+                        <tr>
+                          <td>Ashton Cox</td>
+                          <td>Outgoing</td>
+                          <td>San Francisco</td>
+                          <td>Failed</td>
+                          <td>07777 123456</td>
+                          <td>What were you thinking?</td>
+                        </tr>
+                        <tr>
+                          <td>Rhona Davidson</td>
+                          <td>Integration Specialist</td>
+                          <td>Tokyo</td>
+                          <td>Sent</td>
+                          <td>2010/10/14</td>
+                          <td>$327,900</td>
+                        </tr>
+                        <tr>
+                          <td>Ashton Cox</td>
+                          <td>Outgoing</td>
+                          <td>San Francisco</td>
+                          <td>Failed</td>
+                          <td>07777 123456</td>
+                          <td>What were you thinking?</td>
+                        </tr>
+                        <tr>
+                          <td>Sonya Frost</td>
+                          <td>Software Engineer</td>
+                          <td>Edinburgh</td>
+                          <td>Sent</td>
+                          <td>2008/12/13</td>
+                          <td>$103,600</td>
+                        </tr>
+                        <tr>
+                          <td>Jena Gaines</td>
+                          <td>Office Manager</td>
+                          <td>London</td>
+                          <td>Failed</td>
+                          <td>2008/12/19</td>
+                          <td>$90,560</td>
+                        </tr>
+                        <tr>
+                          <td>Quinn Flynn</td>
+                          <td>Support Lead</td>
+                          <td>Edinburgh</td>
+                          <td>Sent</td>
+                          <td>2013/03/03</td>
+                          <td>$342,000</td>
+                        </tr>
+                        <tr>
+                          <td>Charde Marshall</td>
+                          <td>Regional Director</td>
+                          <td>San Francisco</td>
+                          <td>Failed</td>
+                          <td>2008/10/16</td>
+                          <td>$470,600</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+          </div>
+
           <!-- Content Row -->
           <div class="row">
 
             <!-- Content Column -->
-            <div class="col-lg-6 mb-4">
-
-
-
-              <!-- Color System -->
-              <div class="row">
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-primary text-white shadow">
-                    <div class="card-body">
-                      Primary
-                      <div class="text-white-50 small">#4e73df</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-success text-white shadow">
-                    <div class="card-body">
-                      Success
-                      <div class="text-white-50 small">#1cc88a</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-info text-white shadow">
-                    <div class="card-body">
-                      Info
-                      <div class="text-white-50 small">#36b9cc</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-warning text-white shadow">
-                    <div class="card-body">
-                      Warning
-                      <div class="text-white-50 small">#f6c23e</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-danger text-white shadow">
-                    <div class="card-body">
-                      Danger
-                      <div class="text-white-50 small">#e74a3b</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-6 mb-4">
-                  <div class="card bg-secondary text-white shadow">
-                    <div class="card-body">
-                      Secondary
-                      <div class="text-white-50 small">#858796</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="col-lg-6 mb-4">
+            <div class="col-lg mb-4">
 
               <!-- Illustrations -->
               <div class="card shadow mb-4">
@@ -590,7 +696,7 @@
                 </div>
               </div>
 
-            
+
             </div>
           </div>
 
