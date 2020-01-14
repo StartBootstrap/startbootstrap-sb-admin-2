@@ -111,7 +111,21 @@
   }
 }
 
-.topbar.navbar-dark {}
+.topbar.navbar-dark {
+  .navbar-nav {
+    .nav-item {
+      .nav-link {
+        color: fade-out($white, 0.2);
+        &:hover {
+          color: $white;
+        }
+        &:active {
+          color: $white;
+        }
+      }
+    }
+  }
+}
 
 .topbar.navbar-light {
   .navbar-nav {
