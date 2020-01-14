@@ -10,7 +10,7 @@
   white-space: nowrap;
 
   // Generate the caret automatically
-  @include caret;
+  @include caret();
 }
 
 // The dropdown menu
@@ -114,7 +114,7 @@
 
 // Dividers (basically an `<hr>`) within the dropdown
 .dropdown-divider {
-  @include nav-divider($dropdown-divider-bg, $dropdown-divider-margin-y);
+  @include nav-divider($dropdown-divider-bg, $dropdown-divider-margin-y, true);
 }
 
 // Links, buttons, and more within the dropdown menu
@@ -144,7 +144,7 @@
     }
   }
 
-  @include hover-focus {
+  @include hover-focus() {
     color: $dropdown-link-hover-color;
     text-decoration: none;
     @include gradient-bg($dropdown-link-hover-bg);
