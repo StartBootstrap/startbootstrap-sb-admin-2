@@ -1,27 +1,27 @@
 {
-  "_from": "@fortawesome/fontawesome-free@5.8.1",
-  "_id": "@fortawesome/fontawesome-free@5.8.1",
+  "_from": "@fortawesome/fontawesome-free@5.10.2",
+  "_id": "@fortawesome/fontawesome-free@5.10.2",
   "_inBundle": false,
-  "_integrity": "sha512-GJtx6e55qLEOy2gPOsok2lohjpdWNGrYGtQx0FFT/++K4SYx+Z8LlPHdQBaFzKEwH5IbBB4fNgb//uyZjgYXoA==",
+  "_integrity": "sha512-9pw+Nsnunl9unstGEHQ+u41wBEQue6XPBsILXtJF/4fNN1L3avJcMF/gGF86rIjeTAgfLjTY9ndm68/X4f4idQ==",
   "_location": "/@fortawesome/fontawesome-free",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "@fortawesome/fontawesome-free@5.8.1",
+    "raw": "@fortawesome/fontawesome-free@5.10.2",
     "name": "@fortawesome/fontawesome-free",
     "escapedName": "@fortawesome%2ffontawesome-free",
     "scope": "@fortawesome",
-    "rawSpec": "5.8.1",
+    "rawSpec": "5.10.2",
     "saveSpec": null,
-    "fetchSpec": "5.8.1"
+    "fetchSpec": "5.10.2"
   },
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.8.1.tgz",
-  "_shasum": "cbafbfe8894c4e3e3c3a9da6774e249ac1f2da8b",
-  "_spec": "@fortawesome/fontawesome-free@5.8.1",
+  "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.10.2.tgz",
+  "_shasum": "27e02da1e34b50c9869179d364fb46627b521130",
+  "_spec": "@fortawesome/fontawesome-free@5.10.2",
   "_where": "/Users/DANGER_DAVID/Sites/startbootstrap-themes/startbootstrap-sb-admin-2",
   "author": {
     "name": "Dave Gandy",
@@ -77,5 +77,5 @@
     "url": "git+https://github.com/FortAwesome/Font-Awesome.git"
   },
   "style": "css/fontawesome.css",
-  "version": "5.8.1"
+  "version": "5.10.2"
 }
