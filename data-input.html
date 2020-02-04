@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Color Utilities</title>
+  <title>Data Input</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,21 +29,24 @@
     <ul class="navbar-nav bg-gradient-danger sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="welcome.html">
+        <div class="sidebar-brand-icon">
+          <i class="fas fa-user"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-4">PT TMMIN</div>
       </a>
 
       <!-- Divider -->
-      <hr class="sidebar-divider my-0">
+      <hr class="sidebar-divider">
 
       <!-- Nav Item - Dashboard -->
+      <div class="sidebar-heading">
+        Last Access : xx
+      </div>
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+        <a class="nav-link" href="welcome.html">
+          <i class="fas fa-fw fa-file-alt"></i>
+          <span>Main Page</span></a>
       </li>
 
       <!-- Divider -->
@@ -51,39 +54,28 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Maintenance
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-          </div>
-        </div>
+      <!-- Nav Item - Data Input -->
+      <li class="nav-item active">
+        <a class="nav-link" href="data-input.html">
+          <i class="fas fa-fw fa-clipboard-list"></i>
+          <span>Data Input</span></a>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item active" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
+      <!-- Nav Item - Order List -->
+      <li class="nav-item">
+        <a class="nav-link" href="order-list.html">
+          <i class="fas fa-fw fa-list"></i>
+          <span>Order List</span></a>
+      </li>
+
+      <!-- Nav Item - Statistics -->
+      <li class="nav-item">
+        <a class="nav-link" href="stats-maintenance.html">
+          <i class="fas fa-fw fa-cogs"></i>
+          <span>Statistics</span></a>
       </li>
 
       <!-- Divider -->
@@ -91,41 +83,27 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        Others
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
+          <span>Templates</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <h6 class="collapse-header">Page List</h6>
+            <a class="collapse-item" href="login.html">Login Page</a>
+            <a class="collapse-item" href="register.html">Register Page</a>
+            <a class="collapse-item" href="forgot-password.html">Reset Password</a>
             <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
+            <h6 class="collapse-header">Other Pages</h6>
             <a class="collapse-item" href="404.html">404 Page</a>
             <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
         </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
       </li>
 
       <!-- Divider -->
@@ -156,9 +134,9 @@
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
+                <button class="btn btn-danger" type="button">
                   <i class="fas fa-search fa-sm"></i>
                 </button>
               </div>
@@ -177,9 +155,9 @@
               <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                 <form class="form-inline mr-auto w-100 navbar-search">
                   <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
+                      <button class="btn btn-danger" type="button">
                         <i class="fas fa-search fa-sm"></i>
                       </button>
                     </div>
@@ -193,16 +171,16 @@
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-primary badge-counter">3+</span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
+                <h6 class="dropdown-header bg-danger border-0">
+                  NOTIFICATIONS
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="mr-3">
-                    <div class="icon-circle bg-primary">
+                    <div class="icon-circle bg-danger">
                       <i class="fas fa-file-alt text-white"></i>
                     </div>
                   </div>
@@ -233,7 +211,7 @@
                     Spending Alert: We've noticed unusually high spending for your account.
                   </div>
                 </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All</a>
               </div>
             </li>
 
@@ -242,12 +220,12 @@
               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
+                <span class="badge badge-primary badge-counter">7</span>
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
+                <h6 class="dropdown-header bg-danger border-0">
+                  INBOX
                 </h6>
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
@@ -289,7 +267,7 @@
                     <div class="small text-gray-500">Chicken the Dog · 2w</div>
                   </div>
                 </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All</a>
               </div>
             </li>
 
@@ -298,8 +276,8 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">User Name</span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/2CJIkl-df2M/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -332,92 +310,113 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-1 text-gray-800">Color Utilities</h1>
-          <p class="mb-4">Bootstrap's default utility classes can be found on the official <a href="https://getbootstrap.com/docs">Bootstrap Documentation</a> page. The custom utilities below were created to extend this theme past the default utility classes built into Bootstrap's framework.</p>
-
-          <!-- Content Row -->
-          <div class="row">
-
-            <!-- First Column -->
-            <div class="col-lg-4">
-
-              <!-- Custom Text Color Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Text Color Utilities</h6>
-                </div>
-                <div class="card-body">
-                  <p class="text-gray-100 p-3 bg-dark m-0">.text-gray-100</p>
-                  <p class="text-gray-200 p-3 bg-dark m-0">.text-gray-200</p>
-                  <p class="text-gray-300 p-3 bg-dark m-0">.text-gray-300</p>
-                  <p class="text-gray-400 p-3 bg-dark m-0">.text-gray-400</p>
-                  <p class="text-gray-500 p-3 m-0">.text-gray-500</p>
-                  <p class="text-gray-600 p-3 m-0">.text-gray-600</p>
-                  <p class="text-gray-700 p-3 m-0">.text-gray-700</p>
-                  <p class="text-gray-800 p-3 m-0">.text-gray-800</p>
-                  <p class="text-gray-900 p-3 m-0">.text-gray-900</p>
-                </div>
-              </div>
-
-              <!-- Custom Font Size Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Font Size Utilities</h6>
-                </div>
-                <div class="card-body">
-                  <p class="text-xs">.text-xs</p>
-                  <p class="text-lg mb-0">.text-lg</p>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Second Column -->
-            <div class="col-lg-4">
-
-              <!-- Background Gradient Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Background Gradient Utilities</h6>
-                </div>
-                <div class="card-body">
-                  <div class="px-3 py-5 bg-gradient-primary text-white">.bg-gradient-primary</div>
-                  <div class="px-3 py-5 bg-gradient-secondary text-white">.bg-gradient-secondary</div>
-                  <div class="px-3 py-5 bg-gradient-success text-white">.bg-gradient-success</div>
-                  <div class="px-3 py-5 bg-gradient-info text-white">.bg-gradient-info</div>
-                  <div class="px-3 py-5 bg-gradient-warning text-white">.bg-gradient-warning</div>
-                  <div class="px-3 py-5 bg-gradient-danger text-white">.bg-gradient-danger</div>
-                  <div class="px-3 py-5 bg-gradient-light text-white">.bg-gradient-light</div>
-                  <div class="px-3 py-5 bg-gradient-dark text-white">.bg-gradient-dark</div>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Third Column -->
-            <div class="col-lg-4">
-
-              <!-- Grayscale Utilities -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Custom Grayscale Background Utilities</h6>
-                </div>
-                <div class="card-body">
-                  <div class="p-3 bg-gray-100">.bg-gray-100</div>
-                  <div class="p-3 bg-gray-200">.bg-gray-200</div>
-                  <div class="p-3 bg-gray-300">.bg-gray-300</div>
-                  <div class="p-3 bg-gray-400">.bg-gray-400</div>
-                  <div class="p-3 bg-gray-500 text-white">.bg-gray-500</div>
-                  <div class="p-3 bg-gray-600 text-white">.bg-gray-600</div>
-                  <div class="p-3 bg-gray-700 text-white">.bg-gray-700</div>
-                  <div class="p-3 bg-gray-800 text-white">.bg-gray-800</div>
-                  <div class="p-3 bg-gray-900 text-white">.bg-gray-900</div>
-                </div>
-              </div>
-            </div>
-
+          <h1 class="h3 mb-4 text-gray-800 mb-2">ORDER SPAREPART</h1>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <p class="mb-2">Maintenance Departement, Engine Production Sunter 1 Plant Division</p>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
 
+          <!-- Data Input Coba -->
+            <form class="user" method="POST" action="orderform.php">
+              LINE            <br/><br/>
+                              <div class="form-group">
+                              <select name="line" class="form-control" required>
+                                  <option value="1">C/H - Cylinder Head</option>
+                                  <option value="2">C/B - Cylinder Block</option>
+                                  <option value="3">Crankshaft</option>
+                                  <option value="4">Camshaft</option>
+                                  <option value="5">Assembly</option>
+                              </select>
+                              </div>
+              MACHINE NAME    <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="machinename" class="form-control" id="exampleInputMachineName" placeholder="Machine Name" required>
+                              </div>
+              PROBLEM         <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="problem" class="form-control" id="exampleInputProblem" placeholder="Tuliskan abnormality secara spesifik" required>
+                              </div>
+              PART NAME       <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="partname" class="form-control" id="exampleInputPartName" placeholder="Part Name" required>
+                              </div>
+              PART TYPE       <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="parttype" class="form-control" id="exampleInputPartType" placeholder="Part Type" required>
+                              </div>
+              ITEM NO         <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="itemno" class="form-control" id="exampleInputItemNo" placeholder="Item No">
+                              </div>
+              MAKER           <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="maker" class="form-control" id="exampleInputMaker" placeholder="Maker">
+                              </div>
+              QUANTITY        <br/><br/>
+                              <div class="form-group">
+                              <input type="number" name="quantity" class="form-control" id="exampleInputQty" min="0" required>
+                              </div>
+              REQUESTER       <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="requester" class="form-control" id="exampleInputRequester" placeholder="Requester's Name" required>
+                              </div>
+              REQ. DATE       <br/><br/>
+                              <div class="form-group">
+                              <input type="date" name="reqdate" class="form-control" id="exampleInputReqDate" required>
+                              </div>
+              SUPPLIER        <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="supplier" class="form-control" id="exampleInputSupplier" placeholder="Supplier's Name" required>
+                              </div>
+              ORDER DATE      <br/><br/>
+                              <div class="form-group">
+                              <input type="date" name="orderdate" class="form-control" id="exampleInputOrderDate">
+                              </div>
+              LEAD TIME       <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="leadtime" class="form-control" id="exampleInputLeadTime" placeholder="... hari / minggu / bulan">
+                              </div>
+              ARRIVAL DATE    <br/><br/>
+                              <div class="form-group">
+                              <input type="date" name="arrivaldate" class="form-control" id="exampleInputArrivalDate">
+                              </div>
+              INSTALL DATE    <br/><br/>
+                              <div class="form-group">
+                              <input type="date" name="installdate" class="form-control" id="exampleInputInstallDate">
+                              </div>
+              PART ADDRESS    <br/><br/>
+                              <div class="form-group">
+                              <input type="text" name="address" class="form-control" id="exampleInputPartAddress" placeholder="Part Address">
+                              </div>
+              NEED STOCK (Fill min and max - if needed)<br/><br/>
+                              <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                  <input type="number" name="min" min="0" class="form-control" id="exampleInputMaxStock" placeholder=" min">
+                                </div>
+                                <div class="col-sm-6">
+                                  <input type="number" name="max" min="0" class="form-control" id="exampleInputMinStock" placeholder=" max">
+                                </div>
+                              </div>
+              STATUS          <br/><br/>
+                              <div class="form-group">
+                              <select name="status" class="form-control" required>
+                              <option value="1">Order List</option>
+                              <option value="2">Staff Sudah Order</option>
+                              <option value="3">Part Diproses Vendor</option>
+                              <option value="4">Part Datang</option>
+                              <option value="5">Part Dipasang</option>
+                              </select>
+                              </div>
+                              <br/>
+                              <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                  <input type="submit" name="" class="btn btn-success btn-user btn-block" value="SUBMIT">
+                                </div>
+                                <div class="col-sm-6">
+                                  <input type="reset"  name="" class="btn btn-success btn-user btn-block" value="RESET">
+                                </div>
+                              </div>
+            </form>
         </div>
         <!-- /.container-fluid -->
 
@@ -428,7 +427,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; Jomblo Bucin 2020</span>
           </div>
         </div>
       </footer>
@@ -450,12 +449,12 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Are You Sure?</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-body">Please check all the data and do the "Stop-Call-Wait" if you find any abnormality. Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
           <a class="btn btn-primary" href="login.html">Logout</a>

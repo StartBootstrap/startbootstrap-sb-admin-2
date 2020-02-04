@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>404 - Page Not Found</title>
+  <title>Order List</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -65,7 +65,7 @@
       </li>
 
       <!-- Nav Item - Order List -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="order-list.html">
           <i class="fas fa-fw fa-list"></i>
           <span>Order List</span></a>
@@ -86,13 +86,13 @@
         Others
       </div>
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
+      <!-- Nav Item - Templates -->
+      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Templates</span>
         </a>
-        <div id="collapsePages" class="collapse Show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Page List</h6>
             <a class="collapse-item" href="login.html">Login Page</a>
@@ -100,7 +100,7 @@
             <a class="collapse-item" href="forgot-password.html">Reset Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages</h6>
-            <a class="collapse-item active" href="404.html">404 Page</a>
+            <a class="collapse-item" href="404.html">404 Page</a>
             <a class="collapse-item" href="blank.html">Blank Page</a>
           </div>
         </div>
@@ -277,7 +277,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">User Name</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/2CJIkl-df2M/60x60">
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -309,13 +309,292 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- 404 Error Text -->
-          <div class="text-center">
-            <div class="error mx-auto" data-text="404">404</div>
-            <p class="lead text-gray-800 mb-5">Page Not Found</p>
-            <a href="welcome.html">Back to Dashboard</a>
+          <!-- Page Heading -->
+          <h1 class="h3 mb-4 text-gray-800 mb-2">LIST DATA ORDER SPAREPART</h1>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <p class="mb-2">Maintenance Departement, Engine Production Sunter 1 Plant Division</p>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
           </div>
-
+          
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-center text-danger">Order Sparepart</h6>
+            </div>
+            <div class="card-body">
+              <div class="table" style="overflow-x: auto;">
+                <table class="table text-center" id="dataTable" width="100%" cellspacing="1">
+                  <thead>
+                    <tr>
+                        <th>LINE</th>
+                        <th>MACHINE NAME</th>
+                        <th>PROBLEM</th>
+                        <th>PART NAME</th>
+                        <th>PART TYPE</th>
+                        <th>ITEM NO</th>
+                        <th>MAKER</th>
+                        <th>QUANTITY</th>
+                        <th>REQUESTER</th>
+                        <th>REQ. DATE</th>
+                        <th>SUPPLIER</th>
+                        <th>ORDER DATE</th>
+                        <th>LEAD TIME</th>
+                        <th>ARRIVAL DATE</th>
+                        <th>INSTALL DATE</th>
+                        <th>PART ADDRESS</th>
+                        <th>NEED STOCK</th>
+                        <th>STATUS</th>
+                    </tr>
+                  </thead>
+                  <tfoot>
+                    <tr>
+                        <th>LINE</th>
+                        <th>MACHINE NAME</th>
+                        <th>PROBLEM</th>
+                        <th>PART NAME</th>
+                        <th>PART TYPE</th>
+                        <th>ITEM NO</th>
+                        <th>MAKER</th>
+                        <th>QUANTITY</th>
+                        <th>REQUESTER</th>
+                        <th>REQ. DATE</th>
+                        <th>SUPPLIER</th>
+                        <th>ORDER DATE</th>
+                        <th>LEAD TIME</th>
+                        <th>ARRIVAL DATE</th>
+                        <th>INSTALL DATE</th>
+                        <th>PART ADDRESS</th>
+                        <th>NEED STOCK</th>
+                        <th>STATUS</th>
+                    </tr>
+                  </tfoot>
+                  <tbody>
+                    <tr>
+                      <td>Quality</td>
+                      <td>CBR 250 RR</td>
+                      <td>Broken parts</td>
+                      <td>Honda CBR 250 RR</td>
+                      <td>Motor</td>
+                      <td>001</td>
+                      <td>AHM</td>
+                      <td>245</td>
+                      <td>Atha</td>
+                      <td>01/01/2020</td>
+                      <td>Azki</td>
+                      <td>02/01/2020</td>
+                      <td>12</td>
+                      <td>03/01/2020</td>
+                      <td>03/02/2020</td>
+                      <td>Rumahnya</td>
+                      <td>200</td>
+                      <td>Order List</td>
+                    </tr>
+                    <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                      <tr>
+                        <td>Quality</td>
+                        <td>CBR 250 RR</td>
+                        <td>Broken parts</td>
+                        <td>Honda CBR 250 RR</td>
+                        <td>Motor</td>
+                        <td>001</td>
+                        <td>AHM</td>
+                        <td>245</td>
+                        <td>Atha</td>
+                        <td>01/01/2020</td>
+                        <td>Azki</td>
+                        <td>02/01/2020</td>
+                        <td>12</td>
+                        <td>03/01/2020</td>
+                        <td>03/02/2020</td>
+                        <td>Rumahnya</td>
+                        <td>200</td>
+                        <td>Order List</td>
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
         </div>
         <!-- /.container-fluid -->
 
@@ -371,6 +650,13 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
