@@ -35,7 +35,7 @@
         "bootstrap": "4.4.1",
         "chart.js": "2.9.3",
         "datatables.net-bs4": "1.10.20",
-        "jquery": "3.4.1",
+        "jquery": "3.5.0",
         "jquery.easing": "^1.4.1"
     },
     "devDependencies": {
