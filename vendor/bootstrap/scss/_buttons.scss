@@ -10,14 +10,16 @@
   font-weight: $btn-font-weight;
   color: $body-color;
   text-align: center;
+  white-space: $btn-white-space;
   vertical-align: middle;
+  cursor: if($enable-pointer-cursor-for-buttons, pointer, null);
   user-select: none;
   background-color: transparent;
   border: $btn-border-width solid transparent;
   @include button-size($btn-padding-y, $btn-padding-x, $btn-font-size, $btn-line-height, $btn-border-radius);
   @include transition($btn-transition);
 
-  @include hover {
+  @include hover() {
     color: $body-color;
     text-decoration: none;
   }
@@ -79,7 +81,7 @@ fieldset:disabled a.btn {
   color: $link-color;
   text-decoration: $link-decoration;
 
-  @include hover {
+  @include hover() {
     color: $link-hover-color;
     text-decoration: $link-hover-decoration;
   }
