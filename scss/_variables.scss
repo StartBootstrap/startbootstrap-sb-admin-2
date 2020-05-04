@@ -28,8 +28,8 @@ $teal: #20c9a6 !default;
 $cyan: #36b9cc !default;
 
 // Custom Colors
-$brand-google: #ea4335 !default;
-$brand-facebook: #3b5998 !default;
+$brand-google: #ea4335;
+$brand-facebook: #3b5998;
 
 // Set Contrast Threshold
 $yiq-contrasted-threshold: 195 !default;
@@ -50,32 +50,27 @@ $box-shadow: 0 0.15rem 1.75rem 0 rgba($gray-900, .15) !default;
 
 // Borders Radius
 $border-radius: 0.35rem !default;
-$border-color: darken($gray-200, 2%) !default;
+$border-color: darken($gray-200, 2%);
 
 // Spacing Variables
 // Change below variable if the height of the navbar changes
-$topbar-base-height: 4.375rem !default;
+$topbar-base-height: 4.375rem;
 // Change below variable to change the width of the sidenav
-$sidebar-base-width: 14rem !default;
+$sidebar-base-width: 14rem;
 // Change below variable to change the width of the sidenav when collapsed
-$sidebar-collapsed-width: 6.5rem !default;
+$sidebar-collapsed-width: 6.5rem;
 
 // Card
-$card-cap-bg: $gray-100 !default;
-$card-border-color: $border-color !default;
+$card-cap-bg: $gray-100;
+$card-border-color: $border-color;
 
 // Adjust column spacing for symmetry
-$spacer: 1rem !default;
-$grid-gutter-width: $spacer * 1.5 !default;
+$spacer: 1rem;
+$grid-gutter-width: $spacer * 1.5;
 
 // Transitions
 $transition-collapse: height .15s ease !default;
 
 // Dropdowns
-$dropdown-font-size: 0.85rem !default;
-$dropdown-border-color: $border-color !default;
-
-// Images
-$login-image: 'https://source.unsplash.com/K4mSJ7kc0As/600x800' !default;
-$register-image: 'https://source.unsplash.com/Mv9hjnEUHR4/600x800' !default;
-$password-image: 'https://source.unsplash.com/oWTW-jNGl9I/600x800' !default;
+$dropdown-font-size: 0.85rem;
+$dropdown-border-color: $border-color;

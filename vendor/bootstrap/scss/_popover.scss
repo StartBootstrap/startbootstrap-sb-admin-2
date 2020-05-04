@@ -22,7 +22,7 @@
     display: block;
     width: $popover-arrow-width;
     height: $popover-arrow-height;
-    margin: 0 $popover-border-radius;
+    margin: 0 $border-radius-lg;
 
     &::before,
     &::after {
@@ -39,7 +39,7 @@
   margin-bottom: $popover-arrow-height;
 
   > .arrow {
-    bottom: subtract(-$popover-arrow-height, $popover-border-width);
+    bottom: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
 
     &::before {
       bottom: 0;
@@ -59,10 +59,10 @@
   margin-left: $popover-arrow-height;
 
   > .arrow {
-    left: subtract(-$popover-arrow-height, $popover-border-width);
+    left: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
-    margin: $popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+    margin: $border-radius-lg 0; // make sure the arrow does not touch the popover's rounded corners
 
     &::before {
       left: 0;
@@ -82,7 +82,7 @@
   margin-top: $popover-arrow-height;
 
   > .arrow {
-    top: subtract(-$popover-arrow-height, $popover-border-width);
+    top: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
 
     &::before {
       top: 0;
@@ -114,10 +114,10 @@
   margin-right: $popover-arrow-height;
 
   > .arrow {
-    right: subtract(-$popover-arrow-height, $popover-border-width);
+    right: calc((#{$popover-arrow-height} + #{$popover-border-width}) * -1);
     width: $popover-arrow-height;
     height: $popover-arrow-width;
-    margin: $popover-border-radius 0; // make sure the arrow does not touch the popover's rounded corners
+    margin: $border-radius-lg 0; // make sure the arrow does not touch the popover's rounded corners
 
     &::before {
       right: 0;
@@ -157,7 +157,8 @@
   color: $popover-header-color;
   background-color: $popover-header-bg;
   border-bottom: $popover-border-width solid darken($popover-header-bg, 5%);
-  @include border-top-radius($popover-inner-border-radius);
+  $offset-border-width: calc(#{$border-radius-lg} - #{$popover-border-width});
+  @include border-top-radius($offset-border-width);
 
   &:empty {
     display: none;

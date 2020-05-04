@@ -2,16 +2,15 @@
 
 // Typography
 
-@mixin text-emphasis-variant($parent, $color, $ignore-warning: false) {
+@mixin text-emphasis-variant($parent, $color) {
   #{$parent} {
     color: $color !important;
   }
   @if $emphasized-link-hover-darken-percentage != 0 {
     a#{$parent} {
-      @include hover-focus() {
+      @include hover-focus {
         color: darken($color, $emphasized-link-hover-darken-percentage) !important;
       }
     }
   }
-  @include deprecate("`text-emphasis-variant()`", "v4.4.0", "v5", $ignore-warning);
 }
