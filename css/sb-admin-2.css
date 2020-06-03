@@ -7700,6 +7700,11 @@ button.bg-dark:focus {
   margin-bottom: 1.5rem !important;
 }
 
+.top-head {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem; 
+}
+
 .ml-4,
 .mx-4 {
   margin-left: 1.5rem !important;
