@@ -75,18 +75,31 @@
 
         <!-- Nav Item - LDV Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/woodieh/LDV" >
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>LDV</span>
-        </a>
+            </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingUPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="LDVAbout.html">Background</a>
+            <a class="collapse-item" href="https:github.com/woodieh/LDV">Code on GitHub</a>
+          </div>
+        </div> 
       </li>
 
       <!-- Nav Item - Shear Flow Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="https://github.com/woodieh/woodieh.PWM">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-folder"></i>
           <span>Shear Flow</span>
           </a>
+          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="shearAbout.html">Background</a>
+            <a class="collapse-item" href="fusion360.html">Autodesk Fusion 360</a>
+            <a class="collapse-item" href="https:github.com/woodieh/Shear-Flow">Code on GitHub</a>
+          </div>
+        </div>
       </li>
 
       <!-- Divider -->
@@ -143,7 +156,7 @@
             <!-- Content Column -->
             <div class="col-xl-12 col-lg-12 mb-4">
 
-              <!-- Project Card Example -->
+              
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">Education</h6>
@@ -271,6 +284,6 @@
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
 
-</body>
+      </body>
 
-</html>
+    </html>
