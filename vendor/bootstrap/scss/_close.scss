@@ -8,13 +8,13 @@
   opacity: .5;
 
   // Override <a>'s hover style
-  @include hover {
+  @include hover() {
     color: $close-color;
     text-decoration: none;
   }
 
   &:not(:disabled):not(.disabled) {
-    @include hover-focus {
+    @include hover-focus() {
       opacity: .75;
     }
   }
@@ -30,7 +30,6 @@ button.close {
   padding: 0;
   background-color: transparent;
   border: 0;
-  appearance: none;
 }
 
 // Future-proof disabling of clicks on `<a>` elements
