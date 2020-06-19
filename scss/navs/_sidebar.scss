@@ -2,6 +2,11 @@
 .sidebar {
   width: $sidebar-collapsed-width;
   min-height: 100vh;
+  max-height: 100%;
+  height: fit-content;
+  position: sticky;
+  z-index: 1;
+  top: 0;
   .nav-item {
     position: relative;
     &:last-child {
@@ -41,14 +46,14 @@
     .collapse,
     .collapsing {
       .collapse-inner {
-        padding: .5rem 0;
+        padding: 0.5rem 0;
         min-width: 10rem;
         font-size: $dropdown-font-size;
         margin: 0 0 1rem 0;
         .collapse-header {
           margin: 0;
           white-space: nowrap;
-          padding: .5rem 1.5rem;
+          padding: 0.5rem 1.5rem;
           text-transform: uppercase;
           font-weight: 800;
           font-size: 0.65rem;
@@ -84,8 +89,8 @@
     cursor: pointer;
     &::after {
       font-weight: 900;
-      content: '\f104';
-      font-family: 'Font Awesome 5 Free';
+      content: "\f104";
+      font-family: "Font Awesome 5 Free";
       margin-right: 0.1rem;
     }
     &:hover {
@@ -99,8 +104,8 @@
     width: 0 !important;
     overflow: hidden;
     #sidebarToggle::after {
-      content: '\f105';
-      font-family: 'Font Awesome 5 Free';
+      content: "\f105";
+      font-family: "Font Awesome 5 Free";
       margin-left: 0.25rem;
     }
   }
@@ -181,11 +186,11 @@
             vertical-align: 0;
             border: 0;
             font-weight: 900;
-            content: '\f107';
-            font-family: 'Font Awesome 5 Free';
+            content: "\f107";
+            font-family: "Font Awesome 5 Free";
           }
           &.collapsed::after {
-            content: '\f105';
+            content: "\f105";
           }
         }
       }
@@ -214,7 +219,8 @@
           // Grow In Animation for Toggled State
           animation-name: growIn;
           animation-duration: 200ms;
-          animation-timing-function: transform cubic-bezier(.18,1.25,.4,1), opacity cubic-bezier(0,1,.4,1);
+          animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1),
+            opacity cubic-bezier(0, 1, 0.4, 1);
           .collapse-inner {
             box-shadow: $box-shadow;
             border-radius: $border-radius;
