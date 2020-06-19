@@ -269,6 +269,7 @@ buildings:
     - home
     - hospital
     - hospital-alt
+    - hospital-user
     - hotel
     - house-damage
     - igloo
@@ -335,6 +336,7 @@ business:
     - highlighter
     - industry
     - landmark
+    - laptop-house
     - marker
     - paperclip
     - paste
@@ -373,6 +375,7 @@ camping:
     - campground
     - caravan
     - compass
+    - faucet
     - fire
     - fire-alt
     - first-aid
@@ -397,6 +400,7 @@ charity:
     - globe
     - hand-holding-heart
     - hand-holding-usd
+    - hand-holding-water
     - hands-helping
     - handshake
     - heart
@@ -553,6 +557,7 @@ computers:
     - headphones
     - keyboard
     - laptop
+    - laptop-house
     - memory
     - microchip
     - mobile
@@ -1041,7 +1046,9 @@ hands:
     - fist-raised
     - hand-holding
     - hand-holding-heart
+    - hand-holding-medical
     - hand-holding-usd
+    - hand-holding-water
     - hand-lizard
     - hand-middle-finger
     - hand-paper
@@ -1053,10 +1060,14 @@ hands:
     - hand-pointer
     - hand-rock
     - hand-scissors
+    - hand-sparkles
     - hand-spock
     - hands
     - hands-helping
+    - hands-wash
     - handshake
+    - handshake-alt-slash
+    - handshake-slash
     - praying-hands
     - thumbs-down
     - thumbs-up
@@ -1133,6 +1144,7 @@ household:
     - bed
     - bell
     - blender
+    - box-tissue
     - chair
     - coffee
     - couch
@@ -1140,11 +1152,18 @@ household:
     - door-open
     - dungeon
     - fan
+    - faucet
+    - house-user
+    - laptop-house
     - lightbulb
     - plug
+    - pump-soap
     - shower
+    - sink
     - snowflake
+    - soap
     - toilet-paper
+    - toilet-paper-slash
     - tv
   label: Household
 images:
@@ -1171,6 +1190,7 @@ images:
     - portrait
     - sliders-h
     - tint
+    - unsplash
   label: Images
 interfaces:
   icons:
@@ -1534,6 +1554,8 @@ medical:
   icons:
     - allergies
     - ambulance
+    - bacteria
+    - bacterium
     - band-aid
     - biohazard
     - bone
@@ -1548,19 +1570,28 @@ medical:
     - comment-medical
     - crutch
     - diagnoses
+    - disease
     - dna
     - file-medical
     - file-medical-alt
     - file-prescription
     - first-aid
+    - hand-holding-medical
+    - head-side-cough
+    - head-side-cough-slash
+    - head-side-mask
+    - head-side-virus
     - heart
     - heartbeat
     - hospital
     - hospital-alt
     - hospital-symbol
+    - hospital-user
     - id-card-alt
     - joint
     - laptop-medical
+    - lungs
+    - lungs-virus
     - microscope
     - mortar-pestle
     - notes-medical
@@ -1572,8 +1603,10 @@ medical:
     - prescription-bottle
     - prescription-bottle-alt
     - procedures
+    - pump-medical
     - radiation
     - radiation-alt
+    - shield-virus
     - smoking
     - smoking-ban
     - star-of-life
@@ -1588,6 +1621,9 @@ medical:
     - user-nurse
     - vial
     - vials
+    - virus
+    - virus-slash
+    - viruses
     - weight
     - x-ray
   label: Medical
@@ -1887,6 +1923,7 @@ payments-shopping:
     - ethereum
     - gem
     - gift
+    - google-pay
     - google-wallet
     - handshake
     - heart
@@ -1914,6 +1951,7 @@ pharmacy:
     - cannabis
     - capsules
     - clinic-medical
+    - disease
     - eye-dropper
     - file-medical
     - file-prescription
@@ -1997,6 +2035,7 @@ science:
     - burn
     - capsules
     - clipboard-check
+    - disease
     - dna
     - eye-dropper
     - filter
@@ -2101,6 +2140,8 @@ shopping:
     - shopping-cart
     - store
     - store-alt
+    - store-alt-slash
+    - store-slash
     - truck
     - tshirt
   label: Shopping
@@ -2379,6 +2420,7 @@ users-people:
     - id-card-alt
     - male
     - meh
+    - people-arrows
     - people-carry
     - person-booth
     - poo
@@ -2420,6 +2462,7 @@ users-people:
     - user-times
     - users
     - users-cog
+    - users-slash
     - walking
     - wheelchair
   label: Users & People
