@@ -1,56 +1,113 @@
-(function($) {
-  "use strict"; // Start of use strict
+document.addEventListener('DOMContentLoaded', () => {
+  const body = document.querySelector('body');
+  const sideBar = document.querySelector('.sidebar');
+  const scrollToTopBtn = document.querySelector('.scroll-to-top');
 
-  // Toggle the side navigation
-  $("#sidebarToggle, #sidebarToggleTop").on('click', function(e) {
-    $("body").toggleClass("sidebar-toggled");
-    $(".sidebar").toggleClass("toggled");
-    if ($(".sidebar").hasClass("toggled")) {
-      $('.sidebar .collapse').collapse('hide');
-    };
+  // Sidebar toggle
+  document.querySelectorAll('#sidebarToggle, #sidebarToggleTop').forEach((element) => {
+    element.addEventListener('click', () => {
+      // Update body
+      body.classList.toggle('sidebar-toggled');
+
+      if (sideBar.classList.contains('toggled')) {
+        // Expand sidebar
+        sideBar.classList.remove('toggled');
+      } else {
+        collapseMenus();
+
+        // Collapse sidebar
+        sideBar.classList.add('toggled');
+      }
+    });
   });
 
   // Close any open menu accordions when window is resized below 768px
-  $(window).resize(function() {
-    if ($(window).width() < 768) {
-      $('.sidebar .collapse').collapse('hide');
-    };
-    
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 768) {
+      collapseMenus();
+    }
+
     // Toggle the side navigation when window is resized below 480px
-    if ($(window).width() < 480 && !$(".sidebar").hasClass("toggled")) {
-      $("body").addClass("sidebar-toggled");
-      $(".sidebar").addClass("toggled");
-      $('.sidebar .collapse').collapse('hide');
-    };
+    if (window.innerWidth < 480 && !sideBar.classList.contains('toggled')) {
+      body.classList.add('sidebar-toggled');
+      sideBar.classList.add('toggled');
+      collapseMenus();
+    }
   });
 
   // Prevent the content wrapper from scrolling when the fixed side navigation hovered over
   $('body.fixed-nav .sidebar').on('mousewheel DOMMouseScroll wheel', function(e) {
     if ($(window).width() > 768) {
-      var e0 = e.originalEvent,
-        delta = e0.wheelDelta || -e0.detail;
-      this.scrollTop += (delta < 0 ? 1 : -1) * 30;
       e.preventDefault();
+
+      const e0 = e.originalEvent;
+
+      const delta = e0.wheelDelta || -e0.detail;
+
+      this.scrollTop += (delta < 0 ? 1 : -1) * 30;
     }
   });
 
   // Scroll to top button appear
-  $(document).on('scroll', function() {
-    var scrollDistance = $(this).scrollTop();
-    if (scrollDistance > 100) {
-      $('.scroll-to-top').fadeIn();
+  document.addEventListener('scroll', () => {
+    if (window.pageYOffset > 100) {
+      fadeIn(scrollToTopBtn, 'inline');
     } else {
-      $('.scroll-to-top').fadeOut();
+      fadeOut(scrollToTopBtn);
     }
   });
 
-  // Smooth scrolling using jQuery easing
-  $(document).on('click', 'a.scroll-to-top', function(e) {
-    var $anchor = $(this);
-    $('html, body').stop().animate({
-      scrollTop: ($($anchor.attr('href')).offset().top)
-    }, 1000, 'easeInOutExpo');
+  // Smooth scrolling
+  scrollToTopBtn.addEventListener('click', (e) => {
     e.preventDefault();
+
+    window.scrollTo({
+      'behavior': 'smooth',
+      'left': 0,
+      'top': 0,
+    });
   });
 
-})(jQuery); // End of use strict
+  /**
+   * Collapse open menus
+   */
+  function collapseMenus() {
+    sideBar.querySelectorAll('.collapse.show').forEach((section) => {
+      section.classList.remove('show');
+    });
+  }
+});
+
+/**
+ * Fade out and hide element.
+ *
+ * @param {Element} el Element to fade.
+ */
+function fadeOut(el) {
+  (function fade() {
+    if ((el.style.opacity -= .1) < 0) {
+      el.style.display = 'none';
+    } else {
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
+/**
+ * Show and fade in element.
+ *
+ * @param {Element} el Element to fade.
+ * @param {string} [display] Element display type.
+ */
+function fadeIn(el, display = 'block') {
+  el.style.display = display;
+
+  (function fade() {
+    let val = parseFloat(el.style.opacity);
+    if (!((val += .1) > 1)) {
+      el.style.opacity = val;
+      requestAnimationFrame(fade);
+    }
+  })();
+}
+
