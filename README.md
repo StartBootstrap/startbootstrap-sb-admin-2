@@ -6,7 +6,7 @@ For the legacy Bootstrap 3 version of this theme, you can view the [last stable 
 
 ## Preview
 
-[![SB Admin 2 Preview](https://raw.githubusercontent.com/amirbagh75/rtl-startbootstrap-sb-admin-2/master/Screenshot%20from%202020-09-20%2023-01-43.png)](https://startbootstrap.github.io/startbootstrap-sb-admin-2/)
+[![SB Admin 2 Preview](https://raw.githubusercontent.com/amirbagh75/rtl-startbootstrap-sb-admin-2/master/Screenshot%20from%202020-09-20%2023-01-43.png)](https://raw.githubusercontent.com/amirbagh75/rtl-startbootstrap-sb-admin-2/master/Screenshot%20from%202020-09-20%2023-01-43.png)
 
 **[Launch Live Preview](https://startbootstrap.github.io/startbootstrap-sb-admin-2/)**
 
