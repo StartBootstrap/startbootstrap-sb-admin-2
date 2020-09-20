@@ -4,7 +4,11 @@
 
 For the legacy Bootstrap 3 version of this theme, you can view the [last stable release](https://github.com/StartBootstrap/startbootstrap-sb-admin-2/releases/tag/v3.3.7%2B1) of SB Admin 2 for Bootstrap 3.
 
+<div dir='rtl'>
+  
 ## پیش‌نمایش
+
+</div>
 
 [![SB Admin 2 Preview](https://raw.githubusercontent.com/amirbagh75/rtl-startbootstrap-sb-admin-2/master/Screenshot%20from%202020-09-20%2023-01-43.png)](https://raw.githubusercontent.com/amirbagh75/rtl-startbootstrap-sb-admin-2/master/Screenshot%20from%202020-09-20%2023-01-43.png)
 
