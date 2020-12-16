@@ -22,7 +22,7 @@ table.dataTable.nowrap td {
 
 div.dataTables_wrapper div.dataTables_length label {
   font-weight: normal;
-  text-align: left;
+  text-align: right;
   white-space: nowrap;
 }
 div.dataTables_wrapper div.dataTables_length select {
@@ -30,15 +30,15 @@ div.dataTables_wrapper div.dataTables_length select {
   display: inline-block;
 }
 div.dataTables_wrapper div.dataTables_filter {
-  text-align: right;
+  text-align: left;
 }
 div.dataTables_wrapper div.dataTables_filter label {
   font-weight: normal;
   white-space: nowrap;
-  text-align: left;
+  text-align: right;
 }
 div.dataTables_wrapper div.dataTables_filter input {
-  margin-left: 0.5em;
+  margin-right: 0.5em;
   display: inline-block;
   width: auto;
 }
@@ -48,7 +48,7 @@ div.dataTables_wrapper div.dataTables_info {
 div.dataTables_wrapper div.dataTables_paginate {
   margin: 0;
   white-space: nowrap;
-  text-align: right;
+  text-align: left;
 }
 div.dataTables_wrapper div.dataTables_paginate ul.pagination {
   margin: 2px 0;
@@ -58,9 +58,9 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination {
 div.dataTables_wrapper div.dataTables_processing {
   position: absolute;
   top: 50%;
-  left: 50%;
+  right: 50%;
   width: 200px;
-  margin-left: -100px;
+  margin-right: -100px;
   margin-top: -26px;
   text-align: center;
   padding: 1em 0;
@@ -72,7 +72,7 @@ table.dataTable > thead > tr > td:active {
 }
 table.dataTable > thead > tr > th:not(.sorting_disabled),
 table.dataTable > thead > tr > td:not(.sorting_disabled) {
-  padding-right: 30px;
+  padding-left: 30px;
 }
 table.dataTable > thead .sorting,
 table.dataTable > thead .sorting_asc,
@@ -101,7 +101,7 @@ table.dataTable > thead .sorting_asc:before,
 table.dataTable > thead .sorting_desc:before,
 table.dataTable > thead .sorting_asc_disabled:before,
 table.dataTable > thead .sorting_desc_disabled:before {
-  right: 1em;
+  left: 1em;
   content: "\2191";
 }
 table.dataTable > thead .sorting:after,
@@ -109,7 +109,7 @@ table.dataTable > thead .sorting_asc:after,
 table.dataTable > thead .sorting_desc:after,
 table.dataTable > thead .sorting_asc_disabled:after,
 table.dataTable > thead .sorting_desc_disabled:after {
-  right: 0.5em;
+  left: 0.5em;
   content: "\2193";
 }
 table.dataTable > thead .sorting_asc:before,
@@ -163,13 +163,13 @@ div.dataTables_scrollFoot > .dataTables_scrollFootInner > table {
   }
 }
 table.dataTable.table-sm > thead > tr > th:not(.sorting_disabled) {
-  padding-right: 20px;
+  padding-left: 20px;
 }
 table.dataTable.table-sm .sorting:before,
 table.dataTable.table-sm .sorting_asc:before,
 table.dataTable.table-sm .sorting_desc:before {
   top: 5px;
-  right: 0.85em;
+  left: 0.85em;
 }
 table.dataTable.table-sm .sorting:after,
 table.dataTable.table-sm .sorting_asc:after,
@@ -178,16 +178,16 @@ table.dataTable.table-sm .sorting_desc:after {
 }
 
 table.table-bordered.dataTable {
-  border-right-width: 0;
+  border-left-width: 0;
 }
 table.table-bordered.dataTable th,
 table.table-bordered.dataTable td {
-  border-left-width: 0;
+  border-right-width: 0;
 }
 table.table-bordered.dataTable th:last-child, table.table-bordered.dataTable th:last-child,
 table.table-bordered.dataTable td:last-child,
 table.table-bordered.dataTable td:last-child {
-  border-right-width: 1px;
+  border-left-width: 1px;
 }
 table.table-bordered.dataTable tbody th,
 table.table-bordered.dataTable tbody td {
@@ -202,8 +202,8 @@ div.table-responsive > div.dataTables_wrapper > div.row {
   margin: 0;
 }
 div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:first-child {
-  padding-left: 0;
+  padding-right: 0;
 }
 div.table-responsive > div.dataTables_wrapper > div.row > div[class^="col-"]:last-child {
-  padding-right: 0;
+  padding-left: 0;
 }
