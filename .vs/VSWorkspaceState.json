@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\css"
+    "\\vendor",
+    "\\vendor\\datatables"
   ],
-  "SelectedNode": "\\css\\sb-admin-2.css",
+  "SelectedNode": "\\vendor\\datatables\\dataTables.bootstrap4.css",
   "PreviewInSolutionExplorer": false
 }
