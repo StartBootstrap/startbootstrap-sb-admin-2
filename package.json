@@ -34,7 +34,7 @@
         "@fortawesome/fontawesome-free": "5.15.1",
         "bootstrap": "4.5.3",
         "chart.js": "2.9.4",
-        "datatables.net-bs4": "1.10.22",
+        "datatables.net-bs4": "^1.10.24",
         "jquery": "3.5.1",
         "jquery.easing": "^1.4.1"
     },
