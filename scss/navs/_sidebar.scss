@@ -115,7 +115,7 @@
     }
 
     &.toggled {
-        width: 0 !important;
+        width: 0;
         overflow: hidden;
 
         #sidebarToggle::after {
@@ -189,7 +189,7 @@
 
 @include media-breakpoint-up(md) {
     .sidebar {
-        width: $sidebar-base-width !important;
+        width: $sidebar-base-width;
 
         .nav-item {
 
@@ -270,7 +270,7 @@
 
         &.toggled {
             overflow: visible;
-            width: $sidebar-collapsed-width !important;
+            width: $sidebar-collapsed-width;
 
             .nav-item {
 
