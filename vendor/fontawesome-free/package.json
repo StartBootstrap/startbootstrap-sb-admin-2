@@ -1,66 +1,5 @@
 {
-  "_from": "@fortawesome/fontawesome-free@5.15.1",
-  "_id": "@fortawesome/fontawesome-free@5.15.1",
-  "_inBundle": false,
-  "_integrity": "sha512-OEdH7SyC1suTdhBGW91/zBfR6qaIhThbcN8PUXtXilY4GYnSBbVqOntdHbC1vXwsDnX0Qix2m2+DSU1J51ybOQ==",
-  "_location": "/@fortawesome/fontawesome-free",
-  "_phantomChildren": {},
-  "_requested": {
-    "type": "version",
-    "registry": true,
-    "raw": "@fortawesome/fontawesome-free@5.15.1",
-    "name": "@fortawesome/fontawesome-free",
-    "escapedName": "@fortawesome%2ffontawesome-free",
-    "scope": "@fortawesome",
-    "rawSpec": "5.15.1",
-    "saveSpec": null,
-    "fetchSpec": "5.15.1"
-  },
-  "_requiredBy": [
-    "/"
-  ],
-  "_resolved": "https://registry.npmjs.org/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.1.tgz",
-  "_shasum": "ccfef6ddbe59f8fe8f694783e1d3eb88902dc5eb",
-  "_spec": "@fortawesome/fontawesome-free@5.15.1",
-  "_where": "/Users/DANGER_DAVID/Sites/startbootstrap-themes/startbootstrap-sb-admin-2",
-  "author": {
-    "name": "Dave Gandy",
-    "email": "dave@fontawesome.com",
-    "url": "http://twitter.com/davegandy"
-  },
-  "bugs": {
-    "url": "http://github.com/FortAwesome/Font-Awesome/issues"
-  },
-  "bundleDependencies": false,
-  "contributors": [
-    {
-      "name": "Brian Talbot",
-      "url": "http://twitter.com/talbs"
-    },
-    {
-      "name": "Travis Chase",
-      "url": "http://twitter.com/supercodepoet"
-    },
-    {
-      "name": "Rob Madole",
-      "url": "http://twitter.com/robmadole"
-    },
-    {
-      "name": "Geremia Taglialatela",
-      "url": "http://twitter.com/gtagliala"
-    },
-    {
-      "name": "Mike Wilkerson",
-      "url": "http://twitter.com/mw77"
-    }
-  ],
-  "dependencies": {},
-  "deprecated": false,
   "description": "The iconic font, CSS, and SVG framework",
-  "engines": {
-    "node": ">=6"
-  },
-  "homepage": "https://fontawesome.com",
   "keywords": [
     "font",
     "awesome",
@@ -69,16 +8,51 @@
     "svg",
     "bootstrap"
   ],
-  "license": "(CC-BY-4.0 AND OFL-1.1 AND MIT)",
-  "main": "js/fontawesome.js",
-  "name": "@fortawesome/fontawesome-free",
+  "homepage": "https://fontawesome.com",
+  "bugs": {
+    "url": "http://github.com/FortAwesome/Font-Awesome/issues"
+  },
+  "author": {
+    "name": "Dave Gandy",
+    "email": "dave@fontawesome.com",
+    "web": "http://twitter.com/davegandy"
+  },
+  "contributors": [
+    {
+      "name": "Brian Talbot",
+      "web": "http://twitter.com/talbs"
+    },
+    {
+      "name": "Travis Chase",
+      "web": "http://twitter.com/supercodepoet"
+    },
+    {
+      "name": "Rob Madole",
+      "web": "http://twitter.com/robmadole"
+    },
+    {
+      "name": "Geremia Taglialatela",
+      "web": "http://twitter.com/gtagliala"
+    },
+    {
+      "name": "Mike Wilkerson",
+      "web": "http://twitter.com/mw77"
+    }
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/FortAwesome/Font-Awesome.git"
+    "url": "https://github.com/FortAwesome/Font-Awesome"
   },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {},
+  "version": "5.15.3",
+  "name": "@fortawesome/fontawesome-free",
+  "main": "js/fontawesome.js",
+  "style": "css/fontawesome.css",
+  "license": "(CC-BY-4.0 AND OFL-1.1 AND MIT)",
   "scripts": {
     "postinstall": "node attribution.js"
-  },
-  "style": "css/fontawesome.css",
-  "version": "5.15.1"
+  }
 }
