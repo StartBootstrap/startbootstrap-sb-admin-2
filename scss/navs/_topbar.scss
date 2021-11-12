@@ -42,7 +42,7 @@
     position: static;
     .dropdown-menu {
       width: calc(100% - #{$grid-gutter-width});
-      right: $grid-gutter-width / 2;
+      right: $grid-gutter-width * 0.5;
     }
   }
   .dropdown-list {
