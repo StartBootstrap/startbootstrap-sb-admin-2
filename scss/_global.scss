@@ -58,3 +58,13 @@ a {
     font-weight: 800;
   }
 }
+
+.breadcrumb {
+	display: flex;
+	flex-wrap: wrap;
+	padding: .75rem 1rem;
+	margin-bottom: 1rem;
+	list-style: none;
+	background-color: #eaecf4;
+	border-radius: .35rem;
+}
