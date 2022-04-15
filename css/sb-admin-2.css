@@ -10866,6 +10866,10 @@ a:focus {
   background-size: cover;
 }
 
+.bg-login-image-2 {
+  background: url("https://wallpaperbat.com/img/43542-android-marshmallow-new-blue-yellow-pattern-pattern.jpg");
+}
+
 .bg-register-image {
   background: url("https://source.unsplash.com/Mv9hjnEUHR4/600x800");
   background-position: center;
