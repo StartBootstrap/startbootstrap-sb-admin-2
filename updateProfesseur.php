@@ -304,9 +304,8 @@ session_start();
                                                     value="<?php echo $_SESSION['dossier_administratif']?>" name="dossier_administratif">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <label for="id" class="donne">Id : </label>
                                                     <input type="text" class="form-control form-control-user" id="id"
-                                                    value="<?php echo $_SESSION['professeur']?>" readonly name="id">
+                                                    value="<?php echo $_SESSION['professeur']?>" readonly name="id" hidden>
                                                 </div>
                                             </div>
                                             <input type="submit" value="Envoyer" class="btn btn-primary" style="margin-left: 88%; margin-top: 3%; margin-bottom: 3%;" name="save"/>

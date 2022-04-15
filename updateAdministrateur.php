@@ -190,9 +190,8 @@ session_start();
                                                      value="<?php echo $_SESSION['photo']?>" name="photo">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <label for="id" class="donne">Id : </label>
                                                     <input type="text" class="form-control form-control-user" id="id"
-                                                    value="<?php echo $_SESSION['administrator']?>" readonly name="id">
+                                                    value="<?php echo $_SESSION['administrator']?>" readonly name="id" hidden>
                                                 </div>
                                             </div>
                                             <div class="form-group" style="margin-top: 0%;">
