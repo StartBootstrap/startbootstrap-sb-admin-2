@@ -84,7 +84,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <div class="text-center">
-                        <h1 class="h5 text-gray-900 mb-4">VEICULOS</h1>
+                        <h1 class="h5 text-gray-900 mb-4">TIPOS</h1>
                     </div>
             
                 </nav>
@@ -94,17 +94,24 @@
 
             <!-- Tab links -->
             <div class="tab">
-            <button class="tablinks" onclick="openTab(event, 'Cadastro')"id="defaultOpen">Cadastrar</button>
+             <button class="tablinks" onclick="openTab(event, 'contrucao')"id="defaultOpen">Cadastrar</button>
+            <button class="tablinks" onclick="openTab(event, 'Cadastro')">Cadastrar</button>
             <button class="tablinks" onclick="openTab(event, 'Buscar')">Buscar</button>
             <button class="tablinks" onclick="openTab(event, 'Editar')">Editar</button>
             </div>
-
+            <div class="container-fluid tabcontent" id="contrucao">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">As telas de cadastro de Tipos de veiculo ainda esta em construção
+                        Tipos de veículos podem ser cadastrados via json 
+                        </h6>
+                </div>
+            </div>
             <div class="container-fluid tabcontent" id="Buscar">
 
                 <!-- busca veiculo -->
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Veiculos</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Tipos</h6>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -113,8 +120,6 @@
                                     <tr>
                                         <th>ID</th>
                                         <th>Nome</th>
-                                        <th>Tipo</th>
-                                        <th>Placa</th>
                                         <th>Descrição</th>
                                     </tr>
                                 </thead>
@@ -137,32 +142,16 @@
                     <div class="p-5">
                         <div class="text-center">
                             <h1 class="h4 text-gray-900 mb-4">Cadastro de veiculo</h1>
-                            <h1 class="h6 text-gray-900 mb-4">Busque o tipo de veiculo usando a campo imput (respeitar maiusculas e minusculas) </h1>
+                            <h1 class="h6 text-gray-900 mb-4">Informe os dados e use o botão gravar(respeitar maiusculas e minusculas) </h1>
                         </div>
                         <form class="user">
                             <div class="form-group">
-                                <input type="text" class="form-control " id="vehicleNameCad"
+                                <input type="text" class="form-control " id="name_type_cad"
                                     placeholder="Informe o Nome do Veiculo">
                             </div>
                             <div class="form-group">
-                                <input type="text" class="form-control " id="vehicleDescCad"
+                                <input type="text" class="form-control " id="desc_type_ed"
                                     placeholder="Informe a descrição do veiculo">
-                            </div>
-                            <div class=" d-flex bd-highlight  justify-content-between mb-2"> 
-                                <!-- ow d-flex justify-content-between -->
-                                <div class=" p-1 flex-fill bd-highlight" >
-                                    <input type="text" class="form-control "
-                                        id="vehiclePlateCad" placeholder="Informe a placa do Veiculo">
-                                </div>
-                                <div class="d-flex  bd-highlight row p-1 flex-fill bd-highlight align-items-center justify-content-between">
-                                    <div class="p-0 flex-fill bd-highlight ml-4 mr-3 mb-0">
-                                        <input type="text" id="tipo_busca_cad" class="form-control "
-                                            placeholder="Informe o nome do Tipo ex=BMW">
-                                    </div> 
-                                    <a id="btn_busca_tipo_cad" class="btn btn-success btn-circle ">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </a>
-                                </div>
                             </div>
                             <a id="cadastra_veiculo" class="btn btn-primary  btn-block ">
                                 Cadastrar
@@ -180,38 +169,24 @@
                 <div class="container ">
                     <div class="p-5">
                         <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Editar veiculo</h1>
-                            <h1 class="h6 text-gray-900 mb-4">Digite a placa do veiculo e use o botão verde para buscar (respeitar maiusculas e minusculas)</h1>
+                            <h1 class="h4 text-gray-900 mb-4">Editar Tipo</h1>
+                            <h1 class="h6 text-gray-900 mb-4">Digite o nome do tipo e pressione buscar (respeitar maiúsculas e minúsculas)</h1>
                         </div>
                         <form class="user">
 
                             <div class="form-group  bd-highlight row  flex-fill bd-highlight  justify-content-between ml-0 " >
                                 <div class=" flex-fill bd-highlight ml-0 mr-3 mb-0">
-                                    <input type="text" id="vehiclePlate" class="form-control "
-                                        placeholder="Informe a placa do Veiculo">
+                                    <input type="text" id="name_tipo_ed" class="form-control "
+                                        placeholder="Informe o nome do tipo ex: BMW">
                                 </div> 
-                                <a id="buscar_vehicle" class="btn btn-success btn-circle ">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </a>
-                            </div>
-
-                            <div class="form-group row  justify-content-between ml-0" >
-                                <div class=" flex-fill bd-highlight ml-0 mr-3 mb-0 ">
-                                    <input type="text" id="getVehicleType" class="form-control "
-                                        placeholder="Informe o tipo para buscar">
-                                </div> 
-                                <a id="btn_busca_tipo" class="btn btn-success btn-circle ">
+                                <a id="buscar_tipo" class="btn btn-success btn-circle ">
                                     <i class="fas fa-search fa-sm"></i>
                                 </a>
                             </div>
 
                             <div class="form-group ">
-                                <input type="text" class="form-control " id="vehicleName"
-                                    placeholder="Nome do Veiculo">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control " id="vehicleDesc"
-                                    placeholder="Descrição do veiculo">
+                                <input type="text" class="form-control " id="tipo_desc_ed"
+                                    placeholder="Descrição">
                             </div>
                             <div class="form-group row" >
                                 <a id="edita_veiculo" class="btn btn-primary  col-sm-3 mb-0 ml-3 ">
@@ -277,7 +252,7 @@
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <!-- <script src="js/tabs.min.js"></script> -->
-    <script src="js/conection.min.js"></script>
+    <script src="js/conectiontype.min.js"></script>
 
 
 </body>

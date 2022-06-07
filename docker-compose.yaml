@@ -1,0 +1,16 @@
+
+version: '3'
+
+services:
+  proxy:
+    image: meetup-59-dotnet-sp-nginx
+    build:
+      context: .
+    ports:
+      - "30000:80"
+    networks:
+      - meetup-59-dotnet-sp
+
+networks: 
+  meetup-59-dotnet-sp:
+    driver: bridge
