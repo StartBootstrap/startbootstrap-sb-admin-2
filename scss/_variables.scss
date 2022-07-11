@@ -83,3 +83,6 @@ $password-image: 'https://source.unsplash.com/oWTW-jNGl9I/600x800' !default;
 $min-contrast-ratio:   3.5 !default;
 $link-decoration:      none !default;
 a:hover { text-decoration: underline; }
+input.form-control:not([disabled]), textarea.form-control:not([disabled]), select.form-select:not([disabled]) {
+    color: #000;
+}
