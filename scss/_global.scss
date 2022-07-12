@@ -21,7 +21,7 @@ a {
   #content-wrapper {
     background-color: $gray-100;
     width: 100%;
-    overflow-x: hidden;
+    overflow-x: clip;
     #content {
       flex: 1 0 auto;
     }
@@ -45,7 +45,7 @@ a {
   height: 2.75rem;
   text-align: center;
   color: $white;
-  background: fade-out($gray-800, .5);
+  background: fade-out($gray-800, 0.5);
   line-height: 46px;
   &:focus,
   &:hover {
@@ -57,4 +57,14 @@ a {
   i {
     font-weight: 800;
   }
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none;
+  background-color: #eaecf4;
+  border-radius: 0.35rem;
 }

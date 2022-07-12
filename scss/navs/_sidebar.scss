@@ -235,7 +235,7 @@
                 }
 
                 // Accordion Arrow Icon
-                &[data-toggle="collapse"] {
+                &[data-bs-toggle="collapse"] {
                     &::after {
                         width: 1rem;
                         text-align: center;
@@ -319,7 +319,7 @@
                         margin-right: 0;
                     }
 
-                    &[data-toggle="collapse"]::after {
+                    &[data-bs-toggle="collapse"]::after {
                         display: none;
                     }
                 }
@@ -377,7 +377,7 @@
             }
 
             // Accordion
-            &[data-toggle="collapse"]::after {
+            &[data-bs-toggle="collapse"]::after {
                 color: $gray-500;
             }
         }
@@ -440,7 +440,7 @@
             }
 
             // Accordion
-            &[data-toggle="collapse"]::after {
+            &[data-bs-toggle="collapse"]::after {
                 color: fade-out($white, 0.5);
             }
         }

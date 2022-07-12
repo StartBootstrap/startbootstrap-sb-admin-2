@@ -12,6 +12,17 @@
   @include border-radius($list-group-border-radius);
 }
 
+.list-group-numbered {
+  list-style-type: none;
+  counter-reset: section;
+
+  > li::before {
+    // Increments only this instance of the section counter
+    content: counters(section, ".") ". ";
+    counter-increment: section;
+  }
+}
+
 
 // Interactive list items
 //
@@ -24,7 +35,8 @@
   text-align: inherit; // For `<button>`s (anchors inherit)
 
   // Hover state
-  @include hover-focus() {
+  &:hover,
+  &:focus {
     z-index: 1; // Place hover/focus items above their siblings for proper border styling
     color: $list-group-action-hover-color;
     text-decoration: none;
@@ -98,13 +110,13 @@
 
       > .list-group-item {
         &:first-child {
-          @include border-bottom-left-radius($list-group-border-radius);
-          @include border-top-right-radius(0);
+          @include border-bottom-start-radius($list-group-border-radius);
+          @include border-top-end-radius(0);
         }
 
         &:last-child {
-          @include border-top-right-radius($list-group-border-radius);
-          @include border-bottom-left-radius(0);
+          @include border-top-end-radius($list-group-border-radius);
+          @include border-bottom-start-radius(0);
         }
 
         &.active {
@@ -144,11 +156,19 @@
 }
 
 
-// Contextual variants
+// scss-docs-start list-group-modifiers
+// List group contextual variants
 //
 // Add modifier classes to change text and background color on individual items.
 // Organizationally, this must come after the `:hover` states.
 
-@each $color, $value in $theme-colors {
-  @include list-group-item-variant($color, theme-color-level($color, -9), theme-color-level($color, 6));
+@each $state, $value in $theme-colors {
+  $list-group-variant-bg: shift-color($value, $list-group-item-bg-scale);
+  $list-group-variant-color: shift-color($value, $list-group-item-color-scale);
+  @if (contrast-ratio($list-group-variant-bg, $list-group-variant-color) < $min-contrast-ratio) {
+    $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+  }
+
+  @include list-group-item-variant($state, $list-group-variant-bg, $list-group-variant-color);
 }
+// scss-docs-end list-group-modifiers
