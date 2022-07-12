@@ -86,3 +86,12 @@ a:hover { text-decoration: underline; }
 input.form-control:not([disabled]), textarea.form-control:not([disabled]), select.form-select:not([disabled]) {
     color: #000;
 }
+.card-header-tabs a.nav-link {
+    font-weight: 500;
+}
+.card-header-tabs a.nav-link.active {
+   font-weight: 600;
+}
+.card-header h5 {
+   font-size: 1.2rem;
+}
