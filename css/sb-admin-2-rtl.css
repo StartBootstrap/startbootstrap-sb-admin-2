@@ -1,0 +1,40 @@
+#wrapper {
+    flex-direction: row-reverse !important;
+}
+.sidebar-dark .nav-item .nav-link {
+    direction: rtl;
+    text-align: right;
+}
+.sidebar .nav-item .nav-link[data-toggle=collapse]::after {
+    float: left;
+}
+.sidebar .nav-item .collapse .collapse-inner, .sidebar .nav-item .collapsing .collapse-inner {
+    text-align: right !important;
+    direction: rtl;
+}
+@media (min-width: 768px){
+    .sidebar .nav-item .nav-link[data-toggle=collapse].collapsed::after {
+        content: '\f104';
+    }
+    .sidebar .nav-item .nav-link i {
+        margin-right: 0;
+        margin-left: .25rem;
+    }
+    .sidebar .sidebar-heading {
+        text-align: right;
+    }
+    .sidebar .nav-item .collapse .collapse-inner {
+        text-align: right !important;
+    }
+    .sidebar.toggled .nav-item .collapse {
+        position: absolute;
+        right: calc(6.5rem + 1.5rem / 2);
+        left: calc(-20.5rem / 2);
+    }
+    .sidebar #sidebarToggle::after {
+        content: '\f105';
+    }
+    .sidebar.toggled #sidebarToggle::after {
+        content: '\f104';
+    }
+}
